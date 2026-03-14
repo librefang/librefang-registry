@@ -1,5 +1,5 @@
 # OpenRouter — https://openrouter.ai
-# Models: 16 (10 paid + 6 free)
+# Models: 17 (10 paid + 7 free)
 
 [provider]
 id = "openrouter"
@@ -139,6 +139,19 @@ supports_streaming = true
 aliases = []
 
 # Free models
+
+[[models]]
+id = "openrouter/stepfun/step-3.5-flash:free"
+display_name = "Step 3.5 Flash Free (OpenRouter)"
+tier = "fast"
+context_window = 128000
+max_output_tokens = 8192
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
+supports_tools = true
+supports_vision = false
+supports_streaming = true
+aliases = []
 
 [[models]]
 id = "openrouter/google/gemma-2-9b-it:free"
