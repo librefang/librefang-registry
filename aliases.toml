@@ -77,6 +77,13 @@
 "minimax-highspeed" = "MiniMax-M2.5-highspeed"
 "minimax-m2.1" = "MiniMax-M2.1"
 "codegeex" = "codegeex-4"
+"stepfun" = "step-3.5-flash"
+"baichuan" = "Baichuan4"
+"baichuan-4" = "Baichuan4"
+
+# Writer
+"palmyra" = "palmyra-x5"
+"writer" = "palmyra-x5"
 
 # ChatGPT Session Auth
 "chatgpt" = "gpt-5.1-codex-mini"

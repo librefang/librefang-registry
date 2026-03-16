@@ -1,0 +1,9 @@
+# NVIDIA NIM — https://build.nvidia.com
+# Models: 0 (hosts third-party models, discovered dynamically at runtime)
+
+[provider]
+id = "nvidia-nim"
+display_name = "NVIDIA NIM"
+api_key_env = "NVIDIA_API_KEY"
+base_url = "https://integrate.api.nvidia.com/v1"
+key_required = true
