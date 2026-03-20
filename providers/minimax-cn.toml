@@ -1,5 +1,5 @@
 # MiniMax (China) — https://minimaxi.com
-# Models: 6 (same models as international, different endpoint)
+# Models: 8 (same models as international, different endpoint)
 
 [provider]
 id = "minimax-cn"
@@ -7,6 +7,32 @@ display_name = "MiniMax (China)"
 api_key_env = "MINIMAX_CN_API_KEY"
 base_url = "https://api.minimaxi.com/v1"
 key_required = true
+
+[[models]]
+id = "MiniMax-M2.7"
+display_name = "MiniMax M2.7"
+tier = "frontier"
+context_window = 204800
+max_output_tokens = 131072
+input_cost_per_m = 0.30
+output_cost_per_m = 1.20
+supports_tools = true
+supports_vision = false
+supports_streaming = true
+aliases = []
+
+[[models]]
+id = "MiniMax-M2.7-highspeed"
+display_name = "MiniMax M2.7 Highspeed"
+tier = "smart"
+context_window = 204800
+max_output_tokens = 131072
+input_cost_per_m = 0.30
+output_cost_per_m = 1.20
+supports_tools = true
+supports_vision = false
+supports_streaming = true
+aliases = []
 
 [[models]]
 id = "minimax-text-01"
