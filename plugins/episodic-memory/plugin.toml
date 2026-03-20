@@ -1,0 +1,8 @@
+name = "episodic-memory"
+version = "0.1.0"
+description = "Episode-based memory segmentation and recall for cross-conversation context continuity"
+author = "librefang"
+
+[hooks]
+ingest = "hooks/ingest.py"
+after_turn = "hooks/after_turn.py"

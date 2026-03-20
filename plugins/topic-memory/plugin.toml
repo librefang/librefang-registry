@@ -1,0 +1,8 @@
+name = "topic-memory"
+version = "0.1.0"
+description = "Topic-aware memory recall with keyword clustering for cross-conversation context"
+author = "librefang"
+
+[hooks]
+ingest = "hooks/ingest.py"
+after_turn = "hooks/after_turn.py"

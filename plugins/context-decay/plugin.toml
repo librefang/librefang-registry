@@ -1,0 +1,8 @@
+name = "context-decay"
+version = "0.1.0"
+description = "Time-based memory decay with relevance scoring for natural context forgetting"
+author = "librefang"
+
+[hooks]
+ingest = "hooks/ingest.py"
+after_turn = "hooks/after_turn.py"
