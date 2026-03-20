@@ -1,4 +1,4 @@
-name: Validate Catalog
+name: Validate Registry
 
 on:
   push:
@@ -14,10 +14,7 @@ jobs:
 
       - uses: actions/setup-python@v6
         with:
-          python-version: "3.11"
+          python-version: "3.12"
 
-      - name: Install dependencies
-        run: pip install toml
-
-      - name: Validate catalog
+      - name: Validate registry
         run: python scripts/validate.py

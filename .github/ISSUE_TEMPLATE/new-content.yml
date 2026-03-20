@@ -1,0 +1,49 @@
+name: New Content Request
+description: Request addition of an agent, hand, integration, or skill
+labels: ["new-content"]
+body:
+  - type: dropdown
+    id: content_type
+    attributes:
+      label: Content Type
+      description: What type of content are you requesting?
+      options:
+        - Agent
+        - Hand
+        - Integration (MCP server)
+        - Skill
+    validations:
+      required: true
+
+  - type: input
+    id: name
+    attributes:
+      label: Name
+      description: The name/ID for this content.
+      placeholder: e.g. my-agent, browser, github
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What does this content do? Why is it useful?
+      placeholder: |
+        Describe the purpose and key capabilities.
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: Additional Details
+      description: |
+        Any extra context: required tools, external dependencies,
+        MCP server package, reference links, etc.
+      placeholder: |
+        - MCP server: @some/mcp-server
+        - Requires: API key from https://...
+        - Tools needed: web_search, file_read
+    validations:
+      required: false

@@ -1,101 +1,148 @@
-# LibreFang Model Catalog
+# LibreFang Registry
 
-Community-maintained model metadata catalog for [LibreFang](https://github.com/librefang/librefang) -- the open-source Agent Operating System.
+Community-maintained content registry for [LibreFang](https://github.com/librefang/librefang) -- the open-source Agent Operating System.
 
-This repository is the source of truth for model metadata (pricing, context windows, capabilities). When new models are released (e.g. GPT-5.5, Claude 5), anyone can submit a PR here without touching the LibreFang binary.
+This repository is the single source of truth for all installable content definitions. Anyone can submit a PR to add new agents, hands, integrations, skills, or provider models -- no changes to the LibreFang binary required.
 
 ## Structure
 
 ```
-model-catalog/
-├── providers/          # One TOML file per provider
+librefang-registry/
+├── agents/             # Agent definitions (TOML manifests)
+│   ├── hello-world/agent.toml
+│   ├── researcher/agent.toml
+│   └── ...             (33 agents)
+├── hands/              # Hand definitions (TOML + docs)
+│   ├── browser/HAND.toml
+│   ├── trader/HAND.toml
+│   └── ...             (14 hands)
+├── integrations/       # MCP server integration templates
+│   ├── github.toml
+│   ├── slack.toml
+│   └── ...             (25 integrations)
+├── skills/             # Reusable skill definitions
+│   ├── custom-skill-prompt/skill.toml
+│   └── custom-skill-python/
+├── providers/          # LLM provider & model metadata
 │   ├── anthropic.toml
 │   ├── openai.toml
-│   ├── gemini.toml
-│   └── ...
-├── aliases.toml        # Global alias mappings (e.g. "sonnet" -> "claude-sonnet-4-6")
-├── schema.toml         # Reference schema documenting all fields
+│   └── ...             (46 providers, 190+ models)
+├── plugins/            # Plugin packages
+├── aliases.toml        # Global model alias mappings
+├── schema.toml         # Provider/model schema reference
 ├── scripts/
 │   └── validate.py     # Validation script
-├── CONTRIBUTING.md     # How to add a new model
+├── CONTRIBUTING.md
 └── LICENSE             # MIT
 ```
 
-## How LibreFang Uses This Catalog
+## Content Types
 
-LibreFang ships with a built-in model catalog compiled into the binary. This repository serves as the upstream source. To update your local catalog:
+### Agents
 
-```bash
-librefang catalog update
-```
-
-This fetches the latest TOML files from this repository and merges them into your local catalog.
-
-### Custom Local Models
-
-You can also add custom models locally without submitting a PR:
-
-```bash
-# Add to your personal config
-# ~/.librefang/model_catalog.toml
-
-[[models]]
-id = "my-custom-model"
-display_name = "My Custom Model"
-provider = "ollama"
-tier = "local"
-context_window = 32768
-max_output_tokens = 4096
-input_cost_per_m = 0.0
-output_cost_per_m = 0.0
-supports_tools = true
-supports_vision = false
-supports_streaming = true
-```
-
-## Schema Reference
-
-Each provider file contains a `[provider]` section and one or more `[[models]]` entries:
+Agent definitions in `agents/<name>/agent.toml` describe autonomous agents with their model config, tools, capabilities, and routing aliases.
 
 ```toml
-[provider]
-id = "provider-id"                  # Unique provider identifier
-display_name = "Provider Name"      # Human-readable name
-api_key_env = "PROVIDER_API_KEY"    # Environment variable for API key
-base_url = "https://api.example.com"  # Default API endpoint
-key_required = true                 # Whether an API key is needed
+name = "hello-world"
+description = "A friendly greeting agent"
+module = "builtin:chat"
 
-[[models]]
-id = "model-id"                    # Unique model identifier (API model ID)
-display_name = "Human Name"        # Human-readable display name
-tier = "smart"                     # frontier | smart | balanced | fast | local
-context_window = 128000            # Maximum input tokens
-max_output_tokens = 16384          # Maximum output tokens
-input_cost_per_m = 2.50            # USD per million input tokens
-output_cost_per_m = 10.0           # USD per million output tokens
-supports_tools = true              # Tool/function calling support
-supports_vision = true             # Vision/image input support
-supports_streaming = true          # Streaming response support
-aliases = ["alias1", "alias2"]     # Short names for this model
+[model]
+provider = "default"
+model = "default"
+system_prompt = "You are a helpful assistant."
+
+[capabilities]
+tools = ["web_search", "file_read"]
 ```
 
-### Tier Definitions
+### Hands
 
-| Tier | Description | Examples |
-|------|-------------|----------|
-| `frontier` | Most capable, cutting-edge models | Claude Opus, GPT-4.1, Gemini 2.5 Pro |
-| `smart` | Smart, cost-effective models | Claude Sonnet, GPT-4o, Gemini 2.5 Flash |
-| `balanced` | Balanced speed/cost | GPT-4.1 Mini, Llama 3.3 70B |
-| `fast` | Fastest, cheapest | GPT-4o Mini, Claude Haiku |
-| `local` | Local models (zero cost) | Ollama, vLLM, LM Studio |
+Hands in `hands/<name>/HAND.toml` are higher-level application bundles -- the user-facing "apps" in LibreFang. Each hand bundles an agent config, tools, settings, dashboard metrics, and dependency requirements.
 
-## How to Add a New Model
+```toml
+id = "browser"
+name = "Browser Hand"
+category = "productivity"
+tools = ["browser_navigate", "browser_click", "browser_type"]
 
-1. Edit the appropriate provider file in `providers/`
-2. Run validation: `python scripts/validate.py`
-3. Submit a Pull Request
+[agent]
+name = "browser-hand"
+module = "builtin:chat"
+system_prompt = "You are an autonomous web browser agent..."
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed instructions.
+[[settings]]
+key = "headless"
+setting_type = "toggle"
+default = "true"
+```
+
+### Integrations
+
+Integration templates in `integrations/<name>.toml` define MCP server connections (GitHub, Slack, databases, etc.) with transport config, required env vars, and setup instructions.
+
+```toml
+id = "github"
+name = "GitHub"
+category = "devtools"
+
+[transport]
+type = "stdio"
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-github"]
+
+[[required_env]]
+name = "GITHUB_PERSONAL_ACCESS_TOKEN"
+is_secret = true
+```
+
+### Skills
+
+Skills in `skills/<name>/skill.toml` are reusable prompt templates or Python scripts that agents can invoke.
+
+```toml
+[skill]
+name = "meeting-agenda"
+description = "Generate a structured meeting agenda"
+
+[runtime]
+type = "promptonly"
+
+[prompt]
+template = "Create a meeting agenda for: {{topic}}"
+```
+
+### Providers
+
+Provider files in `providers/<name>.toml` define LLM providers and their models with pricing, context windows, and capability flags. See [schema.toml](schema.toml) for the full field reference.
+
+## How LibreFang Uses This Registry
+
+LibreFang ships with built-in content compiled into the binary. This repository serves as the upstream source for updates and community contributions.
+
+```bash
+# Update all registry content
+librefang catalog update
+
+# Install a specific hand
+librefang hand install browser
+
+# Install a specific integration
+librefang integration install github
+```
+
+### Custom Local Content
+
+You can also create custom content locally without submitting a PR:
+
+```bash
+# Create a custom agent
+mkdir -p ~/.librefang/agents/my-agent
+# Edit ~/.librefang/agents/my-agent/agent.toml
+
+# Add custom models to your config
+# ~/.librefang/model_catalog.toml
+```
 
 ## Validation
 
@@ -103,13 +150,28 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed instructions.
 python scripts/validate.py
 ```
 
-This checks all TOML files for correctness: required fields, valid tiers, non-negative costs, no duplicate IDs.
+This validates all provider TOML files for correctness: required fields, valid tiers, non-negative costs, no duplicate IDs.
+
+## How to Contribute
+
+1. Fork this repository
+2. Add or edit content in the appropriate directory
+3. Run validation: `python scripts/validate.py`
+4. Submit a Pull Request
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed instructions for each content type.
 
 ## Current Stats
 
-- **30+ providers** including Anthropic, OpenAI, Google, DeepSeek, Groq, Mistral, xAI, and more
-- **190+ models** with pricing, context windows, and capability flags
-- **80+ aliases** for quick model selection
+| Type | Count |
+|------|-------|
+| Agents | 33 |
+| Hands | 14 |
+| Integrations | 25 |
+| Skills | 2 |
+| Providers | 46 |
+| Models | 190+ |
+| Aliases | 80+ |
 
 ## License
 
