@@ -1,0 +1,48 @@
+[provider]
+id = "codex-cli"
+display_name = "Codex CLI"
+api_key_env = ""
+base_url = ""
+key_required = false
+
+[[models]]
+id = "codex-cli/o4-mini"
+display_name = "o4-mini (Codex CLI)"
+provider = "codex-cli"
+tier = "smart"
+context_window = 200000
+max_output_tokens = 100000
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
+supports_tools = false
+supports_vision = false
+supports_streaming = false
+aliases = ["codex-cli-o4-mini"]
+
+[[models]]
+id = "codex-cli/o3"
+display_name = "o3 (Codex CLI)"
+provider = "codex-cli"
+tier = "frontier"
+context_window = 200000
+max_output_tokens = 100000
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
+supports_tools = false
+supports_vision = false
+supports_streaming = false
+aliases = ["codex-cli-o3"]
+
+[[models]]
+id = "codex-cli/gpt-4.1"
+display_name = "GPT-4.1 (Codex CLI)"
+provider = "codex-cli"
+tier = "balanced"
+context_window = 1047576
+max_output_tokens = 32768
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
+supports_tools = false
+supports_vision = false
+supports_streaming = false
+aliases = ["codex-cli-gpt-4.1"]
