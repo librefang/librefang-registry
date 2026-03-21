@@ -1,5 +1,6 @@
 # Qwen / Alibaba — https://dashscope.aliyuncs.com
 # Models: 11
+# Regions: china (default), intl (Singapore), us (Virginia)
 
 [provider]
 id = "qwen"
@@ -7,6 +8,12 @@ display_name = "Qwen (Alibaba)"
 api_key_env = "DASHSCOPE_API_KEY"
 base_url = "https://dashscope.aliyuncs.com/compatible-mode/v1"
 key_required = true
+
+[provider.regions.intl]
+base_url = "https://dashscope-intl.aliyuncs.com/compatible-mode/v1"
+
+[provider.regions.us]
+base_url = "https://dashscope-us.aliyuncs.com/compatible-mode/v1"
 
 [[models]]
 id = "qwen-max"
