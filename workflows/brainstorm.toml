@@ -1,0 +1,25 @@
+id = "brainstorm"
+name = "Brainstorm & Action Plan"
+description = "Generate ideas, evaluate them, and create an action plan for the best one"
+category = "thinking"
+tags = ["brainstorm", "ideation", "planning"]
+
+[[parameters]]
+name = "challenge"
+description = "The challenge or problem to brainstorm solutions for"
+param_type = "string"
+required = true
+
+[[steps]]
+name = "idea_generator"
+prompt_template = "You are a creative strategist. For the following challenge, generate 10 diverse solution ideas. Include: 3 conventional approaches, 4 creative approaches, and 3 bold/unconventional approaches. For each idea, give a one-line title and a 2-sentence explanation.\n\nChallenge: {{challenge}}"
+
+[[steps]]
+name = "evaluator"
+prompt_template = "You are a critical analyst. Evaluate each idea below on three criteria: Feasibility (1-5), Impact (1-5), Originality (1-5). Pick the top 3 ideas and for each provide: why it's promising, key risks, and concrete first steps to implement it.\n\nIdeas:\n{{idea_generator}}"
+depends_on = ["idea_generator"]
+
+[[steps]]
+name = "action_planner"
+prompt_template = "You are a project planner. Take the top-rated idea below and create a concrete action plan: 1) Clear goal statement 2) 5-step implementation roadmap with timelines 3) Required resources 4) Success metrics 5) Potential obstacles and mitigation strategies.\n\nEvaluation:\n{{evaluator}}"
+depends_on = ["evaluator"]

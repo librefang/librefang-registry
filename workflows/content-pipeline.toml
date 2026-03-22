@@ -1,0 +1,32 @@
+id = "content-pipeline"
+name = "Content Creation Pipeline"
+description = "Research → Write → Edit pipeline for article creation"
+category = "creation"
+tags = ["content", "writing", "article"]
+
+[[parameters]]
+name = "topic"
+description = "The topic to research and write about"
+param_type = "string"
+required = true
+
+[[parameters]]
+name = "word_count"
+description = "Target word count for the article"
+param_type = "string"
+required = false
+default = "800-1200"
+
+[[steps]]
+name = "researcher"
+prompt_template = "You are a research assistant. Research the following topic thoroughly and provide: 1) Background and context 2) Key facts and data points 3) Different perspectives on the topic 4) Recent developments. Be specific and detailed.\n\nTopic: {{topic}}"
+
+[[steps]]
+name = "writer"
+prompt_template = "You are a professional writer. Based on the research below, write a well-structured article ({{word_count}} words). Include: a compelling headline, an engaging introduction, clear sections with subheadings, and a strong conclusion. Write in a clear, accessible style.\n\nResearch:\n{{researcher}}"
+depends_on = ["researcher"]
+
+[[steps]]
+name = "editor"
+prompt_template = "You are a senior editor. Review and polish the following article. Fix any grammar issues, improve flow, tighten wordy sentences, and ensure factual consistency. Output the final polished version only, no commentary.\n\nDraft:\n{{writer}}"
+depends_on = ["writer"]

@@ -1,0 +1,20 @@
+id = "weekly-report"
+name = "Weekly Report Generator"
+description = "Organize raw work notes into a polished weekly report"
+category = "business"
+tags = ["report", "weekly", "productivity"]
+
+[[parameters]]
+name = "work_notes"
+description = "Raw work notes, bullet points, or activity log for the week"
+param_type = "string"
+required = true
+
+[[steps]]
+name = "organizer"
+prompt_template = "You are an executive assistant. Organize the following raw work notes into structured categories: 1) Completed tasks 2) In-progress items 3) Blockers/Issues 4) Key decisions made. Extract and list each item clearly, even if the notes are messy.\n\nRaw notes:\n{{work_notes}}"
+
+[[steps]]
+name = "report_writer"
+prompt_template = "You are a professional report writer. Transform the organized items below into a polished weekly report with these sections:\n\n## This Week's Highlights\n(top 3 achievements)\n\n## Progress Details\n(organized by project/area)\n\n## Challenges & Solutions\n(any blockers and how they were addressed)\n\n## Next Week's Priorities\n(based on in-progress items)\n\nKeep it concise and professional.\n\nOrganized items:\n{{organizer}}"
+depends_on = ["organizer"]

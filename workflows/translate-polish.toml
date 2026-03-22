@@ -1,0 +1,20 @@
+id = "translate-polish"
+name = "Translation & Polish"
+description = "Auto-detect language, translate, and review for naturalness"
+category = "language"
+tags = ["translation", "language", "localization"]
+
+[[parameters]]
+name = "source_text"
+description = "The text to translate"
+param_type = "string"
+required = true
+
+[[steps]]
+name = "translator"
+prompt_template = "You are an expert translator. Translate the following text. Auto-detect the source language: if it's Chinese, translate to English; if it's English, translate to Chinese; for other languages, translate to both Chinese and English. Preserve the original tone, style, and formatting.\n\nText:\n{{source_text}}"
+
+[[steps]]
+name = "reviewer"
+prompt_template = "You are a bilingual language expert. Review the following translation for accuracy and naturalness. Check for: 1) Mistranslations or meaning shifts 2) Awkward phrasing that sounds translated 3) Cultural context issues. Output the improved final translation only.\n\nTranslation to review:\n{{translator}}"
+depends_on = ["translator"]
