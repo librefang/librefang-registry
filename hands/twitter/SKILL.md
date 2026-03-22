@@ -298,75 +298,6 @@ Do NOT auto-like:
 
 ---
 
-<<<<<<< HEAD
-## Advanced Engagement Patterns
-
-### Quote Tweet vs Reply vs Retweet
-
-Choosing the right interaction type determines whether you gain visibility or waste it.
-
-**Use a Quote Tweet when**:
-- You have a distinct take or added context (not just "this!")
-- The original tweet has high impressions and you want to draft off its reach
-- You are crediting someone while adding your own insight for your audience
-- The original author has a similar or larger following (exposes you to their audience)
-
-**Use a Reply when**:
-- You want to build a direct relationship with the author
-- Your comment only makes sense in context of the original
-- The original author has a much larger following (replies show on their thread, giving you visibility without looking self-promotional)
-- You are answering a question or adding a correction
-
-**Use a plain Retweet when**:
-- The original says everything perfectly and you have nothing to add
-- You want to signal-boost a community member, customer, or partner
-- The content is time-sensitive (breaking news, event announcements)
-
-**Avoid**:
-- Quote tweeting with only emojis or "this" -- adds no value, looks lazy
-- Quote tweeting someone with fewer followers just to dunk -- punching down
-- Retweeting more than 3-4 times per day -- dilutes your original content ratio
-
-### Thread Repurposing
-
-A thread that performed well contains 5-7 standalone content pieces. Extract them over the following week to maximize ROI.
-
-**Process**:
-1. Day 0 (original): Post the full thread
-2. Day 2: Pull the single most quotable tweet from the thread. Post it standalone with slightly different wording. No link back to the thread
-3. Day 4: Turn a data point or example from the thread into a graphic or screenshot tweet
-4. Day 6: Post the thread's core thesis as a hot take (one tweet, punchy)
-5. Day 8+: If engagement stayed strong, post a "Part 2" thread that goes deeper on whichever tweet in the original got the most replies
-
-**Rules**:
-- Change the wording each time -- copy-pasting feels like spam to followers who saw the original
-- Space extractions at least 48 hours apart
-- Stop if any extraction underperforms significantly -- the topic is tapped out
-- Never repurpose a thread that got low engagement; the content did not resonate
-
-### Trending Topic Participation
-
-**When to participate**:
-- The trend directly intersects one of your content pillars
-- You have a genuine, informed perspective (not a generic reaction)
-- The trend is still rising (check the "Trending" tab; if it has been trending for >12 hours, you are late)
-- The tone of the trend matches your brand voice
-
-**When to avoid**:
-- Tragedy, disaster, or crisis events -- opportunistic posting destroys trust
-- Highly polarized political or social debates outside your expertise
-- Trends driven by outrage mobs -- associating your brand is high-risk, low-reward
-- You would need to force-fit your product or message into the trend
-
-**Execution**:
-- Lead with your actual insight, not the hashtag. The hashtag goes at the end or is omitted entirely if the topic keyword is in your text
-- Be early or be different. If 50 people have already made the same joke, skip it
-- Tie back to your pillar: "Trend X is exactly why [your pillar topic] matters more than ever"
-
----
-
-||||||| parent of e65ad25 (feat(hands): improve linkedin, reddit, and twitter hands)
-=======
 ## Advanced Engagement Patterns
 
 ### Quote Tweet vs Reply vs Retweet
@@ -462,7 +393,6 @@ Not all negative replies require the same response. Classify before acting:
 
 ---
 
->>>>>>> e65ad25 (feat(hands): improve linkedin, reddit, and twitter hands)
 ## Content Calendar Template
 
 ```

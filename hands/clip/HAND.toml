@@ -671,7 +671,7 @@ description = "来自 elevenlabs.io 的高质量文字转语音 API 密钥。选
 
 [i18n.zh.settings.publish_target]
 label = "发布目标"
-description = "处理完成后将短视频发送到哪里。选择"仅本地"则跳过发布。"
+description = "处理完成后将短视频发送到哪里。选择「仅本地」则跳过发布。"
 
 [i18n.zh.settings.telegram_bot_token]
 label = "Telegram 机器人令牌"
