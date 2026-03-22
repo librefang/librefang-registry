@@ -186,6 +186,63 @@ label = "Spanish"
 value = "auto"
 label = "Auto-detect from network"
 
+[[settings]]
+key = "connection_request_limit"
+label = "Connection Request Limit"
+description = "Maximum connection requests to send per week (LinkedIn may restrict accounts exceeding 100/week)"
+setting_type = "select"
+default = "20"
+
+[[settings.options]]
+value = "10"
+label = "10 per week (conservative)"
+
+[[settings.options]]
+value = "20"
+label = "20 per week (recommended)"
+
+[[settings.options]]
+value = "50"
+label = "50 per week (active)"
+
+[[settings]]
+key = "content_media_mode"
+label = "Content Media Mode"
+description = "Whether posts can include images or document carousels, or stay text-only"
+setting_type = "select"
+default = "text_only"
+
+[[settings.options]]
+value = "text_only"
+label = "Text Only"
+
+[[settings.options]]
+value = "mixed"
+label = "Mixed (text + occasional images/carousels)"
+
+[[settings.options]]
+value = "media_rich"
+label = "Media Rich (images/carousels preferred)"
+
+[[settings]]
+key = "engagement_reply_depth"
+label = "Engagement Reply Depth"
+description = "How deeply to engage in comment threads on your own posts"
+setting_type = "select"
+default = "moderate"
+
+[[settings.options]]
+value = "minimal"
+label = "Minimal (reply to direct comments only)"
+
+[[settings.options]]
+value = "moderate"
+label = "Moderate (reply to comments + follow-up once)"
+
+[[settings.options]]
+value = "deep"
+label = "Deep (sustain multi-turn conversations)"
+
 # ─── Agent configuration ─────────────────────────────────────────────────────
 
 [agent]
@@ -215,6 +272,12 @@ curl -s -H "Authorization: Bearer $LINKEDIN_ACCESS_TOKEN" \
 ```
 If this fails, alert the user that the LINKEDIN_ACCESS_TOKEN is invalid or expired.
 Extract your LinkedIn member URN from the response.
+
+**Important LinkedIn API limitations to be aware of**:
+- LinkedIn does NOT provide a feed-reading API for personal accounts. To "check your feed," use web_search or web_fetch on linkedin.com as a best-effort alternative. Feed-based engagement features may be limited.
+- OAuth tokens expire (typically 60 days for access tokens). Always handle 401 errors gracefully.
+- The analytics/statistics endpoints require Organization-level access. Personal accounts can only track post-level metrics by re-fetching their own posts.
+- There is no API endpoint for reading connection requests or DMs. These features are web-only.
 
 Recover state:
 1. memory_recall `linkedin_hand_state` — load previous posting history and performance data
@@ -284,8 +347,58 @@ Only queue A and B grade content. Rewrite C-grade or discard entirely.
 
 ## Phase 3 — Posting & Queue Management
 
+### Queue file schema (`linkedin_queue.json`)
+```json
+{
+  "version": 1,
+  "updated_at": "2025-03-15T10:30:00Z",
+  "posts": [
+    {
+      "id": "q-20250315-001",
+      "created_at": "2025-03-15T10:30:00Z",
+      "scheduled_for": "2025-03-17T08:30:00Z",
+      "status": "pending_review",
+      "grade": "A",
+      "moderation": "SAFE",
+      "pillar": "industry_insights",
+      "format": "story",
+      "content": {
+        "commentary": "Full post text here...",
+        "media_type": "none",
+        "media_path": null,
+        "first_comment": "Link or extra context for first comment"
+      },
+      "hashtags": ["#Leadership", "#Engineering"],
+      "review_note": "Strong hook, timely topic"
+    }
+  ]
+}
+```
+Status values: `pending_review`, `approved`, `rejected`, `posted`, `failed`.
+
+### Posting history schema (`linkedin_posted.json`)
+```json
+{
+  "version": 1,
+  "posts": [
+    {
+      "queue_id": "q-20250315-001",
+      "linkedin_post_urn": "urn:li:share:7654321",
+      "posted_at": "2025-03-17T08:30:00Z",
+      "metrics_snapshot": {
+        "impressions": 0,
+        "reactions": 0,
+        "comments": 0,
+        "reposts": 0,
+        "last_checked": "2025-03-17T08:30:00Z"
+      }
+    }
+  ]
+}
+```
+
 If `approval_mode` is ENABLED:
-1. Write generated posts to `linkedin_queue.json`
+1. Write generated posts to `linkedin_queue.json` using the schema above
 2. Write a human-readable `linkedin_queue_preview.md` for review
 3. event_publish "linkedin_queue_updated" with queue size
 4. Do NOT post — wait for user approval
@@ -301,6 +414,20 @@ If `approval_mode` is DISABLED:
    Note: LinkedIn is migrating from ugcPosts to the newer Posts API. Use /rest/posts endpoint. The author urn format: urn:li:person:{your-linkedin-id}
 2. Log each posted content to `linkedin_posted.json`
 
+### Media post handling (when `content_media_mode` is not `text_only`)
+- **Images**: Use the 3-step images API flow (register upload -> PUT binary -> create post with image URN). Store the local image path in `media_path` in the queue entry. If image upload fails, fall back to posting as text-only with a note in `review_note`.
+- **Document carousels**: Use the documents API flow. Generate carousel slides as a PDF. If PDF generation or upload fails, extract key points and post as a numbered-list text post instead.
+- Always keep the text version as fallback — never silently skip a post because media upload failed.
+
+### API failure fallback strategy
+When a LinkedIn API call fails during posting:
+1. **HTTP 401 (token expired)**: Alert the user immediately via event_publish "linkedin_token_expired". Queue all remaining posts. Do NOT retry — token refresh requires user action.
+2. **HTTP 403 (scope missing)**: Log which scope is missing (e.g., w_member_social). Alert user. Queue post for retry after scope is granted.
+3. **HTTP 429 (rate limited)**: Read `X-RateLimit-Reset` header. Reschedule the post for after the reset window. Log the delay in the queue entry.
+4. **HTTP 5xx (server error)**: Retry up to 3 times with exponential backoff (2s, 4s, 8s). If all retries fail, move post status to `failed` and schedule retry for next session.
+5. **Network error / timeout**: Same as 5xx handling.
+6. After any failure, always persist queue state to `linkedin_queue.json` before exiting, so no content is lost.
+
 ---
 
 ## Phase 4 — Engagement
@@ -310,6 +437,22 @@ If `auto_engage` is enabled:
 2. Generate thoughtful comments that add value
 3. Like posts from people in your professional network
 4. NEVER leave generic comments — always add genuine insight
+
+Reply depth follows the `engagement_reply_depth` setting:
+- **minimal**: Reply only to direct top-level comments on your posts
+- **moderate**: Reply to top-level comments and one follow-up per thread
+- **deep**: Sustain multi-turn conversations; ask follow-up questions to keep threads alive (this boosts dwell time signals)
+
+### Connection request personalization
+When sending connection requests (up to `connection_request_limit` per week):
+1. **Research first**: Read the person's headline, recent posts, and shared connections before writing the note
+2. **Personalize the note** (under 300 characters). Templates by context:
+   - Shared content interest: "Hi [Name], your post on [topic] resonated — especially [specific point]. Would love to connect and exchange ideas."
+   - Mutual connection: "Hi [Name], [Mutual] and I worked on [context]. They mentioned your work on [topic] — would be great to connect."
+   - Event/group: "Hi [Name], enjoyed your comment in [Group/Event] about [topic]. Let's connect!"
+3. **Never pitch** in the connection request. Save business conversations for after the connection is accepted.
+4. **Track acceptance rate** in memory. If acceptance rate drops below 40%, reduce volume and improve note quality.
+5. **Respect the weekly limit** strictly — LinkedIn may restrict accounts that send excessive requests.
 
 ---
 
@@ -404,6 +547,7 @@ default_active = false
 [i18n.zh]
 name = "LinkedIn Hand"
 description = "自主 LinkedIn 管理——个人资料优化、内容创作、人脉拓展和职业互动"
+<<<<<<< HEAD
 category = "通信"
 
 [i18n.zh.settings.content_style]
@@ -632,3 +776,306 @@ description = "콘텐츠의 주요 대상 독자"
 [i18n.ko.settings.language]
 label = "언어"
 description = "게시물 및 소통에 사용하는 언어"
+||||||| parent of e65ad25 (feat(hands): improve linkedin, reddit, and twitter hands)
+=======
+category = "通信"
+
+[i18n.zh.settings.content_style]
+label = "内容风格"
+description = "LinkedIn 帖子的语气和风格"
+
+[i18n.zh.settings.post_frequency]
+label = "发布频率"
+description = "创建和发布内容的频率"
+
+[i18n.zh.settings.content_topics]
+label = "内容主题"
+description = "要创作内容的主题（逗号分隔，例如 AI、领导力、创业）"
+
+[i18n.zh.settings.auto_engage]
+label = "自动互动"
+description = "自动对人脉网络中的相关帖子点赞和评论"
+
+[i18n.zh.settings.approval_mode]
+label = "审批模式"
+description = "将帖子加入队列等待审核，而非直接发布"
+
+[i18n.zh.settings.hashtag_count]
+label = "话题标签数量"
+description = "每篇帖子包含的话题标签数量"
+
+[i18n.zh.settings.target_audience]
+label = "目标受众"
+description = "内容的主要目标受众"
+
+[i18n.zh.settings.language]
+label = "语言"
+description = "帖子和互动使用的语言"
+
+[i18n.zh.settings.connection_request_limit]
+label = "连接请求上限"
+description = "每周发送连接请求的最大数量（超过 100/周可能导致账号被限制）"
+
+[i18n.zh.settings.content_media_mode]
+label = "内容媒体模式"
+description = "帖子是否包含图片或文档轮播，还是仅使用纯文本"
+
+[i18n.zh.settings.engagement_reply_depth]
+label = "互动回复深度"
+description = "在自己帖子的评论区中参与讨论的深度"
+
+# ─── Japanese (日本語) ────────────────────────────────────────────────────
+
+[i18n.ja]
+name = "LinkedIn Hand"
+description = "自律型LinkedInマネージャー——プロフィール最適化、コンテンツ作成、ネットワーキング、プロフェッショナルエンゲージメント"
+category = "コミュニケーション"
+
+[i18n.ja.settings.content_style]
+label = "コンテンツスタイル"
+description = "LinkedIn投稿の語調とスタイル"
+
+[i18n.ja.settings.post_frequency]
+label = "投稿頻度"
+description = "コンテンツの作成・投稿の頻度"
+
+[i18n.ja.settings.content_topics]
+label = "コンテンツトピック"
+description = "作成するコンテンツのトピック（カンマ区切り、例: AI、リーダーシップ、スタートアップ）"
+
+[i18n.ja.settings.auto_engage]
+label = "自動エンゲージメント"
+description = "ネットワーク内の関連投稿に自動でいいねやコメントをする"
+
+[i18n.ja.settings.approval_mode]
+label = "承認モード"
+description = "投稿を直接公開せず、レビュー用キューに追加する"
+
+[i18n.ja.settings.hashtag_count]
+label = "ハッシュタグ数"
+description = "各投稿に含めるハッシュタグの数"
+
+[i18n.ja.settings.target_audience]
+label = "ターゲットオーディエンス"
+description = "コンテンツの主なターゲット層"
+
+[i18n.ja.settings.language]
+label = "言語"
+description = "投稿とエンゲージメントに使用する言語"
+
+[i18n.ja.settings.connection_request_limit]
+label = "つながり申請上限"
+description = "週あたりのつながり申請送信上限数（100件/週を超えるとアカウントが制限される可能性があります）"
+
+[i18n.ja.settings.content_media_mode]
+label = "コンテンツメディアモード"
+description = "投稿に画像やドキュメントカルーセルを含めるか、テキストのみにするか"
+
+[i18n.ja.settings.engagement_reply_depth]
+label = "エンゲージメント返信深度"
+description = "自分の投稿のコメントスレッドにどの程度深く参加するか"
+
+# ─── Spanish (Español) ────────────────────────────────────────────────────
+
+[i18n.es]
+name = "Hand de LinkedIn"
+description = "Gestor autónomo de LinkedIn — optimización de perfil, creación de contenido, networking y engagement profesional"
+category = "Comunicación"
+
+[i18n.es.settings.content_style]
+label = "Estilo de contenido"
+description = "Voz y tono para las publicaciones de LinkedIn"
+
+[i18n.es.settings.post_frequency]
+label = "Frecuencia de publicación"
+description = "Con qué frecuencia crear y publicar contenido"
+
+[i18n.es.settings.content_topics]
+label = "Temas de contenido"
+description = "Temas sobre los que crear contenido (separados por comas, ej. IA, liderazgo, startups)"
+
+[i18n.es.settings.auto_engage]
+label = "Engagement automático"
+description = "Dar like y comentar automáticamente en publicaciones relevantes de tu red"
+
+[i18n.es.settings.approval_mode]
+label = "Modo de aprobación"
+description = "Poner publicaciones en cola para revisión en lugar de publicarlas directamente"
+
+[i18n.es.settings.hashtag_count]
+label = "Cantidad de hashtags"
+description = "Número de hashtags a incluir por publicación"
+
+[i18n.es.settings.target_audience]
+label = "Audiencia objetivo"
+description = "Audiencia principal para tu contenido"
+
+[i18n.es.settings.language]
+label = "Idioma"
+description = "Idioma para publicaciones e interacciones"
+
+[i18n.es.settings.connection_request_limit]
+label = "Limite de solicitudes de conexion"
+description = "Numero maximo de solicitudes de conexion por semana (superar 100/semana puede restringir la cuenta)"
+
+[i18n.es.settings.content_media_mode]
+label = "Modo de contenido multimedia"
+description = "Si las publicaciones incluyen imagenes o carruseles de documentos, o solo texto"
+
+[i18n.es.settings.engagement_reply_depth]
+label = "Profundidad de respuesta"
+description = "Nivel de participacion en los hilos de comentarios de tus publicaciones"
+
+# ─── French (Français) ────────────────────────────────────────────────────
+
+[i18n.fr]
+name = "Hand LinkedIn"
+description = "Gestionnaire LinkedIn autonome — optimisation de profil, création de contenu, réseautage et engagement professionnel"
+category = "Communication"
+
+[i18n.fr.settings.content_style]
+label = "Style de contenu"
+description = "Ton et style pour les publications LinkedIn"
+
+[i18n.fr.settings.post_frequency]
+label = "Fréquence de publication"
+description = "Fréquence de création et de publication de contenu"
+
+[i18n.fr.settings.content_topics]
+label = "Sujets de contenu"
+description = "Sujets sur lesquels créer du contenu (séparés par des virgules, ex. IA, leadership, startups)"
+
+[i18n.fr.settings.auto_engage]
+label = "Engagement automatique"
+description = "Aimer et commenter automatiquement les publications pertinentes de votre réseau"
+
+[i18n.fr.settings.approval_mode]
+label = "Mode d'approbation"
+description = "Mettre les publications en file d'attente pour révision au lieu de les publier directement"
+
+[i18n.fr.settings.hashtag_count]
+label = "Nombre de hashtags"
+description = "Nombre de hashtags à inclure par publication"
+
+[i18n.fr.settings.target_audience]
+label = "Public cible"
+description = "Public principal pour votre contenu"
+
+[i18n.fr.settings.language]
+label = "Langue"
+description = "Langue pour les publications et les interactions"
+
+[i18n.fr.settings.connection_request_limit]
+label = "Limite de demandes de connexion"
+description = "Nombre maximum de demandes de connexion par semaine (depasser 100/semaine peut entrainer des restrictions)"
+
+[i18n.fr.settings.content_media_mode]
+label = "Mode media du contenu"
+description = "Inclure des images ou carrousels dans les publications, ou rester en texte uniquement"
+
+[i18n.fr.settings.engagement_reply_depth]
+label = "Profondeur de reponse"
+description = "Niveau d'implication dans les fils de commentaires de vos publications"
+
+# ─── German (Deutsch) ────────────────────────────────────────────────────
+
+[i18n.de]
+name = "LinkedIn-Hand"
+description = "Autonomer LinkedIn-Manager — Profiloptimierung, Content-Erstellung, Networking und professionelles Engagement"
+category = "Kommunikation"
+
+[i18n.de.settings.content_style]
+label = "Inhaltsstil"
+description = "Ton und Stil für LinkedIn-Beiträge"
+
+[i18n.de.settings.post_frequency]
+label = "Veröffentlichungshäufigkeit"
+description = "Wie oft Inhalte erstellt und veröffentlicht werden"
+
+[i18n.de.settings.content_topics]
+label = "Inhaltsthemen"
+description = "Themen für die Content-Erstellung (kommagetrennt, z.B. KI, Führung, Startups)"
+
+[i18n.de.settings.auto_engage]
+label = "Automatisches Engagement"
+description = "Relevante Beiträge im Netzwerk automatisch liken und kommentieren"
+
+[i18n.de.settings.approval_mode]
+label = "Genehmigungsmodus"
+description = "Beiträge zur Überprüfung in die Warteschlange stellen, anstatt sie direkt zu veröffentlichen"
+
+[i18n.de.settings.hashtag_count]
+label = "Anzahl Hashtags"
+description = "Anzahl der Hashtags pro Beitrag"
+
+[i18n.de.settings.target_audience]
+label = "Zielgruppe"
+description = "Primäre Zielgruppe für Ihre Inhalte"
+
+[i18n.de.settings.language]
+label = "Sprache"
+description = "Sprache für Beiträge und Interaktionen"
+
+[i18n.de.settings.connection_request_limit]
+label = "Kontaktanfragen-Limit"
+description = "Maximale Anzahl an Kontaktanfragen pro Woche (über 100/Woche kann zu Einschränkungen führen)"
+
+[i18n.de.settings.content_media_mode]
+label = "Inhalts-Medien-Modus"
+description = "Ob Beiträge Bilder oder Dokumentenkarussells enthalten oder nur Text verwenden"
+
+[i18n.de.settings.engagement_reply_depth]
+label = "Antworttiefe"
+description = "Wie intensiv in Kommentarthreads der eigenen Beiträge mitdiskutiert wird"
+
+# ─── Korean (한국어) ────────────────────────────────────────────────────
+
+[i18n.ko]
+name = "LinkedIn Hand"
+description = "자율 LinkedIn 관리 — 프로필 최적화, 콘텐츠 제작, 네트워킹 및 전문적 소통"
+category = "커뮤니케이션"
+
+[i18n.ko.settings.content_style]
+label = "콘텐츠 스타일"
+description = "LinkedIn 게시물의 어조와 스타일"
+
+[i18n.ko.settings.post_frequency]
+label = "게시 빈도"
+description = "콘텐츠를 작성하고 게시하는 주기"
+
+[i18n.ko.settings.content_topics]
+label = "콘텐츠 주제"
+description = "콘텐츠를 작성할 주제 (쉼표로 구분, 예: AI, 리더십, 스타트업)"
+
+[i18n.ko.settings.auto_engage]
+label = "자동 소통"
+description = "네트워크 내 관련 게시물에 자동으로 좋아요 및 댓글"
+
+[i18n.ko.settings.approval_mode]
+label = "승인 모드"
+description = "게시물을 직접 게시하지 않고 대기열에 추가하여 검토"
+
+[i18n.ko.settings.hashtag_count]
+label = "해시태그 수"
+description = "게시물당 포함할 해시태그 수"
+
+[i18n.ko.settings.target_audience]
+label = "대상 독자"
+description = "콘텐츠의 주요 대상 독자"
+
+[i18n.ko.settings.language]
+label = "언어"
+description = "게시물 및 소통에 사용하는 언어"
+
+[i18n.ko.settings.connection_request_limit]
+label = "연결 요청 한도"
+description = "주당 최대 연결 요청 수 (100건/주 초과 시 계정이 제한될 수 있음)"
+
+[i18n.ko.settings.content_media_mode]
+label = "콘텐츠 미디어 모드"
+description = "게시물에 이미지나 문서 캐러셀을 포함할지, 텍스트만 사용할지 설정"
+
+[i18n.ko.settings.engagement_reply_depth]
+label = "소통 답글 깊이"
+description = "자신의 게시물 댓글 스레드에 얼마나 깊이 참여할지 설정"
+>>>>>>> e65ad25 (feat(hands): improve linkedin, reddit, and twitter hands)

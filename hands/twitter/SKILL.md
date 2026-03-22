@@ -105,6 +105,78 @@ Always check response headers:
 
 ---
 
+## Algorithm Optimization
+
+The following signals are known to affect distribution as of 2024-2025. Treat as heuristics -- validate against your own account's data.
+
+### Signals That Boost Distribution
+| Signal | Why It Matters | How to Leverage |
+|--------|---------------|-----------------|
+| Early engagement (first 30 min) | Algorithm tests tweets on a small audience first; high early engagement triggers wider distribution | Post when your audience is most active; craft strong hooks |
+| Dwell time | Time spent reading your tweet/thread counts as engagement | Write threads (keeps users scrolling), use line breaks for readability |
+| Replies (especially conversations) | Reply chains signal valuable content | End tweets with questions; reply to your own replies to keep threads going |
+| Bookmarks/saves | Strong quality signal (user wants to return) | Post actionable content (how-tos, frameworks, checklists) worth saving |
+| Profile visits after viewing | Indicates your content made someone curious about you | Ensure your bio clearly states your expertise and value prop |
+
+### Signals That Suppress Distribution
+| Signal | Impact | Avoidance |
+|--------|--------|-----------|
+| External links in tweet body | Reduced impressions (Twitter wants users on-platform) | Post the content natively; put links in a reply |
+| Hashtag spam (3+) | Triggers spam filters | Use 0-2 relevant hashtags maximum |
+| Rapid-fire posting | Floods follower timelines, reduces per-tweet engagement | Space posts 2-3 hours apart minimum |
+| Low engagement ratio | Tweets with many impressions but no interaction signal low quality | Delete or don't repeat content formats that consistently underperform |
+| Engagement bait without substance | "Like if you agree" without actual content | Pair CTAs with genuine value |
+
+### Algorithm-Aware Posting Strategy
+1. **Test before committing**: Post a single tweet on a topic. If engagement is above-average in 1 hour, follow up with a thread within 24 hours.
+2. **Reply to yourself**: Add a reply with a link or context. This creates a conversation thread that boosts the original.
+3. **Engagement window**: Reply to comments on your tweets within the first hour. Reply chains are rewarded.
+4. **Content recycling**: A tweet that performed well 3+ months ago can be reposted with fresh wording.
+
+---
+
+## Media Upload Handling
+
+### Twitter API v2 Media Upload
+Twitter API v2 has no media upload endpoint. Use the v1.1 endpoint, which requires OAuth 1.0a.
+
+**Simple upload (images < 5MB, GIFs < 15MB)**:
+```bash
+curl -X POST "https://upload.twitter.com/1.1/media/upload.json" \
+  -H "Authorization: OAuth oauth_consumer_key=...,oauth_token=...,oauth_signature=..." \
+  -F "media=@/path/to/image.png"
+```
+Response: `{"media_id": 123456789, "media_id_string": "123456789"}`
+
+**Attach media to a tweet**:
+```bash
+curl -s -X POST "https://api.twitter.com/2/tweets" \
+  -H "Authorization: Bearer $TWITTER_BEARER_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"text": "Check this out", "media": {"media_ids": ["123456789"]}}'
+```
+
+**Alt text for accessibility** (set after upload, before tweeting):
+```bash
+curl -X POST "https://upload.twitter.com/1.1/media/metadata/create.json" \
+  -H "Authorization: OAuth ..." \
+  -H "Content-Type: application/json" \
+  -d '{"media_id": "123456789", "alt_text": {"text": "Description of the image"}}'
+```
+
+### When to Use Media
+- **Data/stats tweets**: Chart or highlighted number as image -- 2-3x more impressions
+- **Thread hooks**: Image in tweet 1 increases click-through
+- **Code snippets**: Screenshot with syntax highlighting beats plain text
+- **Before/after**: Visual comparisons are highly shareable
+
+### When to Skip Media
+- OAuth 1.0a credentials not configured (Bearer Token alone cannot upload)
+- Image does not add information beyond the text
+- Attaching media would delay posting past the optimal window
+
+---
+
 ## Content Strategy Framework
 
 ### Content Pillars
@@ -226,6 +298,7 @@ Do NOT auto-like:
 
 ---
 
+<<<<<<< HEAD
 ## Advanced Engagement Patterns
 
 ### Quote Tweet vs Reply vs Retweet
@@ -292,6 +365,104 @@ A thread that performed well contains 5-7 standalone content pieces. Extract the
 
 ---
 
+||||||| parent of e65ad25 (feat(hands): improve linkedin, reddit, and twitter hands)
+=======
+## Advanced Engagement Patterns
+
+### Quote Tweet vs Reply vs Retweet
+
+Choosing the right interaction type determines whether you gain visibility or waste it.
+
+**Use a Quote Tweet when**:
+- You have a distinct take or added context (not just "this!")
+- The original tweet has high impressions and you want to draft off its reach
+- You are crediting someone while adding your own insight for your audience
+- The original author has a similar or larger following (exposes you to their audience)
+
+**Use a Reply when**:
+- You want to build a direct relationship with the author
+- Your comment only makes sense in context of the original
+- The original author has a much larger following (replies show on their thread, giving you visibility without looking self-promotional)
+- You are answering a question or adding a correction
+
+**Use a plain Retweet when**:
+- The original says everything perfectly and you have nothing to add
+- You want to signal-boost a community member, customer, or partner
+- The content is time-sensitive (breaking news, event announcements)
+
+**Avoid**:
+- Quote tweeting with only emojis or "this" -- adds no value, looks lazy
+- Quote tweeting someone with fewer followers just to dunk -- punching down
+- Retweeting more than 3-4 times per day -- dilutes your original content ratio
+
+### Thread Repurposing
+
+A thread that performed well contains 5-7 standalone content pieces. Extract them over the following week to maximize ROI.
+
+**Process**:
+1. Day 0 (original): Post the full thread
+2. Day 2: Pull the single most quotable tweet from the thread. Post it standalone with slightly different wording. No link back to the thread
+3. Day 4: Turn a data point or example from the thread into a graphic or screenshot tweet
+4. Day 6: Post the thread's core thesis as a hot take (one tweet, punchy)
+5. Day 8+: If engagement stayed strong, post a "Part 2" thread that goes deeper on whichever tweet in the original got the most replies
+
+**Rules**:
+- Change the wording each time -- copy-pasting feels like spam to followers who saw the original
+- Space extractions at least 48 hours apart
+- Stop if any extraction underperforms significantly -- the topic is tapped out
+- Never repurpose a thread that got low engagement; the content did not resonate
+
+### Trending Topic Participation
+
+**When to participate**:
+- The trend directly intersects one of your content pillars
+- You have a genuine, informed perspective (not a generic reaction)
+- The trend is still rising (check the "Trending" tab; if it has been trending for >12 hours, you are late)
+- The tone of the trend matches your brand voice
+
+**When to avoid**:
+- Tragedy, disaster, or crisis events -- opportunistic posting destroys trust
+- Highly polarized political or social debates outside your expertise
+- Trends driven by outrage mobs -- associating your brand is high-risk, low-reward
+- You would need to force-fit your product or message into the trend
+
+**Execution**:
+- Lead with your actual insight, not the hashtag. The hashtag goes at the end or is omitted entirely if the topic keyword is in your text
+- Be early or be different. If 50 people have already made the same joke, skip it
+- Tie back to your pillar: "Trend X is exactly why [your pillar topic] matters more than ever"
+
+---
+
+## Crisis & Negative Comment Management
+
+### Classifying Negative Interactions
+
+Not all negative replies require the same response. Classify before acting:
+
+| Type | Example | Action |
+|------|---------|--------|
+| **Constructive criticism** | "Your benchmark methodology is flawed because X" | Reply with acknowledgment, address the specific point, thank them |
+| **Frustrated user** | "I tried your tool and it broke on my setup" | Reply publicly with empathy, ask for details, move to DMs if needed |
+| **Trolling** | Personal insults, bad-faith arguments, bait | Do not reply. Block if repeated. Never quote-tweet to "expose" them |
+| **Misinformation about you** | Factually wrong claims about your product/work | Reply once with facts and evidence. Do not engage further if they persist |
+| **Pile-on / ratio** | Many negative replies at once, often from outside your audience | Pause all posting. Do not delete the original tweet (looks like hiding). Wait 24 hours before responding |
+
+### Response Templates
+- **Constructive criticism**: "Fair point — [acknowledgment]. We actually [explanation]. Appreciate you raising this."
+- **Frustrated user**: "Sorry you hit that. Can you share [detail]? Happy to help sort it out."
+- **Factual correction**: "To clarify — [correct info with source]. Happy to discuss further."
+
+### Rules During a Crisis
+1. **Stop all scheduled posts immediately** — auto-posting during a crisis looks tone-deaf
+2. **Do not delete** the original tweet unless it contains genuinely harmful misinformation
+3. **Acknowledge** the situation in a single, clear tweet if it involves your product/brand
+4. **Do not be defensive** — own mistakes directly
+5. **Wait before responding** — draft a response and review it after 1 hour
+6. **Resume normal posting** only after the situation has cooled down (24-48 hours minimum)
+
+---
+
+>>>>>>> e65ad25 (feat(hands): improve linkedin, reddit, and twitter hands)
 ## Content Calendar Template
 
 ```
