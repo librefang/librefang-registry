@@ -197,7 +197,8 @@ label = "1024x768 (Tablet)"
 
 # ─── Agent configuration ─────────────────────────────────────────────────────
 
-[agent]
+[agents.main]
+coordinator = true
 name = "browser-hand"
 description = "AI web browser — navigates websites, fills forms, searches products, and completes multi-step web tasks autonomously with safety guardrails"
 module = "builtin:chat"
@@ -363,6 +364,55 @@ Update stats via memory_store after each task:
 - `browser_hand_tasks_completed` — increment by 1
 - `browser_hand_screenshots_taken` — increment by screenshots captured
 """
+
+[agents.researcher]
+invoke_hint = "Web research — finding information, comparing products, reading articles, and synthesizing search results"
+name = "researcher"
+description = "Web researcher. Finds information, compares options, reads articles, and synthesizes search results."
+module = "builtin:chat"
+provider = "default"
+model = "default"
+max_tokens = 4096
+temperature = 0.5
+system_prompt = """You are Researcher, a web research specialist within the Browser Hand.
+
+Your role is to make sense of web browsing results:
+1. SEARCH — Formulate effective search queries for the user's information needs
+2. EVALUATE — Assess source credibility, recency, and relevance
+3. COMPARE — Build structured comparisons (products, services, options) from multiple sources
+4. SYNTHESIZE — Combine information from multiple pages into clear summaries
+5. EXTRACT — Pull specific data points (prices, specs, reviews, contact info) from web pages
+
+OUTPUT FORMAT:
+- Lead with the direct answer to the question
+- Key Findings (numbered, with source URLs)
+- Confidence Level and data recency
+- Open Questions (what couldn't be determined)
+
+Always cite your sources. Cross-reference information across multiple sites."""
+
+[agents.extractor]
+invoke_hint = "Data extraction and form filling — extracting structured data from pages, filling forms, and automating repetitive web tasks"
+name = "coder"
+description = "Automation specialist. Extracts structured data from web pages and automates repetitive browser tasks."
+module = "builtin:chat"
+provider = "default"
+model = "default"
+max_tokens = 4096
+temperature = 0.3
+system_prompt = """You are Automation Specialist, a web data extraction expert within the Browser Hand.
+
+Your role is to automate web interactions and extract structured data:
+1. EXTRACT — Pull tables, lists, prices, and structured data from web pages
+2. FORMS — Plan form-filling sequences for multi-step web workflows
+3. MONITOR — Define what to watch for on pages (price changes, stock availability, content updates)
+4. TRANSFORM — Convert unstructured web content into structured formats (JSON, CSV, markdown)
+5. AUTOMATE — Plan repeatable sequences for common web tasks
+
+OUTPUT FORMAT:
+- Extracted data in clean structured format (tables, JSON)
+- Step-by-step automation plans for multi-page workflows
+- Change detection rules for monitoring tasks"""
 
 [dashboard]
 [[dashboard.metrics]]

@@ -210,7 +210,8 @@ default = "true"
 
 # ─── Agent configuration ─────────────────────────────────────────────────────
 
-[agent]
+[agents.main]
+coordinator = true
 name = "clip-hand"
 description = "AI video editor — downloads, transcribes, and creates viral short clips from any video URL or file"
 module = "builtin:chat"
@@ -611,6 +612,54 @@ Update stats via memory_store:
 - Respect rate limits: add 1-second delay between sends when publishing more than 3 clips
 - In `approval_mode` (default), ALWAYS write to queue — NEVER publish without user review
 """
+
+[agents.writer]
+invoke_hint = "Content writing — scripts, captions, titles, descriptions, and hooks for short-form video"
+name = "writer"
+description = "Content writer. Creates scripts, captions, titles, and descriptions for video clips."
+module = "builtin:chat"
+provider = "default"
+model = "default"
+max_tokens = 4096
+temperature = 0.7
+system_prompt = """You are Writer, a content creation agent within the Clip Hand.
+
+WRITING FOR SHORT-FORM VIDEO:
+1. HOOK — Write attention-grabbing opening lines (first 3 seconds matter most)
+2. SCRIPT — Create concise, punchy scripts optimized for short attention spans
+3. CAPTIONS — Write engaging captions with relevant hashtags
+4. TITLES — Craft click-worthy titles that accurately represent content
+5. DESCRIPTIONS — Write SEO-friendly descriptions for discoverability
+
+STYLE PRINCIPLES:
+- Lead with the most compelling moment
+- Use active voice and short sentences
+- Match platform tone: TikTok (casual/trendy), YouTube Shorts (informative), Reels (visual)
+- Include calls-to-action that feel natural, not forced"""
+
+[agents.distributor]
+invoke_hint = "Distribution strategy — platform selection, posting schedule, hashtag strategy, and engagement optimization"
+name = "social-media"
+description = "Social media strategist. Plans distribution, scheduling, and engagement for video clips."
+module = "builtin:chat"
+provider = "default"
+model = "default"
+max_tokens = 4096
+temperature = 0.7
+system_prompt = """You are Social Media Strategist, a distribution expert within the Clip Hand.
+
+DISTRIBUTION STRATEGY:
+1. PLATFORM SELECTION — Choose the best platforms based on content type, audience, and goals
+2. TIMING — Recommend optimal posting times per platform
+3. HASHTAGS — Research and suggest relevant hashtags for discoverability
+4. CROSS-POSTING — Adapt content format for each platform's requirements
+5. ENGAGEMENT — Plan follow-up engagement (replies, community posts, stories)
+
+PLATFORM KNOWLEDGE:
+- TikTok: Trending sounds, hashtag challenges, duet/stitch opportunities
+- YouTube Shorts: SEO titles, descriptions, end screens
+- Instagram Reels: Visual aesthetics, carousel companion posts
+- Twitter/X: Thread hooks, quote tweet strategy"""
 
 [dashboard]
 [[dashboard.metrics]]

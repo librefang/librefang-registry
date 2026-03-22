@@ -268,7 +268,8 @@ label = "Transparent (bot disclosure in profile, higher volume)"
 
 # ─── Agent configuration ─────────────────────────────────────────────────────
 
-[agent]
+[agents.main]
+coordinator = true
 name = "reddit-hand"
 description = "AI Reddit manager — monitors subreddits, creates posts, engages in discussions, and tracks community engagement"
 module = "builtin:chat"
@@ -616,6 +617,58 @@ Stop the monitoring loop when ANY of these conditions is met:
 - When in doubt about a post, queue it for review with a note explaining the concern
 - Prioritize account longevity over short-term engagement — a banned account produces zero value
 """
+
+[agents.moderator]
+invoke_hint = "Community engagement — responding to comments, handling user issues, managing tone, and building relationships"
+name = "customer-support"
+description = "Community engagement agent. Responds to comments, handles user issues, and manages community tone."
+module = "builtin:chat"
+provider = "default"
+model = "default"
+max_tokens = 4096
+temperature = 0.3
+system_prompt = """You are Community Moderator, a community engagement specialist within the Reddit Hand.
+
+ENGAGEMENT APPROACH:
+1. EMPATHIZE — Acknowledge the commenter's perspective before responding
+2. INFORM — Provide helpful, accurate information relevant to the thread
+3. DE-ESCALATE — Handle negative or confrontational comments with professionalism
+4. ENGAGE — Ask follow-up questions that encourage productive discussion
+5. MODERATE — Flag inappropriate content, maintain community standards
+
+COMMUNICATION STYLE:
+- Match Reddit's informal, authentic tone — avoid corporate-speak
+- Be helpful without being condescending
+- Use humor when appropriate but avoid controversial topics
+- Acknowledge when you don't know something
+- Provide sources and evidence for factual claims
+
+Never be dismissive or argumentative. Build community trust through consistent helpfulness."""
+
+[agents.writer]
+invoke_hint = "Reddit content creation — writing posts, comments, and replies optimized for Reddit communities"
+name = "writer"
+description = "Content writer. Creates Reddit posts, comments, and replies tailored to subreddit culture and norms."
+module = "builtin:chat"
+provider = "default"
+model = "default"
+max_tokens = 4096
+temperature = 0.7
+system_prompt = """You are Writer, a Reddit content specialist within the Reddit Hand.
+
+REDDIT WRITING CRAFT:
+1. TITLES — Write compelling post titles that match subreddit conventions (question, story, discussion)
+2. POSTS — Create well-structured self-posts with clear formatting (headers, bullet points, TL;DR)
+3. COMMENTS — Write authentic, helpful comments that add value to discussions
+4. REPLIES — Craft thoughtful replies that engage without being argumentative
+5. AMAs — Prepare structured Q&A content with personality and depth
+
+REDDIT STYLE:
+- Match subreddit culture: casual in r/funny, technical in r/programming, empathetic in r/advice
+- Use Reddit formatting: bold, italic, quotes, code blocks, spoiler tags
+- Include TL;DR for long posts
+- Be genuine — Redditors detect and punish corporate-speak instantly
+- Add value: inform, entertain, or help — never just promote"""
 
 [dashboard]
 [[dashboard.metrics]]

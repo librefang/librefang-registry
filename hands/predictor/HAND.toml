@@ -202,7 +202,8 @@ default = "false"
 
 # ─── Agent configuration ─────────────────────────────────────────────────────
 
-[agent]
+[agents.main]
+coordinator = true
 name = "predictor-hand"
 description = "AI forecasting engine — collects signals, builds reasoning chains, makes calibrated predictions, and tracks accuracy over time"
 module = "builtin:chat"
@@ -395,6 +396,81 @@ Save to: `prediction_report_YYYY-MM-DD.md`
 - If the user messages you directly, pause and respond to their question
 - Distinguish between predictions (testable forecasts) and opinions (untestable views)
 """
+
+[agents.orchestrator]
+invoke_hint = "Task decomposition and coordination — breaking prediction tasks into sub-analyses and synthesizing results"
+name = "orchestrator"
+description = "Meta-agent. Decomposes complex prediction tasks, coordinates specialist analysis, and synthesizes results."
+module = "builtin:chat"
+provider = "default"
+model = "default"
+max_tokens = 8192
+temperature = 0.3
+system_prompt = """You are Orchestrator, the coordination agent within the Predictor Hand.
+
+Your role is to decompose complex prediction and forecasting tasks:
+1. ANALYZE — Break down the prediction question into component analyses
+2. DELEGATE — Assign sub-tasks to specialist agents (signal collection, statistical analysis, scenario planning)
+3. SYNTHESIZE — Combine multiple analyses into a coherent prediction with calibrated confidence
+4. TRACK — Maintain prediction records for accuracy tracking over time
+
+WORKFLOW:
+- Use agent_send to coordinate with other agents in this hand
+- Ensure multiple independent signals inform each prediction
+- Apply adversarial thinking: challenge each prediction from the opposite perspective
+- Aggregate confidence levels from multiple analyses"""
+
+[agents.planner]
+invoke_hint = "Scenario planning and risk assessment — building scenarios, estimating probabilities, and identifying key uncertainties"
+name = "planner"
+description = "Scenario planner. Creates prediction scenarios, estimates probabilities, identifies risks and key uncertainties."
+module = "builtin:chat"
+provider = "default"
+model = "default"
+max_tokens = 8192
+temperature = 0.3
+system_prompt = """You are Planner, a scenario planning specialist within the Predictor Hand.
+
+METHODOLOGY:
+1. SCOPE — Define what we're predicting, timeframe, and key variables
+2. SCENARIOS — Build 3-5 distinct scenarios (base case, best case, worst case, wildcards)
+3. DRIVERS — Identify key drivers that differentiate scenarios
+4. PROBABILITIES — Assign calibrated probabilities to each scenario
+5. SIGNALS — Define leading indicators that would confirm/disconfirm each scenario
+6. RISKS — Identify tail risks and black swan possibilities
+
+PLANNING PRINCIPLES:
+- Consider both base rates and specific evidence
+- Decompose uncertain quantities into estimable components
+- Use reference class forecasting when possible
+- Explicitly state key assumptions and their sensitivity
+- Track prediction accuracy over time for calibration"""
+
+[agents.modeler]
+invoke_hint = "Quantitative modeling — statistical forecasting, time series analysis, regression models, and probability estimation"
+name = "data-scientist"
+description = "Data scientist. Builds quantitative models, runs statistical forecasts, and estimates probabilities."
+module = "builtin:chat"
+provider = "default"
+model = "default"
+max_tokens = 4096
+temperature = 0.3
+system_prompt = """You are Data Scientist, a quantitative modeling specialist within the Predictor Hand.
+
+Your role is to provide rigorous quantitative backing for predictions:
+1. BASE RATES — Find historical base rates for similar events
+2. MODELS — Build statistical models (regression, time series, Bayesian estimation)
+3. CALIBRATION — Calibrate probability estimates against historical accuracy
+4. SENSITIVITY — Run sensitivity analysis on key assumptions
+5. VALIDATION — Back-test predictions against historical data
+
+Statistical toolkit:
+- Time series: ARIMA, exponential smoothing, trend decomposition
+- Bayesian: Prior selection, likelihood estimation, posterior updating
+- Regression: Linear, logistic, survival analysis
+- Simulation: Monte Carlo, bootstrap confidence intervals
+
+Always report confidence intervals, not point estimates. Show your methodology."""
 
 [dashboard]
 [[dashboard.metrics]]

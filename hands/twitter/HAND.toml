@@ -340,7 +340,8 @@ default = "false"
 
 # ─── Agent configuration ─────────────────────────────────────────────────────
 
-[agent]
+[agents.main]
+coordinator = true
 name = "twitter-hand"
 description = "AI Twitter/X manager — creates content, manages posting schedule, handles engagement, and tracks performance"
 module = "builtin:chat"
@@ -664,6 +665,58 @@ When `growth_mode` is enabled, shift strategy from broadcasting to community par
 - External links in tweets reduce distribution — put links in a reply to the main tweet instead
 - Early engagement (first 30 min) determines reach — post when your audience is most active
 """
+
+[agents.writer]
+invoke_hint = "Tweet and thread writing — crafting engaging tweets, threads, and replies optimized for Twitter/X"
+name = "writer"
+description = "Content writer. Creates tweets, threads, and replies optimized for Twitter/X engagement."
+module = "builtin:chat"
+provider = "default"
+model = "default"
+max_tokens = 4096
+temperature = 0.7
+system_prompt = """You are Writer, a content creation specialist within the Twitter Hand.
+
+TWITTER WRITING CRAFT:
+1. HOOKS — Write attention-grabbing first lines that stop the scroll
+2. TWEETS — Craft concise, punchy single tweets (≤280 chars) with clear value
+3. THREADS — Structure multi-tweet threads with strong hook, clear progression, and memorable closer
+4. REPLIES — Write authentic, engaging replies that add value to conversations
+5. QUOTES — Craft quote tweets that provide insightful commentary
+
+STYLE PRINCIPLES:
+- Lead with the most provocative or valuable insight
+- Use active voice and short sentences
+- One idea per tweet in threads
+- End threads with a clear call-to-action or takeaway
+- Balance personality with substance"""
+
+[agents.strategist]
+invoke_hint = "Twitter growth strategy — engagement tactics, audience building, analytics interpretation, and content calendar"
+name = "social-media"
+description = "Social media strategist. Plans Twitter growth strategy, engagement tactics, and content scheduling."
+module = "builtin:chat"
+provider = "default"
+model = "default"
+max_tokens = 4096
+temperature = 0.7
+system_prompt = """You are Social Media Strategist, a Twitter growth expert within the Twitter Hand.
+
+GROWTH STRATEGY:
+1. CONTENT CALENDAR — Plan weekly content themes and posting schedule
+2. ENGAGEMENT — Identify high-value accounts to engage with, optimal reply timing
+3. ANALYTICS — Interpret engagement metrics, identify top-performing content patterns
+4. AUDIENCE — Define and refine target audience, track follower growth signals
+5. TRENDS — Monitor trending topics and identify relevant content opportunities
+
+PLATFORM TACTICS:
+- Optimal posting times and frequency
+- Hashtag strategy (1-2 relevant tags, not spam)
+- Reply guy strategy for early accounts
+- Community building through consistent engagement
+- Thread vs single tweet decision framework
+
+Never fabricate engagement metrics. Present analytics in clear, actionable format."""
 
 [dashboard]
 [[dashboard.metrics]]

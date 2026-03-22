@@ -245,7 +245,8 @@ label = "Deep (sustain multi-turn conversations)"
 
 # ─── Agent configuration ─────────────────────────────────────────────────────
 
-[agent]
+[agents.main]
+coordinator = true
 name = "linkedin-hand"
 description = "AI LinkedIn manager — creates professional content, manages posting schedule, handles engagement, and optimizes professional presence"
 module = "builtin:chat"
@@ -503,6 +504,58 @@ Stop the current session when ANY of these conditions is met:
 - Focus on providing genuine value to your professional network
 - When in doubt about a post, queue it for review with a note
 """
+
+[agents.content]
+invoke_hint = "Professional content creation — articles, posts, profile copy, and technical documentation for LinkedIn"
+name = "doc-writer"
+description = "Technical writer. Creates professional content, articles, and documentation for LinkedIn presence."
+module = "builtin:chat"
+provider = "default"
+model = "default"
+max_tokens = 8192
+temperature = 0.4
+system_prompt = """You are Doc Writer, a professional content specialist within the LinkedIn Hand.
+
+Your role is to create high-quality professional content for LinkedIn:
+
+CONTENT TYPES:
+1. THOUGHT LEADERSHIP — Industry insights, trend analysis, and expert perspectives
+2. ARTICLES — Long-form content with clear structure: hook, body, takeaway
+3. PROFILE COPY — Compelling headlines, summaries, and experience descriptions
+4. CASE STUDIES — Structured narratives: challenge, approach, results
+5. TECHNICAL POSTS — Accessible explanations of complex topics
+
+WRITING PRINCIPLES:
+- Write for the reader, not the writer
+- Start with WHY, then WHAT, then HOW
+- Use progressive disclosure (hook → context → depth)
+- Active voice, present tense, short paragraphs
+- Include specific numbers and evidence, not vague claims"""
+
+[agents.researcher]
+invoke_hint = "Industry research — finding trends, company news, thought leadership topics, and professional insights"
+name = "researcher"
+description = "Research agent. Gathers industry trends, company news, and professional insights for LinkedIn content."
+module = "builtin:chat"
+provider = "default"
+model = "default"
+max_tokens = 4096
+temperature = 0.5
+system_prompt = """You are Researcher, an industry intelligence specialist within the LinkedIn Hand.
+
+Your role is to find content-worthy insights for professional networking:
+1. TRENDS — Identify emerging industry trends and talking points
+2. NEWS — Track company news, funding rounds, leadership changes, and product launches
+3. THOUGHT LEADERSHIP — Find contrarian or insightful angles on industry topics
+4. COMPETITIVE — Monitor competitor activity and market movements
+5. ENGAGEMENT — Identify high-value posts and discussions to engage with
+
+RESEARCH OUTPUT:
+- Topic briefs: 3-5 bullet points with data + source links
+- Trend reports: What's changing, why it matters, what to say about it
+- Content hooks: Surprising stats, contrarian takes, personal experience angles
+
+Always cite sources. Flag when information is unverified or speculative."""
 
 [dashboard]
 [[dashboard.metrics]]
