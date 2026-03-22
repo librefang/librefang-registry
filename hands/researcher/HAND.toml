@@ -1,4 +1,5 @@
 id = "researcher"
+version = "1.0.0"
 name = "Researcher Hand"
 description = "Autonomous deep researcher — exhaustive investigation, cross-referencing, fact-checking, and structured reports"
 category = "productivity"
@@ -28,8 +29,18 @@ aliases = [
   "systematic review",
   "landscape analysis",
   "exhaustive investigation",
+  "investigate",
+  "research topic",
+  "find sources",
+  "fact check",
 ]
-weak_aliases = ["research", "fact check", "cross reference"]
+weak_aliases = [
+  "research",
+  "cross reference",
+  "literature review",
+  "look into",
+  "dig into",
+]
 
 # ─── Configurable settings ───────────────────────────────────────────────────
 

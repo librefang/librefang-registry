@@ -1,4 +1,5 @@
 id = "twitter"
+version = "1.0.0"
 name = "Twitter Hand"
 description = "Autonomous Twitter/X manager — content creation, scheduled posting, engagement, and performance tracking"
 category = "communication"
@@ -22,8 +23,20 @@ tools = [
 ]
 
 [routing]
-aliases = ["twitter", "tweet", "x.com", "scheduled tweet"]
-weak_aliases = ["social media post", "engagement tracking"]
+aliases = [
+  "twitter",
+  "tweet",
+  "x.com",
+  "scheduled tweet",
+  "post tweet",
+  "twitter thread",
+]
+weak_aliases = [
+  "social media post",
+  "engagement tracking",
+  "twitter management",
+  "tweet scheduler",
+]
 
 [[requires]]
 key = "TWITTER_BEARER_TOKEN"
@@ -426,3 +439,10 @@ format = "number"
 label = "Engagement Rate"
 memory_key = "twitter_hand_engagement_rate"
 format = "percentage"
+
+# ─── Token & Performance Metadata ─────────────────────────────────────────────
+
+[metadata]
+frequency = "hourly"
+token_consumption = "medium"
+default_active = false

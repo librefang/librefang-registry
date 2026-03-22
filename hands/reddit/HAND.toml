@@ -1,4 +1,5 @@
 id = "reddit"
+version = "1.0.0"
 name = "Reddit Hand"
 description = "Autonomous Reddit manager — monitors subreddits, posts content, replies to threads, and tracks karma and engagement"
 category = "communication"
@@ -448,3 +449,10 @@ format = "number"
 label = "Subreddits Monitored"
 memory_key = "reddit_hand_subreddits_monitored"
 format = "number"
+
+# ─── Token & Performance Metadata ─────────────────────────────────────────────
+
+[metadata]
+frequency = "hourly"
+token_consumption = "medium"
+default_active = false

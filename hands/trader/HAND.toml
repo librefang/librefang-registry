@@ -1,4 +1,5 @@
 id = "trader"
+version = "1.0.0"
 name = "Trading Hand"
 description = "Autonomous market intelligence and trading engine — multi-signal analysis, adversarial bull/bear reasoning, calibrated confidence scoring, strict risk management, and portfolio-level analytics"
 category = "data"

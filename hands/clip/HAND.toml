@@ -1,4 +1,5 @@
 id = "clip"
+version = "1.0.0"
 name = "Clip Hand"
 description = "Turns long-form video into viral short clips with captions and thumbnails"
 category = "content"
@@ -198,6 +199,13 @@ label = "WhatsApp Recipient"
 description = "Phone number in international format, no + or spaces (e.g. 14155551234)"
 setting_type = "text"
 default = ""
+
+[[settings]]
+key = "approval_mode"
+label = "Approval Mode"
+description = "Queue clips for your review before publishing to channels"
+setting_type = "toggle"
+default = "true"
 
 # ─── Agent configuration ─────────────────────────────────────────────────────
 
@@ -469,6 +477,19 @@ Use `del clip_N.mp4 clip_N_vert.mp4` on Windows, `rm clip_N.mp4 clip_N_vert.mp4`
 
 After all clips are processed and before the final report, check if publishing is configured.
 
+### Step 0: Check approval_mode
+If `approval_mode` is ENABLED (default):
+1. Write each clip's publish action to `clip_publish_queue.json`:
+   ```json
+   [{"id": "pub_001", "clip_file": "clip_1_final.mp4", "title": "clip title", "targets": ["telegram", "whatsapp"], "created": "timestamp", "status": "pending"}]
+   ```
+2. Write a human-readable `clip_publish_queue_preview.md` listing each clip, its title, and target platforms
+3. event_publish "clip_publish_queue_updated" with queue size
+4. Do NOT publish — wait for user to approve via the queue file
+5. Skip the remaining publish steps below and proceed to Phase 7
+
+If `approval_mode` is DISABLED, continue with the publish steps below.
+
 ### Step 1: Check settings
 Look at the `Publish Clips To` setting from User Configuration:
 - If `local_only`, absent, or empty → skip this phase entirely
@@ -587,6 +608,7 @@ Update stats via memory_store:
 - Never expose API tokens (Telegram, WhatsApp) in reports or summaries — always mask as `***`
 - Publishing errors are non-fatal — if a platform fails, log the error and continue with remaining clips/platforms
 - Respect rate limits: add 1-second delay between sends when publishing more than 3 clips
+- In `approval_mode` (default), ALWAYS write to queue — NEVER publish without user review
 """
 
 [dashboard]
@@ -614,3 +636,10 @@ format = "number"
 label = "Published to WhatsApp"
 memory_key = "clip_hand_clips_published_whatsapp"
 format = "number"
+
+# ─── Token & Performance Metadata ─────────────────────────────────────────────
+
+[metadata]
+frequency = "on-demand"
+token_consumption = "medium"
+default_active = false

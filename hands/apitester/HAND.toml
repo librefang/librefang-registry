@@ -1,4 +1,5 @@
 id = "apitester"
+version = "1.0.0"
 name = "API Tester Hand"
 description = "Autonomous API testing agent — endpoint discovery, request validation, load testing, and regression detection"
 category = "development"
@@ -29,6 +30,10 @@ aliases = [
   "load test",
   "regression test",
   "api discovery",
+  "test api",
+  "api testing",
+  "api validation",
+  "test endpoint",
 ]
 weak_aliases = [
   "api debug",
@@ -36,6 +41,8 @@ weak_aliases = [
   "swagger",
   "openapi",
   "postman",
+  "stress test",
+  "http test",
 ]
 
 # ─── Configurable settings ───────────────────────────────────────────────────
@@ -144,6 +151,13 @@ description = "Treat any non-2xx response as a failure (vs allowing expected err
 setting_type = "toggle"
 default = "false"
 
+[[settings]]
+key = "approval_mode"
+label = "Approval Mode"
+description = "Write test plans and destructive requests to a queue file for your review instead of executing directly"
+setting_type = "toggle"
+default = "true"
+
 # ─── Agent configuration ─────────────────────────────────────────────────────
 
 [agent]
@@ -213,6 +227,20 @@ Store discovered endpoints in the knowledge graph.
 
 ## Phase 2 — Functional Testing
 
+**Check `approval_mode` setting before executing any tests.**
+
+If `approval_mode` is ENABLED:
+1. Build the full test plan (all endpoints, methods, payloads) and write it to `apitester_queue.json`:
+   ```json
+   [{"id": "t_001", "endpoint": "/api/users", "method": "POST", "payload": {...}, "type": "functional", "status": "pending"}]
+   ```
+2. Write a human-readable `apitester_queue_preview.md` for easy review
+3. Only execute **safe read-only requests** (GET, HEAD, OPTIONS) directly
+4. Do NOT execute any write requests (POST, PUT, PATCH, DELETE) — queue them for approval
+
+If `approval_mode` is DISABLED:
+Execute all tests directly.
+
 For each discovered endpoint:
 
 1. **Method validation**: Send requests with correct and incorrect HTTP methods
@@ -265,6 +293,14 @@ If no baseline exists, current results become the new baseline.
 
 If `test_mode` includes load testing:
 
+If `approval_mode` is ENABLED:
+- Write the load test plan to `apitester_queue.json` (target URL, concurrency levels, expected duration)
+- Do NOT execute load tests — queue them for user approval
+- Alert the user that load tests can impact production systems
+
+If `approval_mode` is DISABLED:
+Execute load tests directly.
+
 Use curl in a loop or shell-based load generator:
 ```
 for i in $(seq 1 100); do
@@ -296,6 +332,14 @@ Start with 10 concurrent, then 50, then 100 requests.
 ## Phase 5 — Security Testing
 
 If `test_mode` includes security:
+
+If `approval_mode` is ENABLED:
+- Write the security test plan to `apitester_queue.json` (injection payloads, auth bypass attempts, etc.)
+- Do NOT execute security tests — queue them for user approval
+- Security tests can trigger alerts and block accounts — always require review
+
+If `approval_mode` is DISABLED:
+Execute security tests directly.
 
 1. **Authentication tests**: Missing auth, invalid auth, expired tokens
 2. **Authorization tests**: Access resources of other users, escalate privileges
@@ -378,6 +422,7 @@ If `auto_schedule` is enabled, create scheduled runs via schedule_create.
 - If an endpoint returns 5xx repeatedly, back off and report the issue
 - Use realistic but fake test data (e.g. "test@example.com", not real emails)
 - Always include request/response details in failure reports
+- In approval_mode (default), ALWAYS write to queue — NEVER execute write requests, load tests, or security tests without user review
 """
 
 [dashboard]

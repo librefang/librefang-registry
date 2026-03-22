@@ -1,4 +1,5 @@
 id = "lead"
+version = "1.0.0"
 name = "Lead Hand"
 description = "Autonomous lead generation — discovers, enriches, and delivers qualified leads on a schedule"
 category = "data"
@@ -27,8 +28,19 @@ aliases = [
   "prospect list",
   "find customers",
   "contact enrichment",
+  "find leads",
+  "prospect research",
+  "find companies",
+  "b2b leads",
 ]
-weak_aliases = ["sales", "outreach", "company list"]
+weak_aliases = [
+  "sales",
+  "outreach",
+  "company list",
+  "sales leads",
+  "lead list",
+  "prospecting",
+]
 
 # ─── Configurable settings ───────────────────────────────────────────────────
 

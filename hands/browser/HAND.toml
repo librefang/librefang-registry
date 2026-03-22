@@ -1,4 +1,5 @@
 id = "browser"
+version = "1.0.0"
 name = "Browser Hand"
 description = "Autonomous web browser — navigates sites, fills forms, clicks buttons, and completes multi-step web tasks with user approval for purchases"
 category = "productivity"
@@ -33,8 +34,17 @@ aliases = [
   "click button",
   "web login",
   "browser automation",
+  "browse web",
+  "scrape page",
 ]
-weak_aliases = ["web page", "submit form", "web task"]
+weak_aliases = [
+  "web page",
+  "submit form",
+  "web task",
+  "browser task",
+  "open browser",
+  "web automation",
+]
 
 [[requires]]
 key = "python3"

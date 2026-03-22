@@ -1,4 +1,5 @@
 id = "linkedin"
+version = "1.0.0"
 name = "LinkedIn Hand"
 description = "Autonomous LinkedIn manager — profile optimization, content creation, networking, and professional engagement"
 category = "communication"
@@ -384,3 +385,10 @@ format = "percentage"
 label = "Profile Views"
 memory_key = "linkedin_hand_profile_views"
 format = "number"
+
+# ─── Token & Performance Metadata ─────────────────────────────────────────────
+
+[metadata]
+frequency = "daily"
+token_consumption = "medium"
+default_active = false

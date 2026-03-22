@@ -1,4 +1,5 @@
 id = "strategist"
+version = "1.0.0"
 name = "Strategist Hand"
 description = "Autonomous strategy analyst — market research, competitive analysis, business planning, and strategic recommendations"
 category = "productivity"
@@ -28,8 +29,19 @@ aliases = [
   "competitive analysis",
   "business plan",
   "market research",
+  "business strategy",
+  "swot analysis",
+  "market strategy",
+  "competitive strategy",
 ]
-weak_aliases = ["swot", "industry report", "competitive landscape"]
+weak_aliases = [
+  "swot",
+  "industry report",
+  "competitive landscape",
+  "porter analysis",
+  "go to market",
+  "strategy memo",
+]
 
 # ─── Configurable settings ───────────────────────────────────────────────────
 

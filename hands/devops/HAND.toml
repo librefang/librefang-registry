@@ -1,4 +1,5 @@
 id = "devops"
+version = "1.0.0"
 name = "DevOps Hand"
 description = "Autonomous DevOps engineer — CI/CD management, infrastructure monitoring, deployment automation, and incident response"
 category = "development"
@@ -186,6 +187,13 @@ label = "Auto-rollback to previous version"
 value = "blue_green"
 label = "Blue-green switch back"
 
+[[settings]]
+key = "approval_mode"
+label = "Approval Mode"
+description = "Queue deployment and infrastructure actions for your review instead of executing directly"
+setting_type = "toggle"
+default = "true"
+
 # ─── Agent configuration ─────────────────────────────────────────────────────
 
 [agent]
@@ -217,8 +225,9 @@ curl --version | head -1
 
 Load context:
 1. memory_recall `devops_hand_state` — load previous monitoring data and incident history
-2. Read **User Configuration** for infrastructure, ci_platform, service_urls, etc.
-3. knowledge_query for known infrastructure topology and previous incidents
+2. Read **User Configuration** for infrastructure, ci_platform, service_urls, approval_mode, etc.
+3. file_read `devops_queue.json` if it exists — pending deployment/remediation actions
+4. knowledge_query for known infrastructure topology and previous incidents
 
 ---
 
@@ -285,6 +294,17 @@ Identify optimization opportunities:
 
 When asked to deploy or manage deployments:
 
+If `approval_mode` is ENABLED (default):
+1. Build a deployment proposal with target, environment, artifacts, and rollback plan
+2. Write the proposal to `devops_queue.json`:
+   ```json
+   [{"id": "deploy_001", "action": "deploy", "target": "production", "artifact": "app:v1.2.3", "rollback_plan": "revert to v1.2.2", "created": "timestamp", "status": "pending"}]
+   ```
+3. Write a human-readable `devops_queue_preview.md` with deployment details and risk assessment
+4. event_publish "devops_queue_updated" with queue size
+5. Do NOT execute — wait for user to approve via the queue file
+
+If `approval_mode` is DISABLED:
 1. Verify the deployment target and environment
 2. Check prerequisites (build artifacts, configs, secrets)
 3. Execute deployment with rollback plan
@@ -326,10 +346,9 @@ For each alert, provide:
 When an incident is detected or reported:
 
 1. **Assess**: Determine scope and severity
-2. **Mitigate**: Take immediate action to reduce impact
-3. **Investigate**: Find root cause using logs and metrics
-4. **Resolve**: Fix the underlying issue
-5. **Document**: Create incident report with timeline
+2. **Investigate**: Find root cause using logs and metrics (non-destructive — always allowed)
+3. **Mitigate/Resolve**: If `approval_mode` is ENABLED, write the proposed remediation action to `devops_queue.json` and event_publish "devops_queue_updated" — do NOT execute destructive actions (restarts, rollbacks, scaling changes) without user approval. If `approval_mode` is DISABLED, take immediate action to reduce impact and fix the underlying issue.
+4. **Document**: Create incident report with timeline
 
 Incident severity levels:
 - **SEV1**: Full service outage, all users affected
@@ -438,6 +457,7 @@ Stop the current monitoring/incident session when ANY of these conditions is met
 - When in doubt, escalate to the user rather than taking risky action
 - Respect rate limits on CI/CD and cloud provider APIs
 - Keep incident reports factual and blame-free
+- In `approval_mode` (default), ALWAYS write to queue — NEVER execute deployments or destructive actions without user review
 """
 
 [dashboard]

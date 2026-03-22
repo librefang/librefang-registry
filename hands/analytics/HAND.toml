@@ -1,4 +1,5 @@
 id = "analytics"
+version = "1.0.0"
 name = "Analytics Hand"
 description = "Autonomous data analytics agent — data collection, analysis, visualization, dashboards, and automated reporting"
 category = "data"
@@ -28,6 +29,10 @@ aliases = [
   "dashboard",
   "automated report",
   "statistical analysis",
+  "analyze data",
+  "run analytics",
+  "data insights",
+  "generate report",
 ]
 weak_aliases = [
   "visualization",
@@ -37,6 +42,8 @@ weak_aliases = [
   "excel analysis",
   "data pipeline",
   "etl",
+  "metrics",
+  "trends",
 ]
 
 [[requires]]

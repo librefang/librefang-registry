@@ -1,4 +1,5 @@
 id = "predictor"
+version = "1.0.0"
 name = "Predictor Hand"
 description = "Autonomous future predictor — collects signals, builds reasoning chains, makes calibrated predictions, and tracks accuracy"
 category = "data"
@@ -28,8 +29,17 @@ aliases = [
   "probability",
   "likelihood",
   "scenario analysis",
+  "predict market",
+  "market prediction",
+  "price forecast",
 ]
-weak_aliases = ["trend analysis", "calibration"]
+weak_aliases = [
+  "trend analysis",
+  "calibration",
+  "future outlook",
+  "what will happen",
+  "prediction",
+]
 
 # ─── Configurable settings ───────────────────────────────────────────────────
 

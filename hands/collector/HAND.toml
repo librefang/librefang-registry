@@ -1,4 +1,5 @@
 id = "collector"
+version = "1.0.0"
 name = "Collector Hand"
 description = "Autonomous intelligence collector — monitors any target continuously with change detection and knowledge graphs"
 category = "data"
@@ -29,8 +30,18 @@ aliases = [
   "collect intelligence",
   "osint",
   "change detection",
+  "gather info",
+  "market intelligence",
+  "competitive analysis",
 ]
-weak_aliases = ["watch", "signals", "continuous monitoring"]
+weak_aliases = [
+  "watch",
+  "signals",
+  "continuous monitoring",
+  "surveillance",
+  "intel",
+  "news monitoring",
+]
 
 # ─── Configurable settings ───────────────────────────────────────────────────
 
