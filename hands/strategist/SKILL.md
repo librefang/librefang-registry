@@ -23,6 +23,16 @@ Best practices:
 - Prioritize: Rank items by impact
 - Cross-reference: Look for SO (strength-opportunity) and WT (weakness-threat) combinations
 - Action-oriented: Every SWOT item should suggest a strategic response
+- Time-bound: Note whether each factor is stable, strengthening, or weakening
+
+**SWOT Cross-Impact Matrix** — The real value of SWOT is in the intersections:
+
+| | Opportunities | Threats |
+|---|---|---|
+| **Strengths** | SO strategies: Use strengths to capture opportunities (offensive) | ST strategies: Use strengths to neutralize threats (defensive) |
+| **Weaknesses** | WO strategies: Fix weaknesses to unlock opportunities (investment) | WT strategies: Minimize weaknesses exposed by threats (survival) |
+
+Prioritize: SO strategies first (highest ROI), then ST (protect position), then WO (selective investment), last WT (only if existential).
 
 ### Porter's Five Forces
 
@@ -36,6 +46,8 @@ Analyze industry attractiveness:
 
 Rate each force: Low / Medium / High with supporting evidence.
 
+**Dynamic Five Forces**: Forces change over time. For each force, note the **trend direction** (strengthening/stable/weakening) and the **trigger event** that could shift it. A force rated "Low" today with a strengthening trend deserves more attention than a stable "Medium" force.
+
 ### PESTEL Analysis
 
 Macro-environmental scanning:
@@ -48,6 +60,45 @@ Macro-environmental scanning:
 | **Technological** | Innovation pace? R&D spending? Automation trends? |
 | **Environmental** | Climate regulations? Sustainability demands? Resource scarcity? |
 | **Legal** | Employment law? IP protection? Competition law? Data privacy? |
+
+### Framework Integration Methodology
+
+Individual frameworks are lenses. Strategic insight comes from combining them. Here is how to synthesize multiple frameworks into a unified analysis:
+
+**The Integration Cascade** — Use frameworks in dependency order:
+
+```
+Step 1: PESTEL (macro context)
+  → Identifies external forces shaping the industry
+  → Output: Which macro factors matter most? What is changing?
+
+Step 2: Porter's Five Forces (industry structure)
+  → PESTEL outputs feed directly into Porter's forces
+  → Example: "AI adoption accelerating" (PESTEL-Tech) → "Threat of new entrants rising" (Porter)
+  → Output: How attractive is this industry? Where is structural power?
+
+Step 3: SWOT (company positioning within industry)
+  → Porter's outputs define the external O/T quadrants
+  → Internal assessment (S/W) is company-specific
+  → Output: Where does this company sit relative to industry forces?
+
+Step 4: Strategic Options Generation
+  → SWOT cross-impact matrix generates candidate strategies
+  → Porter's forces identify which strategies are structurally viable
+  → PESTEL trends determine timing and urgency
+```
+
+**Cross-Framework Contradiction Resolution:**
+When frameworks disagree, do not average or ignore — investigate:
+- PESTEL says favorable + Porter says unattractive → Macro tailwind but bad industry structure (e.g., restaurant industry: everyone eats, but margins are terrible)
+- SWOT says strong + Porter says high rivalry → Company advantage may erode faster than expected
+- Resolution: State both findings, explain the tension, and let the tension inform the recommendation (e.g., "Enter but with a differentiation strategy that exploits the macro trend while avoiding head-on competition")
+
+**Synthesis Quality Checklist:**
+- Does the conclusion follow logically from framework outputs, or did you skip to a preferred answer?
+- Did you weight frameworks by relevance (PESTEL matters more for market entry; Porter matters more for competitive strategy)?
+- Are the frameworks consistent? If not, is the inconsistency explained?
+- Could someone reconstruct your reasoning by reading the framework outputs alone?
 
 ### Market Sizing (TAM-SAM-SOM)
 
@@ -958,3 +1009,92 @@ Strategic Implications:
 Key insight for SaaS: The majority of LTV is created AFTER the initial sale.
 Disproportionate investment should go to Onboarding → Success → Expansion.
 ```
+
+---
+
+## Strategic Analysis Anti-Patterns
+
+Common cognitive traps that produce bad strategy. Actively check for these in every analysis:
+
+| Anti-Pattern | Detection Question | Countermeasure |
+|---|---|---|
+| **Confirmation Bias** — Seeking data that supports pre-existing beliefs; ignoring contradictory evidence | "Did I search for disconfirming evidence with equal effort?" | For every key conclusion, explicitly search for the strongest counterargument |
+| **Anchoring** — First number encountered dominates all later estimates (first source says "$10B market" and final estimate drifts toward $10B) | "Is my final estimate suspiciously close to the first number I found?" | Collect 3+ independent estimates; use both bottom-up and top-down methods; investigate any 2x+ divergence |
+| **Strategy-by-Analogy** — "Uber did X, so we should do X in healthcare" without testing structural similarity | "What are the 3 most important differences between this situation and the analogy?" | Use analogies to generate hypotheses, never to validate conclusions |
+| **Missing Causal Chain** — Clear start and desirable end, but no credible mechanism connecting them (Step 1 → ??? → Profit) | "What specifically happens between 'launch' and 'achieve outcome'?" | Every recommendation needs a testable causal chain: A → B → C → D |
+| **Denominator Neglect** — Citing impressive absolutes while ignoring base rates ("10,000 users!" out of 2M impressions = 0.5%) | "Relative to what?" | Always present metrics as ratios/rates; compare to benchmarks |
+| **Survivorship Bias** — Deriving strategy from winners only; ignoring that failed companies tried the same thing | "How many companies tried this and failed?" | Seek failure case studies; note success AND failure rates |
+| **Planning Fallacy** — Timelines assuming everything goes right | "Does this plan require performing better than we ever have?" | Use reference class forecasting; add 30-50% buffer; present best/base/worst timelines |
+
+---
+
+## Uncertainty Quantification
+
+### Expressing Uncertainty
+
+**For quantitative estimates (market size, revenue, costs):**
+- Never give a single number. Always give a range: "Market size: $8-12B (base estimate $10B)"
+- State the confidence interval: "80% confident the market is between $8B and $12B"
+- Identify the key variable driving the range: "Range is driven primarily by uncertainty in adoption rate (15-25%)"
+
+**For qualitative assessments:**
+- Use the calibrated confidence scale consistently:
+  - **Very High (>90%)**: Would be genuinely surprised if wrong. Multiple high-quality sources agree.
+  - **High (70-90%)**: Strong evidence, but plausible alternative interpretations exist.
+  - **Medium (50-70%)**: Balanced evidence. Reasonable people could disagree.
+  - **Low (30-50%)**: More uncertain than certain. Treat as hypothesis, not finding.
+  - **Very Low (<30%)**: Speculative. Useful for scenario planning but not for action.
+
+### Assumption Tracking
+
+Every analysis rests on assumptions. Make them explicit:
+
+```
+ASSUMPTION REGISTER:
+
+| # | Assumption | Confidence | Impact if Wrong | Validation Method |
+|---|-----------|------------|-----------------|-------------------|
+| 1 | Market grows 15% YoY | High | Changes TAM by +/- 30% | Track quarterly industry reports |
+| 2 | No new regulation in 12mo | Medium | Could block market entry | Monitor regulatory pipeline |
+| 3 | Key hire joins by Q2 | Medium | Delays launch 3-6 months | Pipeline status check monthly |
+| 4 | Competitor does not cut price | Low | Margin compression 10-15% | Track competitor pricing weekly |
+```
+
+Flag any assumption rated "Low" that has "High" impact — these are the **strategic landmines** that deserve contingency plans.
+
+### When to Say "We Don't Know"
+
+It is better to say "insufficient data to assess" than to fabricate a confident-sounding answer. Specifically:
+- If fewer than 2 independent sources support a data point, flag it as unverified
+- If the key variable has a range wider than 3x (e.g., market could be $5B or $15B), call out that the analysis is highly sensitive to this input
+- If you are extrapolating a trend beyond the data range, state the extrapolation explicitly
+
+---
+
+## Industry-Specific Strategic Patterns
+
+Certain strategic dynamics recur within industry categories. Recognizing these patterns accelerates analysis:
+
+### Platform / Marketplace Businesses
+- **Winner-take-most dynamics**: Network effects create power-law outcomes. Market share of #1 player often exceeds #2 + #3 combined.
+- **Chicken-and-egg problem**: Must solve supply and demand simultaneously. Common solutions: single-player mode, subsidize one side, constrain geography first.
+- **Multi-homing risk**: If users can easily use multiple platforms, network effects weaken. Strategy must increase switching costs or exclusive value.
+- **Key metric**: Liquidity (match rate between supply and demand). Revenue follows liquidity, not the reverse.
+
+### B2B SaaS
+- **Land-and-expand**: Initial deal size matters less than expansion potential. Net revenue retention >120% can drive growth even at 0 new logos.
+- **Switching cost lifecycle**: Switching costs increase with integration depth, data accumulation, and workflow embedding. Year 1 churn is always highest.
+- **Category creation vs. category entry**: Creating a new category requires 3-5x more marketing spend but yields pricing power. Entering an existing category is cheaper but forces competitive positioning.
+- **Key metric**: Net Revenue Retention (NRR). Above 130% = exceptional. Below 100% = leaky bucket that marketing cannot fill.
+
+### Consumer / D2C
+- **Acquisition cost spiral**: As easy-to-reach audiences saturate, CAC rises. Growth requires channel diversification or organic/viral mechanics.
+- **Brand as moat**: In commoditized categories, brand is the primary differentiation. Brand building requires consistency over years, not campaigns over months.
+- **Retention curve shape**: If the retention curve flattens (users who stay past day 30 tend to stay indefinitely), invest in onboarding. If it keeps declining, the product has a retention problem, not an acquisition problem.
+- **Key metric**: Cohort retention at day 30/60/90. Payback period on CAC.
+
+### Regulated Industries (Healthcare, Finance, Insurance)
+- **Compliance as moat**: Regulatory requirements (HIPAA, SOC2, PCI-DSS) are expensive to achieve but create durable barriers to entry.
+- **Sales cycle reality**: Enterprise sales cycles of 6-18 months are normal. Budget accordingly. Premature scaling of sales teams is the #1 killer.
+- **Build vs. partner**: In heavily regulated industries, partnering with incumbents (who have regulatory relationships) often beats trying to disrupt them directly.
+- **Key metric**: Sales cycle length, regulatory approval timeline, compliance cost as % of revenue.

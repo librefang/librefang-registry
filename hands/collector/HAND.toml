@@ -182,6 +182,60 @@ description = "Analyze and track sentiment trends over time"
 setting_type = "toggle"
 default = "false"
 
+[[settings]]
+key = "source_reliability_threshold"
+label = "Source Reliability Threshold"
+description = "Minimum source tier required to include a data point (lower tiers are discarded unless they are the sole source for a structural change)"
+setting_type = "select"
+default = "tier_3"
+
+[[settings.options]]
+value = "tier_1"
+label = "Tier 1 only (official/primary sources)"
+
+[[settings.options]]
+value = "tier_2"
+label = "Tier 2+ (institutional and above)"
+
+[[settings.options]]
+value = "tier_3"
+label = "Tier 3+ (professional and above)"
+
+[[settings.options]]
+value = "tier_4"
+label = "Tier 4+ (community and above)"
+
+[[settings.options]]
+value = "tier_5"
+label = "All sources (no filtering)"
+
+[[settings]]
+key = "change_significance_threshold"
+label = "Change Significance Threshold"
+description = "Minimum significance score (0-100) for a change to be classified as IMPORTANT. Changes below this threshold are classified as MINOR."
+setting_type = "select"
+default = "60"
+
+[[settings.options]]
+value = "40"
+label = "40 (more sensitive — more alerts)"
+
+[[settings.options]]
+value = "50"
+label = "50 (balanced)"
+
+[[settings.options]]
+value = "60"
+label = "60 (default)"
+
+[[settings.options]]
+value = "70"
+label = "70 (stricter — fewer alerts)"
+
+[[settings.options]]
+value = "80"
+label = "80 (very strict — only critical-level)"
+
 # ─── Agent configuration ─────────────────────────────────────────────────────
 
 [agent]
@@ -288,23 +342,40 @@ Relation types:
 
 Compare current collection against previous state:
 1. Load `collector_knowledge_base.json` (previous snapshot)
-2. Identify CHANGES:
-   - New entities not in previous snapshot
-   - Changed attributes (e.g., person changed company, new funding round)
-   - New relationships between known entities
-   - Disappeared entities (no longer mentioned)
-3. Score each change by significance (critical/important/minor):
-   - Critical: leadership change, acquisition, major funding, product launch
-   - Important: new partnership, hiring surge, pricing change, competitor move
-   - Minor: blog post, minor update, mention in article
+2. Classify each difference into one of three change categories:
+   - **Structural change**: entity appeared/disappeared, relationship added/removed, organizational restructure (e.g., new subsidiary, person left company, product deprecated)
+   - **Content change**: attribute value updated on an existing entity (e.g., funding amount increased, role title changed, version number bumped, pricing modified)
+   - **Metadata change**: source count changed, confidence level shifted, last_seen timestamp updated, but the core fact is unchanged
 
-If `alert_on_changes` is enabled and critical changes found:
-- event_publish with change summary
+3. Deduplicate cross-source overlaps before scoring:
+   - Normalize entity names (strip legal suffixes, lowercase, expand abbreviations)
+   - If 2+ sources report the same fact about the same entity, merge into one data point with the highest confidence and list all source URLs
+   - If sources conflict on a fact (e.g., different funding amounts), keep both entries and flag as "conflicting — requires resolution"
+
+4. Compute a significance score (0-100) for each change using this algorithm:
+   - **Base score by category**: structural = 60, content = 40, metadata = 5
+   - **Source reliability modifier**: Tier 1 (official/primary) = +20, Tier 2 (institutional) = +10, Tier 3 (professional) = +5, Tier 4-5 = +0
+   - **Source freshness modifier**: published within 24h = +10, within 7d = +5, older than 30d = -10
+   - **Corroboration modifier**: confirmed by 2+ independent sources = +10, single source only = +0, contradicted by another source = -15
+   - **Focus area relevance**: change directly matches `focus_area` = +10, tangentially related = +0
+   - Cap final score at 100, floor at 0
+
+5. Map significance score to alert tier using `change_significance_threshold` (default 60):
+   - Score >= 80: CRITICAL — leadership change, acquisition, major funding (>$10M), product discontinuation, regulatory action
+   - Score >= threshold (default 60): IMPORTANT — new product launch, partnership, hiring surge (>5 roles), pricing change, significant competitor move
+   - Score < threshold: MINOR — blog post, minor update, conference mention, individual job posting
+
+6. Filter sources by `source_reliability_threshold` (default "tier_3"):
+   - Discard data points where ALL supporting sources fall below the configured threshold tier
+   - Exception: if a below-threshold source is the ONLY source for a structural change, keep it but downgrade confidence to "low" and flag for corroboration in the next cycle
+
+If `alert_on_changes` is enabled and any change scores CRITICAL:
+- event_publish with change summary including: entity name, change category, significance score, top source URL
 
 If `track_sentiment` is enabled:
 - Classify each source as positive/negative/neutral toward the target
 - Track sentiment trend vs previous cycle
-- Note significant sentiment shifts in the report
+- Note significant sentiment shifts (score delta > 2 in one cycle) in the report
 
 ---
 
@@ -435,6 +506,14 @@ description = "每次采集扫描处理的最大来源数量"
 label = "情感追踪"
 description = "分析并追踪随时间变化的情感趋势"
 
+[i18n.zh.settings.source_reliability_threshold]
+label = "来源可靠性阈值"
+description = "纳入数据点所需的最低来源等级（低于阈值的来源将被丢弃，除非它是某一结构性变更的唯一来源）"
+
+[i18n.zh.settings.change_significance_threshold]
+label = "变更显著性阈值"
+description = "变更被归类为「重要」的最低显著性分数（0-100），低于此阈值的变更归类为「次要」"
+
 # ─── Japanese (日本語) ────────────────────────────────────────────────────
 
 [i18n.ja]
@@ -473,6 +552,14 @@ description = "各収集スキャンで処理するソースの最大数"
 [i18n.ja.settings.track_sentiment]
 label = "センチメント追跡"
 description = "時間の経過に伴うセンチメントの傾向を分析・追跡する"
+
+[i18n.ja.settings.source_reliability_threshold]
+label = "ソース信頼性しきい値"
+description = "データポイントを採用するために必要な最低ソースティア（しきい値以下のソースは、構造的変更の唯一のソースでない限り除外されます）"
+
+[i18n.ja.settings.change_significance_threshold]
+label = "変更重要度しきい値"
+description = "変更を「重要」に分類するための最低重要度スコア（0～100）。このしきい値以下の変更は「軽微」に分類されます"
 
 # ─── Spanish (Español) ────────────────────────────────────────────────────
 
@@ -513,6 +600,14 @@ description = "Número máximo de fuentes a procesar por barrido de recopilació
 label = "Seguimiento de sentimiento"
 description = "Analizar y rastrear las tendencias de sentimiento a lo largo del tiempo"
 
+[i18n.es.settings.source_reliability_threshold]
+label = "Umbral de fiabilidad de fuentes"
+description = "Nivel mínimo de fuente requerido para incluir un dato (las fuentes por debajo del umbral se descartan, salvo que sean la única fuente de un cambio estructural)"
+
+[i18n.es.settings.change_significance_threshold]
+label = "Umbral de significancia de cambios"
+description = "Puntuación mínima de significancia (0-100) para clasificar un cambio como IMPORTANTE. Los cambios por debajo se clasifican como MENORES."
+
 # ─── French (Français) ────────────────────────────────────────────────────
 
 [i18n.fr]
@@ -551,6 +646,14 @@ description = "Nombre maximum de sources à traiter par cycle de collecte"
 [i18n.fr.settings.track_sentiment]
 label = "Suivi du sentiment"
 description = "Analyser et suivre les tendances de sentiment au fil du temps"
+
+[i18n.fr.settings.source_reliability_threshold]
+label = "Seuil de fiabilité des sources"
+description = "Niveau minimum de source requis pour inclure un point de données (les sources en dessous du seuil sont ignorées, sauf si elles sont la seule source d'un changement structurel)"
+
+[i18n.fr.settings.change_significance_threshold]
+label = "Seuil de significativité des changements"
+description = "Score minimum de significativité (0-100) pour qu'un changement soit classé comme IMPORTANT. Les changements en dessous sont classés comme MINEURS."
 
 # ─── German (Deutsch) ────────────────────────────────────────────────────
 
@@ -591,6 +694,14 @@ description = "Maximale Anzahl der pro Sammlungszyklus zu verarbeitenden Quellen
 label = "Stimmungsverfolgung"
 description = "Stimmungstrends im Zeitverlauf analysieren und verfolgen"
 
+[i18n.de.settings.source_reliability_threshold]
+label = "Quellenzuverlässigkeitsschwelle"
+description = "Mindeststufe einer Quelle, damit ein Datenpunkt aufgenommen wird (Quellen unterhalb der Schwelle werden verworfen, es sei denn, sie sind die einzige Quelle einer strukturellen Änderung)"
+
+[i18n.de.settings.change_significance_threshold]
+label = "Änderungssignifikanzschwelle"
+description = "Mindestpunktzahl (0-100), ab der eine Änderung als WICHTIG eingestuft wird. Änderungen unterhalb werden als GERINGFÜGIG eingestuft."
+
 # ─── Korean (한국어) ────────────────────────────────────────────────────
 
 [i18n.ko]
@@ -629,3 +740,11 @@ description = "수집 스캔당 처리할 최대 소스 수"
 [i18n.ko.settings.track_sentiment]
 label = "감성 추적"
 description = "시간에 따른 감성 추세 분석 및 추적"
+
+[i18n.ko.settings.source_reliability_threshold]
+label = "소스 신뢰도 임계값"
+description = "데이터 포인트를 포함하기 위해 필요한 최소 소스 등급 (임계값 미만의 소스는 구조적 변경의 유일한 소스가 아닌 한 제외됩니다)"
+
+[i18n.ko.settings.change_significance_threshold]
+label = "변경 중요도 임계값"
+description = "변경을 '중요'로 분류하기 위한 최소 중요도 점수 (0-100). 이 임계값 미만의 변경은 '경미'로 분류됩니다"

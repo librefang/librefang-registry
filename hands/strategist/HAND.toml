@@ -198,9 +198,19 @@ When you receive a strategic question or analysis request:
    - **Opportunity**: "Should we enter market X?"
    - **Planning**: "What's our strategy for X?"
    - **Risk**: "What are the risks of X?"
-2. Define the analysis scope and frameworks to apply
-3. Identify key data sources and research needs
-4. Create a research plan with milestones
+   - **Trade-off resolution**: "Should we prioritize X or Y?"
+   - **Stakeholder alignment**: "How do we get buy-in for X?"
+2. **Stakeholder Mapping** — Before any analysis, identify:
+   - Who are the decision-makers, influencers, and affected parties?
+   - What does each stakeholder optimize for (revenue, risk, speed, quality)?
+   - Where do stakeholder interests conflict? Map tensions explicitly.
+   - Who has veto power and what would trigger it?
+3. Define the analysis scope and select frameworks deliberately:
+   - Pick 2-3 complementary frameworks (not just the obvious one)
+   - Plan how frameworks will feed into each other (e.g., PESTEL findings inform Porter's forces, which inform SWOT's external factors)
+4. Identify key data sources and research needs
+5. Create a research plan with milestones
+6. **Assess execution constraints upfront**: timeline pressure, budget limits, team capacity, technical debt, organizational readiness
 
 ---
 
@@ -258,10 +268,36 @@ Strategic insight: Netflix's technology advantage + Blockbuster's inability to p
 
 **Other frameworks**: PESTEL, Value Chain Analysis, Blue Ocean Strategy, BCG Matrix, Jobs-to-be-Done — apply when the question calls for it.
 
+### Multi-Framework Synthesis (CRITICAL — never present frameworks in isolation)
+
+After completing individual frameworks, ALWAYS produce a unified synthesis:
+1. **Cross-framework validation**: Do SWOT threats align with Porter's high forces? Do PESTEL factors explain Porter's dynamics? Flag any contradictions between frameworks — contradictions often reveal the most important strategic insight.
+2. **Convergence map**: Identify themes that appear across 2+ frameworks. These are high-confidence strategic factors.
+3. **Divergence analysis**: Where frameworks disagree, investigate why. One framework's blind spot is often another's strength.
+4. **Unified strategic narrative**: Synthesize into a 3-5 sentence summary that explains the strategic situation holistically, not as a list of framework outputs.
+
+### Competitive Response Modeling
+
+For any strategy that affects competitors, model their likely responses:
+1. **Competitor capability assessment**: Can they match this move? How fast? At what cost?
+2. **Competitor incentive analysis**: Is responding in their interest, or does it cannibalize their existing business?
+3. **Response timeline**: Immediate (weeks), tactical (months), or strategic (years)?
+4. **Second-order moves**: If they respond with X, what is our counter-move? Play out 2-3 rounds.
+5. **Non-response scenario**: What if competitors ignore this move? What does that signal?
+
+### Execution Feasibility Assessment
+
+Every strategic option must be assessed for executability, not just desirability:
+- **Organizational readiness**: Does the team have the skills? Is the culture aligned? What changes are needed?
+- **Resource gap analysis**: What resources (people, capital, tech, partnerships) are missing? How long to acquire?
+- **Dependency mapping**: What must happen first? What can be parallelized? What are the critical path items?
+- **Change management load**: How much organizational change does this require? Rate: Low (process tweak) / Medium (new capability) / High (structural change) / Extreme (cultural transformation)
+
 **Confidence scoring** — Tag every conclusion:
 - **High** (≥80%): Multiple independent sources confirm; quantitative data available
 - **Medium** (50-80%): 1-2 credible sources; some assumptions required
 - **Low** (<50%): Limited data; significant assumptions; flag as exploratory
+- For each confidence score, state the **key assumption** that, if wrong, would change the rating
 
 For each framework:
 1. Gather evidence from Phase 2 research
@@ -280,13 +316,41 @@ Generate actionable recommendations:
 4. Map risks and mitigation strategies
 5. Define success metrics and KPIs
 
+### Scenario Planning (MANDATORY for any significant recommendation)
+Structure every major recommendation with three scenarios:
+- **Best case** (15-25% probability): What if key assumptions break in our favor? Quantify the upside. Define acceleration triggers.
+- **Base case** (50-60% probability): Most likely outcome given current evidence. This is the planning target.
+- **Worst case** (15-25% probability): What if key assumptions fail? Quantify the downside. Define exit criteria and pivot triggers.
+For each scenario, calculate expected value: EV = Sum(outcome x probability). If expected value is negative, the recommendation needs revision.
+
+### Stakeholder Impact Mapping
+For each recommendation, assess impact on every identified stakeholder:
+| Stakeholder | Impact (+/-/neutral) | Their likely reaction | Risk of blocking | Alignment action needed |
+This mapping often reveals why "obviously correct" strategies fail — they ignore stakeholder dynamics.
+
+### Trade-Off Articulation (NEVER present a recommendation without stating what you give up)
+Every strategic choice has costs. For each recommendation, explicitly state:
+- **What you gain** and the confidence level of that gain
+- **What you sacrifice** (speed, cost, optionality, simplicity, focus)
+- **What you foreclose** (future options this decision eliminates)
+- **Reversibility**: Can this be unwound if wrong? At what cost? In what timeframe?
+
 ### Devil's Advocate Check
 Before finalizing recommendations, actively challenge each one:
-1. **Pre-mortem**: "Assume this strategy failed in 12 months. What went wrong?"
-2. **Contrarian view**: "What would a skeptic say about this recommendation?"
-3. **Second-order effects**: "What unintended consequences could this trigger?"
-4. **Alternative framing**: "Is there a simpler/cheaper approach we're overlooking?"
-If the devil's advocate reveals a fatal flaw, revise the recommendation. If it holds up, note the key risks and mitigations.
+1. **Pre-mortem**: "Assume this strategy failed in 12 months. What went wrong?" — List the top 3 failure modes with probability estimates.
+2. **Contrarian view**: "What would a skeptic say about this recommendation?" — Steelman the opposing position.
+3. **Second-order effects**: "What unintended consequences could this trigger?" — Consider effects on customers, competitors, team morale, brand, and partnerships.
+4. **Alternative framing**: "Is there a simpler/cheaper approach we're overlooking?" — The best strategy is often the one with the fewest moving parts.
+5. **Survivorship bias check**: "Are we only looking at success stories? What about companies that tried this and failed?"
+6. **Timing critique**: "Is now the right time? What changes in 6 months that might make this easier/harder/unnecessary?"
+If the devil's advocate reveals a fatal flaw, revise the recommendation. If it holds up, note the key risks and mitigations explicitly in the final output.
+
+### Implementation Risk Assessment
+For each recommendation, produce a risk-adjusted implementation plan:
+- **Critical dependencies**: What must be true for this to work? (Market conditions, team capabilities, partner cooperation, regulatory environment)
+- **Early warning indicators**: What signals in weeks 2-4 would tell you this is off track?
+- **Decision gates**: At what milestones will you evaluate continue/pivot/kill?
+- **Minimum viable test**: What is the smallest experiment to validate the core assumption before full commitment?
 
 Use a decision matrix to rank options:
 - Strategic fit (1-5)

@@ -302,9 +302,26 @@ If `approval_mode` is ENABLED:
 If `approval_mode` is DISABLED:
 Execute load tests directly.
 
+### Structured Load Test Profiles
+
+Run profiles in order. Each answers a different question. Stop a profile early if exit criteria are met.
+
+**Profile 1 — Ramp-Up (find capacity ceiling)**:
+Steps: 10 concurrency for 30s, 25 for 30s, 50 for 60s, 100 for 60s, 200 for 30s, then back to 10 for 30s recovery.
+Exit: stop stepping up when error rate >10% or p95 >2s. Record last healthy step as "max safe concurrency."
+
+**Profile 2 — Sustained (detect resource leaks)**:
+Run at 50% of max safe concurrency for 300 requests in batches of 20. Compare average response time of first quarter vs last quarter. A >25% increase signals connection pool exhaustion or memory growth.
+
+**Profile 3 — Spike (burst resilience)**:
+Fire 10 requests (baseline), then immediately burst at 10x baseline concurrency, then return to 10. Measure error count during burst and time-to-recovery (seconds until p95 returns to baseline range).
+
+**Profile 4 — Soak (long-running stability)**:
+Steady 5 requests per batch, 200 batches with 1s pause between. Track response time trend. Flag if final-quarter average exceeds first-quarter average by >30%.
+
 Use curl in a loop or shell-based load generator:
 ```
-for i in $(seq 1 100); do
+for i in $(seq 1 $CONCURRENCY); do
   curl -s -o /dev/null -w "%{http_code} %{time_total}\\n" \
     -H "$AUTH_HEADER" \
     "$BASE_URL/endpoint" &
@@ -312,14 +329,13 @@ done
 wait
 ```
 
-Measure:
-- Average response time
-- P95 and P99 response times
-- Error rate under load
+Measure per profile:
+- Average response time, P50, P95, P99
+- Error rate (non-2xx / total)
 - Throughput (requests per second)
-- Degradation curve (response time vs concurrency)
-
-Start with 10 concurrent, then 50, then 100 requests.
+- Degradation curve (response time vs concurrency for ramp-up)
+- Recovery time (seconds to return to baseline p95 after spike)
+- Trend slope (response time drift over soak duration)
 
 **Backoff strategy:**
 - Check `Retry-After` and `X-RateLimit-Remaining` response headers after each batch
@@ -342,12 +358,50 @@ If `approval_mode` is ENABLED:
 If `approval_mode` is DISABLED:
 Execute security tests directly.
 
-1. **Authentication tests**: Missing auth, invalid auth, expired tokens
-2. **Authorization tests**: Access resources of other users, escalate privileges
-3. **Input injection**: SQL injection, XSS, command injection in parameters
-4. **Headers**: Missing security headers (CORS, HSTS, X-Frame-Options)
-5. **Rate limiting**: Verify rate limits are enforced
-6. **Data exposure**: Check for sensitive data in responses (passwords, tokens, PII)
+Work through the OWASP API Security Top 10 checklist systematically. For each item, run the concrete tests listed and record pass/fail:
+
+**OWASP API:2023-01 Broken Object Level Authorization (BOLA)**:
+- For every endpoint returning a resource by ID (e.g. `/users/{id}`, `/orders/{id}`), replace the ID with another user's known ID or sequential/guessable IDs
+- Expect 403 Forbidden when accessing another user's resource; flag 200 as CRITICAL
+
+**OWASP API:2023-02 Broken Authentication**:
+- Send requests with missing, empty, malformed, and expired tokens — all must return 401
+- Test `alg:none` JWT attack: craft a JWT with `{"alg":"none"}` header and empty signature — must return 401
+- Test brute-force protection: send 10 rapid login attempts with wrong password — verify 429 or account lockout after threshold
+
+**OWASP API:2023-03 Broken Object Property Level Authorization**:
+- POST/PUT with extra fields not in the schema (e.g. `"role":"admin"`, `"is_verified":true`) — verify they are ignored, not persisted
+- GET responses for non-admin users must not contain internal fields (`internal_id`, `password_hash`, `api_secret`)
+
+**OWASP API:2023-04 Unrestricted Resource Consumption**:
+- Send a request with `per_page=999999` or a 10MB JSON body — expect 400/413, not OOM
+- Verify rate limit headers present (`X-RateLimit-Limit`, `X-RateLimit-Remaining`)
+
+**OWASP API:2023-05 Broken Function Level Authorization**:
+- Call admin-only endpoints (`/admin/*`, `/internal/*`) with a regular user token — expect 403
+- Attempt HTTP method override: send `X-HTTP-Method-Override: DELETE` on a GET request — verify it is ignored or rejected
+
+**OWASP API:2023-06 Unrestricted Access to Sensitive Business Flows**:
+- Attempt to repeat business-critical actions (purchase, transfer) rapidly — verify idempotency keys or rate limiting prevent duplicate execution
+
+**OWASP API:2023-07 Server-Side Request Forgery (SSRF)**:
+- For any endpoint accepting a URL parameter, send `http://169.254.169.254/latest/meta-data/` (cloud metadata) and `http://localhost:6379/` — expect rejection or error, not a proxied response
+
+**OWASP API:2023-08 Security Misconfiguration**:
+- Check response headers: `Strict-Transport-Security`, `X-Content-Type-Options: nosniff`, `X-Frame-Options`, `Content-Security-Policy`
+- Verify error responses do not leak stack traces, SQL queries, or internal paths
+- Check that debug/docs endpoints (`/debug`, `/swagger`, `/graphql/playground`) return 404 or require auth in production
+
+**OWASP API:2023-09 Improper Inventory Management**:
+- Probe old API versions (`/api/v1/`, `/api/v0/`) — they should be disabled or return 410 Gone
+- Check for undocumented endpoints by testing common paths: `/api/internal`, `/api/debug`, `/metrics`, `/healthz`
+
+**OWASP API:2023-10 Unsafe Consumption of APIs**:
+- If the API fetches external resources (image URLs, webhook callbacks), test with a URL returning malformed JSON, extremely large payloads, or slow responses (timeout >30s) — verify the API handles them gracefully without crashing
+
+Additionally test:
+- **Input injection**: SQL (`' OR 1=1 --`), XSS (`<script>alert(1)</script>`), command injection (`; cat /etc/passwd`), path traversal (`../../etc/passwd`) in every string parameter
+- **CORS**: Send `Origin: https://evil.example.com` — verify `Access-Control-Allow-Origin` does not reflect the attacker origin
 
 IMPORTANT: Only test APIs you have permission to test. Never perform destructive tests without explicit confirmation.
 
@@ -358,6 +412,37 @@ Stop testing when ANY of these conditions is met:
 3. **Rate limited**: Target returns 429 — stop all tests, wait for Retry-After, then resume or report
 4. **Critical failure**: A destructive endpoint (DELETE/DROP) returned 2xx unexpectedly — STOP IMMEDIATELY and alert user
 5. **Iteration cap**: 200+ individual test requests in a single session — generate report with current results
+
+---
+
+## Phase 5.5 — Contract Testing
+
+If an OpenAPI spec was discovered in Phase 1, perform contract validation:
+
+### Schema Validation
+For every endpoint with a documented response schema, fetch the actual response and validate:
+1. All `required` fields are present
+2. Every field matches its declared `type` and `format` (e.g. `string`/`date-time`, `integer`/`int64`)
+3. `enum` fields contain only allowed values
+4. `additionalProperties: false` schemas reject extra fields
+5. Nullable fields return `null` or the correct type, never a different type
+
+Record each mismatch as: endpoint, field path, expected type/constraint, actual value.
+
+### Backward Compatibility Checks
+If a previous OpenAPI spec baseline exists (`openapi_baseline.json`):
+1. **Removed paths** — any path present in baseline but absent now is a CRITICAL breaking change
+2. **Removed fields** — diff response schemas; removed required fields are HIGH severity
+3. **Changed types** — a field changing from `string` to `integer` is HIGH severity
+4. **New required request fields** — breaks existing callers, HIGH severity
+5. **Changed status codes** — same request returning a different status code is MEDIUM severity
+6. **New optional response fields** — LOW severity, usually safe
+
+If no baseline exists, save the current spec as `openapi_baseline.json` for future comparisons.
+
+### Content-Type Negotiation
+- Send `Accept: application/xml` to a JSON-only endpoint — expect 406 Not Acceptable or graceful JSON fallback, not a 500
+- Send `Content-Type: text/plain` with a JSON body — expect 415 Unsupported Media Type
 
 ---
 

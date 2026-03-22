@@ -150,44 +150,81 @@ site:sec.gov "[company]"
 
 ## Change Detection Methodology
 
-### Snapshot Comparison
-1. Store the current state of all entities as a JSON snapshot
-2. On next collection cycle, compare new state against previous snapshot
-3. Classify changes:
+### Change Classification
 
-| Change Type | Significance | Example |
-|-------------|-------------|---------|
-| Entity appeared | Varies | New competitor enters market |
-| Entity disappeared | Important | Company goes quiet, product deprecated |
-| Attribute changed | Critical-Minor | CEO changed (critical), address changed (minor) |
-| New relation | Important | New partnership, acquisition, hiring |
-| Relation removed | Important | Person left company, partnership ended |
-| Sentiment shift | Important | Positive→Negative media coverage |
+Every difference between the current snapshot and the previous one falls into exactly one category:
 
-### Significance Scoring
+| Category | Definition | Examples |
+|----------|-----------|---------|
+| **Structural** | Entity appeared/disappeared, relationship added/removed | New competitor enters market, person left company, product deprecated, new partnership formed |
+| **Content** | Attribute value changed on an existing entity | CEO changed, funding amount updated, version number bumped, pricing modified |
+| **Metadata** | Supporting data changed but core fact is the same | New source confirms existing fact, confidence upgraded, last_seen timestamp refreshed |
+
+### Cross-Source Deduplication
+
+Before scoring, deduplicate overlapping data points:
+1. **Normalize** entity names: strip legal suffixes (Inc, LLC, Corp), lowercase, expand common abbreviations
+2. **Merge** when 2+ sources report the same fact about the same entity — keep highest confidence, list all source URLs
+3. **Flag conflicts** when sources disagree on a fact (e.g., different funding amounts) — record both, mark as "conflicting — requires resolution"
+
+### Significance Scoring Algorithm
+
+Compute a numeric score (0-100) for each change:
+
 ```
-CRITICAL (immediate alert):
-  - Leadership change (CEO, CTO, board)
-  - Acquisition or merger
-  - Major funding round (>$10M)
-  - Product discontinuation
-  - Legal action or regulatory issue
+Base score (by category):
+  Structural change  = 60
+  Content change     = 40
+  Metadata change    =  5
 
-IMPORTANT (include in next report):
-  - New product launch
-  - New partnership or integration
-  - Hiring surge (>5 roles)
-  - Pricing change
-  - Competitor move
-  - Major customer win/loss
+Source reliability modifier (best source tier for this data point):
+  Tier 1 (official/primary)   = +20
+  Tier 2 (institutional)      = +10
+  Tier 3 (professional)       = +5
+  Tier 4-5 (community/anon)   = +0
 
-MINOR (note in report):
-  - Blog post or press mention
-  - Minor update or patch
-  - Social media activity spike
-  - Conference appearance
-  - Job posting (individual)
+Source freshness modifier (publication age):
+  Within 24 hours   = +10
+  Within 7 days     = +5
+  Within 30 days    = +0
+  Older than 30 days = -10
+
+Corroboration modifier:
+  Confirmed by 2+ independent sources = +10
+  Single source only                  = +0
+  Contradicted by another source      = -15
+
+Focus area relevance:
+  Directly matches configured focus_area = +10
+  Tangentially related                   = +0
+
+Final score = clamp(base + reliability + freshness + corroboration + relevance, 0, 100)
 ```
+
+### Alert Tier Mapping
+
+Map the computed significance score to an action tier using `change_significance_threshold` (configurable, default 60):
+
+```
+Score >= 80          → CRITICAL (immediate alert via event_publish)
+  Examples: leadership change (CEO/CTO/CFO), acquisition or merger,
+            major funding round (>$10M), product discontinuation,
+            regulatory action, data breach
+
+Score >= threshold   → IMPORTANT (include in next report)
+  Examples: new product launch, new partnership, hiring surge (>5 roles),
+            pricing change, significant competitor move, major customer win/loss
+
+Score < threshold    → MINOR (note in report)
+  Examples: blog post, minor update or patch, conference appearance,
+            individual job posting, social media activity within normal range
+```
+
+### Source Reliability Filtering
+
+Apply the configured `source_reliability_threshold` (default: tier_3) to filter low-quality data:
+- **Discard** data points where ALL supporting sources fall below the threshold tier
+- **Exception**: if a below-threshold source is the ONLY source for a structural change, keep it but downgrade confidence to "low" and flag for corroboration in the next cycle
 
 ---
 

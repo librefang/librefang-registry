@@ -890,3 +890,60 @@ curl -s -X OPTIONS -D- -o /dev/null \
   -H "Access-Control-Request-Method: POST" \
   "https://api.example.com/api/data" | grep -iE "(allow|access-control)"
 ```
+
+---
+
+## Chaos & Fault Injection Patterns
+
+| Fault | How to Inject | Expected Behavior |
+|-------|--------------|-------------------|
+| Slow client | `curl --limit-rate 1k` | Server does not hold connection indefinitely; times out gracefully |
+| Partial body | Pipe truncated JSON via `echo '{"name":' \| curl -d @-` | 400 Bad Request, not 500 |
+| Huge header | `-H "X-Pad: $(python3 -c 'print("A"*16000)')"` | 431 Request Header Fields Too Large or 400 |
+| Concurrent duplicate | Fire same POST with idempotency key 50x in parallel | Exactly one resource created; others get 409 or identical response |
+| Connection reset | `curl --max-time 0.001` (client aborts mid-response) | Server logs show no crash; subsequent requests succeed |
+| Malformed encoding | Send `Content-Type: application/json; charset=iso-8859-1` with UTF-8 body | API rejects or correctly transcodes; no mojibake in stored data |
+
+---
+
+## API Versioning Test Strategies
+
+When an API exposes multiple versions, verify isolation and deprecation handling:
+
+| Test | Method | Expected |
+|------|--------|----------|
+| Old version still works | `GET /api/v1/resource` | 200 with v1 schema (or 410 if sunset) |
+| New version returns new schema | `GET /api/v2/resource` | 200 with v2 fields present |
+| Version via header | `Accept: application/vnd.api.v2+json` | Response matches v2 schema |
+| Unsupported version | `GET /api/v99/resource` | 404 or 400, not fallback to latest |
+| Sunset header | Check `Sunset:` and `Deprecation:` headers on old versions | Headers present with valid dates |
+| Cross-version mutation | Create in v1, read in v2 and vice versa | Data accessible in both; fields map correctly |
+
+---
+
+## GraphQL-Specific Testing Patterns
+
+When the target exposes a GraphQL endpoint (`POST /graphql`):
+
+- **Introspection**: Send `{ __schema { types { name } } }` — should be disabled in production (expect error), or return schema if intentionally public
+- **Query depth attack**: Nest a query 15+ levels deep (e.g. `{ user { friends { friends { ... } } } }`) — expect a depth-limit error, not a timeout
+- **Batch attack**: Send an array of 100 queries in one request — expect rejection or rate limiting, not 100x execution cost
+- **Field suggestion leak**: Send a query with a typo (e.g. `{ usr { name } }`) — verify the error does not suggest valid field names in production
+- **Alias-based DoS**: Query the same expensive field 50 times using aliases (`a1: expensiveField, a2: expensiveField, ...`) — expect query complexity rejection
+- **Mutation authorization**: Execute mutations for other users' resources — expect authorization errors identical to REST BOLA checks
+- **N+1 detection**: Query a list with nested relations (`{ users { orders { items } } }`) — linear response time scaling signals N+1
+
+---
+
+## Webhook Reliability Testing Patterns
+
+Beyond signature verification (covered in worked examples), test delivery reliability:
+
+| Scenario | How to Simulate | What to Verify |
+|----------|----------------|----------------|
+| Slow consumer | Respond with 200 after 25s delay | Sender respects timeout >30s; does not mark as failed prematurely |
+| Consumer down | Return 503 for first 3 deliveries | Sender retries with exponential backoff; check `X-Retry-Count` |
+| Duplicate delivery | Verify same `X-Webhook-Id` arrives twice | Consumer handles idempotently — no duplicate side effects |
+| Out-of-order events | Process events t2 before t1 | Consumer uses event timestamp, not arrival order, for state |
+| Oversized payload | Trigger event producing >1MB payload | Sender truncates or sends reference URL instead of inline data |
+| Replay attack | Accept delivery with timestamp >5min old | Consumer rejects stale deliveries to prevent replay |

@@ -42,44 +42,70 @@ Sub-questions:
 
 ---
 
-## CRAAP Source Evaluation Framework
+## CRAAP+ Source Evaluation Framework
 
-### Currency
+### Standard CRAAP Criteria
+
+**Currency**
 - When was it published or last updated?
 - Is the information still current for the topic?
-- Are the links functional?
 - For technology topics: anything >2 years old may be outdated
+- For science: check if the paper has been superseded by newer work
 
-### Relevance
+**Relevance**
 - Does it directly address your question?
 - Who is the intended audience?
 - Is the level of detail appropriate?
-- Would you cite this in your report?
 
-### Authority
-- Who is the author? What are their credentials?
+**Authority**
+- Who is the author? What are their credentials in this specific domain?
 - What institution published this?
-- Is there contact information?
 - Does the URL domain indicate authority? (.gov, .edu, reputable org)
+- Is this person's authority relevant to the claim? (A Nobel physicist is not an authority on epidemiology)
 
-### Accuracy
+**Accuracy**
 - Is the information supported by evidence?
 - Has it been reviewed or refereed?
 - Can you verify the claims from other sources?
 - Are there factual errors, typos, or broken logic?
 
-### Purpose
+**Purpose**
 - Why does this information exist?
 - Is it informational, commercial, persuasive, or entertainment?
-- Is the bias clear or hidden?
-- Does the author/organization benefit from you believing this?
+- Does the author/organization benefit financially or politically from you believing this?
+
+### Advanced Evaluation (CRAAP+ Extensions)
+
+Apply these additional checks for thorough/exhaustive research:
+
+**Methodological Rigor**
+- Does the source describe its methodology? If empirical: what is the sample size, selection method, and study design?
+- Are confounders acknowledged? Are limitations discussed?
+- For surveys: what was the response rate? Is the sample representative?
+- Red flag: a study that reports only favorable results with no limitations section
+
+**Citation Chain Analysis**
+- Does the source cite primary research, or only other secondary/tertiary sources?
+- Follow the chain: if Source B cites Source A, read Source A directly. The original may say something different from how it was cited.
+- "Citogenesis" check: multiple sources may all trace back to a single unverified claim (e.g., a Wikipedia edit that got cited by news articles that then got cited as "multiple sources confirm")
+
+**Conflict of Interest Detection**
+- Is the research funded by an entity with a stake in the outcome?
+- Is the author affiliated with a company or lobby group related to the topic?
+- Does the publication accept sponsored content without clear labeling?
+- Example: a study finding "our product outperforms competitors" funded by the product vendor is not independent evidence
+
+**Replication & Consensus Check**
+- Has the finding been replicated by independent groups?
+- Does it align with the broader expert consensus, or is it an outlier?
+- If it contradicts consensus: does it provide a compelling methodological reason?
 
 ### Scoring
 ```
-A (Authoritative):  Passes all 5 CRAAP criteria
-B (Reliable):       Passes 4/5, minor concern on one
-C (Useful):         Passes 3/5, use with caveats
-D (Weak):           Passes 2/5 or fewer
+A (Authoritative):  Passes all CRAAP criteria + methodological rigor confirmed
+B (Reliable):       Passes CRAAP, minor concern on one advanced check
+C (Useful):         Passes 3/5 CRAAP, use with caveats noted
+D (Weak):           Fails multiple criteria OR has unresolved COI
 F (Unreliable):     Fails most criteria, do not cite
 ```
 
@@ -117,6 +143,59 @@ For each research question, use at least 3 search strategies:
 | Statistics | Census, BLS, World Bank, OECD | `site:data.worldbank.org [metric]` |
 | Current events | Reuters, AP, BBC, primary sources | `[event] statement`, `[event] official` |
 
+### Academic & Grey Literature Search Strategies
+
+Not all valuable research is published in mainstream outlets. Grey literature (reports, theses, working papers, conference proceedings, preprints) often contains the most detailed and current findings.
+
+**Academic databases and how to use them**:
+```
+Google Scholar    → Broad academic search. Use "cited by" to find follow-up work.
+                    Check "Related articles" for adjacent findings.
+arXiv.org         → CS, physics, math preprints. Free. NOT peer-reviewed — note this.
+PubMed            → Biomedical/health. Use MeSH terms for precise queries.
+SSRN              → Social science, economics, law working papers.
+Semantic Scholar  → AI-enhanced academic search with citation graphs.
+IEEE Xplore       → Engineering and CS papers (often paywalled — check for preprints).
+```
+
+**Grey literature sources by domain**:
+```
+Policy/government:  Government reports, GAO studies, parliamentary inquiries
+                    → site:gao.gov, site:*.gov/reports, site:oecd.org
+Think tanks:        Brookings, RAND, Chatham House, NBER
+                    → "[topic] site:rand.org OR site:brookings.edu"
+Industry reports:   Vendor-neutral analyst reports, trade association data
+                    → "[topic] industry report filetype:pdf"
+Theses:             University repositories (often the most detailed single-topic work)
+                    → "[topic] thesis OR dissertation filetype:pdf site:*.edu"
+Standards bodies:   NIST, ISO, W3C, IETF RFCs
+                    → "[topic] site:nist.gov OR site:w3.org OR site:rfc-editor.org"
+Conference proc.:   Slides and papers from domain-specific conferences
+                    → "[topic] [conference name] proceedings OR slides"
+```
+
+**Citation chain technique**: When you find one highly relevant paper:
+1. Read its references for foundational work (backward search)
+2. Search "cited by" to find newer work that builds on it (forward search)
+3. Check the authors' other publications for related work
+4. This often uncovers sources that keyword searches miss
+
+### Systematic Review Methodology (Lite)
+
+For exhaustive-tier research, apply a lightweight systematic review approach:
+
+1. **Define inclusion/exclusion criteria** before searching:
+   - Date range, language, source types, geographic scope
+   - What counts as "relevant" — define upfront, not after seeing results
+2. **Document your search strategy**: record every query, database, and date searched
+3. **Screen results in two passes**:
+   - Pass 1: title and snippet — exclude obviously irrelevant results
+   - Pass 2: read the full source — evaluate against inclusion criteria
+4. **Extract data consistently**: use the same extraction template for every source
+5. **Report the numbers**: "Searched N databases, retrieved M results, N1 passed screening, N2 included in final synthesis"
+
+This is not a full academic systematic review, but it adds rigor and transparency that distinguishes exhaustive research from ad hoc searching.
+
 ---
 
 ## Cross-Referencing Techniques
@@ -136,19 +215,74 @@ Level 4: Expert consensus (well-established)
   → Mark as "widely accepted" or "scientific consensus"
 ```
 
-### Contradiction Resolution
-When sources disagree:
-1. Check which source is more authoritative (CRAAP scores)
-2. Check which is more recent (newer may have updated info)
-3. Check if they're measuring different things (apples vs oranges)
-4. Check for known biases or conflicts of interest
-5. Present both views with evidence for each
-6. State which view the evidence better supports (if clear)
-7. If genuinely uncertain, say so — don't force a conclusion
+### Contradiction Resolution Decision Tree
+
+When sources disagree, work through this structured process:
+
+```
+CONFLICT: Source A says X, Source B says Y
+  │
+  ├─ 1. Scope check: Are they measuring the same thing?
+  │     Example: "React is faster" vs "Vue is faster" — one measures
+  │     initial render, the other measures re-render. Not a real conflict.
+  │     → If different scope: report both with context, not as a conflict.
+  │
+  ├─ 2. Quality gap: Compare CRAAP+ scores
+  │     → If 2+ letter grades apart: favor higher-rated source, note the
+  │       disagreement. Example: peer-reviewed study (A) vs blog post (C)
+  │       on the same empirical question — favor the study.
+  │
+  ├─ 3. Temporal ordering: Is one an update/correction of the other?
+  │     → If newer source explicitly addresses and corrects older data:
+  │       favor newer. Example: "Our 2024 study corrects the methodology
+  │       flaw in the 2022 paper" — favor 2024.
+  │
+  ├─ 4. Methodology comparison: Which has stronger evidence?
+  │     Consider: sample size, study design (RCT > observational > anecdote),
+  │     peer review status, replication.
+  │     → Favor stronger methodology. Explain the methodological difference.
+  │
+  ├─ 5. Conflict of interest: Does one source have a COI?
+  │     → Favor the source without COI. Disclose the COI explicitly.
+  │     Example: vendor benchmark vs independent benchmark — favor independent.
+  │
+  ├─ 6. Consensus weight: What do other sources say?
+  │     → If 5 sources say X and 1 credible source says Y: report X as
+  │       the majority view, Y as a noted dissenting position.
+  │
+  └─ 7. Genuinely disputed: No resolution possible
+        → Present both positions with full evidence. Mark as "Disputed."
+        Do NOT force a conclusion. State what additional evidence would
+        resolve the conflict.
+```
+
+### Source Independence Verification
+
+Two articles citing the same original study are ONE source, not two:
+- Trace every claim to its origin before counting source agreement
+- News articles often rewrite the same press release — that is one source
+- "Multiple outlets report" is not corroboration if they share a single upstream source
+- Independent means: different data collection, different research team, different methodology
 
 ---
 
 ## Synthesis Patterns
+
+### Source Triangulation
+
+Before synthesizing, verify key claims through triangulation — confirming a finding via multiple independent evidence types:
+
+```
+Triangulation types:
+  Data triangulation:     Same question examined with different datasets
+  Method triangulation:   Same question studied with different methods
+                          (e.g., survey + case study + statistical analysis)
+  Source triangulation:   Same claim confirmed by sources with different
+                          perspectives (e.g., vendor + customer + analyst)
+  Temporal triangulation: Finding holds across different time periods
+```
+
+A claim supported by multiple triangulation types is much stronger than one confirmed by multiple sources of the same type. "Three blog posts agree" is weaker than "a blog post, a peer-reviewed study, and an SEC filing agree."
 
 ### Narrative Synthesis
 ```
@@ -167,6 +301,7 @@ A key limitation is [gap or uncertainty].
 FINDING 1: [Claim]
   Evidence for: [Source A], [Source B] — [details]
   Evidence against: [Source C] — [details]
+  Triangulation: [data/method/source types used]
   Confidence: [high/medium/low]
   Reasoning: [why the evidence supports this finding]
 
@@ -180,6 +315,7 @@ After synthesis, explicitly note:
 - What data would strengthen the conclusions?
 - What are the limitations of the available sources?
 - What follow-up research would be valuable?
+- What types of triangulation are missing? (e.g., "All sources are practitioner blogs — no academic validation exists")
 
 ---
 
@@ -453,27 +589,39 @@ According to recent research [1], the finding was confirmed by independent analy
 
 ---
 
-## Cognitive Bias in Research
+## Cognitive Bias Detection & Countermeasures
 
-Be aware of these biases during research:
+These biases are not hypothetical — they actively distort research outcomes. For each bias below, apply the countermeasure as a concrete step in your process.
 
-1. **Confirmation bias**: Favoring information that confirms your initial hypothesis
-   - Mitigation: Explicitly search for disconfirming evidence
+### 1. Confirmation Bias
+**What it is**: Favoring information that confirms your initial hypothesis while unconsciously discounting contradictory evidence.
+**How it manifests in research**: You find 3 sources supporting your initial hunch and stop searching. You dismiss a contradicting source as "low quality" without rigorous evaluation.
+**Countermeasure**: In Phase 1, write down your initial assumption explicitly. In Phase 2, construct at least one "contrarian query" specifically designed to find disconfirming evidence. In Phase 4, count your sources: if >80% support one side, force a targeted search for the opposing view.
+**Example**: Researching "Is TypeScript worth adopting?" — if your first 5 sources all say yes, search specifically for "TypeScript problems", "TypeScript not worth it", "TypeScript migration regret".
 
-2. **Authority bias**: Over-trusting sources from prestigious institutions
-   - Mitigation: Evaluate evidence quality, not just source prestige
+### 2. Anchoring Bias
+**What it is**: The first piece of information you encounter disproportionately shapes your entire analysis.
+**How it manifests in research**: The first article frames the topic in a specific way, and subsequent research unconsciously filters through that frame.
+**Countermeasure**: After gathering all sources, re-read your synthesis. Ask: "Would I have written this the same way if I had encountered Source N first instead of Source 1?" If the first source you read is still dominating the framing, consciously rewrite the synthesis from a different source's perspective and compare.
 
-3. **Anchoring**: Fixating on the first piece of information found
-   - Mitigation: Gather multiple sources before forming conclusions
+### 3. Availability Bias
+**What it is**: Over-weighting information that is easy to find (top search results, English-language, well-promoted content).
+**Countermeasure**: After initial searches, ask: "What voices are missing?" Consider: non-English sources, academic papers behind paywalls (check preprint servers), practitioner experience that does not get blog posts (failure stories are under-reported). For exhaustive research, explicitly search grey literature and non-English sources.
 
-4. **Selection bias**: Only finding sources that are easy to access
-   - Mitigation: Vary search strategies, check non-English sources
+### 4. Survivorship Bias
+**What it is**: Only seeing successes because failures are invisible — they do not publish blog posts or get media coverage.
+**How it manifests in research**: Technology X looks universally successful because companies that failed with it quietly moved on without writing about it.
+**Countermeasure**: For any "should we adopt X?" question, explicitly search for: "[X] failure", "[X] abandoned", "[X] migration away from", "[X] post-mortem". Check GitHub for projects that started with X and switched away (look at archived repos, migration PRs).
+**Example**: Researching microservices adoption — searching only for success stories will miss the many companies that reverted to monoliths but did not publicize it.
 
-5. **Recency bias**: Over-weighting recent publications
-   - Mitigation: Include foundational/historical sources when relevant
+### 5. Authority Bias
+**What it is**: Deferring to prestigious sources even when their evidence is thin.
+**Countermeasure**: Evaluate the evidence, not the letterhead. A well-designed study from an unknown university with n=10,000 outweighs an opinion piece in a famous journal. Check: does the prestigious source provide data, or just assertions? Would you accept this evidence if it came from an unknown author?
 
-6. **Framing effect**: Being influenced by how information is presented
-   - Mitigation: Look at raw data, not just interpretations
+### 6. Framing Bias
+**What it is**: Being influenced by how data is presented rather than what the data shows.
+**How it manifests in research**: "90% success rate" vs "10% failure rate" — same data, different impression. Relative vs absolute risk: "doubles the risk" could mean 0.001% to 0.002%.
+**Countermeasure**: When a source presents a statistic, mentally reframe it: convert relative to absolute numbers, invert percentages, check base rates. If a claim sounds dramatic, check the absolute magnitude.
 
 ---
 

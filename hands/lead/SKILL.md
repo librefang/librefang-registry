@@ -25,6 +25,16 @@ A good ICP answers these questions:
 | SMB | 50-500 | $25K-$250K/yr | 1-3 months |
 | Enterprise | 500+ | $250K+/yr | 3-12 months |
 
+### ICP Refinement Loop
+
+The ICP should not be static. After every 3 report cycles, refine it:
+
+1. **Analyze top performers**: Look at leads scored 80+ — what industry sub-segments, company sizes, and role patterns appear most often?
+2. **Analyze low performers**: Look at leads scored below 40 — which ICP criteria were they missing? Were there false positives from overly broad keywords?
+3. **Tighten criteria**: Narrow industry keywords (e.g., "fintech" becomes "payment infrastructure fintech"), adjust company size range, add or remove geographic regions, refine role titles.
+4. **Track revisions**: Log each ICP revision with date, changes made, and rationale. This creates an audit trail showing how targeting improved over time.
+5. **Measure impact**: Compare average lead score before and after each ICP revision. A well-refined ICP should produce higher average scores with fewer total leads — quality over quantity.
+
 ---
 
 ## Web Research Techniques for Lead Discovery
@@ -171,6 +181,17 @@ site:thomasnet.com "[product category]"
 - Company blog/content activity (engagement level)
 - Executive team changes
 
+### Enrichment Depth Escalation Strategy
+
+Not all leads deserve the same enrichment investment. Use a two-pass approach:
+
+1. **First pass (Standard depth)**: Enrich all discovered leads at Standard depth. This is cost-effective and provides enough data for initial scoring.
+2. **Score checkpoint**: After the first pass, score all leads. Any lead scoring 70+ at Standard depth is a strong candidate.
+3. **Second pass (Deep depth)**: Re-enrich only leads scoring 70+ at Deep depth. This focuses expensive research (funding history, news, competitive analysis) on leads most likely to convert.
+4. **Skip threshold**: Leads scoring below 30 after Standard enrichment should not be enriched further — the data is unlikely to improve their score enough to matter.
+
+This approach typically reduces total enrichment cost by 40-60% while maintaining the same output quality for top-tier leads.
+
 ### Email Pattern Discovery
 Common corporate email formats (try in order):
 1. `firstname@company.com` (most common for small companies)
@@ -275,6 +296,9 @@ For each enterprise lead, attempt to discover:
 ```
 
 ### Choosing Between BANT and MEDDIC
+
+The `qualification_framework` setting controls which framework is applied. When set to "auto", use this decision table:
+
 | Scenario | Recommended Framework |
 |----------|----------------------|
 | SMB / startup targets, short sales cycle | BANT |
@@ -343,11 +367,47 @@ Name,Title,Company,Company URL,LinkedIn,Industry,Size,Score,Discovered,Notes
 
 ### Markdown Table Format
 ```markdown
-| # | Name | Title | Company | Score | Key Signal |
-|---|------|-------|---------|-------|------------|
-| 1 | Jane Smith | VP Engineering | Acme Corp | 85 | Series B funded, hiring |
-| 2 | John Doe | CTO | Beta Inc | 72 | Product launch Q1 2025 |
+| # | Name | Title | Company | Score | Grade | Qualification | Key Signal |
+|---|------|-------|---------|-------|-------|---------------|------------|
+| 1 | Jane Smith | VP Engineering | Acme Corp | 85 | A | BANT 4/4 | Series B funded, hiring |
+| 2 | John Doe | CTO | Beta Inc | 72 | B | BANT 3/4 | Product launch Q1 2025 |
 ```
+
+### CRM Export Field Mappings
+
+When `crm_export_format` is configured, produce an additional file with CRM-native field names:
+
+**HubSpot** (JSON):
+| Lead Field | HubSpot Property |
+|------------|-----------------|
+| first_name | `firstname` |
+| last_name | `lastname` |
+| title | `jobtitle` |
+| company | `company` |
+| company_url | `website` |
+| industry | `industry` |
+| score | `hs_lead_status` (mapped: 80+ = "New", 60-79 = "Open", <60 = "In Progress") |
+
+**Salesforce** (CSV):
+| Lead Field | Salesforce Field |
+|------------|-----------------|
+| first_name | `FirstName` |
+| last_name | `LastName` |
+| title | `Title` |
+| company | `Company` |
+| company_url | `Website` |
+| industry | `Industry` |
+| score | `Rating` (mapped: 80+ = "Hot", 60-79 = "Warm", <60 = "Cold") |
+| lead_source | `LeadSource` |
+
+**Pipedrive** (JSON):
+| Lead Field | Pipedrive Field |
+|------------|----------------|
+| full_name | `name` |
+| title | `job_title` |
+| company | `org_name` |
+| company_url | `org_address` |
+| notes | `note` |
 
 ---
 
