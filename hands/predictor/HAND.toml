@@ -425,6 +425,241 @@ token_consumption = "high"
 default_active = false
 activation_warning = "Predictor hand runs continuously and generates predictions, consuming tokens."
 
+# ─── Internationalization (optional) ─────────────────────────────────────────
+# All i18n sections are optional. Without them, the English values above are used.
+# To localize, add [i18n.LANG] sections (e.g. zh, ja, ko, es, fr, de).
+# Settings translations are also optional — omit to keep English labels.
+
+# ─── Chinese (简体中文) ────────────────────────────────────────────────────
+
 [i18n.zh]
 name = "预测 Hand"
 description = "自主预测智能体——收集信号、构建推理链、做出校准预测并追踪准确度"
+category = "数据"
+
+[i18n.zh.settings.prediction_domain]
+label = "预测领域"
+description = "预测的主要关注领域"
+
+[i18n.zh.settings.time_horizon]
+label = "时间跨度"
+description = "预测的前瞻时间范围"
+
+[i18n.zh.settings.data_sources]
+label = "数据来源"
+description = "监控信号的来源类型"
+
+[i18n.zh.settings.report_frequency]
+label = "报告频率"
+description = "生成预测报告的频率"
+
+[i18n.zh.settings.predictions_per_report]
+label = "每份报告预测数"
+description = "每份报告包含的预测条目数量"
+
+[i18n.zh.settings.track_accuracy]
+label = "追踪准确度"
+description = "在预测时间窗口到期后对历史预测进行评分"
+
+[i18n.zh.settings.confidence_threshold]
+label = "置信度阈值"
+description = "纳入预测报告的最低置信度"
+
+[i18n.zh.settings.contrarian_mode]
+label = "逆向思维模式"
+description = "主动寻找并展示与主流共识相反的预测"
+
+# ─── Japanese (日本語) ────────────────────────────────────────────────────
+
+[i18n.ja]
+name = "予測 Hand"
+description = "自律型予測エージェント——シグナル収集、推論チェーン構築、キャリブレーション済み予測、精度追跡"
+category = "データ"
+
+[i18n.ja.settings.prediction_domain]
+label = "予測ドメイン"
+description = "予測の主な対象分野"
+
+[i18n.ja.settings.time_horizon]
+label = "予測期間"
+description = "どのくらい先まで予測するか"
+
+[i18n.ja.settings.data_sources]
+label = "データソース"
+description = "シグナルを監視するソースの種類"
+
+[i18n.ja.settings.report_frequency]
+label = "レポート頻度"
+description = "予測レポートの生成頻度"
+
+[i18n.ja.settings.predictions_per_report]
+label = "レポートあたりの予測数"
+description = "各レポートに含める予測項目の数"
+
+[i18n.ja.settings.track_accuracy]
+label = "精度追跡"
+description = "予測期間が終了した過去の予測にスコアを付ける"
+
+[i18n.ja.settings.confidence_threshold]
+label = "信頼度しきい値"
+description = "予測をレポートに含めるための最低信頼度"
+
+[i18n.ja.settings.contrarian_mode]
+label = "逆張りモード"
+description = "コンセンサスに反する予測を積極的に探索・提示する"
+
+# ─── Spanish (Español) ────────────────────────────────────────────────────
+
+[i18n.es]
+name = "Hand de Predicciones"
+description = "Predictor autónomo del futuro — recopila señales, construye cadenas de razonamiento, genera predicciones calibradas y rastrea la precisión"
+category = "Datos"
+
+[i18n.es.settings.prediction_domain]
+label = "Dominio de predicción"
+description = "Dominio principal para las predicciones"
+
+[i18n.es.settings.time_horizon]
+label = "Horizonte temporal"
+description = "Qué tan lejos en el futuro predecir"
+
+[i18n.es.settings.data_sources]
+label = "Fuentes de datos"
+description = "Qué tipos de fuentes monitorear para señales"
+
+[i18n.es.settings.report_frequency]
+label = "Frecuencia de informes"
+description = "Con qué frecuencia generar informes de predicción"
+
+[i18n.es.settings.predictions_per_report]
+label = "Predicciones por informe"
+description = "Número de predicciones a incluir por informe"
+
+[i18n.es.settings.track_accuracy]
+label = "Rastrear precisión"
+description = "Puntuar predicciones pasadas cuando su horizonte temporal expire"
+
+[i18n.es.settings.confidence_threshold]
+label = "Umbral de confianza"
+description = "Confianza mínima para incluir una predicción"
+
+[i18n.es.settings.contrarian_mode]
+label = "Modo contrario"
+description = "Buscar y presentar activamente predicciones contrarias al consenso"
+
+# ─── French (Français) ────────────────────────────────────────────────────
+
+[i18n.fr]
+name = "Hand de Prédictions"
+description = "Prédicteur autonome — collecte de signaux, construction de chaînes de raisonnement, prédictions calibrées et suivi de la précision"
+category = "Données"
+
+[i18n.fr.settings.prediction_domain]
+label = "Domaine de prédiction"
+description = "Domaine principal pour les prédictions"
+
+[i18n.fr.settings.time_horizon]
+label = "Horizon temporel"
+description = "Jusqu'où prédire dans le futur"
+
+[i18n.fr.settings.data_sources]
+label = "Sources de données"
+description = "Types de sources à surveiller pour les signaux"
+
+[i18n.fr.settings.report_frequency]
+label = "Fréquence des rapports"
+description = "Fréquence de génération des rapports de prédiction"
+
+[i18n.fr.settings.predictions_per_report]
+label = "Prédictions par rapport"
+description = "Nombre de prédictions à inclure par rapport"
+
+[i18n.fr.settings.track_accuracy]
+label = "Suivi de la précision"
+description = "Évaluer les prédictions passées lorsque leur horizon temporel expire"
+
+[i18n.fr.settings.confidence_threshold]
+label = "Seuil de confiance"
+description = "Confiance minimale pour inclure une prédiction"
+
+[i18n.fr.settings.contrarian_mode]
+label = "Mode contraire"
+description = "Rechercher et présenter activement des prédictions contraires au consensus"
+
+# ─── German (Deutsch) ────────────────────────────────────────────────────
+
+[i18n.de]
+name = "Vorhersage-Hand"
+description = "Autonomer Vorhersage-Agent — Signalerfassung, Aufbau von Argumentationsketten, kalibrierte Vorhersagen und Genauigkeitsverfolgung"
+category = "Daten"
+
+[i18n.de.settings.prediction_domain]
+label = "Vorhersagedomäne"
+description = "Hauptdomäne für Vorhersagen"
+
+[i18n.de.settings.time_horizon]
+label = "Zeithorizont"
+description = "Wie weit in die Zukunft vorhergesagt werden soll"
+
+[i18n.de.settings.data_sources]
+label = "Datenquellen"
+description = "Welche Quellentypen auf Signale überwacht werden"
+
+[i18n.de.settings.report_frequency]
+label = "Berichtshäufigkeit"
+description = "Wie oft Vorhersageberichte generiert werden"
+
+[i18n.de.settings.predictions_per_report]
+label = "Vorhersagen pro Bericht"
+description = "Anzahl der Vorhersagen pro Bericht"
+
+[i18n.de.settings.track_accuracy]
+label = "Genauigkeitsverfolgung"
+description = "Vergangene Vorhersagen bewerten, wenn ihr Zeithorizont abläuft"
+
+[i18n.de.settings.confidence_threshold]
+label = "Konfidenzschwelle"
+description = "Mindestvertrauen für die Aufnahme einer Vorhersage"
+
+[i18n.de.settings.contrarian_mode]
+label = "Konträrer Modus"
+description = "Aktiv nach Vorhersagen suchen und präsentieren, die dem Konsens widersprechen"
+
+# ─── Korean (한국어) ────────────────────────────────────────────────────
+
+[i18n.ko]
+name = "예측 Hand"
+description = "자율 미래 예측 에이전트 — 신호 수집, 추론 체인 구축, 보정된 예측 수행 및 정확도 추적"
+category = "데이터"
+
+[i18n.ko.settings.prediction_domain]
+label = "예측 분야"
+description = "예측의 주요 관심 분야"
+
+[i18n.ko.settings.time_horizon]
+label = "시간 범위"
+description = "예측의 미래 전망 기간"
+
+[i18n.ko.settings.data_sources]
+label = "데이터 소스"
+description = "신호를 모니터링할 소스 유형"
+
+[i18n.ko.settings.report_frequency]
+label = "보고서 빈도"
+description = "예측 보고서 생성 주기"
+
+[i18n.ko.settings.predictions_per_report]
+label = "보고서당 예측 수"
+description = "각 보고서에 포함할 예측 항목 수"
+
+[i18n.ko.settings.track_accuracy]
+label = "정확도 추적"
+description = "예측 기간 만료 후 과거 예측에 대한 점수 평가"
+
+[i18n.ko.settings.confidence_threshold]
+label = "신뢰도 임계값"
+description = "예측 보고서에 포함하기 위한 최소 신뢰도"
+
+[i18n.ko.settings.contrarian_mode]
+label = "역발상 모드"
+description = "주류 컨센서스에 반하는 예측을 적극적으로 탐색하고 제시"

@@ -526,6 +526,313 @@ frequency = "hourly"
 token_consumption = "medium"
 default_active = false
 
+# ─── Internationalization (optional) ─────────────────────────────────────────
+# All i18n sections are optional. Without them, the English values above are used.
+# To localize, add [i18n.LANG] sections (e.g. zh, ja, ko, es, fr, de).
+# Settings translations are also optional — omit to keep English labels.
+
+# ─── Chinese (简体中文) ────────────────────────────────────────────────────
+
 [i18n.zh]
 name = "Twitter Hand"
 description = "自主 Twitter/X 管理——内容创作、定时发布、互动管理和效果追踪"
+category = "通信"
+
+[i18n.zh.settings.twitter_bearer_token]
+label = "Twitter Bearer Token"
+description = "Twitter/X 开发者平台的 Bearer Token，所有 Twitter API 操作均需此凭证。"
+
+[i18n.zh.settings.twitter_style]
+label = "内容风格"
+description = "推文的语气和风格"
+
+[i18n.zh.settings.post_frequency]
+label = "发布频率"
+description = "创建和发布内容的频率"
+
+[i18n.zh.settings.auto_reply]
+label = "自动回复"
+description = "自动回复提及和相关对话"
+
+[i18n.zh.settings.auto_like]
+label = "自动点赞"
+description = "自动为人脉网络中的推文和相关内容点赞"
+
+[i18n.zh.settings.content_topics]
+label = "内容主题"
+description = "要创作内容的主题（逗号分隔，例如 AI、创业、效率提升）"
+
+[i18n.zh.settings.brand_voice]
+label = "品牌调性"
+description = "描述你的独特风格（例如"用幽默简化复杂技术的创业者"）"
+
+[i18n.zh.settings.thread_mode]
+label = "推文串模式"
+description = "在内容组合中加入推文串（多条推文组成的故事）"
+
+[i18n.zh.settings.content_queue_size]
+label = "内容队列大小"
+description = "待发队列中保持的推文数量"
+
+[i18n.zh.settings.engagement_hours]
+label = "互动时段"
+description = "检查提及和互动的时间段"
+
+[i18n.zh.settings.approval_mode]
+label = "审批模式"
+description = "将推文写入队列等待审核，而非直接发布"
+
+# ─── Spanish (Español) ────────────────────────────────────────────────────
+
+[i18n.es]
+name = "Hand de Twitter"
+description = "Gestor autónomo de Twitter/X — creación de contenido, publicación programada, interacciones y seguimiento de rendimiento"
+category = "Comunicación"
+
+[i18n.es.settings.twitter_bearer_token]
+label = "Token Bearer de Twitter"
+description = "Token Bearer del Portal de Desarrolladores de Twitter/X. Requerido para todas las operaciones de la API de Twitter."
+
+[i18n.es.settings.twitter_style]
+label = "Estilo de contenido"
+description = "Voz y tono para tus tweets"
+
+[i18n.es.settings.post_frequency]
+label = "Frecuencia de publicación"
+description = "Con qué frecuencia crear y publicar contenido"
+
+[i18n.es.settings.auto_reply]
+label = "Respuesta automática"
+description = "Responder automáticamente a menciones y conversaciones relevantes"
+
+[i18n.es.settings.auto_like]
+label = "Me gusta automático"
+description = "Dar me gusta automáticamente a tweets de tu red y contenido relevante"
+
+[i18n.es.settings.content_topics]
+label = "Temas de contenido"
+description = "Temas sobre los que crear contenido (separados por comas, ej. IA, startups, productividad)"
+
+[i18n.es.settings.brand_voice]
+label = "Voz de marca"
+description = "Describe tu voz única (ej. 'fundador sarcástico que simplifica la tecnología compleja')"
+
+[i18n.es.settings.thread_mode]
+label = "Modo de hilos"
+description = "Incluir hilos de tweets (historias de múltiples tweets) en la mezcla de contenido"
+
+[i18n.es.settings.content_queue_size]
+label = "Tamaño de la cola de contenido"
+description = "Número de tweets a mantener en la cola preparada"
+
+[i18n.es.settings.engagement_hours]
+label = "Horario de interacción"
+description = "Cuándo verificar menciones e interactuar"
+
+[i18n.es.settings.approval_mode]
+label = "Modo de aprobación"
+description = "Escribir los tweets en un archivo de cola para revisión en lugar de publicarlos directamente"
+
+# ─── Japanese (日本語) ────────────────────────────────────────────────────
+
+[i18n.ja]
+name = "Twitter Hand"
+description = "自律型Twitter/Xマネージャー——コンテンツ作成、スケジュール投稿、エンゲージメント管理、パフォーマンス追跡"
+category = "コミュニケーション"
+
+[i18n.ja.settings.twitter_bearer_token]
+label = "Twitter Bearerトークン"
+description = "Twitter/X開発者ポータルのBearerトークン。すべてのTwitter API操作に必要です。"
+
+[i18n.ja.settings.twitter_style]
+label = "コンテンツスタイル"
+description = "ツイートの語調とスタイル"
+
+[i18n.ja.settings.post_frequency]
+label = "投稿頻度"
+description = "コンテンツの作成・投稿の頻度"
+
+[i18n.ja.settings.auto_reply]
+label = "自動返信"
+description = "メンションや関連する会話に自動で返信する"
+
+[i18n.ja.settings.auto_like]
+label = "自動いいね"
+description = "ネットワーク内のツイートや関連コンテンツに自動でいいねする"
+
+[i18n.ja.settings.content_topics]
+label = "コンテンツトピック"
+description = "作成するコンテンツのトピック（カンマ区切り、例: AI、スタートアップ、生産性）"
+
+[i18n.ja.settings.brand_voice]
+label = "ブランドボイス"
+description = "あなた独自の語り口を記述（例:「複雑なテクノロジーをわかりやすく伝える皮肉屋の起業家」）"
+
+[i18n.ja.settings.thread_mode]
+label = "スレッドモード"
+description = "コンテンツミックスにツイートスレッド（複数ツイートで構成するストーリー）を含める"
+
+[i18n.ja.settings.content_queue_size]
+label = "コンテンツキューサイズ"
+description = "準備キューに保持するツイートの数"
+
+[i18n.ja.settings.engagement_hours]
+label = "エンゲージメント時間帯"
+description = "メンションの確認とエンゲージメントを行う時間帯"
+
+[i18n.ja.settings.approval_mode]
+label = "承認モード"
+description = "ツイートを直接投稿せず、レビュー用のキューファイルに書き出す"
+
+# ─── French (Français) ────────────────────────────────────────────────────
+
+[i18n.fr]
+name = "Hand Twitter"
+description = "Gestionnaire Twitter/X autonome — création de contenu, publication programmée, interactions et suivi des performances"
+category = "Communication"
+
+[i18n.fr.settings.twitter_bearer_token]
+label = "Jeton Bearer Twitter"
+description = "Jeton Bearer du Portail Développeurs Twitter/X. Requis pour toutes les opérations de l'API Twitter."
+
+[i18n.fr.settings.twitter_style]
+label = "Style de contenu"
+description = "Ton et style pour vos tweets"
+
+[i18n.fr.settings.post_frequency]
+label = "Fréquence de publication"
+description = "Fréquence de création et de publication de contenu"
+
+[i18n.fr.settings.auto_reply]
+label = "Réponse automatique"
+description = "Répondre automatiquement aux mentions et conversations pertinentes"
+
+[i18n.fr.settings.auto_like]
+label = "Like automatique"
+description = "Aimer automatiquement les tweets de votre réseau et le contenu pertinent"
+
+[i18n.fr.settings.content_topics]
+label = "Sujets de contenu"
+description = "Sujets sur lesquels créer du contenu (séparés par des virgules, ex. IA, startups, productivité)"
+
+[i18n.fr.settings.brand_voice]
+label = "Voix de marque"
+description = "Décrivez votre voix unique (ex. 'fondateur sarcastique qui simplifie la technologie complexe')"
+
+[i18n.fr.settings.thread_mode]
+label = "Mode fil de discussion"
+description = "Inclure des fils de tweets (histoires à plusieurs tweets) dans le mix de contenu"
+
+[i18n.fr.settings.content_queue_size]
+label = "Taille de la file de contenu"
+description = "Nombre de tweets à maintenir dans la file d'attente préparée"
+
+[i18n.fr.settings.engagement_hours]
+label = "Heures d'engagement"
+description = "Quand vérifier les mentions et interagir"
+
+[i18n.fr.settings.approval_mode]
+label = "Mode d'approbation"
+description = "Écrire les tweets dans un fichier d'attente pour révision au lieu de les publier directement"
+
+# ─── German (Deutsch) ────────────────────────────────────────────────────
+
+[i18n.de]
+name = "Twitter-Hand"
+description = "Autonomer Twitter/X-Manager — Content-Erstellung, geplante Veröffentlichung, Engagement-Management und Performance-Tracking"
+category = "Kommunikation"
+
+[i18n.de.settings.twitter_bearer_token]
+label = "Twitter Bearer-Token"
+description = "Bearer-Token vom Twitter/X-Entwicklerportal. Erforderlich für alle Twitter-API-Operationen."
+
+[i18n.de.settings.twitter_style]
+label = "Inhaltsstil"
+description = "Ton und Stil für Ihre Tweets"
+
+[i18n.de.settings.post_frequency]
+label = "Veröffentlichungshäufigkeit"
+description = "Wie oft Inhalte erstellt und veröffentlicht werden"
+
+[i18n.de.settings.auto_reply]
+label = "Automatische Antwort"
+description = "Automatisch auf Erwähnungen und relevante Gespräche antworten"
+
+[i18n.de.settings.auto_like]
+label = "Automatisches Like"
+description = "Tweets im Netzwerk und relevante Inhalte automatisch liken"
+
+[i18n.de.settings.content_topics]
+label = "Inhaltsthemen"
+description = "Themen für die Content-Erstellung (kommagetrennt, z.B. KI, Startups, Produktivität)"
+
+[i18n.de.settings.brand_voice]
+label = "Markenstimme"
+description = "Beschreiben Sie Ihre einzigartige Stimme (z.B. 'sarkastischer Gründer, der komplexe Technologie vereinfacht')"
+
+[i18n.de.settings.thread_mode]
+label = "Thread-Modus"
+description = "Tweet-Threads (mehrteilige Tweet-Geschichten) in den Content-Mix aufnehmen"
+
+[i18n.de.settings.content_queue_size]
+label = "Größe der Content-Warteschlange"
+description = "Anzahl der Tweets in der vorbereiteten Warteschlange"
+
+[i18n.de.settings.engagement_hours]
+label = "Engagement-Zeiten"
+description = "Wann Erwähnungen geprüft und interagiert werden soll"
+
+[i18n.de.settings.approval_mode]
+label = "Genehmigungsmodus"
+description = "Tweets in eine Warteschlangendatei zur Überprüfung schreiben, anstatt sie direkt zu veröffentlichen"
+
+# ─── Korean (한국어) ────────────────────────────────────────────────────
+
+[i18n.ko]
+name = "Twitter Hand"
+description = "자율 Twitter/X 관리 — 콘텐츠 제작, 예약 게시, 소통 관리 및 성과 추적"
+category = "커뮤니케이션"
+
+[i18n.ko.settings.twitter_bearer_token]
+label = "Twitter Bearer 토큰"
+description = "Twitter/X 개발자 포털의 Bearer 토큰. 모든 Twitter API 작업에 필수."
+
+[i18n.ko.settings.twitter_style]
+label = "콘텐츠 스타일"
+description = "트윗의 어조와 스타일"
+
+[i18n.ko.settings.post_frequency]
+label = "게시 빈도"
+description = "콘텐츠를 작성하고 게시하는 주기"
+
+[i18n.ko.settings.auto_reply]
+label = "자동 답글"
+description = "멘션 및 관련 대화에 자동으로 답글 작성"
+
+[i18n.ko.settings.auto_like]
+label = "자동 좋아요"
+description = "네트워크 내 트윗 및 관련 콘텐츠에 자동으로 좋아요"
+
+[i18n.ko.settings.content_topics]
+label = "콘텐츠 주제"
+description = "콘텐츠를 작성할 주제 (쉼표로 구분, 예: AI, 스타트업, 생산성)"
+
+[i18n.ko.settings.brand_voice]
+label = "브랜드 보이스"
+description = "고유한 스타일을 설명 (예: '복잡한 기술을 쉽게 풀어내는 유머러스한 창업자')"
+
+[i18n.ko.settings.thread_mode]
+label = "스레드 모드"
+description = "콘텐츠 구성에 트윗 스레드 (다중 트윗 스토리) 포함"
+
+[i18n.ko.settings.content_queue_size]
+label = "콘텐츠 대기열 크기"
+description = "준비 대기열에 유지할 트윗 수"
+
+[i18n.ko.settings.engagement_hours]
+label = "소통 시간대"
+description = "멘션 확인 및 소통 활동을 수행하는 시간대"
+
+[i18n.ko.settings.approval_mode]
+label = "승인 모드"
+description = "트윗을 직접 게시하지 않고 대기열 파일에 기록하여 검토"

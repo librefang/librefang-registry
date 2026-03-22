@@ -484,6 +484,217 @@ token_consumption = "high"
 default_active = true
 # Note: High consumption when actively analyzing data, lower when idle
 
+# ─── Internationalization (optional) ─────────────────────────────────────────
+# All i18n sections are optional. Without them, the English values above are used.
+# To localize, add [i18n.LANG] sections (e.g. zh, ja, ko, es, fr, de).
+# Settings translations are also optional — omit to keep English labels.
+
+# ─── Chinese (简体中文) ────────────────────────────────────────────────────
+
 [i18n.zh]
 name = "数据分析 Hand"
 description = "自主数据分析智能体——数据采集、分析、可视化、仪表盘和自动化报告"
+category = "数据"
+
+[i18n.zh.settings.data_source]
+label = "数据源"
+description = "主要数据源类型"
+
+[i18n.zh.settings.analysis_type]
+label = "分析类型"
+description = "默认分析方法"
+
+[i18n.zh.settings.output_format]
+label = "输出格式"
+description = "分析结果的呈现方式"
+
+[i18n.zh.settings.visualization]
+label = "可视化"
+description = "生成图表和可视化内容"
+
+[i18n.zh.settings.auto_schedule]
+label = "定时报告"
+description = "按计划自动生成报告"
+
+[i18n.zh.settings.report_frequency]
+label = "报告频率"
+description = "定时报告的生成频率"
+
+[i18n.zh.settings.confidence_threshold]
+label = "置信度阈值"
+description = "报告中纳入分析结论的最低置信度要求"
+
+# ─── Japanese (日本語) ────────────────────────────────────────────────────
+
+[i18n.ja]
+name = "データ分析 Hand"
+description = "自律型データ分析エージェント——データ収集、分析、可視化、ダッシュボード、自動レポート生成"
+category = "データ"
+
+[i18n.ja.settings.data_source]
+label = "データソース"
+description = "主要なデータソースの種類"
+
+[i18n.ja.settings.analysis_type]
+label = "分析タイプ"
+description = "デフォルトの分析アプローチ"
+
+[i18n.ja.settings.output_format]
+label = "出力形式"
+description = "分析結果の表示方法"
+
+[i18n.ja.settings.visualization]
+label = "可視化"
+description = "チャートやビジュアライゼーションを生成する"
+
+[i18n.ja.settings.auto_schedule]
+label = "定期レポート"
+description = "スケジュールに基づいてレポートを自動生成する"
+
+[i18n.ja.settings.report_frequency]
+label = "レポート頻度"
+description = "定期レポートの生成頻度"
+
+[i18n.ja.settings.confidence_threshold]
+label = "信頼度しきい値"
+description = "レポートに分析結果を含めるための最低信頼度"
+
+# ─── Spanish (Español) ────────────────────────────────────────────────────
+
+[i18n.es]
+name = "Hand de Analítica"
+description = "Agente autónomo de analítica de datos — recopilación, análisis, visualización, paneles de control e informes automatizados"
+category = "Datos"
+
+[i18n.es.settings.data_source]
+label = "Fuente de datos"
+description = "Tipo de fuente de datos principal"
+
+[i18n.es.settings.analysis_type]
+label = "Tipo de análisis"
+description = "Enfoque de análisis predeterminado"
+
+[i18n.es.settings.output_format]
+label = "Formato de salida"
+description = "Cómo presentar los resultados del análisis"
+
+[i18n.es.settings.visualization]
+label = "Visualización"
+description = "Generar gráficos y visualizaciones"
+
+[i18n.es.settings.auto_schedule]
+label = "Informes programados"
+description = "Generar informes automáticamente según un calendario"
+
+[i18n.es.settings.report_frequency]
+label = "Frecuencia de informes"
+description = "Con qué frecuencia generar los informes programados"
+
+[i18n.es.settings.confidence_threshold]
+label = "Umbral de confianza"
+description = "Nivel mínimo de confianza para incluir hallazgos en los informes"
+
+# ─── French (Français) ────────────────────────────────────────────────────
+
+[i18n.fr]
+name = "Hand Analytique"
+description = "Agent autonome d'analyse de données — collecte, analyse, visualisation, tableaux de bord et rapports automatisés"
+category = "Données"
+
+[i18n.fr.settings.data_source]
+label = "Source de données"
+description = "Type de source de données principal"
+
+[i18n.fr.settings.analysis_type]
+label = "Type d'analyse"
+description = "Approche d'analyse par défaut"
+
+[i18n.fr.settings.output_format]
+label = "Format de sortie"
+description = "Mode de présentation des résultats d'analyse"
+
+[i18n.fr.settings.visualization]
+label = "Visualisation"
+description = "Générer des graphiques et des visualisations"
+
+[i18n.fr.settings.auto_schedule]
+label = "Rapports programmés"
+description = "Générer automatiquement des rapports selon un calendrier"
+
+[i18n.fr.settings.report_frequency]
+label = "Fréquence des rapports"
+description = "Fréquence de génération des rapports programmés"
+
+[i18n.fr.settings.confidence_threshold]
+label = "Seuil de confiance"
+description = "Niveau de confiance minimum pour inclure les résultats dans les rapports"
+
+# ─── German (Deutsch) ────────────────────────────────────────────────────
+
+[i18n.de]
+name = "Analytik-Hand"
+description = "Autonomer Datenanalyse-Agent — Datenerfassung, Analyse, Visualisierung, Dashboards und automatisierte Berichte"
+category = "Daten"
+
+[i18n.de.settings.data_source]
+label = "Datenquelle"
+description = "Primärer Datenquellentyp"
+
+[i18n.de.settings.analysis_type]
+label = "Analysetyp"
+description = "Standard-Analyseansatz"
+
+[i18n.de.settings.output_format]
+label = "Ausgabeformat"
+description = "Darstellung der Analyseergebnisse"
+
+[i18n.de.settings.visualization]
+label = "Visualisierung"
+description = "Diagramme und Visualisierungen generieren"
+
+[i18n.de.settings.auto_schedule]
+label = "Geplante Berichte"
+description = "Berichte automatisch nach Zeitplan generieren"
+
+[i18n.de.settings.report_frequency]
+label = "Berichtshäufigkeit"
+description = "Häufigkeit der geplanten Berichtserstellung"
+
+[i18n.de.settings.confidence_threshold]
+label = "Konfidenzschwelle"
+description = "Mindest-Konfidenzniveau für die Aufnahme von Ergebnissen in Berichte"
+
+# ─── Korean (한국어) ────────────────────────────────────────────────────
+
+[i18n.ko]
+name = "데이터 분석 Hand"
+description = "자율 데이터 분석 에이전트 — 데이터 수집, 분석, 시각화, 대시보드 및 자동화 보고서"
+category = "데이터"
+
+[i18n.ko.settings.data_source]
+label = "데이터 소스"
+description = "주요 데이터 소스 유형"
+
+[i18n.ko.settings.analysis_type]
+label = "분석 유형"
+description = "기본 분석 방법"
+
+[i18n.ko.settings.output_format]
+label = "출력 형식"
+description = "분석 결과 표시 방식"
+
+[i18n.ko.settings.visualization]
+label = "시각화"
+description = "차트 및 시각화 콘텐츠 생성"
+
+[i18n.ko.settings.auto_schedule]
+label = "정기 보고서"
+description = "일정에 따라 자동으로 보고서 생성"
+
+[i18n.ko.settings.report_frequency]
+label = "보고서 빈도"
+description = "정기 보고서 생성 주기"
+
+[i18n.ko.settings.confidence_threshold]
+label = "신뢰도 임계값"
+description = "보고서에 분석 결과를 포함하기 위한 최소 신뢰도 수준"

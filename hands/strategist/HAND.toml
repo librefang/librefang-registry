@@ -378,6 +378,241 @@ token_consumption = "medium"
 default_active = true
 activation_warning = "Strategist hand runs continuously and performs strategic analysis, consuming tokens."
 
+# ─── Internationalization (optional) ─────────────────────────────────────────
+# All i18n sections are optional. Without them, the English values above are used.
+# To localize, add [i18n.LANG] sections (e.g. zh, ja, ko, es, fr, de).
+# Settings translations are also optional — omit to keep English labels.
+
+# ─── Chinese (简体中文) ────────────────────────────────────────────────────
+
 [i18n.zh]
 name = "策略分析 Hand"
 description = "自主策略分析师——市场研究、竞争分析、商业规划和战略建议"
+category = "生产力"
+
+[i18n.zh.settings.focus_area]
+label = "聚焦方向"
+description = "战略分析的主要方向"
+
+[i18n.zh.settings.analysis_depth]
+label = "分析深度"
+description = "每次战略分析的详尽程度"
+
+[i18n.zh.settings.industry]
+label = "行业"
+description = "重点分析的行业（例如 SaaS、金融科技、医疗健康）"
+
+[i18n.zh.settings.competitors]
+label = "主要竞争对手"
+description = "需要追踪的竞争对手列表（逗号分隔）"
+
+[i18n.zh.settings.auto_monitor]
+label = "自动监控"
+description = "自动追踪竞争对手动态和市场变化"
+
+[i18n.zh.settings.report_format]
+label = "报告格式"
+description = "战略报告的格式风格"
+
+[i18n.zh.settings.confidence_threshold]
+label = "置信度阈值"
+description = "报告中纳入分析结论的最低置信度"
+
+[i18n.zh.settings.frameworks]
+label = "首选分析框架"
+description = "优先使用的战略分析框架（逗号分隔，例如 SWOT,Porter,PESTEL）"
+
+# ─── Spanish (Español) ────────────────────────────────────────────────────
+
+[i18n.es]
+name = "Hand de Estrategia"
+description = "Analista estratégico autónomo — investigación de mercado, análisis competitivo, planificación empresarial y recomendaciones estratégicas"
+category = "Productividad"
+
+[i18n.es.settings.focus_area]
+label = "Área de enfoque"
+description = "Área principal del análisis estratégico"
+
+[i18n.es.settings.analysis_depth]
+label = "Profundidad del análisis"
+description = "Nivel de detalle de cada análisis estratégico"
+
+[i18n.es.settings.industry]
+label = "Industria"
+description = "Industria principal en la que enfocar el análisis (ej. SaaS, fintech, salud)"
+
+[i18n.es.settings.competitors]
+label = "Competidores clave"
+description = "Lista de competidores a rastrear separados por comas"
+
+[i18n.es.settings.auto_monitor]
+label = "Monitoreo automático"
+description = "Rastrear automáticamente movimientos de competidores y cambios del mercado"
+
+[i18n.es.settings.report_format]
+label = "Formato de informe"
+description = "Formato de los informes estratégicos"
+
+[i18n.es.settings.confidence_threshold]
+label = "Umbral de confianza"
+description = "Nivel mínimo de confianza para incluir hallazgos en los informes"
+
+[i18n.es.settings.frameworks]
+label = "Marcos de análisis preferidos"
+description = "Marcos estratégicos a priorizar (separados por comas, ej. SWOT, Porter, PESTEL)"
+
+# ─── Japanese (日本語) ────────────────────────────────────────────────────
+
+[i18n.ja]
+name = "戦略分析 Hand"
+description = "自律型戦略アナリスト——市場調査、競合分析、事業計画、戦略的提言"
+category = "生産性"
+
+[i18n.ja.settings.focus_area]
+label = "フォーカスエリア"
+description = "戦略分析の主な対象分野"
+
+[i18n.ja.settings.analysis_depth]
+label = "分析の深さ"
+description = "各戦略分析の詳細度"
+
+[i18n.ja.settings.industry]
+label = "業界"
+description = "分析の対象となる主要業界（例: SaaS、フィンテック、ヘルスケア）"
+
+[i18n.ja.settings.competitors]
+label = "主要な競合"
+description = "追跡する競合のリスト（カンマ区切り）"
+
+[i18n.ja.settings.auto_monitor]
+label = "自動監視"
+description = "競合の動向と市場の変化を自動的に追跡する"
+
+[i18n.ja.settings.report_format]
+label = "レポート形式"
+description = "戦略レポートのフォーマット"
+
+[i18n.ja.settings.confidence_threshold]
+label = "信頼度しきい値"
+description = "レポートに分析結果を含めるための最低信頼度"
+
+[i18n.ja.settings.frameworks]
+label = "優先フレームワーク"
+description = "優先的に使用する戦略分析フレームワーク（カンマ区切り、例: SWOT,Porter,PESTEL）"
+
+# ─── French (Français) ────────────────────────────────────────────────────
+
+[i18n.fr]
+name = "Hand Stratégique"
+description = "Analyste stratégique autonome — étude de marché, analyse concurrentielle, planification d'entreprise et recommandations stratégiques"
+category = "Productivité"
+
+[i18n.fr.settings.focus_area]
+label = "Domaine d'intérêt"
+description = "Domaine principal de l'analyse stratégique"
+
+[i18n.fr.settings.analysis_depth]
+label = "Profondeur d'analyse"
+description = "Niveau de détail de chaque analyse stratégique"
+
+[i18n.fr.settings.industry]
+label = "Secteur"
+description = "Secteur principal d'analyse (ex. SaaS, fintech, santé)"
+
+[i18n.fr.settings.competitors]
+label = "Concurrents clés"
+description = "Liste de concurrents à suivre séparée par des virgules"
+
+[i18n.fr.settings.auto_monitor]
+label = "Surveillance automatique"
+description = "Suivre automatiquement les mouvements des concurrents et les évolutions du marché"
+
+[i18n.fr.settings.report_format]
+label = "Format de rapport"
+description = "Format des rapports stratégiques"
+
+[i18n.fr.settings.confidence_threshold]
+label = "Seuil de confiance"
+description = "Niveau de confiance minimum pour inclure les résultats dans les rapports"
+
+[i18n.fr.settings.frameworks]
+label = "Cadres d'analyse préférés"
+description = "Cadres d'analyse stratégique à privilégier (séparés par des virgules, ex. SWOT, Porter, PESTEL)"
+
+# ─── German (Deutsch) ────────────────────────────────────────────────────
+
+[i18n.de]
+name = "Strategie-Hand"
+description = "Autonomer Strategieanalyst — Marktforschung, Wettbewerbsanalyse, Geschäftsplanung und strategische Empfehlungen"
+category = "Produktivität"
+
+[i18n.de.settings.focus_area]
+label = "Fokusbereich"
+description = "Hauptbereich der strategischen Analyse"
+
+[i18n.de.settings.analysis_depth]
+label = "Analysetiefe"
+description = "Detailgrad jeder strategischen Analyse"
+
+[i18n.de.settings.industry]
+label = "Branche"
+description = "Hauptbranche für die Analyse (z.B. SaaS, Fintech, Gesundheitswesen)"
+
+[i18n.de.settings.competitors]
+label = "Wichtige Wettbewerber"
+description = "Kommagetrennte Liste der zu verfolgenden Wettbewerber"
+
+[i18n.de.settings.auto_monitor]
+label = "Automatische Überwachung"
+description = "Wettbewerberbewegungen und Marktveränderungen automatisch verfolgen"
+
+[i18n.de.settings.report_format]
+label = "Berichtsformat"
+description = "Format der Strategieberichte"
+
+[i18n.de.settings.confidence_threshold]
+label = "Konfidenzschwelle"
+description = "Mindest-Konfidenzniveau für die Aufnahme von Ergebnissen in Berichte"
+
+[i18n.de.settings.frameworks]
+label = "Bevorzugte Analyse-Frameworks"
+description = "Bevorzugte strategische Analyse-Frameworks (kommagetrennt, z.B. SWOT, Porter, PESTEL)"
+
+# ─── Korean (한국어) ────────────────────────────────────────────────────
+
+[i18n.ko]
+name = "전략 분석 Hand"
+description = "자율 전략 분석가 — 시장 조사, 경쟁 분석, 사업 계획 및 전략적 권고"
+category = "생산성"
+
+[i18n.ko.settings.focus_area]
+label = "집중 분야"
+description = "전략 분석의 주요 방향"
+
+[i18n.ko.settings.analysis_depth]
+label = "분석 깊이"
+description = "각 전략 분석의 철저함 정도"
+
+[i18n.ko.settings.industry]
+label = "산업"
+description = "분석의 중점 산업 (예: SaaS, 핀테크, 헬스케어)"
+
+[i18n.ko.settings.competitors]
+label = "주요 경쟁사"
+description = "추적할 경쟁사 목록 (쉼표로 구분)"
+
+[i18n.ko.settings.auto_monitor]
+label = "자동 모니터링"
+description = "경쟁사 동향 및 시장 변화를 자동으로 추적"
+
+[i18n.ko.settings.report_format]
+label = "보고서 형식"
+description = "전략 보고서의 형식 스타일"
+
+[i18n.ko.settings.confidence_threshold]
+label = "신뢰도 임계값"
+description = "보고서에 분석 결과를 포함하기 위한 최소 신뢰도"
+
+[i18n.ko.settings.frameworks]
+label = "선호 분석 프레임워크"
+description = "우선적으로 사용할 전략 분석 프레임워크 (쉼표로 구분, 예: SWOT,Porter,PESTEL)"

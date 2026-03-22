@@ -247,3 +247,768 @@ Monitor account standing:
 - Build karma organically through genuine engagement
 - Avoid posting too frequently (triggers spam filters)
 - Diversify activity across multiple subreddits
+
+---
+
+## Worked Examples
+
+### Example 1: Product Launch on Reddit
+
+**Scenario**: You are launching a developer CLI tool and want to generate awareness on Reddit.
+
+**Phase 1 — Subreddit Research (Week 1-2 before launch)**
+
+Identify target subreddits and evaluate each:
+```
+Target subreddits (prioritized):
+1. r/commandline       — 350k members, accepts tool announcements, requires demo/screenshot
+2. r/programming       — 5M members, strict anti-marketing, only accepts substantial technical posts
+3. r/opensource         — 200k members, friendly to launches, requires repo link
+4. r/devtools           — 50k members, niche but highly targeted
+5. r/sideproject        — 100k members, launch-friendly, expects "what I built" framing
+```
+
+Fetch subreddit rules programmatically:
+```bash
+curl -s -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -A "LibreFang Reddit Hand/1.0" \
+  "https://oauth.reddit.com/r/commandline/about/rules"
+```
+
+**Phase 2 — Karma Building (Week 1-2 before launch)**
+
+Before posting about your product, build credibility:
+```
+Day 1-3:   Answer questions in r/commandline and r/programming (3-5 helpful comments/day)
+Day 4-7:   Share a useful tip or short guide unrelated to your product
+Day 8-10:  Engage in discussions, upvote good content, reply to others' posts
+Day 11-14: Share a technical deep-dive related to your product's domain (not the product itself)
+```
+
+**Phase 3 — Launch Posts (Launch Day)**
+
+Craft posts per subreddit culture:
+
+For **r/sideproject** (casual, story-driven):
+```
+Title: "I built a CLI tool that does X — here's what I learned"
+Body:
+- Paragraph on the problem and motivation
+- Short demo (gif/video link or code block)
+- What went wrong during development
+- Link to repo
+- "Would love feedback on X"
+```
+
+For **r/programming** (technical, anti-fluff):
+```
+Title: "X: an open-source CLI for Y written in Rust [with benchmarks]"
+Body:
+- Link directly to repo or blog post with technical depth
+- Performance comparison table
+- Architecture decisions
+- NO "please star my repo" language
+```
+
+For **r/commandline** (practical, demo-focused):
+```
+Title: "X — does Y in Z seconds from your terminal"
+Body:
+- Install instructions (one-liner)
+- Usage example with real output
+- Screenshot or asciinema link
+- Comparison to existing tools
+```
+
+**Phase 4 — Engagement (Launch Day + 48 hours)**
+
+Response templates:
+
+| Comment Type | Response Strategy |
+|-------------|-------------------|
+| "How does this compare to Z?" | Honest comparison table, acknowledge Z's strengths |
+| "Why not just use Z?" | Explain specific use cases where yours differs, no FUD |
+| "Found a bug" | Thank them, ask for details, open GitHub issue immediately |
+| "This is spam" | Do NOT argue. Briefly state this is your project and you're here to discuss |
+| "Great work!" | Thank them, ask what feature they'd want next |
+| Feature request | Acknowledge, add to roadmap, link to issue tracker |
+
+**Phase 5 — Follow-Up (Week after launch)**
+
+- Reply to every comment within 12 hours
+- Post an update in r/sideproject if you hit a milestone (e.g., "Hit 500 stars, here's what I changed based on Reddit feedback")
+- Do NOT cross-post the same content -- write fresh posts per subreddit
+
+---
+
+### Example 2: Community Monitoring and Sentiment Tracking
+
+**Scenario**: You manage a brand's Reddit presence and need to track mentions, sentiment, and emerging issues.
+
+**Step 1 — Set Up Monitoring Queries**
+
+Search for brand mentions across Reddit:
+```bash
+# Search all of Reddit for brand mentions
+curl -s -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -A "LibreFang Reddit Hand/1.0" \
+  "https://oauth.reddit.com/search?q=%22BrandName%22+OR+%22brandname%22&sort=new&limit=25&t=day"
+```
+
+Monitor specific subreddits where your audience lives:
+```bash
+# Monitor r/technology for relevant topics
+curl -s -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -A "LibreFang Reddit Hand/1.0" \
+  "https://oauth.reddit.com/r/technology/search?q=BrandName&restrict_sr=on&sort=new&limit=25&t=week"
+```
+
+**Step 2 — Sentiment Classification**
+
+Categorize each mention into:
+```
+POSITIVE   — Praise, recommendation, success story
+NEUTRAL    — Factual mention, question, comparison
+NEGATIVE   — Complaint, bug report, frustration
+CRITICAL   — Security concern, viral complaint, legal risk
+```
+
+Scoring signals from Reddit data:
+```
+score > 100 + sentiment=NEGATIVE  → High-priority alert (viral complaint)
+score > 50  + sentiment=POSITIVE  → Amplification opportunity
+num_comments > 20 + any sentiment → Active discussion, monitor closely
+upvote_ratio < 0.5                → Controversial, may escalate
+```
+
+**Step 3 — Alert Thresholds**
+
+| Condition | Action |
+|-----------|--------|
+| CRITICAL mention with score > 10 | Immediate alert to team |
+| 3+ NEGATIVE mentions in 24 hours | Trend alert, investigate root cause |
+| NEGATIVE post in subreddit > 500k members | Monitor hourly for 48 hours |
+| Competitor comparison post trending | Prepare factual response (do NOT post defensively) |
+
+**Step 4 — Weekly Report Template**
+
+```
+## Reddit Weekly Report — [Date Range]
+
+### Summary
+- Total mentions: X (up/down Y% from last week)
+- Sentiment breakdown: X% positive, Y% neutral, Z% negative
+- Top subreddits: r/sub1 (N mentions), r/sub2 (N mentions)
+
+### Trending Topics
+1. [Topic] — [Subreddit] — [Sentiment] — [Link]
+2. ...
+
+### Action Items
+- [ ] Respond to [specific thread] — negative sentiment, high visibility
+- [ ] Engage with [specific thread] — positive, amplification opportunity
+
+### Competitor Activity
+- [Competitor A]: N mentions, trending topics: ...
+- [Competitor B]: N mentions, trending topics: ...
+
+### Metrics
+| Metric | This Week | Last Week | Change |
+|--------|-----------|-----------|--------|
+| Total mentions | | | |
+| Positive % | | | |
+| Avg post score | | | |
+| Response time (hrs) | | | |
+```
+
+---
+
+### Example 3: AMA (Ask Me Anything) Management
+
+**Scenario**: You are organizing an AMA for a tech CEO in r/technology.
+
+**Preparation (2 Weeks Before)**
+
+1. Contact the subreddit moderators:
+   - Message the mod team through modmail (not individual DMs)
+   - Propose date, time, and AMA subject
+   - Ask about specific rules for AMAs (verification, scheduling, flair)
+   - Confirm the post format they expect
+
+2. Schedule for peak engagement:
+   ```
+   Recommended AMA times (US-centric subreddits):
+   - Tuesday-Thursday, 11:00 AM - 1:00 PM EST
+   - Avoid: weekends, holidays, major news days
+   - Post the AMA thread 30-60 minutes before the host starts answering
+   ```
+
+3. Prepare the AMA post:
+   ```
+   Title: "I'm [Name], [Role] at [Company]. [One-line hook]. AMA!"
+
+   Body:
+   - Brief intro (2-3 sentences about credentials)
+   - Why this AMA is happening (new product, milestone, event)
+   - Proof/verification (link to tweet, photo with timestamp)
+   - "I'll start answering at [TIME] [TIMEZONE]. Ask me anything!"
+   - Links to relevant context (website, blog post, prior work)
+   ```
+
+**During the AMA (2-3 Hours)**
+
+Real-time engagement strategy:
+```
+1. Sort comments by "best" and "new" alternately every 15 minutes
+2. Answer top-voted questions first (these set the tone)
+3. Answer at least 20-30 questions in a 2-hour session
+4. Mix short answers with detailed ones — avoid walls of text for every question
+5. Skip hostile/troll questions silently — do NOT acknowledge them
+6. For tough questions: answer honestly or say "I can't discuss that yet"
+7. Upvote good questions (even tough ones) — shows good faith
+```
+
+Response length guide:
+| Question Type | Response Length |
+|--------------|----------------|
+| Simple factual | 1-2 sentences |
+| Technical deep-dive | 2-3 paragraphs |
+| Personal/funny | 1-2 sentences, match the tone |
+| Critical/tough | 2-3 sentences, direct and honest |
+| Off-topic | Brief redirect or polite decline |
+
+**Follow-Up (24-48 Hours After)**
+
+- Post an edit to the original AMA: "Thanks everyone! I answered [N] questions. Check back — I'll try to answer a few more this week."
+- Answer 5-10 more highly-upvoted questions that were missed
+- Share the AMA link on other platforms (Twitter, LinkedIn) to drive continued engagement
+- Compile a "best of" summary with links to the strongest Q&A exchanges
+
+---
+
+## Advanced API Patterns
+
+### Pagination Handling
+
+Reddit uses cursor-based pagination with `after` and `before` fullnames.
+
+**Paginate through subreddit posts**:
+```bash
+# Page 1
+curl -s -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -A "LibreFang Reddit Hand/1.0" \
+  "https://oauth.reddit.com/r/SUBREDDIT/new?limit=100"
+# Response includes: "after": "t3_abc123"
+
+# Page 2
+curl -s -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -A "LibreFang Reddit Hand/1.0" \
+  "https://oauth.reddit.com/r/SUBREDDIT/new?limit=100&after=t3_abc123"
+# Response includes: "after": "t3_def456" (or null if last page)
+
+# Page 3
+curl -s -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -A "LibreFang Reddit Hand/1.0" \
+  "https://oauth.reddit.com/r/SUBREDDIT/new?limit=100&after=t3_def456"
+```
+
+Pagination rules:
+- `limit` max is 100 per request
+- `after` returns items chronologically older than the given fullname
+- `before` returns items chronologically newer (useful for "check for new posts since last poll")
+- When `after` is `null` in the response, you have reached the last page
+- Reddit caps listing depth at ~1000 items regardless of pagination
+
+**Paginate backward (newer items)**:
+```bash
+# Get posts newer than a known fullname
+curl -s -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -A "LibreFang Reddit Hand/1.0" \
+  "https://oauth.reddit.com/r/SUBREDDIT/new?limit=25&before=t3_abc123"
+```
+
+### Flair Management
+
+**Get available flairs for a subreddit**:
+```bash
+curl -s -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -A "LibreFang Reddit Hand/1.0" \
+  "https://oauth.reddit.com/r/SUBREDDIT/api/link_flair_v2"
+```
+
+**Submit a post with flair**:
+```bash
+curl -s -X POST -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -A "LibreFang Reddit Hand/1.0" \
+  -d "sr=SUBREDDIT&kind=self&title=TITLE&text=BODY&flair_id=FLAIR_ID&flair_text=FLAIR_TEXT" \
+  "https://oauth.reddit.com/api/submit"
+```
+
+**Set flair on an existing post** (requires mod or post author permissions):
+```bash
+curl -s -X POST -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -A "LibreFang Reddit Hand/1.0" \
+  -d "link=t3_POST_ID&flair_template_id=FLAIR_ID" \
+  "https://oauth.reddit.com/r/SUBREDDIT/api/selectflair"
+```
+
+### Moderation Endpoints
+
+These require moderator permissions on the target subreddit.
+
+**Get moderation queue**:
+```bash
+curl -s -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -A "LibreFang Reddit Hand/1.0" \
+  "https://oauth.reddit.com/r/SUBREDDIT/about/modqueue?limit=25"
+```
+
+**Approve a post/comment**:
+```bash
+curl -s -X POST -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -A "LibreFang Reddit Hand/1.0" \
+  -d "id=FULLNAME" \
+  "https://oauth.reddit.com/api/approve"
+```
+
+**Remove a post/comment**:
+```bash
+curl -s -X POST -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -A "LibreFang Reddit Hand/1.0" \
+  -d "id=FULLNAME&spam=false" \
+  "https://oauth.reddit.com/api/remove"
+```
+
+**Get moderation log**:
+```bash
+curl -s -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -A "LibreFang Reddit Hand/1.0" \
+  "https://oauth.reddit.com/r/SUBREDDIT/about/log?limit=25&type=removelink"
+```
+
+**Distinguish a comment as moderator**:
+```bash
+curl -s -X POST -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -A "LibreFang Reddit Hand/1.0" \
+  -d "id=FULLNAME&how=yes" \
+  "https://oauth.reddit.com/api/distinguish"
+```
+
+### Multi-Subreddit Monitoring
+
+**Monitor multiple subreddits in a single request**:
+```bash
+# Combine subreddits with "+" for a merged feed
+curl -s -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -A "LibreFang Reddit Hand/1.0" \
+  "https://oauth.reddit.com/r/python+rust+golang/new?limit=50"
+```
+
+**Search across multiple subreddits**:
+```bash
+# Use the subreddit field in search to restrict
+curl -s -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -A "LibreFang Reddit Hand/1.0" \
+  "https://oauth.reddit.com/search?q=BrandName+subreddit%3Apython+OR+subreddit%3Arust&sort=new&limit=25"
+```
+
+**Get subreddit metadata for comparison**:
+```bash
+curl -s -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -A "LibreFang Reddit Hand/1.0" \
+  "https://oauth.reddit.com/r/SUBREDDIT/about"
+```
+Key fields in response: `subscribers`, `active_user_count`, `created_utc`, `public_description`, `submit_text`, `submission_type`.
+
+### Polling Strategies for Real-Time Awareness
+
+Reddit has no webhook support. Use polling with these patterns:
+
+**Efficient polling loop**:
+```
+1. Fetch /r/SUBREDDIT/new?limit=10 every 60 seconds
+2. Store the fullname of the newest item seen
+3. On next poll, use ?before=LAST_SEEN_FULLNAME to get only new items
+4. If response is empty, no new posts — sleep and retry
+5. If response has items, process them and update LAST_SEEN_FULLNAME
+```
+
+**Polling frequency by priority**:
+| Monitoring Type | Poll Interval | Endpoint |
+|----------------|---------------|----------|
+| Brand crisis monitoring | 30-60 seconds | /search?q=brand&sort=new |
+| Subreddit new posts | 60-120 seconds | /r/SUB/new |
+| Comment replies to own posts | 120 seconds | /message/inbox |
+| Competitor mentions | 300 seconds | /search?q=competitor&sort=new |
+| Weekly trend analysis | Once daily | /r/SUB/top?t=day |
+
+**Respect rate limits while polling**:
+```
+At 30 requests/minute (app-only auth):
+- 1 subreddit at 60s interval = 1 req/min → can monitor ~25 subreddits
+- 1 search query at 60s interval = 1 req/min
+- Reserve 5 req/min for ad-hoc queries
+- Total budget: 30 req/min, plan accordingly
+```
+
+---
+
+## Subreddit Analysis Framework
+
+### Evaluating a Subreddit Before Posting
+
+Before investing effort in any subreddit, run this assessment:
+
+**Step 1 — Pull subreddit metadata**:
+```bash
+curl -s -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -A "LibreFang Reddit Hand/1.0" \
+  "https://oauth.reddit.com/r/SUBREDDIT/about" | python3 -c "
+import sys, json
+d = json.load(sys.stdin)['data']
+print(f'Subscribers: {d[\"subscribers\"]:,}')
+print(f'Active now: {d[\"active_user_count\"]:,}')
+print(f'Created: {d[\"created_utc\"]}')
+print(f'Type: {d[\"submission_type\"]}')
+print(f'Description: {d[\"public_description\"][:200]}')
+"
+```
+
+**Step 2 — Measure actual engagement** (not just subscriber count):
+
+```bash
+# Get top 25 hot posts and examine their scores and comment counts
+curl -s -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -A "LibreFang Reddit Hand/1.0" \
+  "https://oauth.reddit.com/r/SUBREDDIT/hot?limit=25"
+```
+
+Calculate from the response:
+```
+Engagement Score = median(post_scores) * median(num_comments)
+Activity Ratio = active_user_count / subscribers
+Health Indicator = (posts_per_day > 5) AND (Activity Ratio > 0.001)
+```
+
+**Step 3 — Subreddit quality scorecard**:
+
+| Factor | Good Sign | Bad Sign |
+|--------|-----------|----------|
+| Active/subscriber ratio | > 0.1% | < 0.01% |
+| Median hot post score | > 50 | < 10 |
+| Median comment count | > 10 | < 3 |
+| Posts per day | 5-50 | < 1 or > 500 (noise) |
+| Mod activity | Active modqueue, clear rules | No rules, spam in feed |
+| Top post age | Within last 24h | Weeks old (dead subreddit) |
+| Account age requirements | Reasonable (7 days) | None (spam-prone) or extreme (1 year) |
+
+### Peak Engagement Hours by Subreddit Type
+
+Optimal posting times vary by audience. All times in EST:
+
+| Subreddit Type | Peak Hours | Peak Days | Reasoning |
+|---------------|------------|-----------|-----------|
+| Tech/Programming | 9-11 AM EST | Tue-Thu | Developers browse during morning coffee |
+| Business/Startup | 7-9 AM EST | Mon-Wed | Professionals check before work |
+| Gaming | 6-10 PM EST | Fri-Sun | After work/school |
+| Science/Academic | 10 AM-12 PM EST | Mon-Wed | Researchers between tasks |
+| Lifestyle/Hobby | 12-2 PM EST, 7-9 PM EST | Any | Lunch breaks and evenings |
+| News/Politics | 7-9 AM EST | Mon-Fri | Morning news cycle |
+| Finance/Crypto | 8-10 AM EST | Mon-Fri | Pre-market and market open |
+
+To measure a specific subreddit's peak hours:
+```bash
+# Pull the last 100 posts and extract their timestamps
+curl -s -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -A "LibreFang Reddit Hand/1.0" \
+  "https://oauth.reddit.com/r/SUBREDDIT/new?limit=100"
+# Parse created_utc for each post and bucket by hour-of-day
+# Cross-reference with score to find high-score hours, not just high-volume hours
+```
+
+### Competitor Presence Analysis
+
+**Step 1 — Search for competitor mentions**:
+```bash
+curl -s -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -A "LibreFang Reddit Hand/1.0" \
+  "https://oauth.reddit.com/search?q=%22CompetitorName%22&sort=new&t=month&limit=100"
+```
+
+**Step 2 — Build a competitor activity profile**:
+```
+For each competitor, track:
+- Which subreddits they are mentioned in (and by whom -- users vs the company)
+- Frequency of mentions (per week)
+- Sentiment of mentions (positive / neutral / negative)
+- Whether they have official accounts engaging in threads
+- Common complaints about them (your opportunity)
+- Common praise for them (your benchmark)
+```
+
+**Step 3 — Competitor comparison matrix**:
+| Metric | Your Brand | Competitor A | Competitor B |
+|--------|-----------|-------------|-------------|
+| Weekly mentions | | | |
+| Positive sentiment % | | | |
+| Subreddits present in | | | |
+| Official account activity | | | |
+| Top complaint theme | | | |
+| Top praise theme | | | |
+
+### Content Format Preferences by Subreddit Type
+
+| Subreddit Type | Preferred Format | Avoid |
+|---------------|-----------------|-------|
+| Technical (r/programming, r/rust) | Long-form text, code blocks, benchmarks | Short posts, images without context |
+| Q&A (r/AskReddit, r/askscience) | Concise questions, detailed answers | Link-only posts |
+| Showcase (r/sideproject, r/webdev) | Screenshots, demos, before/after | Text-only without visuals |
+| News (r/technology, r/science) | Link to source with summary comment | Self-post opinion pieces |
+| Discussion (r/startups, r/cscareerquestions) | Personal experience, specific details | Generic advice, platitudes |
+| Meme-friendly (r/ProgrammerHumor) | Images, short and punchy | Long text posts |
+
+---
+
+## Growth & Reputation Building
+
+### Karma Building Strategies (Comment-First Approach)
+
+New accounts or accounts entering a new subreddit should follow the comment-first approach:
+
+**Week 1-2: Listen and respond**
+```
+1. Sort by "new" in your target subreddits
+2. Find questions you can genuinely answer
+3. Write substantive, helpful comments (3+ sentences with specifics)
+4. Respond to 3-5 threads per day
+5. Do NOT mention your product, company, or project at all
+```
+
+**Week 3-4: Establish presence**
+```
+1. Start sharing relevant resources (not yours) that help the community
+2. Engage in discussions about trends and opinions in your domain
+3. Build recognition by being consistently helpful
+4. Your username should start becoming familiar to regulars
+```
+
+**Week 5+: Contribute original content**
+```
+1. Share a technical write-up, tutorial, or analysis (unrelated to your product)
+2. If well-received, you have earned the trust to occasionally mention your work
+3. Always frame self-promotional content as "I built X" (transparent) not "Check out X" (spammy)
+4. Maintain the 10:1 ratio — 10 helpful contributions for every 1 self-promotional post
+```
+
+Karma accumulation benchmarks:
+| Milestone | Unlocks |
+|-----------|---------|
+| 10 comment karma | Bypass most anti-spam filters |
+| 50 comment karma | Reduced posting cooldowns |
+| 100+ comment karma in a subreddit | Trusted contributor status in some subreddits |
+| 1000+ total karma | Access to r/lounge and some restricted subreddits |
+
+### Building Authority in Niche Subreddits
+
+Authority is built through consistency and expertise, not volume:
+
+1. **Pick 3-5 subreddits maximum** -- spreading across 20 subreddits builds no authority anywhere
+2. **Develop a recognizable voice** -- consistent formatting, depth of answers, specific expertise area
+3. **Answer the hard questions** -- skip the easy ones that 10 people will answer; tackle the ones that require real expertise
+4. **Follow up on your own answers** -- if someone asks a follow-up, respond promptly
+5. **Cite sources and show work** -- "I benchmarked this myself, here are the numbers" is worth 100x "I think X is faster"
+6. **Accept corrections gracefully** -- being wrong publicly and handling it well builds more trust than never being wrong
+
+### Cross-Posting Etiquette and Strategy
+
+Cross-posting (sharing a post from one subreddit to another) has specific norms:
+
+**Do:**
+- Use Reddit's built-in cross-post feature (preserves attribution)
+- Cross-post to subreddits where the content genuinely fits
+- Add a comment explaining why it is relevant to the new subreddit
+- Wait at least a few hours between cross-posts (avoid appearing spammy)
+
+**Don't:**
+- Cross-post to more than 2-3 subreddits
+- Cross-post to subreddits that explicitly ban it (check rules)
+- Copy-paste the same text as a new post instead of cross-posting (treated as spam)
+- Cross-post your own content excessively
+
+**Strategic cross-posting pattern**:
+```
+1. Post original content in the most specific/niche subreddit first
+2. If it gains traction (>20 upvotes, positive comments), cross-post to a broader subreddit
+3. Customize the title for the new audience
+4. Engage in comments on BOTH subreddits
+```
+
+### Handling Negative Feedback and Criticism
+
+Negative feedback on Reddit is public and permanent. Handle it strategically:
+
+**Response framework**:
+```
+1. PAUSE — Do not respond within the first 15 minutes. Emotional responses backfire.
+2. ASSESS — Is the criticism valid, partially valid, or trolling?
+3. RESPOND (or don't):
+   - Valid criticism: Acknowledge, thank them, explain what you will do about it
+   - Partially valid: Acknowledge the valid part, clarify the rest with facts
+   - Trolling/bad faith: Do NOT respond. Silence is the best response.
+4. FOLLOW UP — If you promised to fix something, come back and confirm when it is done
+```
+
+**Response templates by situation**:
+
+| Situation | Response Pattern |
+|-----------|-----------------|
+| Bug report | "Thanks for reporting this. Can you share [details]? I've opened [issue link] to track it." |
+| Feature complaint | "That's fair feedback. Here's why we made that choice: [reason]. We're considering [alternative]." |
+| Unfair comparison | "Good question. Here's a direct comparison: [facts]. [Competitor] is great at X, we focus on Y." |
+| Personal attack | Do not respond. Report if it violates rules. |
+| "This is trash" | "Sorry it didn't work for you. What specifically went wrong? Happy to help." |
+
+---
+
+## Analytics & Reporting
+
+### Post Performance Metrics
+
+Key metrics to track for every post:
+
+| Metric | Where to Find | What It Means |
+|--------|--------------|---------------|
+| Score | `data.score` | Net upvotes (upvotes minus downvotes) |
+| Upvote ratio | `data.upvote_ratio` | 0.0-1.0, percentage of votes that are upvotes |
+| Number of comments | `data.num_comments` | Total comments including replies |
+| Awards | `data.all_awardings` | List of awards received |
+| Cross-posts | `data.num_crossposts` | How many times others cross-posted it |
+
+**Fetch post performance**:
+```bash
+curl -s -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -A "LibreFang Reddit Hand/1.0" \
+  "https://oauth.reddit.com/by_id/t3_POST_ID"
+```
+
+**Quality indicators**:
+```
+High engagement:    upvote_ratio > 0.85 AND num_comments > 20
+Controversial:      upvote_ratio 0.40-0.60 (heavily split votes)
+Viral potential:    score > 100 within first 2 hours
+Dead on arrival:    score < 5 after 4 hours
+Comment quality:    avg comment length > 100 chars (real discussion vs memes)
+```
+
+### Engagement Trend Tracking
+
+Track performance over time by recording metrics at regular intervals:
+
+```
+For each post, capture at:
+- T+1 hour:   score, num_comments, upvote_ratio
+- T+4 hours:  score, num_comments, upvote_ratio
+- T+24 hours: score, num_comments, upvote_ratio (final snapshot)
+
+For account-level tracking:
+- Weekly comment karma change
+- Weekly post karma change
+- Number of posts/comments per subreddit
+- Average score per post by subreddit
+```
+
+**Growth trajectory assessment**:
+| Period | Healthy Growth | Stagnant | Declining |
+|--------|---------------|----------|-----------|
+| Weekly karma change | > +50 | -10 to +10 | < -10 |
+| Avg post score trend | Increasing | Flat | Decreasing |
+| Comment reply rate | > 30% of comments get replies | 10-30% | < 10% |
+| New subreddit penetration | 1-2 new per month | 0 | Banned from any |
+
+### ROI Measurement for Business-Related Reddit Activity
+
+For teams using Reddit for marketing, community building, or support:
+
+**Trackable outcomes**:
+```
+Direct metrics:
+- Referral traffic from Reddit (track with UTM parameters in shared links)
+- Sign-ups/downloads from Reddit referral
+- Support tickets deflected by Reddit answers
+- GitHub stars/forks from Reddit posts (track with ?ref=reddit)
+
+Indirect metrics:
+- Brand mention volume over time
+- Sentiment ratio trend (positive / total mentions)
+- Share of voice vs competitors on Reddit
+- Community size if you run your own subreddit
+```
+
+**Cost calculation**:
+```
+Time invested:  Hours per week on Reddit * hourly cost
+Content cost:   Time creating Reddit-specific content
+Tool cost:      Monitoring tools, analytics
+─────────────────────────────────────────────
+Total cost/week: Sum of above
+
+ROI = (Value of outcomes - Total cost) / Total cost
+```
+
+**Value assignment for outcomes**:
+| Outcome | Suggested Valuation Method |
+|---------|--------------------------|
+| Referral sign-up | Same as other channel CAC |
+| Support ticket deflected | Average support ticket cost |
+| GitHub star from Reddit | Track conversion to paying user |
+| Positive brand mention | Equivalent ad impression value |
+| Viral post (>1000 score) | Equivalent paid reach cost |
+
+### Weekly Reddit Activity Report Template
+
+```
+## Reddit Activity Report — Week of [Date]
+
+### Account Health
+- Current karma: [post] / [comment]
+- Karma change this week: +/- [N]
+- Account age: [N] days
+- Active subreddits: [list]
+
+### Content Published
+| Date | Subreddit | Type | Title | Score | Comments | Upvote Ratio |
+|------|-----------|------|-------|-------|----------|-------------|
+| | | | | | | |
+
+### Comments Made
+- Total comments: [N]
+- Avg comment score: [N]
+- Top comment: [link] (score: [N])
+- Subreddit breakdown: r/sub1 ([N]), r/sub2 ([N])
+
+### Brand Mentions (External)
+- Total mentions found: [N]
+- Sentiment: [N]% positive, [N]% neutral, [N]% negative
+- Notable threads:
+  1. [Thread title] — [subreddit] — [sentiment] — [link]
+  2. ...
+
+### Engagement Metrics
+| Metric | This Week | Last Week | Trend |
+|--------|-----------|-----------|-------|
+| Posts published | | | |
+| Total post score | | | |
+| Comments made | | | |
+| Replies received | | | |
+| Avg response time | | | |
+
+### Referral Traffic (if tracked)
+- Clicks from Reddit: [N]
+- Sign-ups from Reddit: [N]
+- Top referral post: [link]
+
+### Next Week Plan
+- [ ] Target subreddits: [list]
+- [ ] Content planned: [description]
+- [ ] Threads to follow up on: [links]
+```

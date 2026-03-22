@@ -423,6 +423,241 @@ frequency = "hourly"
 token_consumption = "medium"
 default_active = false
 
+# ─── Internationalization (optional) ─────────────────────────────────────────
+# All i18n sections are optional. Without them, the English values above are used.
+# To localize, add [i18n.LANG] sections (e.g. zh, ja, ko, es, fr, de).
+# Settings translations are also optional — omit to keep English labels.
+
+# ─── Chinese (简体中文) ────────────────────────────────────────────────────
+
 [i18n.zh]
 name = "Reddit Hand"
 description = "自主 Reddit 管理——监控子版块、发布内容、回复帖子并追踪 Karma 和互动"
+category = "通信"
+
+[i18n.zh.settings.subreddits]
+label = "子版块"
+description = "要监控的子版块列表（逗号分隔，例如 rust,programming,machinelearning）"
+
+[i18n.zh.settings.monitor_mode]
+label = "监控模式"
+description = "在监控的子版块中追踪哪些内容"
+
+[i18n.zh.settings.auto_reply]
+label = "自动回复"
+description = "自动回复相关的帖子和评论"
+
+[i18n.zh.settings.post_frequency]
+label = "发布频率"
+description = "创建原创帖子的频率"
+
+[i18n.zh.settings.content_style]
+label = "内容风格"
+description = "帖子和回复的语气和风格"
+
+[i18n.zh.settings.approval_mode]
+label = "审批模式"
+description = "将帖子和回复加入队列等待审核，而非直接发布"
+
+[i18n.zh.settings.min_karma_to_post]
+label = "最低发帖 Karma"
+description = "仅在账户拥有至少此数量 Karma 的子版块中发帖"
+
+[i18n.zh.settings.max_reply_depth]
+label = "最大回复深度"
+description = "回复的最大评论嵌套深度（深层嵌套的可见度较低）"
+
+# ─── Spanish (Español) ────────────────────────────────────────────────────
+
+[i18n.es]
+name = "Hand de Reddit"
+description = "Gestor autónomo de Reddit — monitorea subreddits, publica contenido, responde en hilos y rastrea karma e interacciones"
+category = "Comunicación"
+
+[i18n.es.settings.subreddits]
+label = "Subreddits"
+description = "Lista de subreddits a monitorear separados por comas (ej. rust,programming,machinelearning)"
+
+[i18n.es.settings.monitor_mode]
+label = "Modo de monitoreo"
+description = "Qué rastrear en los subreddits monitoreados"
+
+[i18n.es.settings.auto_reply]
+label = "Respuesta automática"
+description = "Responder automáticamente a publicaciones y comentarios relevantes"
+
+[i18n.es.settings.post_frequency]
+label = "Frecuencia de publicación"
+description = "Con qué frecuencia crear publicaciones originales"
+
+[i18n.es.settings.content_style]
+label = "Estilo de contenido"
+description = "Tono y enfoque para publicaciones y respuestas"
+
+[i18n.es.settings.approval_mode]
+label = "Modo de aprobación"
+description = "Poner publicaciones y respuestas en cola para revisión en lugar de publicarlas directamente"
+
+[i18n.es.settings.min_karma_to_post]
+label = "Karma mínimo para publicar"
+description = "Solo publicar en subreddits donde la cuenta tenga al menos este nivel de karma"
+
+[i18n.es.settings.max_reply_depth]
+label = "Profundidad máxima de respuesta"
+description = "Profundidad máxima del hilo de comentarios para responder (los hilos más profundos tienen menos visibilidad)"
+
+# ─── Japanese (日本語) ────────────────────────────────────────────────────
+
+[i18n.ja]
+name = "Reddit Hand"
+description = "自律型Redditマネージャー——サブレディットの監視、コンテンツ投稿、スレッドへの返信、Karmaとエンゲージメントの追跡"
+category = "コミュニケーション"
+
+[i18n.ja.settings.subreddits]
+label = "サブレディット"
+description = "監視するサブレディットのリスト（カンマ区切り、例: rust,programming,machinelearning）"
+
+[i18n.ja.settings.monitor_mode]
+label = "監視モード"
+description = "監視対象のサブレディットで追跡する内容"
+
+[i18n.ja.settings.auto_reply]
+label = "自動返信"
+description = "関連する投稿やコメントに自動で返信する"
+
+[i18n.ja.settings.post_frequency]
+label = "投稿頻度"
+description = "オリジナル投稿を作成する頻度"
+
+[i18n.ja.settings.content_style]
+label = "コンテンツスタイル"
+description = "投稿と返信のトーンとアプローチ"
+
+[i18n.ja.settings.approval_mode]
+label = "承認モード"
+description = "投稿や返信を直接公開せず、レビュー用キューに追加する"
+
+[i18n.ja.settings.min_karma_to_post]
+label = "投稿に必要な最低Karma"
+description = "アカウントが最低このKarmaを持つサブレディットでのみ投稿する"
+
+[i18n.ja.settings.max_reply_depth]
+label = "最大返信深度"
+description = "返信するコメントスレッドの最大ネスト深度（深いスレッドほど可視性が低い）"
+
+# ─── French (Français) ────────────────────────────────────────────────────
+
+[i18n.fr]
+name = "Hand Reddit"
+description = "Gestionnaire Reddit autonome — surveille les subreddits, publie du contenu, répond dans les fils et suit le karma et l'engagement"
+category = "Communication"
+
+[i18n.fr.settings.subreddits]
+label = "Subreddits"
+description = "Liste de subreddits à surveiller séparés par des virgules (ex. rust,programming,machinelearning)"
+
+[i18n.fr.settings.monitor_mode]
+label = "Mode de surveillance"
+description = "Ce qu'il faut suivre dans les subreddits surveillés"
+
+[i18n.fr.settings.auto_reply]
+label = "Réponse automatique"
+description = "Répondre automatiquement aux publications et commentaires pertinents"
+
+[i18n.fr.settings.post_frequency]
+label = "Fréquence de publication"
+description = "Fréquence de création de publications originales"
+
+[i18n.fr.settings.content_style]
+label = "Style de contenu"
+description = "Ton et approche pour les publications et réponses"
+
+[i18n.fr.settings.approval_mode]
+label = "Mode d'approbation"
+description = "Mettre les publications et réponses en file d'attente pour révision au lieu de les publier directement"
+
+[i18n.fr.settings.min_karma_to_post]
+label = "Karma minimum pour publier"
+description = "Ne publier que dans les subreddits où le compte possède au moins ce niveau de karma"
+
+[i18n.fr.settings.max_reply_depth]
+label = "Profondeur maximale de réponse"
+description = "Profondeur maximale d'imbrication des commentaires pour répondre (les fils plus profonds ont moins de visibilité)"
+
+# ─── German (Deutsch) ────────────────────────────────────────────────────
+
+[i18n.de]
+name = "Reddit-Hand"
+description = "Autonomer Reddit-Manager — überwacht Subreddits, postet Inhalte, antwortet in Threads und verfolgt Karma und Engagement"
+category = "Kommunikation"
+
+[i18n.de.settings.subreddits]
+label = "Subreddits"
+description = "Kommagetrennte Liste der zu überwachenden Subreddits (z.B. rust,programming,machinelearning)"
+
+[i18n.de.settings.monitor_mode]
+label = "Überwachungsmodus"
+description = "Was in den überwachten Subreddits verfolgt werden soll"
+
+[i18n.de.settings.auto_reply]
+label = "Automatische Antwort"
+description = "Automatisch auf relevante Beiträge und Kommentare antworten"
+
+[i18n.de.settings.post_frequency]
+label = "Veröffentlichungshäufigkeit"
+description = "Wie oft originale Beiträge erstellt werden"
+
+[i18n.de.settings.content_style]
+label = "Inhaltsstil"
+description = "Ton und Ansatz für Beiträge und Antworten"
+
+[i18n.de.settings.approval_mode]
+label = "Genehmigungsmodus"
+description = "Beiträge und Antworten zur Überprüfung in die Warteschlange stellen, anstatt sie direkt zu veröffentlichen"
+
+[i18n.de.settings.min_karma_to_post]
+label = "Mindest-Karma zum Posten"
+description = "Nur in Subreddits posten, in denen das Konto mindestens dieses Karma-Level hat"
+
+[i18n.de.settings.max_reply_depth]
+label = "Maximale Antworttiefe"
+description = "Maximale Verschachtelungstiefe für Kommentarantworten (tiefere Threads haben geringere Sichtbarkeit)"
+
+# ─── Korean (한국어) ────────────────────────────────────────────────────
+
+[i18n.ko]
+name = "Reddit Hand"
+description = "자율 Reddit 관리 — 서브레딧 모니터링, 콘텐츠 게시, 스레드 댓글 및 카르마와 참여도 추적"
+category = "커뮤니케이션"
+
+[i18n.ko.settings.subreddits]
+label = "서브레딧"
+description = "모니터링할 서브레딧 목록 (쉼표로 구분, 예: rust,programming,machinelearning)"
+
+[i18n.ko.settings.monitor_mode]
+label = "모니터링 모드"
+description = "모니터링 대상 서브레딧에서 추적할 콘텐츠"
+
+[i18n.ko.settings.auto_reply]
+label = "자동 답글"
+description = "관련 게시물과 댓글에 자동으로 답글 작성"
+
+[i18n.ko.settings.post_frequency]
+label = "게시 빈도"
+description = "원본 게시물 작성 주기"
+
+[i18n.ko.settings.content_style]
+label = "콘텐츠 스타일"
+description = "게시물과 답글의 어조와 접근 방식"
+
+[i18n.ko.settings.approval_mode]
+label = "승인 모드"
+description = "게시물과 답글을 직접 게시하지 않고 대기열에 추가하여 검토"
+
+[i18n.ko.settings.min_karma_to_post]
+label = "최소 게시 카르마"
+description = "계정이 최소 이만큼의 카르마를 보유한 서브레딧에서만 게시"
+
+[i18n.ko.settings.max_reply_depth]
+label = "최대 답글 깊이"
+description = "답글 작성의 최대 댓글 중첩 깊이 (깊은 중첩일수록 노출도 감소)"

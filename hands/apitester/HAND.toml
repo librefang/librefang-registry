@@ -460,6 +460,265 @@ token_consumption = "medium"
 default_active = false
 activation_warning = "API Tester hand runs continuously, consuming tokens. Use on-demand for specific tests."
 
+# ─── Internationalization (optional) ─────────────────────────────────────────
+# All i18n sections are optional. Without them, the English values above are used.
+# To localize, add [i18n.LANG] sections (e.g. zh, ja, ko, es, fr, de).
+# Settings translations are also optional — omit to keep English labels.
+
+# ─── Chinese (简体中文) ────────────────────────────────────────────────────
+
 [i18n.zh]
 name = "API 测试 Hand"
 description = "自主 API 测试智能体——端点发现、请求验证、负载测试和回归检测"
+category = "开发"
+
+[i18n.zh.settings.base_url]
+label = "基础 URL"
+description = "待测试 API 的基础 URL（例如 https://api.example.com/v1）"
+
+[i18n.zh.settings.auth_type]
+label = "认证方式"
+description = "API 请求的认证方式"
+
+[i18n.zh.settings.auth_token]
+label = "认证令牌 / API 密钥"
+description = "Bearer 令牌、API 密钥或 Base64 编码的凭据，取决于认证方式"
+
+[i18n.zh.settings.test_mode]
+label = "测试模式"
+description = "执行的 API 测试类型"
+
+[i18n.zh.settings.openapi_spec_url]
+label = "OpenAPI 规范 URL"
+description = "OpenAPI/Swagger 规范的 URL（例如 /openapi.json）。留空则自动发现。"
+
+[i18n.zh.settings.auto_schedule]
+label = "自动定时"
+description = "按计划自动运行测试"
+
+[i18n.zh.settings.test_frequency]
+label = "测试频率"
+description = "定时测试的执行频率"
+
+[i18n.zh.settings.fail_on_error]
+label = "严格模式"
+description = "将任何非 2xx 响应视为失败（而非允许预期的错误码）"
+
+[i18n.zh.settings.approval_mode]
+label = "审批模式"
+description = "将测试计划和破坏性请求写入队列文件供审核，而非直接执行"
+
+# ─── Japanese (日本語) ────────────────────────────────────────────────────
+
+[i18n.ja]
+name = "APIテスト Hand"
+description = "自律型APIテストエージェント——エンドポイント検出、リクエスト検証、負荷テスト、リグレッション検出"
+category = "開発"
+
+[i18n.ja.settings.base_url]
+label = "ベースURL"
+description = "テスト対象APIのベースURL（例: https://api.example.com/v1）"
+
+[i18n.ja.settings.auth_type]
+label = "認証方式"
+description = "APIリクエストの認証方法"
+
+[i18n.ja.settings.auth_token]
+label = "認証トークン / APIキー"
+description = "認証方式に応じたBearerトークン、APIキー、またはBase64エンコードされた資格情報"
+
+[i18n.ja.settings.test_mode]
+label = "テストモード"
+description = "実行するAPIテストの種類"
+
+[i18n.ja.settings.openapi_spec_url]
+label = "OpenAPI仕様URL"
+description = "OpenAPI/Swagger仕様のURL（例: /openapi.json）。空欄にすると自動検出します。"
+
+[i18n.ja.settings.auto_schedule]
+label = "自動スケジュール"
+description = "スケジュールに基づいてテストを自動実行する"
+
+[i18n.ja.settings.test_frequency]
+label = "テスト頻度"
+description = "定期テストの実行頻度"
+
+[i18n.ja.settings.fail_on_error]
+label = "厳格モード"
+description = "2xx以外のレスポンスをすべて失敗として扱う（期待されるエラーコードを許容しない）"
+
+[i18n.ja.settings.approval_mode]
+label = "承認モード"
+description = "テスト計画や破壊的リクエストを直接実行せず、レビュー用のキューファイルに書き出す"
+
+# ─── Spanish (Español) ────────────────────────────────────────────────────
+
+[i18n.es]
+name = "Hand de Pruebas API"
+description = "Agente autónomo de pruebas de API — descubrimiento de endpoints, validación de peticiones, pruebas de carga y detección de regresiones"
+category = "Desarrollo"
+
+[i18n.es.settings.base_url]
+label = "URL base"
+description = "URL base de la API a probar (ej. https://api.example.com/v1)"
+
+[i18n.es.settings.auth_type]
+label = "Tipo de autenticación"
+description = "Cómo autenticar las peticiones a la API"
+
+[i18n.es.settings.auth_token]
+label = "Token de autenticación / Clave API"
+description = "Token Bearer, clave API o credenciales codificadas en Base64 según el tipo de autenticación"
+
+[i18n.es.settings.test_mode]
+label = "Modo de prueba"
+description = "Qué tipo de pruebas de API realizar"
+
+[i18n.es.settings.openapi_spec_url]
+label = "URL de especificación OpenAPI"
+description = "URL de la especificación OpenAPI/Swagger (ej. /openapi.json). Dejar vacío para descubrimiento automático."
+
+[i18n.es.settings.auto_schedule]
+label = "Programación automática"
+description = "Ejecutar pruebas automáticamente según un calendario"
+
+[i18n.es.settings.test_frequency]
+label = "Frecuencia de pruebas"
+description = "Con qué frecuencia ejecutar las pruebas programadas"
+
+[i18n.es.settings.fail_on_error]
+label = "Modo estricto"
+description = "Tratar cualquier respuesta no 2xx como un fallo (en lugar de permitir códigos de error esperados)"
+
+[i18n.es.settings.approval_mode]
+label = "Modo de aprobación"
+description = "Escribir planes de prueba y peticiones destructivas en un archivo de cola para revisión en lugar de ejecutarlos directamente"
+
+# ─── French (Français) ────────────────────────────────────────────────────
+
+[i18n.fr]
+name = "Hand de Test API"
+description = "Agent autonome de test d'API — découverte de points de terminaison, validation de requêtes, tests de charge et détection de régression"
+category = "Développement"
+
+[i18n.fr.settings.base_url]
+label = "URL de base"
+description = "URL de base de l'API à tester (ex. https://api.example.com/v1)"
+
+[i18n.fr.settings.auth_type]
+label = "Type d'authentification"
+description = "Méthode d'authentification des requêtes API"
+
+[i18n.fr.settings.auth_token]
+label = "Jeton d'authentification / Clé API"
+description = "Jeton Bearer, clé API ou identifiants encodés en Base64 selon le type d'authentification"
+
+[i18n.fr.settings.test_mode]
+label = "Mode de test"
+description = "Type de tests API à exécuter"
+
+[i18n.fr.settings.openapi_spec_url]
+label = "URL de spécification OpenAPI"
+description = "URL de la spécification OpenAPI/Swagger (ex. /openapi.json). Laisser vide pour la découverte automatique."
+
+[i18n.fr.settings.auto_schedule]
+label = "Planification automatique"
+description = "Exécuter automatiquement les tests selon un calendrier"
+
+[i18n.fr.settings.test_frequency]
+label = "Fréquence des tests"
+description = "Fréquence d'exécution des tests planifiés"
+
+[i18n.fr.settings.fail_on_error]
+label = "Mode strict"
+description = "Traiter toute réponse non 2xx comme un échec (au lieu d'autoriser les codes d'erreur attendus)"
+
+[i18n.fr.settings.approval_mode]
+label = "Mode d'approbation"
+description = "Écrire les plans de test et requêtes destructives dans un fichier d'attente pour révision au lieu de les exécuter directement"
+
+# ─── German (Deutsch) ────────────────────────────────────────────────────
+
+[i18n.de]
+name = "API-Test-Hand"
+description = "Autonomer API-Test-Agent — Endpunkt-Erkennung, Anfrage-Validierung, Lasttests und Regressionserkennung"
+category = "Entwicklung"
+
+[i18n.de.settings.base_url]
+label = "Basis-URL"
+description = "Basis-URL der zu testenden API (z.B. https://api.example.com/v1)"
+
+[i18n.de.settings.auth_type]
+label = "Authentifizierungstyp"
+description = "Authentifizierungsmethode für API-Anfragen"
+
+[i18n.de.settings.auth_token]
+label = "Authentifizierungstoken / API-Schlüssel"
+description = "Bearer-Token, API-Schlüssel oder Base64-kodierte Anmeldedaten je nach Authentifizierungstyp"
+
+[i18n.de.settings.test_mode]
+label = "Testmodus"
+description = "Art der durchzuführenden API-Tests"
+
+[i18n.de.settings.openapi_spec_url]
+label = "OpenAPI-Spezifikations-URL"
+description = "URL der OpenAPI/Swagger-Spezifikation (z.B. /openapi.json). Leer lassen für automatische Erkennung."
+
+[i18n.de.settings.auto_schedule]
+label = "Automatische Planung"
+description = "Tests automatisch nach Zeitplan ausführen"
+
+[i18n.de.settings.test_frequency]
+label = "Testhäufigkeit"
+description = "Ausführungshäufigkeit der geplanten Tests"
+
+[i18n.de.settings.fail_on_error]
+label = "Strikter Modus"
+description = "Jede Nicht-2xx-Antwort als Fehler behandeln (anstatt erwartete Fehlercodes zuzulassen)"
+
+[i18n.de.settings.approval_mode]
+label = "Genehmigungsmodus"
+description = "Testpläne und destruktive Anfragen in eine Warteschlange zur Überprüfung schreiben, anstatt sie direkt auszuführen"
+
+# ─── Korean (한국어) ────────────────────────────────────────────────────
+
+[i18n.ko]
+name = "API 테스트 Hand"
+description = "자율 API 테스트 에이전트 — 엔드포인트 탐색, 요청 검증, 부하 테스트 및 회귀 감지"
+category = "개발"
+
+[i18n.ko.settings.base_url]
+label = "기본 URL"
+description = "테스트할 API의 기본 URL (예: https://api.example.com/v1)"
+
+[i18n.ko.settings.auth_type]
+label = "인증 방식"
+description = "API 요청의 인증 방식"
+
+[i18n.ko.settings.auth_token]
+label = "인증 토큰 / API 키"
+description = "인증 방식에 따른 Bearer 토큰, API 키 또는 Base64 인코딩 자격 증명"
+
+[i18n.ko.settings.test_mode]
+label = "테스트 모드"
+description = "수행할 API 테스트 유형"
+
+[i18n.ko.settings.openapi_spec_url]
+label = "OpenAPI 스펙 URL"
+description = "OpenAPI/Swagger 스펙의 URL (예: /openapi.json). 비워두면 자동 탐색합니다."
+
+[i18n.ko.settings.auto_schedule]
+label = "자동 일정"
+description = "일정에 따라 자동으로 테스트 실행"
+
+[i18n.ko.settings.test_frequency]
+label = "테스트 빈도"
+description = "정기 테스트 실행 주기"
+
+[i18n.ko.settings.fail_on_error]
+label = "엄격 모드"
+description = "모든 비-2xx 응답을 실패로 처리 (예상된 오류 코드 허용 안 함)"
+
+[i18n.ko.settings.approval_mode]
+label = "승인 모드"
+description = "테스트 계획 및 파괴적 요청을 직접 실행하지 않고 큐 파일에 기록하여 검토"

@@ -391,6 +391,241 @@ token_consumption = "high"
 default_active = false
 activation_warning = "Collector hand runs continuously and monitors targets, consuming tokens."
 
+# ─── Internationalization (optional) ─────────────────────────────────────────
+# All i18n sections are optional. Without them, the English values above are used.
+# To localize, add [i18n.LANG] sections (e.g. zh, ja, ko, es, fr, de).
+# Settings translations are also optional — omit to keep English labels.
+
+# ─── Chinese (简体中文) ────────────────────────────────────────────────────
+
 [i18n.zh]
 name = "情报采集 Hand"
 description = "自主情报采集智能体——持续监控目标，支持变更检测和知识图谱"
+category = "数据"
+
+[i18n.zh.settings.target_subject]
+label = "监控目标"
+description = "要监控的对象（公司名称、人物、技术、市场、话题）"
+
+[i18n.zh.settings.collection_depth]
+label = "采集深度"
+description = "每个采集周期的挖掘深度"
+
+[i18n.zh.settings.update_frequency]
+label = "更新频率"
+description = "执行采集扫描的频率"
+
+[i18n.zh.settings.focus_area]
+label = "关注领域"
+description = "分析采集情报时的侧重角度"
+
+[i18n.zh.settings.alert_on_changes]
+label = "变更告警"
+description = "检测到重大变更时发布事件通知"
+
+[i18n.zh.settings.report_format]
+label = "报告格式"
+description = "情报报告的输出格式"
+
+[i18n.zh.settings.max_sources_per_cycle]
+label = "每周期最大来源数"
+description = "每次采集扫描处理的最大来源数量"
+
+[i18n.zh.settings.track_sentiment]
+label = "情感追踪"
+description = "分析并追踪随时间变化的情感趋势"
+
+# ─── Japanese (日本語) ────────────────────────────────────────────────────
+
+[i18n.ja]
+name = "インテリジェンス収集 Hand"
+description = "自律型インテリジェンス収集エージェント——変更検出とナレッジグラフによる対象の継続的監視"
+category = "データ"
+
+[i18n.ja.settings.target_subject]
+label = "監視対象"
+description = "監視する対象（企業名、人物、技術、市場、トピック）"
+
+[i18n.ja.settings.collection_depth]
+label = "収集深度"
+description = "各収集サイクルでの調査の深さ"
+
+[i18n.ja.settings.update_frequency]
+label = "更新頻度"
+description = "収集スキャンの実行頻度"
+
+[i18n.ja.settings.focus_area]
+label = "フォーカスエリア"
+description = "収集したインテリジェンスを分析する際の視点"
+
+[i18n.ja.settings.alert_on_changes]
+label = "変更アラート"
+description = "重大な変更が検出された場合にイベント通知を発行する"
+
+[i18n.ja.settings.report_format]
+label = "レポート形式"
+description = "インテリジェンスレポートの出力形式"
+
+[i18n.ja.settings.max_sources_per_cycle]
+label = "サイクルあたりの最大ソース数"
+description = "各収集スキャンで処理するソースの最大数"
+
+[i18n.ja.settings.track_sentiment]
+label = "センチメント追跡"
+description = "時間の経過に伴うセンチメントの傾向を分析・追跡する"
+
+# ─── Spanish (Español) ────────────────────────────────────────────────────
+
+[i18n.es]
+name = "Hand de Recopilación de Inteligencia"
+description = "Recopilador autónomo de inteligencia — monitorea cualquier objetivo de forma continua con detección de cambios y grafos de conocimiento"
+category = "Datos"
+
+[i18n.es.settings.target_subject]
+label = "Objetivo de monitoreo"
+description = "Qué monitorear (nombre de empresa, persona, tecnología, mercado, tema)"
+
+[i18n.es.settings.collection_depth]
+label = "Profundidad de recopilación"
+description = "Qué tan profundo investigar en cada ciclo"
+
+[i18n.es.settings.update_frequency]
+label = "Frecuencia de actualización"
+description = "Con qué frecuencia ejecutar los barridos de recopilación"
+
+[i18n.es.settings.focus_area]
+label = "Área de enfoque"
+description = "Perspectiva desde la cual analizar la inteligencia recopilada"
+
+[i18n.es.settings.alert_on_changes]
+label = "Alertar ante cambios"
+description = "Publicar un evento cuando se detecten cambios significativos"
+
+[i18n.es.settings.report_format]
+label = "Formato de informe"
+description = "Formato de salida para los informes de inteligencia"
+
+[i18n.es.settings.max_sources_per_cycle]
+label = "Máximo de fuentes por ciclo"
+description = "Número máximo de fuentes a procesar por barrido de recopilación"
+
+[i18n.es.settings.track_sentiment]
+label = "Seguimiento de sentimiento"
+description = "Analizar y rastrear las tendencias de sentimiento a lo largo del tiempo"
+
+# ─── French (Français) ────────────────────────────────────────────────────
+
+[i18n.fr]
+name = "Hand Collecteur de Renseignements"
+description = "Collecteur autonome de renseignements — surveille toute cible en continu avec détection de changements et graphes de connaissances"
+category = "Données"
+
+[i18n.fr.settings.target_subject]
+label = "Sujet cible"
+description = "Objet de la surveillance (nom d'entreprise, personne, technologie, marché, sujet)"
+
+[i18n.fr.settings.collection_depth]
+label = "Profondeur de collecte"
+description = "Niveau d'approfondissement à chaque cycle de collecte"
+
+[i18n.fr.settings.update_frequency]
+label = "Fréquence de mise à jour"
+description = "Fréquence d'exécution des cycles de collecte"
+
+[i18n.fr.settings.focus_area]
+label = "Domaine d'intérêt"
+description = "Angle d'analyse des renseignements collectés"
+
+[i18n.fr.settings.alert_on_changes]
+label = "Alerte sur changements"
+description = "Publier un événement lorsque des changements significatifs sont détectés"
+
+[i18n.fr.settings.report_format]
+label = "Format de rapport"
+description = "Format de sortie pour les rapports de renseignements"
+
+[i18n.fr.settings.max_sources_per_cycle]
+label = "Sources maximum par cycle"
+description = "Nombre maximum de sources à traiter par cycle de collecte"
+
+[i18n.fr.settings.track_sentiment]
+label = "Suivi du sentiment"
+description = "Analyser et suivre les tendances de sentiment au fil du temps"
+
+# ─── German (Deutsch) ────────────────────────────────────────────────────
+
+[i18n.de]
+name = "Informationssammlungs-Hand"
+description = "Autonomer Informationssammler — überwacht jedes Ziel kontinuierlich mit Änderungserkennung und Wissensgraphen"
+category = "Daten"
+
+[i18n.de.settings.target_subject]
+label = "Zielobjekt"
+description = "Was überwacht werden soll (Firmenname, Person, Technologie, Markt, Thema)"
+
+[i18n.de.settings.collection_depth]
+label = "Sammlungstiefe"
+description = "Wie tief in jedem Sammlungszyklus recherchiert wird"
+
+[i18n.de.settings.update_frequency]
+label = "Aktualisierungshäufigkeit"
+description = "Wie oft Sammlungszyklen ausgeführt werden"
+
+[i18n.de.settings.focus_area]
+label = "Fokusbereich"
+description = "Perspektive für die Analyse der gesammelten Informationen"
+
+[i18n.de.settings.alert_on_changes]
+label = "Warnung bei Änderungen"
+description = "Ein Ereignis veröffentlichen, wenn bedeutende Änderungen erkannt werden"
+
+[i18n.de.settings.report_format]
+label = "Berichtsformat"
+description = "Ausgabeformat für Informationsberichte"
+
+[i18n.de.settings.max_sources_per_cycle]
+label = "Maximale Quellen pro Zyklus"
+description = "Maximale Anzahl der pro Sammlungszyklus zu verarbeitenden Quellen"
+
+[i18n.de.settings.track_sentiment]
+label = "Stimmungsverfolgung"
+description = "Stimmungstrends im Zeitverlauf analysieren und verfolgen"
+
+# ─── Korean (한국어) ────────────────────────────────────────────────────
+
+[i18n.ko]
+name = "정보 수집 Hand"
+description = "자율 정보 수집 에이전트 — 대상을 지속적으로 모니터링하며 변경 감지 및 지식 그래프 지원"
+category = "데이터"
+
+[i18n.ko.settings.target_subject]
+label = "모니터링 대상"
+description = "모니터링할 대상 (회사명, 인물, 기술, 시장, 주제)"
+
+[i18n.ko.settings.collection_depth]
+label = "수집 깊이"
+description = "각 수집 주기의 조사 깊이"
+
+[i18n.ko.settings.update_frequency]
+label = "업데이트 빈도"
+description = "수집 스캔 실행 주기"
+
+[i18n.ko.settings.focus_area]
+label = "관심 분야"
+description = "수집된 정보를 분석하는 관점"
+
+[i18n.ko.settings.alert_on_changes]
+label = "변경 알림"
+description = "중요한 변경 사항 감지 시 이벤트 알림 발행"
+
+[i18n.ko.settings.report_format]
+label = "보고서 형식"
+description = "정보 보고서의 출력 형식"
+
+[i18n.ko.settings.max_sources_per_cycle]
+label = "주기당 최대 소스 수"
+description = "수집 스캔당 처리할 최대 소스 수"
+
+[i18n.ko.settings.track_sentiment]
+label = "감성 추적"
+description = "시간에 따른 감성 추세 분석 및 추적"

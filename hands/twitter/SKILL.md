@@ -226,6 +226,72 @@ Do NOT auto-like:
 
 ---
 
+## Advanced Engagement Patterns
+
+### Quote Tweet vs Reply vs Retweet
+
+Choosing the right interaction type determines whether you gain visibility or waste it.
+
+**Use a Quote Tweet when**:
+- You have a distinct take or added context (not just "this!")
+- The original tweet has high impressions and you want to draft off its reach
+- You are crediting someone while adding your own insight for your audience
+- The original author has a similar or larger following (exposes you to their audience)
+
+**Use a Reply when**:
+- You want to build a direct relationship with the author
+- Your comment only makes sense in context of the original
+- The original author has a much larger following (replies show on their thread, giving you visibility without looking self-promotional)
+- You are answering a question or adding a correction
+
+**Use a plain Retweet when**:
+- The original says everything perfectly and you have nothing to add
+- You want to signal-boost a community member, customer, or partner
+- The content is time-sensitive (breaking news, event announcements)
+
+**Avoid**:
+- Quote tweeting with only emojis or "this" -- adds no value, looks lazy
+- Quote tweeting someone with fewer followers just to dunk -- punching down
+- Retweeting more than 3-4 times per day -- dilutes your original content ratio
+
+### Thread Repurposing
+
+A thread that performed well contains 5-7 standalone content pieces. Extract them over the following week to maximize ROI.
+
+**Process**:
+1. Day 0 (original): Post the full thread
+2. Day 2: Pull the single most quotable tweet from the thread. Post it standalone with slightly different wording. No link back to the thread
+3. Day 4: Turn a data point or example from the thread into a graphic or screenshot tweet
+4. Day 6: Post the thread's core thesis as a hot take (one tweet, punchy)
+5. Day 8+: If engagement stayed strong, post a "Part 2" thread that goes deeper on whichever tweet in the original got the most replies
+
+**Rules**:
+- Change the wording each time -- copy-pasting feels like spam to followers who saw the original
+- Space extractions at least 48 hours apart
+- Stop if any extraction underperforms significantly -- the topic is tapped out
+- Never repurpose a thread that got low engagement; the content did not resonate
+
+### Trending Topic Participation
+
+**When to participate**:
+- The trend directly intersects one of your content pillars
+- You have a genuine, informed perspective (not a generic reaction)
+- The trend is still rising (check the "Trending" tab; if it has been trending for >12 hours, you are late)
+- The tone of the trend matches your brand voice
+
+**When to avoid**:
+- Tragedy, disaster, or crisis events -- opportunistic posting destroys trust
+- Highly polarized political or social debates outside your expertise
+- Trends driven by outrage mobs -- associating your brand is high-risk, low-reward
+- You would need to force-fit your product or message into the trend
+
+**Execution**:
+- Lead with your actual insight, not the hashtag. The hashtag goes at the end or is omitted entirely if the topic keyword is in your text
+- Be early or be different. If 50 people have already made the same joke, skip it
+- Tie back to your pillar: "Trend X is exactly why [your pillar topic] matters more than ever"
+
+---
+
 ## Content Calendar Template
 
 ```
@@ -251,6 +317,169 @@ Friday:
   - 9 AM: [Hot take] about [week's trending topic]
   - 11 AM: [Curated share] — best thing I read this week
 ```
+
+---
+
+## Worked Examples
+
+### Example 1: Product Launch Twitter Campaign (1-Week Plan)
+
+**Context**: A dev tools startup is launching "FastDB," an open-source embedded database. The account has 2,400 followers, mostly backend engineers.
+
+**Pre-launch (3 days before)**:
+- Seed curiosity without revealing the product name
+- Engage heavily in database-related threads to increase profile visits before launch
+
+**Day 1 (Monday) -- Teaser**:
+```
+We've been heads-down for 8 months building something
+we think embedded databases have been missing.
+
+Shipping it open-source this Thursday.
+
+More soon.
+```
+Purpose: Create anticipation. No hashtags, no links. Let curiosity drive profile visits.
+
+**Day 2 (Tuesday) -- Problem framing**:
+```
+SQLite is incredible for what it does.
+
+But if you need concurrent writes, ACID transactions,
+AND sub-millisecond reads in the same embedded DB...
+your options get thin fast.
+
+We've been living in that gap. Fix incoming Thursday.
+```
+Purpose: Define the problem space. People who feel this pain will follow for the reveal.
+
+**Day 3 (Wednesday) -- Social proof / build-up**:
+```
+Shipped our embedded DB to 12 beta testers last month.
+
+Results so far:
+- 4.2x faster concurrent writes vs SQLite WAL mode
+- Zero-config replication
+- Single static binary, 3.8 MB
+
+One more day.
+```
+Purpose: Concrete numbers build credibility. "One more day" maintains tension.
+
+**Day 4 (Thursday) -- Launch day thread** (6-tweet thread):
+```
+1/6 [HOOK]: Introducing FastDB -- embedded DB for concurrent-write-heavy
+     workloads. Open source. Single binary. Here's why we built it:
+2/6 [PROBLEM]: SQLite = single-writer. Fine for reads, hits a wall on
+     write-heavy apps (event logging, IoT, realtime sync). FastDB uses
+     MVCC -- writers never block readers, readers never block writers.
+3/6 [PROOF]: Benchmarks (M2 Mac, 8 threads): concurrent writes 51K ops/s
+     vs SQLite WAL 12K ops/s. Point reads on par at ~900K ops/s.
+4/6 [ONBOARD]: Getting started: `cargo add fastdb` then 3 lines of code.
+     Full SQLite-compatible query layer coming in v0.2.
+5/6 [ROADMAP]: v0.1 ships ACID transactions, built-in replication, crash
+     recovery, zero deps beyond libc. v0.2: SQL layer, S3 cold storage.
+6/6 [CTA]: Star the repo: github.com/example/fastdb -- open issues, roast
+     the benchmarks, tell us what's missing.
+```
+Key structural choices: tweet 1 is a standalone hook, tweet 3 has hard numbers, tweet 6 ends with a specific ask (not just "check it out").
+
+**Day 4 afternoon** -- Post a standalone tweet answering the most common reply question publicly (drives docs traffic). **Day 5 (Friday)** -- Reply to every substantive comment. Templates for common reactions:
+- "How is this different from X?" -> Concrete comparison, link to docs
+- "Benchmarks look suspicious" -> Link the reproduction steps, invite them to run it
+- "Will you support [feature]?" -> Link the tracking issue
+
+**Day 6-7 (Weekend)** -- Repurpose: extract the benchmark tweet as a standalone with a chart image; post a "5 things I learned launching an open-source DB" reflection thread.
+
+### Example 2: Building Thought Leadership from Scratch (Month 1)
+
+**Context**: An individual ML engineer with 180 followers wants to become a recognized voice in applied machine learning. No existing audience. No viral content history.
+
+**Core principle for month 1**: Do not broadcast. Contribute. Your first 500 followers come from being consistently useful in other people's threads, not from your own tweets.
+
+**Week 1 -- Comment-first growth**:
+- Post 0 original tweets
+- Find 10 accounts in your niche with 5K-50K followers who post regularly
+- Reply to 5-8 of their tweets per day with substantive comments (not "great post!")
+- Goal: Get 3-5 of those authors to like or reply to your comments by end of week
+
+**What a good reply looks like**:
+```
+Original tweet: "Fine-tuning LLMs is overrated. Most use cases
+are better served by good prompting + RAG."
+
+Bad reply: "Agreed!"
+
+Good reply: "Mostly agree, but there's a middle ground --
+LoRA fine-tuning on 500 domain-specific examples
+consistently beats RAG for structured extraction tasks.
+
+We saw 23% higher F1 on invoice parsing after a 2-hour
+fine-tune vs our best RAG setup.
+
+RAG still wins for open-domain QA though."
+```
+This reply adds data, shows experience, and invites further discussion. People reading the thread see your expertise and check your profile.
+
+**Week 2 -- First original content**:
+- Continue the reply strategy (5/day minimum)
+- Post 2-3 original tweets. Keep them observational, not promotional:
+```
+Something I've noticed after fine-tuning 30+ models
+this year:
+
+The quality of your eval set matters 10x more than
+the size of your training set.
+
+50 carefully labeled examples with clear edge cases
+beats 5000 noisy scraped examples every time.
+```
+- Post 1 "ask the audience" tweet to start conversations:
+```
+ML engineers: what's the most counterintuitive lesson
+you've learned about deploying models to production?
+
+I'll start: the model is almost never the bottleneck.
+Data pipelines are.
+```
+
+**Week 3 -- First thread** (5-tweet authority thread):
+```
+1/5 [HOOK]: I've deployed 12 ML models to production this year. The ones
+     that worked all had one thing in common. It wasn't the architecture.
+2/5 [THESIS]: Every success had a tight feedback loop -- predictions
+     validated by a human within 24 hours, not "we'll evaluate next quarter."
+3/5 [EVIDENCE]: Model A (invoice classifier): accountants flagged errors
+     same-day, retrained weekly, 84% -> 97% in 6 weeks. Model B (churn
+     predictor): sales ignored outputs, no feedback 3 months, drifted to
+     coin-flip accuracy.
+4/5 [FRAMEWORK]: The pattern: (1) deploy with human-in-the-loop review,
+     (2) log every correction, (3) retrain on corrections every 1-2 weeks,
+     (4) remove human review once accuracy stabilizes.
+5/5 [CTA]: If you're skipping the feedback loop, you're building on sand.
+     What's your experience?
+```
+Notice the structure: personal credibility in tweet 1, a clear thesis in tweet 2, contrasting real examples in tweet 3, an actionable takeaway in tweet 4, and a discussion prompt in tweet 5.
+
+**Week 4 -- Establish rhythm**:
+- Settle into a sustainable cadence: 1 thread/week, 1-2 standalone tweets/day, 5+ replies/day
+- Review metrics from week 2-3 content to identify which topics resonated
+- Double down on the topic that got the most replies (not likes -- replies indicate deeper engagement)
+
+**Month 1 milestones**:
+| Metric | Target | Why it matters |
+|--------|--------|----------------|
+| Followers | 350-500 | 2-3x growth signals the approach is working |
+| Avg impressions per tweet | 800-2000 | Shows the algorithm is distributing your content |
+| Replies received per original tweet | 3-5 | People are engaging, not just scrolling past |
+| Mutual follows from target accounts | 5-10 | Your niche peers are noticing you |
+| Profile visits / week | 200+ | Your replies are driving curiosity |
+
+**What to avoid in month 1**:
+- Posting 10 tweets/day hoping something sticks -- looks desperate, exhausts your ideas
+- Buying followers or using engagement pods -- Twitter's algorithm detects and penalizes this
+- Talking about yourself or your product -- earn attention through insight first
+- Getting discouraged by low numbers -- 180 to 400 followers in a month is strong growth
 
 ---
 

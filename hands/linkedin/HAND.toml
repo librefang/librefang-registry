@@ -394,6 +394,241 @@ frequency = "daily"
 token_consumption = "medium"
 default_active = false
 
+# ─── Internationalization (optional) ─────────────────────────────────────────
+# All i18n sections are optional. Without them, the English values above are used.
+# To localize, add [i18n.LANG] sections (e.g. zh, ja, ko, es, fr, de).
+# Settings translations are also optional — omit to keep English labels.
+
+# ─── Chinese (简体中文) ────────────────────────────────────────────────────
+
 [i18n.zh]
 name = "LinkedIn Hand"
 description = "自主 LinkedIn 管理——个人资料优化、内容创作、人脉拓展和职业互动"
+category = "通信"
+
+[i18n.zh.settings.content_style]
+label = "内容风格"
+description = "LinkedIn 帖子的语气和风格"
+
+[i18n.zh.settings.post_frequency]
+label = "发布频率"
+description = "创建和发布内容的频率"
+
+[i18n.zh.settings.content_topics]
+label = "内容主题"
+description = "要创作内容的主题（逗号分隔，例如 AI、领导力、创业）"
+
+[i18n.zh.settings.auto_engage]
+label = "自动互动"
+description = "自动对人脉网络中的相关帖子点赞和评论"
+
+[i18n.zh.settings.approval_mode]
+label = "审批模式"
+description = "将帖子加入队列等待审核，而非直接发布"
+
+[i18n.zh.settings.hashtag_count]
+label = "话题标签数量"
+description = "每篇帖子包含的话题标签数量"
+
+[i18n.zh.settings.target_audience]
+label = "目标受众"
+description = "内容的主要目标受众"
+
+[i18n.zh.settings.language]
+label = "语言"
+description = "帖子和互动使用的语言"
+
+# ─── Japanese (日本語) ────────────────────────────────────────────────────
+
+[i18n.ja]
+name = "LinkedIn Hand"
+description = "自律型LinkedInマネージャー——プロフィール最適化、コンテンツ作成、ネットワーキング、プロフェッショナルエンゲージメント"
+category = "コミュニケーション"
+
+[i18n.ja.settings.content_style]
+label = "コンテンツスタイル"
+description = "LinkedIn投稿の語調とスタイル"
+
+[i18n.ja.settings.post_frequency]
+label = "投稿頻度"
+description = "コンテンツの作成・投稿の頻度"
+
+[i18n.ja.settings.content_topics]
+label = "コンテンツトピック"
+description = "作成するコンテンツのトピック（カンマ区切り、例: AI、リーダーシップ、スタートアップ）"
+
+[i18n.ja.settings.auto_engage]
+label = "自動エンゲージメント"
+description = "ネットワーク内の関連投稿に自動でいいねやコメントをする"
+
+[i18n.ja.settings.approval_mode]
+label = "承認モード"
+description = "投稿を直接公開せず、レビュー用キューに追加する"
+
+[i18n.ja.settings.hashtag_count]
+label = "ハッシュタグ数"
+description = "各投稿に含めるハッシュタグの数"
+
+[i18n.ja.settings.target_audience]
+label = "ターゲットオーディエンス"
+description = "コンテンツの主なターゲット層"
+
+[i18n.ja.settings.language]
+label = "言語"
+description = "投稿とエンゲージメントに使用する言語"
+
+# ─── Spanish (Español) ────────────────────────────────────────────────────
+
+[i18n.es]
+name = "Hand de LinkedIn"
+description = "Gestor autónomo de LinkedIn — optimización de perfil, creación de contenido, networking y engagement profesional"
+category = "Comunicación"
+
+[i18n.es.settings.content_style]
+label = "Estilo de contenido"
+description = "Voz y tono para las publicaciones de LinkedIn"
+
+[i18n.es.settings.post_frequency]
+label = "Frecuencia de publicación"
+description = "Con qué frecuencia crear y publicar contenido"
+
+[i18n.es.settings.content_topics]
+label = "Temas de contenido"
+description = "Temas sobre los que crear contenido (separados por comas, ej. IA, liderazgo, startups)"
+
+[i18n.es.settings.auto_engage]
+label = "Engagement automático"
+description = "Dar like y comentar automáticamente en publicaciones relevantes de tu red"
+
+[i18n.es.settings.approval_mode]
+label = "Modo de aprobación"
+description = "Poner publicaciones en cola para revisión en lugar de publicarlas directamente"
+
+[i18n.es.settings.hashtag_count]
+label = "Cantidad de hashtags"
+description = "Número de hashtags a incluir por publicación"
+
+[i18n.es.settings.target_audience]
+label = "Audiencia objetivo"
+description = "Audiencia principal para tu contenido"
+
+[i18n.es.settings.language]
+label = "Idioma"
+description = "Idioma para publicaciones e interacciones"
+
+# ─── French (Français) ────────────────────────────────────────────────────
+
+[i18n.fr]
+name = "Hand LinkedIn"
+description = "Gestionnaire LinkedIn autonome — optimisation de profil, création de contenu, réseautage et engagement professionnel"
+category = "Communication"
+
+[i18n.fr.settings.content_style]
+label = "Style de contenu"
+description = "Ton et style pour les publications LinkedIn"
+
+[i18n.fr.settings.post_frequency]
+label = "Fréquence de publication"
+description = "Fréquence de création et de publication de contenu"
+
+[i18n.fr.settings.content_topics]
+label = "Sujets de contenu"
+description = "Sujets sur lesquels créer du contenu (séparés par des virgules, ex. IA, leadership, startups)"
+
+[i18n.fr.settings.auto_engage]
+label = "Engagement automatique"
+description = "Aimer et commenter automatiquement les publications pertinentes de votre réseau"
+
+[i18n.fr.settings.approval_mode]
+label = "Mode d'approbation"
+description = "Mettre les publications en file d'attente pour révision au lieu de les publier directement"
+
+[i18n.fr.settings.hashtag_count]
+label = "Nombre de hashtags"
+description = "Nombre de hashtags à inclure par publication"
+
+[i18n.fr.settings.target_audience]
+label = "Public cible"
+description = "Public principal pour votre contenu"
+
+[i18n.fr.settings.language]
+label = "Langue"
+description = "Langue pour les publications et les interactions"
+
+# ─── German (Deutsch) ────────────────────────────────────────────────────
+
+[i18n.de]
+name = "LinkedIn-Hand"
+description = "Autonomer LinkedIn-Manager — Profiloptimierung, Content-Erstellung, Networking und professionelles Engagement"
+category = "Kommunikation"
+
+[i18n.de.settings.content_style]
+label = "Inhaltsstil"
+description = "Ton und Stil für LinkedIn-Beiträge"
+
+[i18n.de.settings.post_frequency]
+label = "Veröffentlichungshäufigkeit"
+description = "Wie oft Inhalte erstellt und veröffentlicht werden"
+
+[i18n.de.settings.content_topics]
+label = "Inhaltsthemen"
+description = "Themen für die Content-Erstellung (kommagetrennt, z.B. KI, Führung, Startups)"
+
+[i18n.de.settings.auto_engage]
+label = "Automatisches Engagement"
+description = "Relevante Beiträge im Netzwerk automatisch liken und kommentieren"
+
+[i18n.de.settings.approval_mode]
+label = "Genehmigungsmodus"
+description = "Beiträge zur Überprüfung in die Warteschlange stellen, anstatt sie direkt zu veröffentlichen"
+
+[i18n.de.settings.hashtag_count]
+label = "Anzahl Hashtags"
+description = "Anzahl der Hashtags pro Beitrag"
+
+[i18n.de.settings.target_audience]
+label = "Zielgruppe"
+description = "Primäre Zielgruppe für Ihre Inhalte"
+
+[i18n.de.settings.language]
+label = "Sprache"
+description = "Sprache für Beiträge und Interaktionen"
+
+# ─── Korean (한국어) ────────────────────────────────────────────────────
+
+[i18n.ko]
+name = "LinkedIn Hand"
+description = "자율 LinkedIn 관리 — 프로필 최적화, 콘텐츠 제작, 네트워킹 및 전문적 소통"
+category = "커뮤니케이션"
+
+[i18n.ko.settings.content_style]
+label = "콘텐츠 스타일"
+description = "LinkedIn 게시물의 어조와 스타일"
+
+[i18n.ko.settings.post_frequency]
+label = "게시 빈도"
+description = "콘텐츠를 작성하고 게시하는 주기"
+
+[i18n.ko.settings.content_topics]
+label = "콘텐츠 주제"
+description = "콘텐츠를 작성할 주제 (쉼표로 구분, 예: AI, 리더십, 스타트업)"
+
+[i18n.ko.settings.auto_engage]
+label = "자동 소통"
+description = "네트워크 내 관련 게시물에 자동으로 좋아요 및 댓글"
+
+[i18n.ko.settings.approval_mode]
+label = "승인 모드"
+description = "게시물을 직접 게시하지 않고 대기열에 추가하여 검토"
+
+[i18n.ko.settings.hashtag_count]
+label = "해시태그 수"
+description = "게시물당 포함할 해시태그 수"
+
+[i18n.ko.settings.target_audience]
+label = "대상 독자"
+description = "콘텐츠의 주요 대상 독자"
+
+[i18n.ko.settings.language]
+label = "언어"
+description = "게시물 및 소통에 사용하는 언어"

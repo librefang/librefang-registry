@@ -442,6 +442,241 @@ token_consumption = "high"
 default_active = true
 activation_warning = "Researcher hand runs continuously and performs deep research, consuming tokens."
 
+# ─── Internationalization (optional) ─────────────────────────────────────────
+# All i18n sections are optional. Without them, the English values above are used.
+# To localize, add [i18n.LANG] sections (e.g. zh, ja, ko, es, fr, de).
+# Settings translations are also optional — omit to keep English labels.
+
+# ─── Chinese (简体中文) ────────────────────────────────────────────────────
+
 [i18n.zh]
 name = "深度研究 Hand"
 description = "自主深度研究员——全面调研、交叉验证、事实核查和结构化报告"
+category = "生产力"
+
+[i18n.zh.settings.research_depth]
+label = "研究深度"
+description = "每次调研的详尽程度"
+
+[i18n.zh.settings.output_style]
+label = "输出格式"
+description = "研究报告的格式风格"
+
+[i18n.zh.settings.source_verification]
+label = "来源验证"
+description = "在引用前通过多个来源交叉验证论述"
+
+[i18n.zh.settings.max_sources]
+label = "最大来源数"
+description = "每次调研参考的最大来源数量"
+
+[i18n.zh.settings.auto_follow_up]
+label = "自动追问"
+description = "自动研究调查过程中发现的延伸问题"
+
+[i18n.zh.settings.save_research_log]
+label = "保存研究日志"
+description = "保存详细的搜索查询和来源评估记录"
+
+[i18n.zh.settings.citation_style]
+label = "引用格式"
+description = "报告中引用来源的格式"
+
+[i18n.zh.settings.language]
+label = "语言"
+description = "研究和输出的主要语言"
+
+# ─── Korean (한국어) ────────────────────────────────────────────────────
+
+[i18n.ko]
+name = "심층 연구 Hand"
+description = "자율 심층 연구원 — 철저한 조사, 교차 검증, 팩트체크 및 구조화된 보고서"
+category = "생산성"
+
+[i18n.ko.settings.research_depth]
+label = "연구 깊이"
+description = "각 조사의 철저함 정도"
+
+[i18n.ko.settings.output_style]
+label = "출력 스타일"
+description = "연구 보고서의 형식 스타일"
+
+[i18n.ko.settings.source_verification]
+label = "출처 검증"
+description = "인용 전 여러 출처를 통해 주장을 교차 검증"
+
+[i18n.ko.settings.max_sources]
+label = "최대 출처 수"
+description = "조사당 참고할 최대 출처 수"
+
+[i18n.ko.settings.auto_follow_up]
+label = "자동 후속 조사"
+description = "조사 과정에서 발견된 후속 질문을 자동으로 연구"
+
+[i18n.ko.settings.save_research_log]
+label = "연구 로그 저장"
+description = "상세한 검색 쿼리 및 출처 평가 기록 저장"
+
+[i18n.ko.settings.citation_style]
+label = "인용 형식"
+description = "보고서에서 출처를 인용하는 형식"
+
+[i18n.ko.settings.language]
+label = "언어"
+description = "연구 및 출력의 주요 언어"
+
+# ─── Japanese (日本語) ────────────────────────────────────────────────────
+
+[i18n.ja]
+name = "ディープリサーチ Hand"
+description = "自律型深層調査エージェント——徹底的な調査、クロスリファレンス、ファクトチェック、構造化レポート"
+category = "生産性"
+
+[i18n.ja.settings.research_depth]
+label = "調査の深さ"
+description = "各調査の徹底度"
+
+[i18n.ja.settings.output_style]
+label = "出力スタイル"
+description = "調査レポートのフォーマットスタイル"
+
+[i18n.ja.settings.source_verification]
+label = "ソース検証"
+description = "引用前に複数のソースでクレームをクロスチェックする"
+
+[i18n.ja.settings.max_sources]
+label = "最大ソース数"
+description = "調査ごとに参照するソースの最大数"
+
+[i18n.ja.settings.auto_follow_up]
+label = "自動フォローアップ"
+description = "調査中に発見されたフォローアップ質問を自動的に調査する"
+
+[i18n.ja.settings.save_research_log]
+label = "調査ログの保存"
+description = "詳細な検索クエリとソース評価の記録を保存する"
+
+[i18n.ja.settings.citation_style]
+label = "引用スタイル"
+description = "レポートでのソース引用の形式"
+
+[i18n.ja.settings.language]
+label = "言語"
+description = "調査と出力の主要言語"
+
+# ─── Spanish (Español) ────────────────────────────────────────────────────
+
+[i18n.es]
+name = "Hand de Investigación"
+description = "Investigador autónomo en profundidad — investigación exhaustiva, referencias cruzadas, verificación de hechos e informes estructurados"
+category = "Productividad"
+
+[i18n.es.settings.research_depth]
+label = "Profundidad de investigación"
+description = "Qué tan exhaustiva debe ser cada investigación"
+
+[i18n.es.settings.output_style]
+label = "Estilo de salida"
+description = "Cómo formatear los informes de investigación"
+
+[i18n.es.settings.source_verification]
+label = "Verificación de fuentes"
+description = "Verificar afirmaciones cruzando múltiples fuentes antes de incluirlas"
+
+[i18n.es.settings.max_sources]
+label = "Máximo de fuentes"
+description = "Número máximo de fuentes a consultar por investigación"
+
+[i18n.es.settings.auto_follow_up]
+label = "Seguimiento automático"
+description = "Investigar automáticamente preguntas de seguimiento descubiertas durante la investigación"
+
+[i18n.es.settings.save_research_log]
+label = "Guardar registro de investigación"
+description = "Guardar consultas de búsqueda detalladas y notas de evaluación de fuentes"
+
+[i18n.es.settings.citation_style]
+label = "Estilo de citación"
+description = "Cómo citar fuentes en los informes"
+
+[i18n.es.settings.language]
+label = "Idioma"
+description = "Idioma principal para la investigación y los resultados"
+
+# ─── French (Français) ────────────────────────────────────────────────────
+
+[i18n.fr]
+name = "Hand de Recherche Approfondie"
+description = "Chercheur autonome en profondeur — recherche exhaustive, références croisées, vérification des faits et rapports structurés"
+category = "Productivité"
+
+[i18n.fr.settings.research_depth]
+label = "Profondeur de recherche"
+description = "Niveau de minutie de chaque investigation"
+
+[i18n.fr.settings.output_style]
+label = "Style de sortie"
+description = "Style de formatage du rapport de recherche"
+
+[i18n.fr.settings.source_verification]
+label = "Vérification des sources"
+description = "Vérifier les affirmations auprès de plusieurs sources avant de citer"
+
+[i18n.fr.settings.max_sources]
+label = "Nombre maximum de sources"
+description = "Nombre maximum de sources à consulter par recherche"
+
+[i18n.fr.settings.auto_follow_up]
+label = "Suivi automatique"
+description = "Rechercher automatiquement les questions de suivi découvertes pendant l'investigation"
+
+[i18n.fr.settings.save_research_log]
+label = "Sauvegarder le journal de recherche"
+description = "Conserver les journaux détaillés des requêtes de recherche et des évaluations de sources"
+
+[i18n.fr.settings.citation_style]
+label = "Style de citation"
+description = "Format de citation des sources dans les rapports"
+
+[i18n.fr.settings.language]
+label = "Langue"
+description = "Langue principale pour la recherche et les résultats"
+
+# ─── German (Deutsch) ────────────────────────────────────────────────────
+
+[i18n.de]
+name = "Tiefenforschungs-Hand"
+description = "Autonomer Tiefenforscher — gründliche Untersuchung, Querverweise, Faktencheck und strukturierte Berichte"
+category = "Produktivität"
+
+[i18n.de.settings.research_depth]
+label = "Forschungstiefe"
+description = "Gründlichkeit jeder Untersuchung"
+
+[i18n.de.settings.output_style]
+label = "Ausgabestil"
+description = "Formatierungsstil des Forschungsberichts"
+
+[i18n.de.settings.source_verification]
+label = "Quellenverifikation"
+description = "Behauptungen vor dem Zitieren mit mehreren Quellen gegenkontrollieren"
+
+[i18n.de.settings.max_sources]
+label = "Maximale Quellen"
+description = "Maximale Anzahl der pro Untersuchung zu konsultierenden Quellen"
+
+[i18n.de.settings.auto_follow_up]
+label = "Automatisches Nachfassen"
+description = "Während der Untersuchung entdeckte Folgefragen automatisch recherchieren"
+
+[i18n.de.settings.save_research_log]
+label = "Forschungsprotokoll speichern"
+description = "Detaillierte Protokolle der Suchabfragen und Quellenbewertungen speichern"
+
+[i18n.de.settings.citation_style]
+label = "Zitierstil"
+description = "Format für Quellenangaben in Berichten"
+
+[i18n.de.settings.language]
+label = "Sprache"
+description = "Hauptsprache für Forschung und Ergebnisse"

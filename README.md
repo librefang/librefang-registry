@@ -1,46 +1,137 @@
 # LibreFang Registry
 
-Community-maintained content registry for [LibreFang](https://github.com/librefang/librefang) -- the open-source Agent Operating System.
+Community-maintained content registry for [LibreFang](https://github.com/librefang/librefang) — the open-source Agent Operating System.
 
-This repository is the single source of truth for all installable content definitions. Anyone can submit a PR to add new agents, hands, integrations, skills, or provider models -- no changes to the LibreFang binary required.
+This repository is the **single source of truth** for all installable content definitions. Anyone can submit a PR to add new agents, hands, integrations, skills, or provider models — no changes to the LibreFang binary required.
 
-## Structure
+## Overview
+
+| Type | Count | Description |
+|------|------:|-------------|
+| [Hands](#hands) | 14 | User-facing "apps" — agent + tools + settings + dashboard |
+| [Agents](#agents) | 32 | Autonomous agent definitions with model config and tools |
+| [Integrations](#integrations) | 25 | MCP server connections (GitHub, Slack, DBs, etc.) |
+| [Providers](#providers) | 48 | LLM provider & model metadata with pricing |
+| [Models](#providers) | 223 | Individual model definitions across all providers |
+| [Aliases](#aliases) | 70 | Short names mapped to canonical model IDs |
+| [Plugins](#plugins) | 10 | Memory, guardrails, and conversation plugins |
+| [Skills](#skills) | 2 | Reusable prompt templates and Python scripts |
+
+## Repository Structure
 
 ```
 librefang-registry/
-├── agents/             # Agent definitions (TOML manifests)
-│   ├── hello-world/agent.toml
-│   ├── researcher/agent.toml
-│   └── ...             (33 agents)
-├── hands/              # Hand definitions (TOML + docs)
-│   ├── browser/HAND.toml
-│   ├── trader/HAND.toml
-│   └── ...             (14 hands)
-├── integrations/       # MCP server integration templates
+├── agents/                # Agent definitions (TOML manifests)
+│   ├── hello-world/
+│   │   └── agent.toml
+│   ├── researcher/
+│   │   └── agent.toml
+│   └── ...                (32 agents)
+├── hands/                 # Hand definitions (app bundles)
+│   ├── browser/
+│   │   ├── HAND.toml      # Metadata, tools, settings, i18n (6 languages)
+│   │   └── SKILL.md       # Domain expert knowledge injected at runtime
+│   ├── trader/
+│   │   ├── HAND.toml
+│   │   └── SKILL.md
+│   └── ...                (14 hands)
+├── integrations/          # MCP server integration templates
 │   ├── github.toml
 │   ├── slack.toml
-│   └── ...             (25 integrations)
-├── skills/             # Reusable skill definitions
-│   ├── custom-skill-prompt/skill.toml
-│   └── custom-skill-python/
-├── providers/          # LLM provider & model metadata
+│   └── ...                (25 integrations)
+├── providers/             # LLM provider & model metadata
 │   ├── anthropic.toml
 │   ├── openai.toml
-│   └── ...             (46 providers, 190+ models)
-├── plugins/            # Plugin packages (10 plugins)
-├── aliases.toml        # Global model alias mappings
-├── schema.toml         # Provider/model schema reference
+│   └── ...                (48 providers, 223 models)
+├── plugins/               # Memory, guardrails, and utility plugins
+│   ├── episodic-memory/
+│   ├── guardrails/
+│   └── ...                (10 plugins)
+├── skills/                # Reusable skill definitions
+│   ├── custom-skill-prompt/skill.toml
+│   └── custom-skill-python/
+├── aliases.toml           # Global model alias mappings (70 aliases)
+├── schema.toml            # Provider/model schema reference
 ├── scripts/
-│   └── validate.py     # Validation script
+│   └── validate.py        # Content validation script
 ├── CONTRIBUTING.md
-└── LICENSE             # MIT
+└── LICENSE                # MIT
 ```
 
 ## Content Types
 
+### Hands
+
+Hands are the **user-facing "apps"** in LibreFang. Each hand bundles an agent, tools, user-configurable settings, dashboard metrics, dependency checks, and i18n translations into a single deployable unit.
+
+Every hand includes a `SKILL.md` — domain-specific expert knowledge that is injected into the agent's context at runtime, giving it deep expertise in its domain.
+
+| Icon | Hand | Category | Description |
+|:----:|------|----------|-------------|
+| 📈 | analytics | data | Data collection, analysis, visualization, dashboards, and automated reporting |
+| 🔌 | apitester | development | Endpoint discovery, request validation, load testing, and regression detection |
+| 🌐 | browser | productivity | Web navigation, form filling, and multi-step web tasks with user approval |
+| 🎬 | clip | content | Turns long-form video into viral short clips with captions and thumbnails |
+| 🔍 | collector | data | Intelligence collection, change detection, and knowledge graphs |
+| 👷 | devops | development | CI/CD management, infrastructure monitoring, deployment, and incident response |
+| 📊 | lead | data | Lead generation, enrichment, scoring, and scheduled delivery |
+| 💼 | linkedin | communication | Profile optimization, content creation, networking, and engagement |
+| 🔮 | predictor | data | Signal collection, calibrated predictions, and accuracy tracking |
+| 📢 | reddit | communication | Subreddit monitoring, content posting, and engagement tracking |
+| 🧪 | researcher | productivity | Deep research, cross-referencing, fact-checking, and structured reports |
+| 🎯 | strategist | productivity | Market research, competitive analysis, and strategic planning |
+| 📈 | trader | data | Multi-signal analysis, adversarial reasoning, and risk management |
+| 𝕏 | twitter | communication | Content creation, scheduled posting, engagement, and analytics |
+
+**HAND.toml format:**
+
+```toml
+id = "browser"
+name = "Browser Hand"
+description = "Autonomous web browser"
+category = "productivity"
+icon = "🌐"
+tools = ["browser_navigate", "browser_click", "browser_type"]
+
+[routing]
+aliases = ["browse", "open website"]
+weak_aliases = ["web", "url"]
+
+[[requires]]
+key = "chromium"
+requirement_type = "binary"
+check_value = "chromium"
+
+[[settings]]
+key = "headless"
+setting_type = "toggle"
+default = "true"
+
+[agent]
+name = "browser-hand"
+module = "builtin:chat"
+system_prompt = """You are an autonomous web browser agent..."""
+
+[dashboard]
+[[dashboard.metrics]]
+label = "Pages Visited"
+memory_key = "pages_visited"
+format = "number"
+
+# i18n — 6 languages supported: zh, ja, ko, es, fr, de
+[i18n.zh]
+name = "浏览器 Hand"
+description = "自主网页浏览器"
+category = "生产力"
+
+[i18n.zh.settings.headless]
+label = "无头模式"
+description = "在后台运行浏览器"
+```
+
 ### Agents
 
-Agent definitions in `agents/<name>/agent.toml` describe autonomous agents with their model config, tools, capabilities, and routing aliases.
+Agent definitions describe autonomous agents with model configuration, tools, capabilities, and routing aliases.
 
 ```toml
 name = "hello-world"
@@ -56,30 +147,11 @@ system_prompt = "You are a helpful assistant."
 tools = ["web_search", "file_read"]
 ```
 
-### Hands
-
-Hands in `hands/<name>/HAND.toml` are higher-level application bundles -- the user-facing "apps" in LibreFang. Each hand bundles an agent config, tools, settings, dashboard metrics, and dependency requirements.
-
-```toml
-id = "browser"
-name = "Browser Hand"
-category = "productivity"
-tools = ["browser_navigate", "browser_click", "browser_type"]
-
-[agent]
-name = "browser-hand"
-module = "builtin:chat"
-system_prompt = "You are an autonomous web browser agent..."
-
-[[settings]]
-key = "headless"
-setting_type = "toggle"
-default = "true"
-```
+**32 built-in agents:** academic-researcher, analyst, architect, assistant, code-reviewer, coder, customer-support, data-scientist, debugger, devops-lead, doc-writer, email-assistant, health-tracker, hello-world, home-automation, legal-assistant, meeting-assistant, ops, orchestrator, personal-finance, planner, recipe-assistant, recruiter, researcher, sales-assistant, security-auditor, social-media, test-engineer, translator, travel-planner, tutor, writer
 
 ### Integrations
 
-Integration templates in `integrations/<name>.toml` define MCP server connections (GitHub, Slack, databases, etc.) with transport config, required env vars, and setup instructions.
+Integration templates define [MCP](https://modelcontextprotocol.io/) server connections with transport configuration, required environment variables, and setup instructions.
 
 ```toml
 id = "github"
@@ -96,9 +168,47 @@ name = "GITHUB_PERSONAL_ACCESS_TOKEN"
 is_secret = true
 ```
 
+**25 integrations across 6 categories:**
+
+| Category | Integrations |
+|----------|-------------|
+| DevTools | bitbucket, github, gitlab, jira, linear, sentry |
+| Data | elasticsearch, mongodb, postgresql, redis, sqlite |
+| Productivity | dropbox, gmail, google-calendar, google-drive, notion, todoist |
+| Communication | discord, slack, teams |
+| Cloud | aws, azure, gcp |
+| AI Search | brave-search, exa-search |
+
+### Providers
+
+Provider files define LLM providers and their models with pricing, context windows, and capability flags. See [schema.toml](schema.toml) for the full field reference.
+
+**48 providers** including: Anthropic, OpenAI, Google Gemini, DeepSeek, Groq, Mistral, Cohere, xAI, Together, Fireworks, Ollama (local), LM Studio (local), vLLM (self-hosted), and many more.
+
+**223 models** with metadata for each: pricing (input/output per token), context window size, capability flags (vision, function calling, streaming), and tier classification.
+
+### Aliases
+
+Global model alias mappings in [aliases.toml](aliases.toml) let users reference models by short names:
+
+```toml
+"sonnet" = "claude-sonnet-4-6"
+"gpt4" = "gpt-4o"
+"flash" = "gemini-2.5-flash"
+"deepseek" = "deepseek-chat"
+```
+
+Models can also define aliases directly in their provider TOML files, which are auto-registered at load time.
+
+### Plugins
+
+Plugins extend agent capabilities with memory systems, safety guardrails, and conversation utilities.
+
+**10 plugins:** auto-summarizer, context-decay, conversation-logger, episodic-memory, guardrails, keyword-memory, sentiment-tracker, todo-tracker, topic-memory, user-profile
+
 ### Skills
 
-Skills in `skills/<name>/skill.toml` are reusable prompt templates or Python scripts that agents can invoke.
+Reusable prompt templates or Python scripts that agents can invoke.
 
 ```toml
 [skill]
@@ -112,13 +222,9 @@ type = "promptonly"
 template = "Create a meeting agenda for: {{topic}}"
 ```
 
-### Providers
+## Usage
 
-Provider files in `providers/<name>.toml` define LLM providers and their models with pricing, context windows, and capability flags. See [schema.toml](schema.toml) for the full field reference.
-
-## How LibreFang Uses This Registry
-
-LibreFang ships with built-in content compiled into the binary. This repository serves as the upstream source for updates and community contributions.
+### Install from Registry
 
 ```bash
 # Update all registry content
@@ -133,15 +239,15 @@ librefang integration install github
 
 ### Custom Local Content
 
-You can also create custom content locally without submitting a PR:
+Create custom content locally without submitting to this registry:
 
 ```bash
-# Create a custom agent
+# Custom agent
 mkdir -p ~/.librefang/agents/my-agent
 # Edit ~/.librefang/agents/my-agent/agent.toml
 
-# Add custom models to your config
-# ~/.librefang/model_catalog.toml
+# Custom model aliases
+# Add to ~/.librefang/model_catalog.toml
 ```
 
 ## Validation
@@ -150,9 +256,9 @@ mkdir -p ~/.librefang/agents/my-agent
 python scripts/validate.py
 ```
 
-This validates all provider TOML files for correctness: required fields, valid tiers, non-negative costs, no duplicate IDs.
+Validates all content files for correctness: required fields, valid types, non-negative costs, no duplicate IDs.
 
-## How to Contribute
+## Contributing
 
 1. Fork this repository
 2. Add or edit content in the appropriate directory
@@ -160,19 +266,6 @@ This validates all provider TOML files for correctness: required fields, valid t
 4. Submit a Pull Request
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed instructions for each content type.
-
-## Current Stats
-
-| Type | Count |
-|------|-------|
-| Agents | 33 |
-| Hands | 14 |
-| Integrations | 25 |
-| Skills | 2 |
-| Plugins | 10 |
-| Providers | 46 |
-| Models | 220+ |
-| Aliases | 80+ |
 
 ## License
 

@@ -183,6 +183,179 @@ After synthesis, explicitly note:
 
 ---
 
+## Worked Examples
+
+### Example 1: Technology Adoption Decision
+
+**Question**: "Should our company adopt Rust for backend services?"
+
+**Phase 1 — Define**
+
+Decompose into sub-questions:
+```
+Main: "Should our company adopt Rust for backend services?"
+Sub-questions:
+  1. What are Rust's strengths for backend work? (factual)
+  2. What are the real-world costs of adoption? (factual + case studies)
+  3. How does Rust compare to our current stack (Go) on key metrics? (comparative)
+  4. What do teams of our size (15-30 engineers) report? (case studies)
+  5. What is the hiring/training landscape? (survey)
+  6. What are the migration paths and risks? (how-to + risk analysis)
+```
+
+Scope constraints: Backend HTTP services, team of 20 engineers currently using Go, latency-sensitive workloads, 18-month planning horizon.
+
+**Phase 2 — Search (multi-strategy)**
+```
+Strategy 1 (Direct):         "Rust backend production experience"
+Strategy 2 (Authoritative):  site:arxiv.org "Rust" "memory safety" performance
+Strategy 3 (Practical):      "migrating from Go to Rust" blog OR postmortem
+Strategy 4 (Contrarian):     "Rust backend" problems OR regret OR "not worth"
+Strategy 5 (Data):           "Rust" "developer survey" adoption 2024 2025
+Strategy 6 (Case studies):   site:engineering.*.com Rust adoption
+```
+
+**Phase 3 — Evaluate (CRAAP scoring)**
+```
+Source 1: Rust annual survey (rust-lang.org)          → A (primary, current)
+Source 2: Discord engineering blog on Rust migration   → A (primary, practitioner)
+Source 3: Figma "Rust in production" post              → A (primary, detailed metrics)
+Source 4: Random Medium post "Rust is the future"      → D (no credentials, no data)
+Source 5: AWS SDK for Rust announcement                → B (authoritative, but marketing)
+Source 6: "Why we moved back to Go" blog post          → B (primary experience, single case)
+Source 7: Stack Overflow developer survey              → A (large sample, methodology documented)
+```
+
+Drop Source 4 entirely. Use Source 6 as a counterpoint despite being a single case.
+
+**Phase 4 — Synthesize**
+```
+FINDING 1: Rust delivers measurable performance and reliability gains
+  Evidence for: Discord reported 50% memory reduction after migration [2].
+    Figma measured p99 latency improvements of 3-5x for compute-heavy paths [3].
+  Evidence against: Gains may be marginal for I/O-bound CRUD services [6].
+  Confidence: High for compute-intensive workloads, medium for I/O-bound.
+
+FINDING 2: Adoption cost is front-loaded and significant
+  Evidence for: Average ramp-up time for experienced Go/C++ engineers is
+    3-6 months to productive Rust [2][7]. Compile times 2-5x longer than Go [3].
+  Evidence against: Teams report that after the learning curve, maintenance
+    costs drop due to fewer production incidents [2][3].
+  Confidence: High
+
+FINDING 3: Hiring pipeline is narrow but growing
+  Evidence for: Rust ranks as "most admired" language for 8 consecutive years
+    in SO survey, but only ~13% of developers use it professionally [7].
+  Evidence against: Rust job demand is growing ~40% YoY [7].
+  Confidence: Medium — hiring data is self-reported.
+```
+
+**Phase 5 — Verify and deliver**
+
+Cross-check: Discord and Figma metrics are confirmed by independent engineering talks. SO survey methodology is published and peer-reviewed.
+
+Final recommendation structure:
+```
+Adopt for: Latency-sensitive, compute-heavy services (strong evidence)
+Avoid for: Simple CRUD APIs where Go is already performant (low ROI)
+Mitigate hiring risk: Invest in internal training, start with one team
+Timeline: 6-month pilot on a non-critical service before broader adoption
+Confidence: Medium-high — strong technical evidence, moderate organizational evidence
+```
+
+### Example 2: Incident Analysis
+
+**Question**: "What caused the 2024 CrowdStrike outage and what are the implications?"
+
+**Phase 1 — Define**
+
+This is a causal question with survey elements. Decompose:
+```
+Main: "What caused the 2024 CrowdStrike outage?"
+Sub-questions:
+  1. What happened? (timeline — factual)
+  2. What was the technical root cause? (causal)
+  3. What was the scope of impact? (factual, data)
+  4. How did CrowdStrike respond? (factual)
+  5. What systemic issues does this reveal? (analytical)
+  6. What changed in the industry as a result? (survey + predictive)
+```
+
+**Phase 2 — Search**
+```
+Strategy 1 (Primary):     site:crowdstrike.com "July 2024" postmortem OR incident
+Strategy 2 (Technical):   "CrowdStrike" "channel file" root cause analysis
+Strategy 3 (Impact data): "CrowdStrike outage" damages OR cost OR impact 2024
+Strategy 4 (Regulatory):  site:gov "CrowdStrike" review OR hearing OR testimony
+Strategy 5 (Contrarian):  "CrowdStrike" "kernel driver" criticism before:2024-07-01
+Strategy 6 (Expert):      "CrowdStrike outage" analysis site:*.edu OR site:arxiv.org
+```
+
+Note Strategy 5: searching for pre-incident criticism establishes whether warnings existed.
+
+**Phase 3 — Evaluate and build timeline**
+```
+Timeline (verified — Level 3):
+  2024-07-19 04:09 UTC  CrowdStrike deploys Channel File 291 update
+  2024-07-19 04:09-05:27  Falcon sensor crashes → Windows BSOD on boot
+  2024-07-19 05:27 UTC  CrowdStrike reverts the channel file
+  2024-07-19 ~06:00     Scope becomes apparent: 8.5M Windows devices affected
+  2024-07-19-21          Manual remediation required (boot to Safe Mode, delete file)
+  2024-07-20-25          Airlines, hospitals, banks in multi-day recovery
+
+Sources: CrowdStrike PIR [A], Microsoft blog [A], Reuters reporting [B],
+  Congressional testimony transcript [A]
+```
+
+**Phase 4 — Synthesize root cause**
+```
+FINDING 1: Technical root cause was an out-of-bounds memory read
+  A channel file update (type 291) contained malformed data.
+  The Falcon sensor's Content Interpreter triggered an OOB read,
+  causing a kernel-level crash (BSOD). The sensor ran as a kernel
+  driver, so its crash took down the entire OS.
+  Sources: CrowdStrike PIR [A], independent reverse engineering [B]
+  Confidence: High (confirmed by vendor + independent analysis)
+
+FINDING 2: The update bypassed adequate testing
+  Channel files ("rapid response content") used a different validation
+  pipeline than sensor code. The Template Type tested had 20 input
+  fields; the deployed content provided 21. The validator did not
+  catch the mismatch.
+  Sources: CrowdStrike PIR [A], Congressional testimony [A]
+  Confidence: High
+
+FINDING 3: Impact — $5-10B+ in estimated damages
+  8.5M devices affected (Microsoft estimate). Delta Air Lines alone
+  reported $500M in losses. Parametrix estimated $5.4B in direct
+  losses for Fortune 500 companies.
+  Sources: Microsoft [A], Parametrix [B], Delta SEC filing [A]
+  Confidence: Medium-high (total figure is estimated, individual claims are documented)
+
+FINDING 4: Systemic issue — monoculture risk in security infrastructure
+  A single vendor's kernel-level agent was present on ~24% of
+  enterprise Windows endpoints. Pre-incident criticism of kernel-mode
+  security agents existed but was not widely acted upon.
+  Sources: Congressional hearing [A], pre-incident security research [B]
+  Confidence: High
+```
+
+**Phase 5 — Verify and present implications**
+```
+Verified implications (cross-referenced across 3+ independent sources):
+  1. Regulatory pressure on kernel-mode security agents accelerated
+  2. Microsoft announced Windows Resiliency Initiative (user-mode alternatives)
+  3. Enterprise customers began requiring staged/canary rollout for security updates
+  4. Cyber insurance models updated to account for single-vendor concentration
+
+Remaining uncertainties:
+  - Full financial impact is still in litigation (Delta v. CrowdStrike)
+  - Long-term market share impact on CrowdStrike is unclear
+  - Whether kernel-mode restrictions will actually be enforced
+```
+
+---
+
 ## Citation Formats
 
 ### Inline URL
@@ -325,3 +498,99 @@ Be aware of these biases during research:
 - Check if findings have been replicated
 - Preprints have not been peer-reviewed — note this caveat
 - p-values and effect sizes both matter — not just "statistically significant"
+
+---
+
+## Research Shortcuts
+
+### When to Stop Researching
+
+Research has diminishing returns. Recognize these signals:
+
+**Stop signals — you have enough**:
+- Three independent sources converge on the same answer
+- New searches return sources you have already seen
+- The last 3 searches added no new information or perspectives
+- You have found primary source data that directly answers the question
+- Remaining disagreements are about edge cases, not the core finding
+
+**Keep going signals — you do not have enough**:
+- Only one source supports a critical claim
+- Two credible sources directly contradict each other with no resolution
+- The requester's specific context (industry, scale, constraints) is not addressed
+- You have secondary reporting but no primary source for a key fact
+- Your confidence assessment would be "low" on a central finding
+
+**Time-boxing rule**: For a standard research question, allocate effort roughly as:
+```
+Quick facts:       2-4 searches, 1-2 minutes
+Standard question: 6-12 searches, 5-10 minutes
+Deep dive:         15-30 searches, 20-40 minutes
+```
+If you exceed 2x the expected searches without convergence, stop and report what you have with explicit gaps noted.
+
+### Quick Assessment vs Deep Dive
+
+Not every question deserves a full 5-phase research process. Use this decision matrix:
+
+```
+Quick assessment (skip to synthesis fast):
+  ✓ Question has a single factual answer
+  ✓ Authoritative primary source exists and is accessible
+  ✓ Low stakes — wrong answer has minimal consequences
+  ✓ Requester wants speed over thoroughness
+  Example: "What version of Python dropped GIL?"
+    → Check python.org docs/PEPs, answer in one search.
+
+Standard research (full 5-phase process):
+  ✓ Comparative or analytical question
+  ✓ Multiple valid perspectives exist
+  ✓ Answer will inform a decision
+  ✓ Moderate stakes
+  Example: "React vs Svelte for our new dashboard?"
+    → Full decomposition, multi-source, synthesis needed.
+
+Deep dive (extended research with formal deliverable):
+  ✓ High-stakes decision (architecture, vendor, strategy)
+  ✓ Conflicting information is likely
+  ✓ Historical context and trend analysis needed
+  ✓ Requester expects a report they can share with others
+  Example: "Should we move from AWS to multi-cloud?"
+    → Multiple sub-questions, 10+ sources, formal report.
+```
+
+### Source Reuse Patterns
+
+Not every question starts from zero. Build efficiency by recognizing reusable sources.
+
+**Tier 1 — Canonical references (always check first for their domain)**:
+```
+Programming languages: Official docs, language spec, release notes
+Cloud services:        AWS/GCP/Azure docs, status pages, pricing pages
+Security:              CVE databases, vendor advisories, NIST NVD
+Statistics:            Official census/survey data, World Bank, OECD
+Companies:             SEC filings (EDGAR), official IR pages
+Open source:           GitHub repo, CHANGELOG, issue tracker
+```
+
+**Tier 2 — High-signal aggregators (good starting points)**:
+```
+Technology trends:     ThoughtWorks Radar, Stack Overflow survey, TIOBE
+Security incidents:    CISA advisories, Krebs on Security
+Academic papers:       Google Scholar, Semantic Scholar, arXiv
+Industry analysis:     Gartner (with bias caveat), a16z, Sequoia
+Developer experience:  JetBrains survey, GitHub Octoverse
+```
+
+**Tier 3 — Practitioner sources (for real-world validation)**:
+```
+Engineering blogs:     Company engineering blogs (Netflix, Uber, Stripe, Discord)
+Conference talks:      Recorded talks from Strange Loop, QCon, KubeCon
+Community discussion:  Hacker News (comments often more valuable than articles),
+                       Reddit (r/programming, r/devops, domain-specific subs)
+```
+
+**Anti-patterns to avoid**:
+- Do not reuse a source across topics just because it scored well once — re-evaluate CRAAP for the new topic
+- Do not treat aggregator rankings (Gartner Magic Quadrant, G2 reviews) as primary evidence — they are influenced by vendor spending
+- Do not assume a source's authority transfers across domains — a security vendor's blog is authoritative on threats but not on database performance

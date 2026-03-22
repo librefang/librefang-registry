@@ -645,6 +645,289 @@ frequency = "on-demand"
 token_consumption = "medium"
 default_active = false
 
+# ─── Internationalization (optional) ─────────────────────────────────────────
+# All i18n sections are optional. Without them, the English values above are used.
+# To localize, add [i18n.LANG] sections (e.g. zh, ja, ko, es, fr, de).
+# Settings translations are also optional — omit to keep English labels.
+
+# ─── Chinese (简体中文) ────────────────────────────────────────────────────
+
 [i18n.zh]
 name = "视频剪辑 Hand"
 description = "将长视频自动剪辑为病毒式短视频，配有字幕和缩略图"
+category = "内容"
+
+[i18n.zh.settings.stt_provider]
+label = "语音转文字服务"
+description = "用于生成字幕和片段选择的音频转录方式"
+
+[i18n.zh.settings.tts_provider]
+label = "文字转语音服务"
+description = "可选的配音或旁白生成服务"
+
+[i18n.zh.settings.elevenlabs_api_key]
+label = "ElevenLabs API 密钥"
+description = "来自 elevenlabs.io 的高质量文字转语音 API 密钥。选择 ElevenLabs TTS 时必填。"
+
+[i18n.zh.settings.publish_target]
+label = "发布目标"
+description = "处理完成后将短视频发送到哪里。选择"仅本地"则跳过发布。"
+
+[i18n.zh.settings.telegram_bot_token]
+label = "Telegram 机器人令牌"
+description = "从 Telegram 的 @BotFather 获取（例如 123456:ABC-DEF...）。机器人需为目标频道管理员。"
+
+[i18n.zh.settings.telegram_chat_id]
+label = "Telegram 聊天 ID"
+description = "频道：-100XXXXXXXXXX 或 @频道名。群组：数字 ID。可通过 @userinfobot 获取。"
+
+[i18n.zh.settings.whatsapp_token]
+label = "WhatsApp 访问令牌"
+description = "从 Meta 商务管理平台 > 系统用户获取的永久令牌。临时令牌 24 小时后过期。"
+
+[i18n.zh.settings.whatsapp_phone_id]
+label = "WhatsApp 电话号码 ID"
+description = "从 Meta 开发者门户 > WhatsApp > API 设置获取（例如 1234567890）"
+
+[i18n.zh.settings.whatsapp_recipient]
+label = "WhatsApp 接收方"
+description = "国际格式的电话号码，不含 + 号或空格（例如 14155551234）"
+
+[i18n.zh.settings.approval_mode]
+label = "审批模式"
+description = "发布到频道前将短视频加入队列供审核"
+
+# ─── Japanese (日本語) ────────────────────────────────────────────────────
+
+[i18n.ja]
+name = "動画クリップ Hand"
+description = "長尺動画をキャプション付きサムネイル付きのバイラルショートクリップに変換"
+category = "コンテンツ"
+
+[i18n.ja.settings.stt_provider]
+label = "音声テキスト変換プロバイダー"
+description = "字幕生成とクリップ選択に使用する音声の文字起こし方法"
+
+[i18n.ja.settings.tts_provider]
+label = "テキスト音声変換プロバイダー"
+description = "クリップへのオプションのボイスオーバーまたはナレーション生成"
+
+[i18n.ja.settings.elevenlabs_api_key]
+label = "ElevenLabs APIキー"
+description = "elevenlabs.ioの高品質テキスト音声変換用APIキー。ElevenLabs TTSを選択した場合に必須。"
+
+[i18n.ja.settings.publish_target]
+label = "公開先"
+description = "処理完了後にクリップを送信する先。「ローカルのみ」を選択すると公開をスキップします。"
+
+[i18n.ja.settings.telegram_bot_token]
+label = "Telegramボットトークン"
+description = "Telegramの@BotFatherから取得（例: 123456:ABC-DEF...）。ボットは対象チャンネルの管理者である必要があります。"
+
+[i18n.ja.settings.telegram_chat_id]
+label = "TelegramチャットID"
+description = "チャンネル: -100XXXXXXXXXX または @チャンネル名。グループ: 数値ID。@userinfobot で取得可能。"
+
+[i18n.ja.settings.whatsapp_token]
+label = "WhatsAppアクセストークン"
+description = "Metaビジネス設定 > システムユーザーから取得した永続トークン。一時トークンは24時間で期限切れになります。"
+
+[i18n.ja.settings.whatsapp_phone_id]
+label = "WhatsApp電話番号ID"
+description = "Meta開発者ポータル > WhatsApp > APIセットアップから取得（例: 1234567890）"
+
+[i18n.ja.settings.whatsapp_recipient]
+label = "WhatsApp送信先"
+description = "国際形式の電話番号（+やスペースなし、例: 14155551234）"
+
+[i18n.ja.settings.approval_mode]
+label = "承認モード"
+description = "チャンネルに公開する前にクリップをレビュー用キューに追加する"
+
+# ─── Spanish (Español) ────────────────────────────────────────────────────
+
+[i18n.es]
+name = "Hand de Clips de Video"
+description = "Convierte videos largos en clips cortos virales con subtítulos y miniaturas"
+category = "Contenido"
+
+[i18n.es.settings.stt_provider]
+label = "Proveedor de voz a texto"
+description = "Cómo se transcribe el audio a texto para subtítulos y selección de clips"
+
+[i18n.es.settings.tts_provider]
+label = "Proveedor de texto a voz"
+description = "Generación opcional de locución o narración para los clips"
+
+[i18n.es.settings.elevenlabs_api_key]
+label = "Clave API de ElevenLabs"
+description = "Clave API de elevenlabs.io para texto a voz de alta calidad. Requerida cuando se selecciona ElevenLabs TTS."
+
+[i18n.es.settings.publish_target]
+label = "Destino de publicación"
+description = "Dónde enviar los clips terminados después del procesamiento. Seleccionar 'Solo local' para omitir la publicación."
+
+[i18n.es.settings.telegram_bot_token]
+label = "Token del bot de Telegram"
+description = "De @BotFather en Telegram (ej. 123456:ABC-DEF...). El bot debe ser administrador del canal de destino."
+
+[i18n.es.settings.telegram_chat_id]
+label = "ID de chat de Telegram"
+description = "Canal: -100XXXXXXXXXX o @nombrechannel. Grupo: ID numérico. Obtener mediante @userinfobot."
+
+[i18n.es.settings.whatsapp_token]
+label = "Token de acceso de WhatsApp"
+description = "Token permanente de Meta Business Settings > Usuarios del sistema. Los tokens temporales expiran en 24h."
+
+[i18n.es.settings.whatsapp_phone_id]
+label = "ID de número de teléfono de WhatsApp"
+description = "Desde el Portal de Desarrolladores de Meta > WhatsApp > Configuración de API (ej. 1234567890)"
+
+[i18n.es.settings.whatsapp_recipient]
+label = "Destinatario de WhatsApp"
+description = "Número de teléfono en formato internacional, sin + ni espacios (ej. 14155551234)"
+
+[i18n.es.settings.approval_mode]
+label = "Modo de aprobación"
+description = "Poner clips en cola para revisión antes de publicarlos en los canales"
+
+# ─── French (Français) ────────────────────────────────────────────────────
+
+[i18n.fr]
+name = "Hand Clips Vidéo"
+description = "Transforme les longues vidéos en clips courts viraux avec sous-titres et miniatures"
+category = "Contenu"
+
+[i18n.fr.settings.stt_provider]
+label = "Fournisseur de reconnaissance vocale"
+description = "Méthode de transcription audio pour les sous-titres et la sélection de clips"
+
+[i18n.fr.settings.tts_provider]
+label = "Fournisseur de synthèse vocale"
+description = "Génération optionnelle de voix off ou de narration pour les clips"
+
+[i18n.fr.settings.elevenlabs_api_key]
+label = "Clé API ElevenLabs"
+description = "Clé API de elevenlabs.io pour la synthèse vocale haute qualité. Requise lorsque ElevenLabs TTS est sélectionné."
+
+[i18n.fr.settings.publish_target]
+label = "Destination de publication"
+description = "Où envoyer les clips terminés après traitement. Sélectionner 'Local uniquement' pour ignorer la publication."
+
+[i18n.fr.settings.telegram_bot_token]
+label = "Jeton du bot Telegram"
+description = "De @BotFather sur Telegram (ex. 123456:ABC-DEF...). Le bot doit être administrateur du canal cible."
+
+[i18n.fr.settings.telegram_chat_id]
+label = "ID de chat Telegram"
+description = "Canal : -100XXXXXXXXXX ou @nomducanal. Groupe : ID numérique. Obtenir via @userinfobot."
+
+[i18n.fr.settings.whatsapp_token]
+label = "Jeton d'accès WhatsApp"
+description = "Jeton permanent depuis Meta Business Settings > Utilisateurs système. Les jetons temporaires expirent en 24h."
+
+[i18n.fr.settings.whatsapp_phone_id]
+label = "ID de numéro de téléphone WhatsApp"
+description = "Depuis le Portail Développeurs Meta > WhatsApp > Configuration API (ex. 1234567890)"
+
+[i18n.fr.settings.whatsapp_recipient]
+label = "Destinataire WhatsApp"
+description = "Numéro de téléphone au format international, sans + ni espaces (ex. 14155551234)"
+
+[i18n.fr.settings.approval_mode]
+label = "Mode d'approbation"
+description = "Mettre les clips en file d'attente pour révision avant publication sur les canaux"
+
+# ─── German (Deutsch) ────────────────────────────────────────────────────
+
+[i18n.de]
+name = "Videoclip-Hand"
+description = "Verwandelt lange Videos in virale Kurzclips mit Untertiteln und Vorschaubildern"
+category = "Inhalt"
+
+[i18n.de.settings.stt_provider]
+label = "Sprache-zu-Text-Anbieter"
+description = "Methode der Audiotranskription für Untertitel und Clipauswahl"
+
+[i18n.de.settings.tts_provider]
+label = "Text-zu-Sprache-Anbieter"
+description = "Optionale Voiceover- oder Erzählungsgenerierung für Clips"
+
+[i18n.de.settings.elevenlabs_api_key]
+label = "ElevenLabs API-Schlüssel"
+description = "API-Schlüssel von elevenlabs.io für hochwertige Text-zu-Sprache. Erforderlich bei Auswahl von ElevenLabs TTS."
+
+[i18n.de.settings.publish_target]
+label = "Veröffentlichungsziel"
+description = "Wohin fertige Clips nach der Verarbeitung gesendet werden. 'Nur lokal' wählen, um die Veröffentlichung zu überspringen."
+
+[i18n.de.settings.telegram_bot_token]
+label = "Telegram-Bot-Token"
+description = "Von @BotFather auf Telegram (z.B. 123456:ABC-DEF...). Der Bot muss Administrator des Zielkanals sein."
+
+[i18n.de.settings.telegram_chat_id]
+label = "Telegram-Chat-ID"
+description = "Kanal: -100XXXXXXXXXX oder @Kanalname. Gruppe: Numerische ID. Über @userinfobot abrufbar."
+
+[i18n.de.settings.whatsapp_token]
+label = "WhatsApp-Zugriffstoken"
+description = "Permanentes Token aus Meta Business Settings > Systembenutzer. Temporäre Token laufen nach 24h ab."
+
+[i18n.de.settings.whatsapp_phone_id]
+label = "WhatsApp-Telefonnummer-ID"
+description = "Aus dem Meta-Entwicklerportal > WhatsApp > API-Einrichtung (z.B. 1234567890)"
+
+[i18n.de.settings.whatsapp_recipient]
+label = "WhatsApp-Empfänger"
+description = "Telefonnummer im internationalen Format, ohne + oder Leerzeichen (z.B. 14155551234)"
+
+[i18n.de.settings.approval_mode]
+label = "Genehmigungsmodus"
+description = "Clips zur Überprüfung in die Warteschlange stellen, bevor sie auf Kanälen veröffentlicht werden"
+
+# ─── Korean (한국어) ────────────────────────────────────────────────────
+
+[i18n.ko]
+name = "비디오 클립 Hand"
+description = "장편 영상을 자막과 썸네일이 포함된 바이럴 숏폼 클립으로 변환"
+category = "콘텐츠"
+
+[i18n.ko.settings.stt_provider]
+label = "음성-텍스트 변환 서비스"
+description = "자막 생성 및 클립 선택을 위한 오디오 전사 방식"
+
+[i18n.ko.settings.tts_provider]
+label = "텍스트-음성 변환 서비스"
+description = "선택적 더빙 또는 나레이션 생성 서비스"
+
+[i18n.ko.settings.elevenlabs_api_key]
+label = "ElevenLabs API 키"
+description = "elevenlabs.io의 고품질 텍스트-음성 변환 API 키. ElevenLabs TTS 선택 시 필수."
+
+[i18n.ko.settings.publish_target]
+label = "게시 대상"
+description = "처리 완료 후 숏폼 클립을 전송할 위치. '로컬 전용'을 선택하면 게시를 건너뜁니다."
+
+[i18n.ko.settings.telegram_bot_token]
+label = "Telegram 봇 토큰"
+description = "Telegram의 @BotFather에서 발급 (예: 123456:ABC-DEF...). 봇이 대상 채널의 관리자여야 합니다."
+
+[i18n.ko.settings.telegram_chat_id]
+label = "Telegram 채팅 ID"
+description = "채널: -100XXXXXXXXXX 또는 @채널명. 그룹: 숫자 ID. @userinfobot으로 확인 가능."
+
+[i18n.ko.settings.whatsapp_token]
+label = "WhatsApp 액세스 토큰"
+description = "Meta 비즈니스 설정 > 시스템 사용자에서 발급한 영구 토큰. 임시 토큰은 24시간 후 만료."
+
+[i18n.ko.settings.whatsapp_phone_id]
+label = "WhatsApp 전화번호 ID"
+description = "Meta 개발자 포털 > WhatsApp > API 설정에서 확인 (예: 1234567890)"
+
+[i18n.ko.settings.whatsapp_recipient]
+label = "WhatsApp 수신자"
+description = "+ 기호나 공백 없이 국제 형식의 전화번호 (예: 14155551234)"
+
+[i18n.ko.settings.approval_mode]
+label = "승인 모드"
+description = "채널에 게시하기 전 클립을 대기열에 추가하여 검토"

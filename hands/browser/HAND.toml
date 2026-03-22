@@ -296,6 +296,169 @@ token_consumption = "low"
 default_active = true
 activation_warning = "Browser hand runs continuously but mainly consumes tokens when actively performing web tasks."
 
+# ─── Internationalization (optional) ─────────────────────────────────────────
+# All i18n sections are optional. Without them, the English values above are used.
+# To localize, add [i18n.LANG] sections (e.g. zh, ja, ko, es, fr, de).
+# Settings translations are also optional — omit to keep English labels.
+
+# ─── Chinese (简体中文) ────────────────────────────────────────────────────
+
 [i18n.zh]
 name = "浏览器 Hand"
 description = "自主网页浏览器——导航网站、填写表单、点击按钮，经用户批准后完成多步骤网页任务"
+category = "生产力"
+
+[i18n.zh.settings.headless]
+label = "无头模式"
+description = "在不显示浏览器窗口的情况下运行（推荐用于服务器环境）"
+
+[i18n.zh.settings.approval_mode]
+label = "购买审批"
+description = "在完成任何购买或支付操作前，需要用户明确确认"
+
+[i18n.zh.settings.max_pages_per_task]
+label = "每任务最大页面数"
+description = "每个任务允许的最大页面导航次数，防止无限浏览"
+
+[i18n.zh.settings.default_wait]
+label = "操作后默认等待"
+description = "点击或导航后等待页面稳定的时长"
+
+[i18n.zh.settings.screenshot_on_action]
+label = "操作后截图"
+description = "每次点击/导航后自动截图，用于视觉验证"
+
+# ─── Japanese (日本語) ────────────────────────────────────────────────────
+
+[i18n.ja]
+name = "ブラウザ Hand"
+description = "自律型ウェブブラウザ——サイトのナビゲーション、フォーム入力、ボタンクリック、ユーザー承認付きの複数ステップWebタスクの実行"
+category = "生産性"
+
+[i18n.ja.settings.headless]
+label = "ヘッドレスモード"
+description = "ブラウザウィンドウを表示せずに実行する（サーバー環境に推奨）"
+
+[i18n.ja.settings.approval_mode]
+label = "購入承認"
+description = "購入や支払いを完了する前にユーザーの明示的な確認を求める"
+
+[i18n.ja.settings.max_pages_per_task]
+label = "タスクあたりの最大ページ数"
+description = "暴走的なブラウジングを防ぐため、タスクごとに許可されるページ遷移の最大数"
+
+[i18n.ja.settings.default_wait]
+label = "操作後のデフォルト待機時間"
+description = "クリックやナビゲーション後、ページが安定するまでの待機時間"
+
+[i18n.ja.settings.screenshot_on_action]
+label = "操作後のスクリーンショット"
+description = "クリック/ナビゲーションのたびに自動的にスクリーンショットを撮影し、視覚的に確認する"
+
+# ─── Spanish (Español) ────────────────────────────────────────────────────
+
+[i18n.es]
+name = "Hand de Navegador"
+description = "Navegador web autónomo — navega sitios, completa formularios, hace clic en botones y realiza tareas web de múltiples pasos con aprobación del usuario para compras"
+category = "Productividad"
+
+[i18n.es.settings.headless]
+label = "Modo sin interfaz"
+description = "Ejecutar el navegador sin ventana visible (recomendado para servidores)"
+
+[i18n.es.settings.approval_mode]
+label = "Aprobación de compras"
+description = "Requerir confirmación explícita del usuario antes de completar cualquier compra o pago"
+
+[i18n.es.settings.max_pages_per_task]
+label = "Máximo de páginas por tarea"
+description = "Número máximo de navegaciones de página permitidas por tarea para evitar navegación descontrolada"
+
+[i18n.es.settings.default_wait]
+label = "Espera predeterminada tras acción"
+description = "Cuánto tiempo esperar después de hacer clic o navegar para que la página se estabilice"
+
+[i18n.es.settings.screenshot_on_action]
+label = "Captura de pantalla tras acciones"
+description = "Tomar automáticamente una captura de pantalla después de cada clic/navegación para verificación visual"
+
+# ─── French (Français) ────────────────────────────────────────────────────
+
+[i18n.fr]
+name = "Hand Navigateur"
+description = "Navigateur web autonome — navigue sur les sites, remplit les formulaires, clique sur les boutons et exécute des tâches web multi-étapes avec approbation utilisateur pour les achats"
+category = "Productivité"
+
+[i18n.fr.settings.headless]
+label = "Mode sans interface"
+description = "Exécuter le navigateur sans fenêtre visible (recommandé pour les serveurs)"
+
+[i18n.fr.settings.approval_mode]
+label = "Approbation des achats"
+description = "Exiger la confirmation explicite de l'utilisateur avant de finaliser tout achat ou paiement"
+
+[i18n.fr.settings.max_pages_per_task]
+label = "Pages maximum par tâche"
+description = "Nombre maximum de navigations de page autorisées par tâche pour éviter une navigation incontrôlée"
+
+[i18n.fr.settings.default_wait]
+label = "Attente par défaut après action"
+description = "Durée d'attente après un clic ou une navigation pour que la page se stabilise"
+
+[i18n.fr.settings.screenshot_on_action]
+label = "Capture d'écran après action"
+description = "Prendre automatiquement une capture d'écran après chaque clic/navigation pour vérification visuelle"
+
+# ─── German (Deutsch) ────────────────────────────────────────────────────
+
+[i18n.de]
+name = "Browser-Hand"
+description = "Autonomer Webbrowser — navigiert Websites, füllt Formulare aus, klickt Schaltflächen und führt mehrstufige Webaufgaben mit Benutzerfreigabe für Käufe aus"
+category = "Produktivität"
+
+[i18n.de.settings.headless]
+label = "Headless-Modus"
+description = "Browser ohne sichtbares Fenster ausführen (empfohlen für Server)"
+
+[i18n.de.settings.approval_mode]
+label = "Kaufgenehmigung"
+description = "Ausdrückliche Benutzerbestätigung vor dem Abschluss eines Kaufs oder einer Zahlung erforderlich"
+
+[i18n.de.settings.max_pages_per_task]
+label = "Maximale Seiten pro Aufgabe"
+description = "Maximale Anzahl erlaubter Seitennavigationen pro Aufgabe, um unkontrolliertes Surfen zu verhindern"
+
+[i18n.de.settings.default_wait]
+label = "Standard-Wartezeit nach Aktion"
+description = "Wartezeit nach einem Klick oder einer Navigation, bis sich die Seite stabilisiert hat"
+
+[i18n.de.settings.screenshot_on_action]
+label = "Screenshot nach Aktion"
+description = "Nach jedem Klick/jeder Navigation automatisch einen Screenshot für visuelle Überprüfung erstellen"
+
+# ─── Korean (한국어) ────────────────────────────────────────────────────
+
+[i18n.ko]
+name = "브라우저 Hand"
+description = "자율 웹 브라우저 — 사이트 탐색, 양식 작성, 버튼 클릭, 구매 시 사용자 승인을 받아 다단계 웹 작업 수행"
+category = "생산성"
+
+[i18n.ko.settings.headless]
+label = "헤드리스 모드"
+description = "브라우저 창을 표시하지 않고 실행 (서버 환경에 권장)"
+
+[i18n.ko.settings.approval_mode]
+label = "구매 승인"
+description = "구매 또는 결제 완료 전 사용자의 명시적 확인 필요"
+
+[i18n.ko.settings.max_pages_per_task]
+label = "작업당 최대 페이지 수"
+description = "작업당 허용되는 최대 페이지 탐색 횟수 (무한 브라우징 방지)"
+
+[i18n.ko.settings.default_wait]
+label = "동작 후 기본 대기"
+description = "클릭 또는 탐색 후 페이지가 안정될 때까지 대기하는 시간"
+
+[i18n.ko.settings.screenshot_on_action]
+label = "동작 후 스크린샷"
+description = "클릭/탐색 후 자동으로 스크린샷을 캡처하여 시각적으로 검증"

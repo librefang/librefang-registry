@@ -490,6 +490,265 @@ token_consumption = "high"
 default_active = false
 activation_warning = "DevOps hand runs continuously and monitors infrastructure, consuming tokens."
 
+# ─── Internationalization (optional) ─────────────────────────────────────────
+# All i18n sections are optional. Without them, the English values above are used.
+# To localize, add [i18n.LANG] sections (e.g. zh, ja, ko, es, fr, de).
+# Settings translations are also optional — omit to keep English labels.
+
+# ─── Chinese (简体中文) ────────────────────────────────────────────────────
+
 [i18n.zh]
 name = "DevOps Hand"
 description = "自主 DevOps 工程师——CI/CD 管理、基础设施监控、部署自动化和事件响应"
+category = "开发"
+
+[i18n.zh.settings.infrastructure]
+label = "基础设施类型"
+description = "主要基础设施平台"
+
+[i18n.zh.settings.ci_platform]
+label = "CI/CD 平台"
+description = "主要 CI/CD 平台"
+
+[i18n.zh.settings.monitoring_focus]
+label = "监控重点"
+description = "主要监控和告警的关注方向"
+
+[i18n.zh.settings.auto_monitor]
+label = "自动监控"
+description = "自动监控基础设施并在出现问题时告警"
+
+[i18n.zh.settings.check_interval]
+label = "健康检查间隔"
+description = "自动健康检查的执行频率"
+
+[i18n.zh.settings.service_urls]
+label = "服务 URL"
+description = "要监控的 URL 列表，以逗号分隔（例如 https://api.example.com/health,https://app.example.com）"
+
+[i18n.zh.settings.alert_on_failure]
+label = "故障告警"
+description = "健康检查失败时发布事件通知"
+
+[i18n.zh.settings.rollback_strategy]
+label = "回滚策略"
+description = "部署失败时的默认回滚方式"
+
+[i18n.zh.settings.approval_mode]
+label = "审批模式"
+description = "将部署和基础设施操作加入队列供审核，而非直接执行"
+
+# ─── Japanese (日本語) ────────────────────────────────────────────────────
+
+[i18n.ja]
+name = "DevOps Hand"
+description = "自律型DevOpsエンジニア——CI/CD管理、インフラ監視、デプロイ自動化、インシデント対応"
+category = "開発"
+
+[i18n.ja.settings.infrastructure]
+label = "インフラタイプ"
+description = "主要なインフラプラットフォーム"
+
+[i18n.ja.settings.ci_platform]
+label = "CI/CDプラットフォーム"
+description = "主要なCI/CDプラットフォーム"
+
+[i18n.ja.settings.monitoring_focus]
+label = "監視の重点"
+description = "監視とアラートの主な対象分野"
+
+[i18n.ja.settings.auto_monitor]
+label = "自動監視"
+description = "インフラを自動監視し、問題発生時にアラートを出す"
+
+[i18n.ja.settings.check_interval]
+label = "ヘルスチェック間隔"
+description = "自動ヘルスチェックの実行間隔"
+
+[i18n.ja.settings.service_urls]
+label = "サービスURL"
+description = "監視対象のURL一覧（カンマ区切り、例: https://api.example.com/health,https://app.example.com）"
+
+[i18n.ja.settings.alert_on_failure]
+label = "障害アラート"
+description = "ヘルスチェック失敗時にイベント通知を発行する"
+
+[i18n.ja.settings.rollback_strategy]
+label = "ロールバック戦略"
+description = "デプロイ失敗時のデフォルトのロールバック方法"
+
+[i18n.ja.settings.approval_mode]
+label = "承認モード"
+description = "デプロイやインフラ操作を直接実行せず、レビュー用キューに追加する"
+
+# ─── Spanish (Español) ────────────────────────────────────────────────────
+
+[i18n.es]
+name = "Hand de DevOps"
+description = "Ingeniero DevOps autónomo — gestión de CI/CD, monitoreo de infraestructura, automatización de despliegues y respuesta a incidentes"
+category = "Desarrollo"
+
+[i18n.es.settings.infrastructure]
+label = "Tipo de infraestructura"
+description = "Plataforma de infraestructura principal"
+
+[i18n.es.settings.ci_platform]
+label = "Plataforma CI/CD"
+description = "Plataforma principal de CI/CD"
+
+[i18n.es.settings.monitoring_focus]
+label = "Enfoque de monitoreo"
+description = "Área principal de monitoreo y alertas"
+
+[i18n.es.settings.auto_monitor]
+label = "Monitoreo automático"
+description = "Monitorear automáticamente la infraestructura y alertar ante problemas"
+
+[i18n.es.settings.check_interval]
+label = "Intervalo de comprobación de salud"
+description = "Con qué frecuencia ejecutar las comprobaciones de salud automatizadas"
+
+[i18n.es.settings.service_urls]
+label = "URLs de servicios"
+description = "Lista de URLs a monitorear separadas por comas (ej. https://api.example.com/health,https://app.example.com)"
+
+[i18n.es.settings.alert_on_failure]
+label = "Alertar ante fallos"
+description = "Publicar eventos cuando las comprobaciones de salud fallen"
+
+[i18n.es.settings.rollback_strategy]
+label = "Estrategia de reversión"
+description = "Enfoque de reversión predeterminado para despliegues fallidos"
+
+[i18n.es.settings.approval_mode]
+label = "Modo de aprobación"
+description = "Poner acciones de despliegue e infraestructura en cola para revisión en lugar de ejecutarlas directamente"
+
+# ─── French (Français) ────────────────────────────────────────────────────
+
+[i18n.fr]
+name = "Hand DevOps"
+description = "Ingénieur DevOps autonome — gestion CI/CD, surveillance d'infrastructure, automatisation des déploiements et réponse aux incidents"
+category = "Développement"
+
+[i18n.fr.settings.infrastructure]
+label = "Type d'infrastructure"
+description = "Plateforme d'infrastructure principale"
+
+[i18n.fr.settings.ci_platform]
+label = "Plateforme CI/CD"
+description = "Plateforme CI/CD principale"
+
+[i18n.fr.settings.monitoring_focus]
+label = "Axe de surveillance"
+description = "Domaine principal de surveillance et d'alerte"
+
+[i18n.fr.settings.auto_monitor]
+label = "Surveillance automatique"
+description = "Surveiller automatiquement l'infrastructure et alerter en cas de problèmes"
+
+[i18n.fr.settings.check_interval]
+label = "Intervalle de vérification de santé"
+description = "Fréquence d'exécution des vérifications de santé automatisées"
+
+[i18n.fr.settings.service_urls]
+label = "URLs des services"
+description = "Liste d'URLs à surveiller séparées par des virgules (ex. https://api.example.com/health,https://app.example.com)"
+
+[i18n.fr.settings.alert_on_failure]
+label = "Alerte en cas d'échec"
+description = "Publier des événements lorsque les vérifications de santé échouent"
+
+[i18n.fr.settings.rollback_strategy]
+label = "Stratégie de retour en arrière"
+description = "Approche de retour en arrière par défaut pour les déploiements échoués"
+
+[i18n.fr.settings.approval_mode]
+label = "Mode d'approbation"
+description = "Mettre les actions de déploiement et d'infrastructure en file d'attente pour révision au lieu de les exécuter directement"
+
+# ─── German (Deutsch) ────────────────────────────────────────────────────
+
+[i18n.de]
+name = "DevOps-Hand"
+description = "Autonomer DevOps-Ingenieur — CI/CD-Verwaltung, Infrastrukturüberwachung, Deployment-Automatisierung und Incident-Response"
+category = "Entwicklung"
+
+[i18n.de.settings.infrastructure]
+label = "Infrastrukturtyp"
+description = "Primäre Infrastrukturplattform"
+
+[i18n.de.settings.ci_platform]
+label = "CI/CD-Plattform"
+description = "Primäre CI/CD-Plattform"
+
+[i18n.de.settings.monitoring_focus]
+label = "Überwachungsschwerpunkt"
+description = "Hauptbereich für Überwachung und Alarme"
+
+[i18n.de.settings.auto_monitor]
+label = "Automatische Überwachung"
+description = "Infrastruktur automatisch überwachen und bei Problemen alarmieren"
+
+[i18n.de.settings.check_interval]
+label = "Gesundheitscheck-Intervall"
+description = "Ausführungshäufigkeit der automatisierten Gesundheitschecks"
+
+[i18n.de.settings.service_urls]
+label = "Service-URLs"
+description = "Kommagetrennte Liste der zu überwachenden URLs (z.B. https://api.example.com/health,https://app.example.com)"
+
+[i18n.de.settings.alert_on_failure]
+label = "Warnung bei Ausfall"
+description = "Ereignisse veröffentlichen, wenn Gesundheitschecks fehlschlagen"
+
+[i18n.de.settings.rollback_strategy]
+label = "Rollback-Strategie"
+description = "Standard-Rollback-Ansatz für fehlgeschlagene Deployments"
+
+[i18n.de.settings.approval_mode]
+label = "Genehmigungsmodus"
+description = "Deployment- und Infrastrukturaktionen zur Überprüfung in die Warteschlange stellen, anstatt sie direkt auszuführen"
+
+# ─── Korean (한국어) ────────────────────────────────────────────────────
+
+[i18n.ko]
+name = "DevOps Hand"
+description = "자율 DevOps 엔지니어 — CI/CD 관리, 인프라 모니터링, 배포 자동화 및 인시던트 대응"
+category = "개발"
+
+[i18n.ko.settings.infrastructure]
+label = "인프라 유형"
+description = "주요 인프라 플랫폼"
+
+[i18n.ko.settings.ci_platform]
+label = "CI/CD 플랫폼"
+description = "주요 CI/CD 플랫폼"
+
+[i18n.ko.settings.monitoring_focus]
+label = "모니터링 중점"
+description = "주요 모니터링 및 알림 방향"
+
+[i18n.ko.settings.auto_monitor]
+label = "자동 모니터링"
+description = "인프라를 자동으로 모니터링하고 문제 발생 시 알림"
+
+[i18n.ko.settings.check_interval]
+label = "상태 점검 간격"
+description = "자동 상태 점검 실행 주기"
+
+[i18n.ko.settings.service_urls]
+label = "서비스 URL"
+description = "모니터링할 URL 목록 (쉼표로 구분, 예: https://api.example.com/health,https://app.example.com)"
+
+[i18n.ko.settings.alert_on_failure]
+label = "장애 알림"
+description = "상태 점검 실패 시 이벤트 알림 발행"
+
+[i18n.ko.settings.rollback_strategy]
+label = "롤백 전략"
+description = "배포 실패 시 기본 롤백 방식"
+
+[i18n.ko.settings.approval_mode]
+label = "승인 모드"
+description = "배포 및 인프라 작업을 직접 실행하지 않고 대기열에 추가하여 검토"

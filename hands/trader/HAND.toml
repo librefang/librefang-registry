@@ -781,6 +781,337 @@ default_active = false
 # Warning shown when user tries to activate
 activation_warning = "Trading hand runs continuously and consumes tokens. Deactivate when not trading."
 
+# ─── Internationalization (optional) ─────────────────────────────────────────
+# All i18n sections are optional. Without them, the English values above are used.
+# To localize, add [i18n.LANG] sections (e.g. zh, ja, ko, es, fr, de).
+# Settings translations are also optional — omit to keep English labels.
+
+# ─── Chinese (简体中文) ────────────────────────────────────────────────────
+
 [i18n.zh]
 name = "交易 Hand"
 description = "自主市场情报与交易引擎——多信号分析、对抗性多空推理、校准置信度评分、严格风控和投资组合分析"
+category = "数据"
+
+[i18n.zh.settings.trading_mode]
+label = "交易模式"
+description = "交易 Hand 的运行方式——仅分析、模拟交易或实盘交易"
+
+[i18n.zh.settings.market_focus]
+label = "市场关注"
+description = "监控和交易的目标市场"
+
+[i18n.zh.settings.strategy_style]
+label = "策略风格"
+description = "交易时间框架和策略类型"
+
+[i18n.zh.settings.risk_per_trade]
+label = "单笔风险"
+description = "单笔交易允许承受的最大仓位占比"
+
+[i18n.zh.settings.max_daily_loss]
+label = "单日最大亏损"
+description = "触发熔断机制的每日最大允许亏损比例"
+
+[i18n.zh.settings.analysis_depth]
+label = "分析深度"
+description = "每个标的收集和交叉验证的信号数量"
+
+[i18n.zh.settings.scan_schedule]
+label = "扫描频率"
+description = "扫描市场和更新分析的频率"
+
+[i18n.zh.settings.watchlist]
+label = "关注列表"
+description = "要监控的标的代码列表（逗号分隔，股票: AAPL，加密货币: BTC，ETF: SPY）"
+
+[i18n.zh.settings.initial_capital]
+label = "初始资金"
+description = "模拟交易或追踪的起始投资组合金额（美元）"
+
+[i18n.zh.settings.alpaca_api_key]
+label = "Alpaca API 密钥"
+description = "用于实盘/模拟交易的 Alpaca API 密钥（可在 alpaca.markets 免费获取）"
+
+[i18n.zh.settings.alpaca_secret_key]
+label = "Alpaca Secret 密钥"
+description = "Alpaca API 的 Secret 密钥"
+
+[i18n.zh.settings.approval_mode]
+label = "审批模式"
+description = "执行实盘交易前需要用户明确审批——强烈建议开启"
+
+# ─── Spanish (Español) ────────────────────────────────────────────────────
+
+[i18n.es]
+name = "Hand de Trading"
+description = "Motor autónomo de inteligencia de mercado y trading — análisis multi-señal, razonamiento adversarial alcista/bajista, puntuación de confianza calibrada, gestión de riesgo estricta y analítica de cartera"
+category = "Datos"
+
+[i18n.es.settings.trading_mode]
+label = "Modo de trading"
+description = "Cómo opera el Hand de Trading — solo análisis, trading simulado o trading real"
+
+[i18n.es.settings.market_focus]
+label = "Enfoque de mercado"
+description = "Qué mercados monitorear y operar"
+
+[i18n.es.settings.strategy_style]
+label = "Estilo de estrategia"
+description = "Marco temporal y enfoque de la estrategia de trading"
+
+[i18n.es.settings.risk_per_trade]
+label = "Riesgo por operación"
+description = "Porcentaje máximo de la cartera en riesgo en una sola operación"
+
+[i18n.es.settings.max_daily_loss]
+label = "Pérdida diaria máxima"
+description = "Porcentaje máximo de pérdida diaria de la cartera antes de activar el disyuntor"
+
+[i18n.es.settings.analysis_depth]
+label = "Profundidad del análisis"
+description = "Cuántas señales recopilar y cruzar por activo"
+
+[i18n.es.settings.scan_schedule]
+label = "Frecuencia de escaneo"
+description = "Con qué frecuencia escanear los mercados y actualizar el análisis"
+
+[i18n.es.settings.watchlist]
+label = "Lista de seguimiento"
+description = "Lista de tickers a monitorear separados por comas (acciones: AAPL, cripto: BTC, ETFs: SPY)"
+
+[i18n.es.settings.initial_capital]
+label = "Capital inicial"
+description = "Valor inicial de la cartera para trading simulado o seguimiento (en USD)"
+
+[i18n.es.settings.alpaca_api_key]
+label = "Clave API de Alpaca"
+description = "Clave API de Alpaca para trading real/simulado (obtener gratis en alpaca.markets)"
+
+[i18n.es.settings.alpaca_secret_key]
+label = "Clave secreta de Alpaca"
+description = "Clave secreta de la API de Alpaca"
+
+[i18n.es.settings.approval_mode]
+label = "Modo de aprobación"
+description = "Requerir aprobación explícita del usuario antes de ejecutar cualquier operación real — altamente recomendado"
+
+# ─── Japanese (日本語) ────────────────────────────────────────────────────
+
+[i18n.ja]
+name = "トレーディング Hand"
+description = "自律型マーケットインテリジェンス＆トレーディングエンジン——マルチシグナル分析、対立的ブル/ベア推論、キャリブレーション済み信頼度スコアリング、厳格なリスク管理、ポートフォリオ分析"
+category = "データ"
+
+[i18n.ja.settings.trading_mode]
+label = "トレーディングモード"
+description = "トレーディングHandの動作方式——分析のみ、ペーパートレード、またはライブトレード"
+
+[i18n.ja.settings.market_focus]
+label = "マーケットフォーカス"
+description = "監視・取引する対象市場"
+
+[i18n.ja.settings.strategy_style]
+label = "戦略スタイル"
+description = "取引の時間軸と戦略アプローチ"
+
+[i18n.ja.settings.risk_per_trade]
+label = "1トレードあたりのリスク"
+description = "1回の取引でリスクにさらすポートフォリオの最大割合"
+
+[i18n.ja.settings.max_daily_loss]
+label = "1日の最大損失"
+description = "サーキットブレーカーが作動するまでの1日あたりの最大損失割合"
+
+[i18n.ja.settings.analysis_depth]
+label = "分析の深さ"
+description = "銘柄ごとに収集・クロスリファレンスするシグナルの数"
+
+[i18n.ja.settings.scan_schedule]
+label = "スキャンスケジュール"
+description = "市場スキャンと分析更新の頻度"
+
+[i18n.ja.settings.watchlist]
+label = "ウォッチリスト"
+description = "監視するティッカーのリスト（カンマ区切り、株式: AAPL、暗号通貨: BTC、ETF: SPY）"
+
+[i18n.ja.settings.initial_capital]
+label = "初期資金"
+description = "ペーパートレードまたはトラッキングの開始ポートフォリオ額（USD）"
+
+[i18n.ja.settings.alpaca_api_key]
+label = "Alpaca APIキー"
+description = "ライブ/ペーパートレード用のAlpaca APIキー（alpaca.marketsで無料取得可能）"
+
+[i18n.ja.settings.alpaca_secret_key]
+label = "Alpaca Secretキー"
+description = "Alpaca APIのSecretキー"
+
+[i18n.ja.settings.approval_mode]
+label = "承認モード"
+description = "ライブトレード実行前にユーザーの明示的な承認を必要とする——強く推奨"
+
+# ─── French (Français) ────────────────────────────────────────────────────
+
+[i18n.fr]
+name = "Hand de Trading"
+description = "Moteur autonome d'intelligence de marché et de trading — analyse multi-signaux, raisonnement adversarial haussier/baissier, score de confiance calibré, gestion stricte des risques et analytique de portefeuille"
+category = "Données"
+
+[i18n.fr.settings.trading_mode]
+label = "Mode de trading"
+description = "Mode de fonctionnement du Hand de Trading — analyse seule, trading simulé ou trading réel"
+
+[i18n.fr.settings.market_focus]
+label = "Focus marché"
+description = "Quels marchés surveiller et sur lesquels opérer"
+
+[i18n.fr.settings.strategy_style]
+label = "Style de stratégie"
+description = "Horizon temporel et approche de la stratégie de trading"
+
+[i18n.fr.settings.risk_per_trade]
+label = "Risque par opération"
+description = "Pourcentage maximum du portefeuille en risque sur une seule opération"
+
+[i18n.fr.settings.max_daily_loss]
+label = "Perte quotidienne maximale"
+description = "Pourcentage maximum de perte quotidienne du portefeuille avant déclenchement du coupe-circuit"
+
+[i18n.fr.settings.analysis_depth]
+label = "Profondeur d'analyse"
+description = "Nombre de signaux à collecter et recouper par actif"
+
+[i18n.fr.settings.scan_schedule]
+label = "Fréquence de scan"
+description = "Fréquence de scan des marchés et de mise à jour de l'analyse"
+
+[i18n.fr.settings.watchlist]
+label = "Liste de surveillance"
+description = "Liste de tickers à surveiller séparés par des virgules (actions : AAPL, crypto : BTC, ETF : SPY)"
+
+[i18n.fr.settings.initial_capital]
+label = "Capital initial"
+description = "Valeur initiale du portefeuille pour le trading simulé ou le suivi (en USD)"
+
+[i18n.fr.settings.alpaca_api_key]
+label = "Clé API Alpaca"
+description = "Clé API Alpaca pour le trading réel/simulé (obtenir gratuitement sur alpaca.markets)"
+
+[i18n.fr.settings.alpaca_secret_key]
+label = "Clé secrète Alpaca"
+description = "Clé secrète de l'API Alpaca"
+
+[i18n.fr.settings.approval_mode]
+label = "Mode d'approbation"
+description = "Exiger l'approbation explicite de l'utilisateur avant d'exécuter toute opération réelle — fortement recommandé"
+
+# ─── German (Deutsch) ────────────────────────────────────────────────────
+
+[i18n.de]
+name = "Trading-Hand"
+description = "Autonomer Marktintelligenz- und Trading-Motor — Multi-Signal-Analyse, adversariales Bull/Bear-Reasoning, kalibriertes Konfidenz-Scoring, striktes Risikomanagement und Portfolio-Analytik"
+category = "Daten"
+
+[i18n.de.settings.trading_mode]
+label = "Trading-Modus"
+description = "Betriebsmodus des Trading-Hand — nur Analyse, simuliertes Trading oder Live-Trading"
+
+[i18n.de.settings.market_focus]
+label = "Marktfokus"
+description = "Welche Märkte überwacht und gehandelt werden"
+
+[i18n.de.settings.strategy_style]
+label = "Strategiestil"
+description = "Zeithorizont und Ansatz der Handelsstrategie"
+
+[i18n.de.settings.risk_per_trade]
+label = "Risiko pro Trade"
+description = "Maximaler Prozentsatz des Portfolios, der bei einem einzelnen Trade riskiert wird"
+
+[i18n.de.settings.max_daily_loss]
+label = "Maximaler Tagesverlust"
+description = "Maximaler täglicher Portfolioverlust in Prozent, bevor der Circuit Breaker auslöst"
+
+[i18n.de.settings.analysis_depth]
+label = "Analysetiefe"
+description = "Anzahl der pro Asset zu sammelnden und gegenzuprüfenden Signale"
+
+[i18n.de.settings.scan_schedule]
+label = "Scan-Zeitplan"
+description = "Wie oft Märkte gescannt und Analysen aktualisiert werden"
+
+[i18n.de.settings.watchlist]
+label = "Watchlist"
+description = "Kommagetrennte Liste der zu überwachenden Ticker (Aktien: AAPL, Krypto: BTC, ETFs: SPY)"
+
+[i18n.de.settings.initial_capital]
+label = "Anfangskapital"
+description = "Anfänglicher Portfoliowert für simuliertes Trading oder Tracking (in USD)"
+
+[i18n.de.settings.alpaca_api_key]
+label = "Alpaca API-Schlüssel"
+description = "Alpaca API-Schlüssel für Live-/Papierhandel (kostenlos auf alpaca.markets erhältlich)"
+
+[i18n.de.settings.alpaca_secret_key]
+label = "Alpaca Secret-Schlüssel"
+description = "Secret-Schlüssel der Alpaca API"
+
+[i18n.de.settings.approval_mode]
+label = "Genehmigungsmodus"
+description = "Ausdrückliche Benutzergenehmigung vor der Ausführung von Live-Trades erforderlich — dringend empfohlen"
+
+# ─── Korean (한국어) ────────────────────────────────────────────────────
+
+[i18n.ko]
+name = "트레이딩 Hand"
+description = "자율 시장 인텔리전스 및 트레이딩 엔진 — 다중 신호 분석, 대립적 매수/매도 추론, 보정된 신뢰도 평가, 엄격한 리스크 관리 및 포트폴리오 분석"
+category = "데이터"
+
+[i18n.ko.settings.trading_mode]
+label = "트레이딩 모드"
+description = "트레이딩 Hand의 운영 방식 — 분석 전용, 모의 거래 또는 실거래"
+
+[i18n.ko.settings.market_focus]
+label = "시장 관심"
+description = "모니터링 및 거래할 대상 시장"
+
+[i18n.ko.settings.strategy_style]
+label = "전략 스타일"
+description = "거래 시간 프레임 및 전략 유형"
+
+[i18n.ko.settings.risk_per_trade]
+label = "거래당 리스크"
+description = "단일 거래에서 허용되는 최대 포트폴리오 비율"
+
+[i18n.ko.settings.max_daily_loss]
+label = "일일 최대 손실"
+description = "서킷 브레이커 발동 전 허용되는 일일 최대 손실 비율"
+
+[i18n.ko.settings.analysis_depth]
+label = "분석 깊이"
+description = "자산별 수집 및 교차 검증할 신호 수"
+
+[i18n.ko.settings.scan_schedule]
+label = "스캔 일정"
+description = "시장 스캔 및 분석 업데이트 주기"
+
+[i18n.ko.settings.watchlist]
+label = "관심 목록"
+description = "모니터링할 종목 코드 목록 (쉼표로 구분, 주식: AAPL, 암호화폐: BTC, ETF: SPY)"
+
+[i18n.ko.settings.initial_capital]
+label = "초기 자본"
+description = "모의 거래 또는 추적을 위한 시작 포트폴리오 금액 (USD)"
+
+[i18n.ko.settings.alpaca_api_key]
+label = "Alpaca API 키"
+description = "실거래/모의 거래용 Alpaca API 키 (alpaca.markets에서 무료 발급)"
+
+[i18n.ko.settings.alpaca_secret_key]
+label = "Alpaca 시크릿 키"
+description = "Alpaca API 시크릿 키"
+
+[i18n.ko.settings.approval_mode]
+label = "승인 모드"
+description = "실거래 실행 전 사용자의 명시적 승인 필요 — 강력히 권장"

@@ -380,6 +380,265 @@ token_consumption = "medium"
 default_active = false
 activation_warning = "Lead hand runs continuously and generates leads on schedule, consuming tokens."
 
+# ─── Internationalization (optional) ─────────────────────────────────────────
+# All i18n sections are optional. Without them, the English values above are used.
+# To localize, add [i18n.LANG] sections (e.g. zh, ja, ko, es, fr, de).
+# Settings translations are also optional — omit to keep English labels.
+
+# ─── Chinese (简体中文) ────────────────────────────────────────────────────
+
 [i18n.zh]
 name = "线索生成 Hand"
 description = "自主线索生成——按计划发现、充实并交付合格的潜在客户"
+category = "数据"
+
+[i18n.zh.settings.target_industry]
+label = "目标行业"
+description = "重点关注的行业垂直领域（例如 SaaS、金融科技、医疗健康、电子商务）"
+
+[i18n.zh.settings.target_role]
+label = "目标职位"
+description = "要触达的决策者头衔（例如 CTO、工程副总裁、产品负责人）"
+
+[i18n.zh.settings.company_size]
+label = "公司规模"
+description = "按公司规模筛选线索"
+
+[i18n.zh.settings.lead_source]
+label = "线索来源"
+description = "发现线索的主要方式"
+
+[i18n.zh.settings.output_format]
+label = "输出格式"
+description = "报告交付格式"
+
+[i18n.zh.settings.leads_per_report]
+label = "每份报告线索数"
+description = "每份报告中包含的线索数量"
+
+[i18n.zh.settings.delivery_schedule]
+label = "交付计划"
+description = "生成和交付线索报告的时间安排"
+
+[i18n.zh.settings.geo_focus]
+label = "地域重点"
+description = "优先关注的地理区域（例如美国、欧洲、亚太、全球）"
+
+[i18n.zh.settings.enrichment_depth]
+label = "信息丰富度"
+description = "对每条线索收集多少上下文信息"
+
+# ─── Korean (한국어) ────────────────────────────────────────────────────
+
+[i18n.ko]
+name = "리드 생성 Hand"
+description = "자율 리드 생성 — 일정에 따라 적격 리드를 탐색, 보강 및 전달"
+category = "데이터"
+
+[i18n.ko.settings.target_industry]
+label = "대상 산업"
+description = "집중할 산업 분야 (예: SaaS, 핀테크, 헬스케어, 이커머스)"
+
+[i18n.ko.settings.target_role]
+label = "대상 직책"
+description = "타겟할 의사결정자 직함 (예: CTO, 엔지니어링 VP, 프로덕트 총괄)"
+
+[i18n.ko.settings.company_size]
+label = "회사 규모"
+description = "회사 규모별 리드 필터링"
+
+[i18n.ko.settings.lead_source]
+label = "리드 소스"
+description = "리드를 발굴하는 주요 방법"
+
+[i18n.ko.settings.output_format]
+label = "출력 형식"
+description = "보고서 전달 형식"
+
+[i18n.ko.settings.leads_per_report]
+label = "보고서당 리드 수"
+description = "각 보고서에 포함할 리드 수"
+
+[i18n.ko.settings.delivery_schedule]
+label = "전달 일정"
+description = "리드 보고서 생성 및 전달 시간"
+
+[i18n.ko.settings.geo_focus]
+label = "지역 중점"
+description = "우선적으로 집중할 지역 (예: 미국, 유럽, 아시아 태평양, 글로벌)"
+
+[i18n.ko.settings.enrichment_depth]
+label = "보강 깊이"
+description = "리드당 수집할 컨텍스트 정보의 수준"
+
+# ─── Japanese (日本語) ────────────────────────────────────────────────────
+
+[i18n.ja]
+name = "リード生成 Hand"
+description = "自律型リード生成エージェント——スケジュールに基づき見込み客を発見・情報付加・配信"
+category = "データ"
+
+[i18n.ja.settings.target_industry]
+label = "ターゲット業界"
+description = "注力する業界バーティカル（例: SaaS、フィンテック、ヘルスケア、EC）"
+
+[i18n.ja.settings.target_role]
+label = "ターゲット職種"
+description = "アプローチする意思決定者の肩書き（例: CTO、VP Engineering、プロダクト責任者）"
+
+[i18n.ja.settings.company_size]
+label = "企業規模"
+description = "企業規模でリードをフィルタリング"
+
+[i18n.ja.settings.lead_source]
+label = "リードソース"
+description = "リードを発見する主な方法"
+
+[i18n.ja.settings.output_format]
+label = "出力形式"
+description = "レポートの配信形式"
+
+[i18n.ja.settings.leads_per_report]
+label = "レポートあたりのリード数"
+description = "各レポートに含めるリードの数"
+
+[i18n.ja.settings.delivery_schedule]
+label = "配信スケジュール"
+description = "リードレポートの生成・配信タイミング"
+
+[i18n.ja.settings.geo_focus]
+label = "地域フォーカス"
+description = "優先する地理的リージョン（例: 米国、欧州、APAC、グローバル）"
+
+[i18n.ja.settings.enrichment_depth]
+label = "情報付加の深さ"
+description = "リードごとに収集するコンテキスト情報の量"
+
+# ─── Spanish (Español) ────────────────────────────────────────────────────
+
+[i18n.es]
+name = "Hand de Generación de Leads"
+description = "Generación autónoma de leads — descubre, enriquece y entrega leads cualificados según un calendario"
+category = "Datos"
+
+[i18n.es.settings.target_industry]
+label = "Industria objetivo"
+description = "Vertical de industria en la que enfocarse (ej. SaaS, fintech, salud, e-commerce)"
+
+[i18n.es.settings.target_role]
+label = "Rol objetivo"
+description = "Títulos de tomadores de decisiones a los que dirigirse (ej. CTO, VP de Ingeniería, Director de Producto)"
+
+[i18n.es.settings.company_size]
+label = "Tamaño de empresa"
+description = "Filtrar leads por tamaño de empresa"
+
+[i18n.es.settings.lead_source]
+label = "Fuente de leads"
+description = "Método principal para descubrir leads"
+
+[i18n.es.settings.output_format]
+label = "Formato de salida"
+description = "Formato de entrega del informe"
+
+[i18n.es.settings.leads_per_report]
+label = "Leads por informe"
+description = "Número de leads a incluir en cada informe"
+
+[i18n.es.settings.delivery_schedule]
+label = "Calendario de entrega"
+description = "Cuándo generar y entregar los informes de leads"
+
+[i18n.es.settings.geo_focus]
+label = "Enfoque geográfico"
+description = "Región geográfica a priorizar (ej. EE.UU., Europa, Asia-Pacífico, global)"
+
+[i18n.es.settings.enrichment_depth]
+label = "Profundidad de enriquecimiento"
+description = "Cuánto contexto recopilar por cada lead"
+
+# ─── French (Français) ────────────────────────────────────────────────────
+
+[i18n.fr]
+name = "Hand Génération de Prospects"
+description = "Génération autonome de prospects — découvre, enrichit et livre des prospects qualifiés selon un calendrier"
+category = "Données"
+
+[i18n.fr.settings.target_industry]
+label = "Secteur cible"
+description = "Secteur d'activité cible (ex. SaaS, fintech, santé, e-commerce)"
+
+[i18n.fr.settings.target_role]
+label = "Poste cible"
+description = "Titres de décideurs à cibler (ex. CTO, VP Engineering, Directeur Produit)"
+
+[i18n.fr.settings.company_size]
+label = "Taille d'entreprise"
+description = "Filtrer les prospects par taille d'entreprise"
+
+[i18n.fr.settings.lead_source]
+label = "Source de prospects"
+description = "Méthode principale de découverte des prospects"
+
+[i18n.fr.settings.output_format]
+label = "Format de sortie"
+description = "Format de livraison des rapports"
+
+[i18n.fr.settings.leads_per_report]
+label = "Prospects par rapport"
+description = "Nombre de prospects à inclure dans chaque rapport"
+
+[i18n.fr.settings.delivery_schedule]
+label = "Calendrier de livraison"
+description = "Quand générer et livrer les rapports de prospects"
+
+[i18n.fr.settings.geo_focus]
+label = "Focus géographique"
+description = "Région géographique prioritaire (ex. USA, Europe, Asie-Pacifique, Mondial)"
+
+[i18n.fr.settings.enrichment_depth]
+label = "Profondeur d'enrichissement"
+description = "Niveau d'informations contextuelles à collecter par prospect"
+
+# ─── German (Deutsch) ────────────────────────────────────────────────────
+
+[i18n.de]
+name = "Lead-Generierungs-Hand"
+description = "Autonome Lead-Generierung — entdeckt, bereichert und liefert qualifizierte Leads nach Zeitplan"
+category = "Daten"
+
+[i18n.de.settings.target_industry]
+label = "Zielbranche"
+description = "Branchenvertikale für den Fokus (z.B. SaaS, Fintech, Gesundheitswesen, E-Commerce)"
+
+[i18n.de.settings.target_role]
+label = "Zielposition"
+description = "Titel der Entscheidungsträger (z.B. CTO, VP Engineering, Produktleiter)"
+
+[i18n.de.settings.company_size]
+label = "Unternehmensgröße"
+description = "Leads nach Unternehmensgröße filtern"
+
+[i18n.de.settings.lead_source]
+label = "Lead-Quelle"
+description = "Primäre Methode zur Lead-Entdeckung"
+
+[i18n.de.settings.output_format]
+label = "Ausgabeformat"
+description = "Berichtslieferformat"
+
+[i18n.de.settings.leads_per_report]
+label = "Leads pro Bericht"
+description = "Anzahl der Leads pro Bericht"
+
+[i18n.de.settings.delivery_schedule]
+label = "Lieferzeitplan"
+description = "Wann Lead-Berichte generiert und geliefert werden"
+
+[i18n.de.settings.geo_focus]
+label = "Geografischer Fokus"
+description = "Priorisierte geografische Region (z.B. USA, Europa, Asien-Pazifik, Global)"
+
+[i18n.de.settings.enrichment_depth]
+label = "Anreicherungstiefe"
+description = "Umfang der pro Lead gesammelten Kontextinformationen"
