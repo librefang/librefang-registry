@@ -5,11 +5,7 @@ author = "librefang"
 module = "builtin:chat"
 
 [metadata.routing]
-aliases = [
-  "analytics",
-  "metrics analysis",
-  "report analysis",
-]
+aliases = ["analytics", "metrics analysis", "report analysis"]
 weak_aliases = ["kpi", "insights", "reporting"]
 
 [model]

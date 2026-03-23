@@ -12,12 +12,7 @@ aliases = [
   "scholarly research",
   "find papers",
 ]
-weak_aliases = [
-  "papers",
-  "citations",
-  "bibliography",
-  "meta-analysis",
-]
+weak_aliases = ["papers", "citations", "bibliography", "meta-analysis"]
 
 [model]
 provider = "default"
