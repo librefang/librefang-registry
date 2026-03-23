@@ -7,6 +7,7 @@ display_name = "Google Gemini"
 api_key_env = "GEMINI_API_KEY"
 base_url = "https://generativelanguage.googleapis.com"
 key_required = true
+media_capabilities = ["image_generation"]
 
 [[models]]
 id = "gemini-3.1-pro-preview"
