@@ -57,8 +57,9 @@ description = "Python 3 interpreter. Required for data analysis with pandas, mat
 [requires.install]
 macos = "brew install python3"
 windows = "winget install Python.Python.3.12"
-linux = "sudo apt install python3 python3-pip"
-pip = "python3 --version"
+linux_apt = "sudo apt install python3 python3-pip"
+linux_dnf = "sudo dnf install python3 python3-pip"
+linux_pacman = "sudo pacman -S python python-pip"
 
 # ─── Configurable settings ───────────────────────────────────────────────────
 

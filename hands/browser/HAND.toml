@@ -60,7 +60,6 @@ windows = "winget install Python.Python.3.12"
 linux_apt = "sudo apt install python3"
 linux_dnf = "sudo dnf install python3"
 linux_pacman = "sudo pacman -S python"
-pip = "python3 --version"
 manual_url = "https://www.python.org/downloads/"
 estimated_time = "1-3 min"
 
