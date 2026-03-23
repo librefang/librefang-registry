@@ -162,8 +162,8 @@ def validate_hand_file(filepath: Path, integration_ids: set[str]) -> list[str]:
     if category and category not in VALID_HAND_CATEGORIES:
         errors.append(f"{rel}: Invalid category '{category}' (valid: {', '.join(sorted(VALID_HAND_CATEGORIES))})")
 
-    if "agent" not in data:
-        errors.append(f"{rel}: Missing [agent] section")
+    if "agents" not in data:
+        errors.append(f"{rel}: Missing [agents] section")
 
     # Cross-reference: check that [[requires]] with requirement_type = "integration"
     # reference existing integration TOML files
