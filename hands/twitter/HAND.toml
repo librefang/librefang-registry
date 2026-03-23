@@ -1,5 +1,5 @@
 id = "twitter"
-version = "1.0.0"
+version = "1.1.0"
 name = "Twitter Hand"
 description = "Autonomous Twitter/X manager — content creation, scheduled posting, engagement, and performance tracking"
 

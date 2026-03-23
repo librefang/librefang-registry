@@ -1,5 +1,5 @@
 id = "researcher"
-version = "1.0.0"
+version = "1.1.0"
 name = "Researcher Hand"
 description = "Autonomous deep researcher — exhaustive investigation, cross-referencing, fact-checking, and structured reports"
 

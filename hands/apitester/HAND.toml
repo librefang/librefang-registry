@@ -1,5 +1,5 @@
 id = "apitester"
-version = "1.0.0"
+version = "1.1.0"
 name = "API Tester Hand"
 description = "Autonomous API testing agent — endpoint discovery, request validation, load testing, and regression detection"
 

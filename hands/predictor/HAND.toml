@@ -1,5 +1,5 @@
 id = "predictor"
-version = "1.0.0"
+version = "1.1.0"
 name = "Predictor Hand"
 description = "Autonomous future predictor — collects signals, builds reasoning chains, makes calibrated predictions, and tracks accuracy"
 

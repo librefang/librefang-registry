@@ -1,5 +1,5 @@
 id = "reddit"
-version = "1.0.0"
+version = "1.1.0"
 name = "Reddit Hand"
 description = "Autonomous Reddit manager — monitors subreddits, posts content, replies to threads, and tracks karma and engagement"
 

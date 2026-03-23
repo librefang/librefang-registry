@@ -1,5 +1,5 @@
 id = "clip"
-version = "1.0.0"
+version = "1.1.0"
 name = "Clip Hand"
 description = "Turns long-form video into viral short clips with captions and thumbnails"
 
