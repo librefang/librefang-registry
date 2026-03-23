@@ -7,6 +7,7 @@ display_name = "OpenAI"
 api_key_env = "OPENAI_API_KEY"
 base_url = "https://api.openai.com/v1"
 key_required = true
+media_capabilities = ["image_generation", "text_to_speech"]
 
 [[models]]
 id = "gpt-4o"
