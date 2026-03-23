@@ -24,6 +24,21 @@ tools = [
   "event_publish",
 ]
 
+[[requires]]
+key = "curl"
+label = "curl must be installed"
+requirement_type = "binary"
+check_value = "curl"
+description = "curl is used to send HTTP requests to target API endpoints for testing, validation, and load simulation."
+
+[requires.install]
+macos = "brew install curl"
+linux_apt = "sudo apt install curl"
+linux_dnf = "sudo dnf install curl"
+linux_pacman = "sudo pacman -S curl"
+windows = "winget install cURL.cURL"
+estimated_time = "1 min"
+
 [routing]
 aliases = [
   "api test",

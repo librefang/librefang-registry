@@ -24,6 +24,73 @@ tools = [
   "event_publish",
 ]
 
+[[requires]]
+key = "curl"
+label = "curl must be installed"
+requirement_type = "binary"
+check_value = "curl"
+description = "curl is used for HTTP health checks, GitHub API calls, and service endpoint monitoring."
+
+[requires.install]
+macos = "brew install curl"
+linux_apt = "sudo apt install curl"
+linux_dnf = "sudo dnf install curl"
+linux_pacman = "sudo pacman -S curl"
+windows = "winget install cURL.cURL"
+estimated_time = "1 min"
+
+[[requires]]
+key = "git"
+label = "git must be installed"
+requirement_type = "binary"
+check_value = "git"
+description = "git is used for deployment history, version control operations, and CI/CD pipeline management."
+
+[requires.install]
+macos = "brew install git"
+linux_apt = "sudo apt install git"
+linux_dnf = "sudo dnf install git"
+linux_pacman = "sudo pacman -S git"
+windows = "winget install Git.Git"
+estimated_time = "1-2 min"
+
+[[requires]]
+key = "docker"
+label = "Docker (optional — needed for container workloads)"
+requirement_type = "binary"
+check_value = "docker"
+optional = true
+description = "Docker is used for container status checks, image management, and service orchestration. Only needed if your infrastructure uses containers."
+
+[requires.install]
+macos = "brew install --cask docker"
+linux_apt = "sudo apt install docker.io"
+linux_dnf = "sudo dnf install docker"
+linux_pacman = "sudo pacman -S docker"
+windows = "winget install Docker.DockerDesktop"
+manual_url = "https://docs.docker.com/get-docker/"
+estimated_time = "5-10 min"
+
+[[requires]]
+key = "GITHUB_TOKEN"
+label = "GitHub Token (optional — needed for GitHub Actions)"
+requirement_type = "api_key"
+check_value = "GITHUB_TOKEN"
+optional = true
+description = "A GitHub personal access token for accessing GitHub Actions API, checking pipeline status, and triggering workflows."
+
+[requires.install]
+signup_url = "https://github.com/settings/tokens"
+docs_url = "https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens"
+env_example = "GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+estimated_time = "2-5 min"
+steps = [
+  "Go to GitHub Settings → Developer settings → Personal access tokens → Fine-grained tokens",
+  "Click 'Generate new token'",
+  "Select repository access scope and permissions (Actions: read, Contents: read)",
+  "Copy the token and set it as GITHUB_TOKEN environment variable",
+]
+
 [routing]
 aliases = [
   "ci/cd",
