@@ -9,11 +9,10 @@ tags = ["sales", "crm", "outreach", "pipeline", "prospecting", "deals"]
 aliases = [
   "sales outreach",
   "crm update",
-  "prospecting",
   "pipeline review",
   "deal tracking",
 ]
-weak_aliases = ["sales", "crm", "pipeline", "leads"]
+weak_aliases = ["crm", "leads"]
 
 [model]
 provider = "default"

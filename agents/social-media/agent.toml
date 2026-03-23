@@ -20,7 +20,7 @@ aliases = [
   "engagement strategy",
   "social campaign",
 ]
-weak_aliases = ["social media", "content calendar", "engagement", "campaign"]
+weak_aliases = ["social media", "engagement", "campaign"]
 
 [model]
 provider = "default"

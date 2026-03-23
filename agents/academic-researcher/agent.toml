@@ -8,7 +8,6 @@ tags = ["research", "academic", "papers", "literature-review", "science"]
 [metadata.routing]
 aliases = [
   "academic research",
-  "literature review",
   "paper search",
   "scholarly research",
   "find papers",
@@ -17,7 +16,6 @@ weak_aliases = [
   "papers",
   "citations",
   "bibliography",
-  "systematic review",
   "meta-analysis",
 ]
 

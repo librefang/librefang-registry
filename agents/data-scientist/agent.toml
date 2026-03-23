@@ -9,10 +9,9 @@ aliases = [
   "data science",
   "build model",
   "train model",
-  "statistical analysis",
   "machine learning",
 ]
-weak_aliases = ["modeling", "forecast", "prediction", "statistics"]
+weak_aliases = ["modeling", "statistics"]
 
 [model]
 provider = "default"

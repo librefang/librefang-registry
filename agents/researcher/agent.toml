@@ -7,13 +7,12 @@ tags = ["research", "analysis", "web"]
 
 [metadata.routing]
 aliases = [
-  "deep research",
   "web research",
   "investigate topic",
   "gather sources",
   "fact finding",
 ]
-weak_aliases = ["research", "sources", "literature review", "web search"]
+weak_aliases = ["sources", "web search"]
 
 [model]
 provider = "default"

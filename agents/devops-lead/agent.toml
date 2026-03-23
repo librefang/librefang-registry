@@ -9,10 +9,9 @@ aliases = [
   "ci cd",
   "deployment pipeline",
   "infrastructure ops",
-  "incident response",
   "production operations",
 ]
-weak_aliases = ["devops", "deployment", "kubernetes", "terraform", "infra"]
+weak_aliases = ["devops", "deployment", "infra"]
 
 [model]
 provider = "default"
