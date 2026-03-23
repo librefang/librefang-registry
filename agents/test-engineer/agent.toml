@@ -62,6 +62,8 @@ tools = [
   "file_write",
   "file_list",
   "shell_exec",
+  "web_fetch",
+  "web_search",
   "memory_store",
   "memory_recall",
 ]
