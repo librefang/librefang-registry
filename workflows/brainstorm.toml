@@ -4,6 +4,10 @@ description = "Generate ideas, evaluate them, and create an action plan for the 
 category = "thinking"
 tags = ["brainstorm", "ideation", "planning"]
 
+[i18n.zh]
+name = "头脑风暴与行动计划"
+description = "生成创意、评估方案，并为最佳方案制定行动计划"
+
 [[parameters]]
 name = "challenge"
 description = "The challenge or problem to brainstorm solutions for"

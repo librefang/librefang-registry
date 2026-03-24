@@ -4,6 +4,10 @@ description = "Auto-detect language, translate, and review for naturalness"
 category = "language"
 tags = ["translation", "language", "localization"]
 
+[i18n.zh]
+name = "翻译与润色"
+description = "自动检测语言，翻译文本，并审校译文的自然度"
+
 [[parameters]]
 name = "source_text"
 description = "The text to translate"

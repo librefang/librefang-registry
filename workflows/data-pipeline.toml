@@ -4,6 +4,10 @@ description = "ETL pipeline that extracts data from a source, transforms it into
 category = "data"
 tags = ["etl", "data", "pipeline", "transform"]
 
+[i18n.zh]
+name = "数据流水线"
+description = "ETL 流水线，从数据源提取数据，转换为目标格式，并验证输出的完整性和正确性。"
+
 [[parameters]]
 name = "data_source"
 description = "URL or file path to the data source"

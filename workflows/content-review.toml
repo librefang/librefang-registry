@@ -4,6 +4,10 @@ description = "Multi-agent content review pipeline that drafts, reviews for qual
 category = "content"
 tags = ["content", "review", "writing", "editing"]
 
+[i18n.zh]
+name = "内容审校"
+description = "多智能体内容审校流水线，先起草内容，再分别审查质量和准确性，最后综合反馈生成终稿。"
+
 [[parameters]]
 name = "topic"
 description = "The topic or subject to write about"
