@@ -8,7 +8,6 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
 
 jobs:
   sync-pricing:
@@ -23,20 +22,15 @@ jobs:
       - name: Sync pricing from OpenRouter API
         run: python scripts/sync-pricing.py --create-missing
 
-      - name: Check for changes
-        id: changes
+      - name: Commit and push if changed
         run: |
-          git diff --quiet && echo "changed=false" >> "$GITHUB_OUTPUT" || echo "changed=true" >> "$GITHUB_OUTPUT"
-
-      - name: Create PR if prices changed
-        if: steps.changes.outputs.changed == 'true'
-        uses: peter-evans/create-pull-request@v7
-        with:
-          commit-message: "chore: sync model pricing from OpenRouter API"
-          title: "chore: sync model pricing from OpenRouter API"
-          body: |
-            Automated pricing sync from [OpenRouter API](https://openrouter.ai/api/v1/models).
-
-            Run by `sync-pricing.yml` cron job.
-          branch: chore/auto-sync-pricing
-          delete-branch: true
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No pricing changes detected"
+          else
+            git commit -m "chore: sync model pricing from OpenRouter API"
+            git push
+            echo "Pricing updated and pushed to main"
+          fi

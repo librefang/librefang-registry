@@ -76,12 +76,27 @@ def update_toml_prices(toml_path, models_by_id, dry_run=False):
             field = cost_match.group(1)
             old_val = float(cost_match.group(2))
 
+            # Find best matching OpenRouter model — prefer exact match over substring
             new_val = None
+            best_match = None
+            best_specificity = 0
             for or_id, (inp, outp) in models_by_id.items():
                 or_model = or_id.split("/")[-1] if "/" in or_id else or_id
-                if current_model_id == or_model or current_model_id in or_id:
-                    new_val = inp if field == "input_cost_per_m" else outp
+                if current_model_id == or_model:
+                    # Exact match on model name (highest priority)
+                    best_match = (inp, outp)
+                    best_specificity = 3
                     break
+                elif or_model == current_model_id + ":free" and best_specificity < 1:
+                    # Free variant — only use if no paid version found
+                    best_match = (inp, outp)
+                    best_specificity = 1
+                elif current_model_id in or_id and ":free" not in or_id and best_specificity < 2:
+                    # Substring match on paid model
+                    best_match = (inp, outp)
+                    best_specificity = 2
+            if best_match:
+                new_val = best_match[0] if field == "input_cost_per_m" else best_match[1]
 
             if new_val is not None and abs(new_val - old_val) > 0.001:
                 new_lines.append(f"{field} = {new_val}")
@@ -134,7 +149,7 @@ def generate_provider_toml(provider_id, models, dry_run=False):
 
         # Infer tier from pricing
         if inp == 0 and outp == 0:
-            tier = "free"
+            tier = "fast"
         elif inp < 0.5:
             tier = "fast"
         elif inp < 3.0:

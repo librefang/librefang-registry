@@ -30,7 +30,7 @@ supports_streaming = true
 [[models]]
 id = "lfm-2.5-1.2b-instruct:free"
 display_name = "LiquidAI: LFM2.5-1.2B-Instruct (free)"
-tier = "free"
+tier = "fast"
 context_window = 32768
 max_output_tokens = 8192
 input_cost_per_m = 0.0
@@ -40,7 +40,7 @@ supports_streaming = true
 [[models]]
 id = "lfm-2.5-1.2b-thinking:free"
 display_name = "LiquidAI: LFM2.5-1.2B-Thinking (free)"
-tier = "free"
+tier = "fast"
 context_window = 32768
 max_output_tokens = 8192
 input_cost_per_m = 0.0
