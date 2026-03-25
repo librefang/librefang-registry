@@ -5,6 +5,24 @@ category = "enterprise"
 icon = "🔀"
 protocol = "rest-api"
 
+[i18n.zh]
+description = "Twist 适配器，在 Twist 工作区中进行异步团队沟通"
+
+[i18n.zh-TW]
+description = "Twist 適配器，在 Twist 工作區中進行非同步團隊溝通"
+
+[i18n.ja]
+description = "Twistアダプター、Twistワークスペースでの非同期チームコミュニケーション"
+
+[i18n.ko]
+description = "Twist 어댑터, Twist 워크스페이스에서 비동기 팀 커뮤니케이션"
+
+[i18n.de]
+description = "Twist-Adapter für asynchrone Teamkommunikation in Twist-Workspaces"
+
+[i18n.es]
+description = "Adaptador de Twist para comunicación asíncrona de equipo en espacios de trabajo Twist"
+
 [metadata]
 url = "https://twist.com"
 docs = "https://developer.twist.com/v3/"

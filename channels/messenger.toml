@@ -5,6 +5,24 @@ category = "messaging"
 icon = "💬"
 protocol = "webhook"
 
+[i18n.zh]
+description = "Facebook Messenger 适配器，通过 Messenger 平台收发消息"
+
+[i18n.zh-TW]
+description = "Facebook Messenger 適配器，透過 Messenger 平台收發訊息"
+
+[i18n.ja]
+description = "Facebook Messengerアダプター、Messengerプラットフォームを介したメッセージの送受信"
+
+[i18n.ko]
+description = "Facebook Messenger 어댑터, Messenger 플랫폼을 통한 메시지 송수신"
+
+[i18n.de]
+description = "Facebook Messenger-Adapter zum Senden und Empfangen von Nachrichten über die Messenger-Plattform"
+
+[i18n.es]
+description = "Adaptador de Facebook Messenger para enviar y recibir mensajes a través de la plataforma Messenger"
+
 [metadata]
 url = "https://www.messenger.com"
 docs = "https://developers.facebook.com/docs/messenger-platform/"

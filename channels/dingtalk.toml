@@ -5,6 +5,24 @@ category = "enterprise"
 icon = "🔔"
 protocol = "webhook"
 
+[i18n.zh]
+description = "钉钉机器人适配器，向钉钉群组和会话发送消息"
+
+[i18n.zh-TW]
+description = "釘釘機器人適配器，向釘釘群組和會話發送訊息"
+
+[i18n.ja]
+description = "DingTalkボットアダプター、DingTalkグループと会話へのメッセージ送信"
+
+[i18n.ko]
+description = "DingTalk 봇 어댑터, DingTalk 그룹 및 대화에 메시지 전송"
+
+[i18n.de]
+description = "DingTalk-Bot-Adapter zum Senden von Nachrichten an DingTalk-Gruppen und -Konversationen"
+
+[i18n.es]
+description = "Adaptador de bot DingTalk para enviar mensajes a grupos y conversaciones de DingTalk"
+
 [metadata]
 url = "https://www.dingtalk.com"
 docs = "https://open.dingtalk.com/document/"

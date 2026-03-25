@@ -5,6 +5,24 @@ category = "social"
 icon = "💼"
 protocol = "rest-api"
 
+[i18n.zh]
+description = "LinkedIn 适配器，通过 LinkedIn API 发布动态和消息"
+
+[i18n.zh-TW]
+description = "LinkedIn 適配器，透過 LinkedIn API 發布動態和訊息"
+
+[i18n.ja]
+description = "LinkedInアダプター、LinkedIn APIを介した投稿とメッセージの送信"
+
+[i18n.ko]
+description = "LinkedIn 어댑터, LinkedIn API를 통한 게시물 및 메시지 전송"
+
+[i18n.de]
+description = "LinkedIn-Adapter zum Posten von Updates und Nachrichten über die LinkedIn-API"
+
+[i18n.es]
+description = "Adaptador de LinkedIn para publicar actualizaciones y mensajes a través de la API de LinkedIn"
+
 [metadata]
 url = "https://www.linkedin.com"
 docs = "https://learn.microsoft.com/en-us/linkedin/"

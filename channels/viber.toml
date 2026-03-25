@@ -5,6 +5,24 @@ category = "messaging"
 icon = "💜"
 protocol = "webhook"
 
+[i18n.zh]
+description = "Viber 机器人适配器，通过 Viber Bot API 收发消息"
+
+[i18n.zh-TW]
+description = "Viber 機器人適配器，透過 Viber Bot API 收發訊息"
+
+[i18n.ja]
+description = "Viberボットアダプター、Viber Bot APIを介したメッセージの送受信"
+
+[i18n.ko]
+description = "Viber 봇 어댑터, Viber Bot API를 통한 메시지 송수신"
+
+[i18n.de]
+description = "Viber-Bot-Adapter zum Senden und Empfangen von Nachrichten über die Viber Bot API"
+
+[i18n.es]
+description = "Adaptador de bot Viber para enviar y recibir mensajes a través de la API de bot Viber"
+
 [metadata]
 url = "https://www.viber.com"
 docs = "https://developers.viber.com/docs/api/"

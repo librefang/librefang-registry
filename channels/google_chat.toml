@@ -5,6 +5,24 @@ category = "enterprise"
 icon = "💚"
 protocol = "webhook"
 
+[i18n.zh]
+description = "Google Chat 适配器，向 Google Workspace 会话发送消息和卡片"
+
+[i18n.zh-TW]
+description = "Google Chat 適配器，向 Google Workspace 會話發送訊息和卡片"
+
+[i18n.ja]
+description = "Google Chatアダプター、Google Workspaceの会話にメッセージとカードを送信"
+
+[i18n.ko]
+description = "Google Chat 어댑터, Google Workspace 대화에 메시지 및 카드 전송"
+
+[i18n.de]
+description = "Google Chat-Adapter zum Senden von Nachrichten und Karten an Google Workspace-Konversationen"
+
+[i18n.es]
+description = "Adaptador de Google Chat para enviar mensajes y tarjetas a conversaciones de Google Workspace"
+
 [metadata]
 url = "https://chat.google.com"
 docs = "https://developers.google.com/workspace/chat/api/reference/rest"

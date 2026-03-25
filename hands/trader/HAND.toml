@@ -1160,7 +1160,7 @@ activation_warning = "Trading hand runs continuously and consumes tokens. Deacti
 
 [i18n.zh]
 name = "交易 Hand"
-description = "自主市场情报与交易引擎——多信号分析、对抗性多空推理、校准置信度评分、严格风控和投资组合分析"
+description = "自主市场情报与交易引擎——多信号分析、多空对抗推理、校准置信度、严格风控与组合级分析"
 category = "数据"
 
 [i18n.zh.settings.trading_mode]
@@ -1211,11 +1211,14 @@ description = "Alpaca API 的 Secret 密钥"
 label = "审批模式"
 description = "执行实盘交易前需要用户明确审批——强烈建议开启"
 
+[i18n.zh-TW]
+description = "自主市場情報與交易引擎——多訊號分析、多空對抗推理、校準置信度、嚴格風控與投組分析"
+
 # ─── Spanish (Español) ────────────────────────────────────────────────────
 
 [i18n.es]
 name = "Hand de Trading"
-description = "Motor autónomo de inteligencia de mercado y trading — análisis multi-señal, razonamiento adversarial alcista/bajista, puntuación de confianza calibrada, gestión de riesgo estricta y analítica de cartera"
+description = "Motor autónomo de inteligencia de mercado y trading — análisis multi-señal, razonamiento adversarial alcista/bajista, scoring de confianza calibrado, gestión estricta de riesgos y analítica a nivel de portafolio"
 category = "Datos"
 
 [i18n.es.settings.trading_mode]
@@ -1270,7 +1273,7 @@ description = "Requerir aprobación explícita del usuario antes de ejecutar cua
 
 [i18n.ja]
 name = "トレーディング Hand"
-description = "自律型マーケットインテリジェンス＆トレーディングエンジン——マルチシグナル分析、対立的ブル/ベア推論、キャリブレーション済み信頼度スコアリング、厳格なリスク管理、ポートフォリオ分析"
+description = "自律型マーケットインテリジェンス＆トレーディングエンジン——マルチシグナル分析、ブル/ベア対抗推論、校正済み信頼度スコアリング、厳格なリスク管理とポートフォリオ分析"
 category = "データ"
 
 [i18n.ja.settings.trading_mode]
@@ -1380,7 +1383,7 @@ description = "Exiger l'approbation explicite de l'utilisateur avant d'exécuter
 
 [i18n.de]
 name = "Trading-Hand"
-description = "Autonomer Marktintelligenz- und Trading-Motor — Multi-Signal-Analyse, adversariales Bull/Bear-Reasoning, kalibriertes Konfidenz-Scoring, striktes Risikomanagement und Portfolio-Analytik"
+description = "Autonome Marktintelligenz und Handelsengine — Multi-Signal-Analyse, adversariales Bull/Bear-Reasoning, kalibriertes Vertrauensscoring, striktes Risikomanagement und Portfolio-Analytik"
 category = "Daten"
 
 [i18n.de.settings.trading_mode]
@@ -1435,7 +1438,7 @@ description = "Ausdrückliche Benutzergenehmigung vor der Ausführung von Live-T
 
 [i18n.ko]
 name = "트레이딩 Hand"
-description = "자율 시장 인텔리전스 및 트레이딩 엔진 — 다중 신호 분석, 대립적 매수/매도 추론, 보정된 신뢰도 평가, 엄격한 리스크 관리 및 포트폴리오 분석"
+description = "자율 시장 인텔리전스 및 거래 엔진 — 다중 신호 분석, 강세/약세 적대적 추론, 보정된 신뢰도 평가, 엄격한 리스크 관리 및 포트폴리오 분석"
 category = "데이터"
 
 [i18n.ko.settings.trading_mode]

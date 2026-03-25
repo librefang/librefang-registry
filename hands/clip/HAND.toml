@@ -937,7 +937,7 @@ default_active = false
 
 [i18n.zh]
 name = "视频剪辑 Hand"
-description = "将长视频自动剪辑为病毒式短视频，配有字幕和缩略图"
+description = "将长视频自动转为带字幕和封面的竖版短视频"
 category = "内容"
 
 [i18n.zh.settings.stt_provider]
@@ -980,11 +980,14 @@ description = "国际格式的电话号码，不含 + 号或空格（例如 1415
 label = "审批模式"
 description = "发布到频道前将短视频加入队列供审核"
 
+[i18n.zh-TW]
+description = "將長影片自動轉為帶字幕和封面的直式短影音"
+
 # ─── Japanese (日本語) ────────────────────────────────────────────────────
 
 [i18n.ja]
 name = "動画クリップ Hand"
-description = "長尺動画をキャプション付きサムネイル付きのバイラルショートクリップに変換"
+description = "長編動画をキャプション・サムネイル付きバイラルショートに変換"
 category = "コンテンツ"
 
 [i18n.ja.settings.stt_provider]
@@ -1125,7 +1128,7 @@ description = "Mettre les clips en file d'attente pour révision avant publicati
 
 [i18n.de]
 name = "Videoclip-Hand"
-description = "Verwandelt lange Videos in virale Kurzclips mit Untertiteln und Vorschaubildern"
+description = "Wandelt Langvideos in virale Kurzclips mit Untertiteln und Thumbnails um"
 category = "Inhalt"
 
 [i18n.de.settings.stt_provider]
@@ -1172,7 +1175,7 @@ description = "Clips zur Überprüfung in die Warteschlange stellen, bevor sie a
 
 [i18n.ko]
 name = "비디오 클립 Hand"
-description = "장편 영상을 자막과 썸네일이 포함된 바이럴 숏폼 클립으로 변환"
+description = "긴 영상을 자막과 썸네일이 포함된 바이럴 쇼츠로 변환"
 category = "콘텐츠"
 
 [i18n.ko.settings.stt_provider]
