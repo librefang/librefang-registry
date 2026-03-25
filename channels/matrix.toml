@@ -2,6 +2,7 @@ id = "matrix"
 name = "Matrix"
 description = "Matrix adapter for decentralized messaging via the Matrix client-server API"
 category = "messaging"
+tags = ["popular"]
 icon = "🟩"
 protocol = "matrix"
 

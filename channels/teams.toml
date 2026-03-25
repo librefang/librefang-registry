@@ -2,6 +2,7 @@ id = "teams"
 name = "Microsoft Teams"
 description = "Microsoft Teams adapter for messaging and notifications in Teams channels"
 category = "enterprise"
+tags = ["popular"]
 icon = "🟦"
 protocol = "webhook"
 

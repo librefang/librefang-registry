@@ -2,6 +2,7 @@ id = "telegram"
 name = "Telegram"
 description = "Telegram Bot API adapter for sending and receiving messages"
 category = "messaging"
+tags = ["popular"]
 icon = "📱"
 protocol = "bot-api"
 

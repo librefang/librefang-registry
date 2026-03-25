@@ -2,6 +2,7 @@ id = "whatsapp"
 name = "WhatsApp"
 description = "WhatsApp Business API adapter for sending and receiving messages on WhatsApp"
 category = "messaging"
+tags = ["popular"]
 icon = "📱"
 protocol = "rest-api"
 

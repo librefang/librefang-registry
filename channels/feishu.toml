@@ -2,6 +2,7 @@ id = "feishu"
 name = "Feishu"
 description = "Feishu (Lark) bot adapter for messaging within the Feishu collaboration platform"
 category = "enterprise"
+tags = ["popular"]
 icon = "🐦"
 protocol = "webhook"
 

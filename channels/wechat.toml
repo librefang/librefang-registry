@@ -2,6 +2,7 @@ id = "wechat"
 name = "WeChat"
 description = "WeChat Official Account adapter for messaging on the WeChat platform"
 category = "messaging"
+tags = ["popular"]
 icon = "💚"
 protocol = "rest-api"
 

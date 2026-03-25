@@ -2,6 +2,7 @@ id = "dingtalk"
 name = "DingTalk"
 description = "DingTalk bot adapter for sending messages to DingTalk groups and conversations"
 category = "enterprise"
+tags = ["popular"]
 icon = "🔔"
 protocol = "webhook"
 
