@@ -1,0 +1,10 @@
+id = "threema"
+name = "Threema"
+description = "Threema Gateway adapter for secure messaging via the Threema platform"
+category = "messaging"
+icon = "🔏"
+protocol = "rest-api"
+
+[metadata]
+url = "https://threema.ch"
+docs = "https://gateway.threema.ch/en/developer/api"

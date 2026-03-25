@@ -1,0 +1,10 @@
+id = "viber"
+name = "Viber"
+description = "Viber bot adapter for sending and receiving messages via the Viber Bot API"
+category = "messaging"
+icon = "💜"
+protocol = "webhook"
+
+[metadata]
+url = "https://www.viber.com"
+docs = "https://developers.viber.com/docs/api/"

@@ -1,0 +1,10 @@
+id = "gitter"
+name = "Gitter"
+description = "Gitter adapter for developer chat rooms linked to GitHub repositories"
+category = "developer"
+icon = "💻"
+protocol = "rest-api"
+
+[metadata]
+url = "https://gitter.im"
+docs = "https://developer.gitter.im/docs/"

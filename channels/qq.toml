@@ -1,0 +1,10 @@
+id = "qq"
+name = "QQ"
+description = "QQ bot adapter for messaging within Tencent QQ groups and channels"
+category = "messaging"
+icon = "🐧"
+protocol = "websocket"
+
+[metadata]
+url = "https://im.qq.com"
+docs = "https://bot.q.qq.com/wiki/"

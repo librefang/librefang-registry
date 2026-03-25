@@ -1,0 +1,10 @@
+id = "pumble"
+name = "Pumble"
+description = "Pumble adapter for team messaging and notifications in Pumble workspaces"
+category = "enterprise"
+icon = "🐝"
+protocol = "webhook"
+
+[metadata]
+url = "https://pumble.com"
+docs = "https://pumble.com/help"

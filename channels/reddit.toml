@@ -1,0 +1,10 @@
+id = "reddit"
+name = "Reddit"
+description = "Reddit adapter for posting and reading content via the Reddit API"
+category = "social"
+icon = "🤖"
+protocol = "rest-api"
+
+[metadata]
+url = "https://www.reddit.com"
+docs = "https://www.reddit.com/dev/api/"

@@ -1,0 +1,10 @@
+id = "discourse"
+name = "Discourse"
+description = "Discourse forum adapter for posting topics and replies via the Discourse API"
+category = "developer"
+icon = "💬"
+protocol = "rest-api"
+
+[metadata]
+url = "https://www.discourse.org"
+docs = "https://docs.discourse.org"

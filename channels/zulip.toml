@@ -1,0 +1,10 @@
+id = "zulip"
+name = "Zulip"
+description = "Zulip adapter for topic-based team messaging in Zulip organizations"
+category = "enterprise"
+icon = "💧"
+protocol = "rest-api"
+
+[metadata]
+url = "https://zulip.com"
+docs = "https://zulip.com/api/"

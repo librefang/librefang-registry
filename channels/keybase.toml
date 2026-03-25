@@ -1,0 +1,10 @@
+id = "keybase"
+name = "Keybase"
+description = "Keybase adapter for encrypted messaging via the Keybase chat API"
+category = "messaging"
+icon = "🔐"
+protocol = "rest-api"
+
+[metadata]
+url = "https://keybase.io"
+docs = "https://keybase.io/docs/api/"

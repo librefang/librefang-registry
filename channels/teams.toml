@@ -1,0 +1,10 @@
+id = "teams"
+name = "Microsoft Teams"
+description = "Microsoft Teams adapter for messaging and notifications in Teams channels"
+category = "enterprise"
+icon = "🟦"
+protocol = "webhook"
+
+[metadata]
+url = "https://www.microsoft.com/en-us/microsoft-teams"
+docs = "https://learn.microsoft.com/en-us/microsoftteams/platform/"

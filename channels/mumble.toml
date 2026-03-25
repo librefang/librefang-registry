@@ -1,0 +1,10 @@
+id = "mumble"
+name = "Mumble"
+description = "Mumble adapter for text messaging in Mumble voice communication servers"
+category = "iot"
+icon = "🎙️"
+protocol = "websocket"
+
+[metadata]
+url = "https://www.mumble.info"
+docs = "https://wiki.mumble.info/wiki/Protocol"

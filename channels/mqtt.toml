@@ -1,0 +1,10 @@
+id = "mqtt"
+name = "MQTT"
+description = "MQTT adapter for publishing and subscribing to messages on MQTT brokers"
+category = "iot"
+icon = "📶"
+protocol = "mqtt"
+
+[metadata]
+url = "https://mqtt.org"
+docs = "https://mqtt.org/mqtt-specification/"

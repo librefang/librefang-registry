@@ -1,0 +1,10 @@
+id = "slack"
+name = "Slack"
+description = "Slack bot adapter for sending and receiving messages in Slack workspaces"
+category = "enterprise"
+icon = "💜"
+protocol = "websocket"
+
+[metadata]
+url = "https://slack.com"
+docs = "https://api.slack.com/docs"

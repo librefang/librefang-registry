@@ -1,0 +1,10 @@
+id = "dingtalk"
+name = "DingTalk"
+description = "DingTalk bot adapter for sending messages to DingTalk groups and conversations"
+category = "enterprise"
+icon = "🔔"
+protocol = "webhook"
+
+[metadata]
+url = "https://www.dingtalk.com"
+docs = "https://open.dingtalk.com/document/"

@@ -1,0 +1,10 @@
+id = "nextcloud"
+name = "Nextcloud"
+description = "Nextcloud Talk adapter for messaging within self-hosted Nextcloud instances"
+category = "iot"
+icon = "☁️"
+protocol = "rest-api"
+
+[metadata]
+url = "https://nextcloud.com"
+docs = "https://nextcloud-talk.readthedocs.io/en/latest/"

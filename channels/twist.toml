@@ -1,0 +1,10 @@
+id = "twist"
+name = "Twist"
+description = "Twist adapter for async team communication in Twist workspaces"
+category = "enterprise"
+icon = "🔀"
+protocol = "rest-api"
+
+[metadata]
+url = "https://twist.com"
+docs = "https://developer.twist.com/v3/"

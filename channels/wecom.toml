@@ -1,0 +1,10 @@
+id = "wecom"
+name = "WeCom"
+description = "WeCom (WeChat Work) adapter for enterprise messaging within WeCom organizations"
+category = "enterprise"
+icon = "🏢"
+protocol = "webhook"
+
+[metadata]
+url = "https://work.weixin.qq.com"
+docs = "https://developer.work.weixin.qq.com/document/"

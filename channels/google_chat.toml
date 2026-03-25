@@ -1,0 +1,10 @@
+id = "google_chat"
+name = "Google Chat"
+description = "Google Chat adapter for sending messages and cards to Google Workspace conversations"
+category = "enterprise"
+icon = "💚"
+protocol = "webhook"
+
+[metadata]
+url = "https://chat.google.com"
+docs = "https://developers.google.com/workspace/chat/api/reference/rest"

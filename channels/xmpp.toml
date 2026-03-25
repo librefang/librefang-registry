@@ -1,0 +1,10 @@
+id = "xmpp"
+name = "XMPP"
+description = "XMPP adapter for messaging via the Extensible Messaging and Presence Protocol"
+category = "messaging"
+icon = "📨"
+protocol = "xmpp"
+
+[metadata]
+url = "https://xmpp.org"
+docs = "https://xmpp.org/extensions/"

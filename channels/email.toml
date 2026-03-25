@@ -1,0 +1,10 @@
+id = "email"
+name = "Email"
+description = "Email adapter for sending and receiving messages via SMTP and IMAP protocols"
+category = "email"
+icon = "📧"
+protocol = "imap"
+
+[metadata]
+url = ""
+docs = ""

@@ -1,0 +1,10 @@
+id = "feishu"
+name = "Feishu"
+description = "Feishu (Lark) bot adapter for messaging within the Feishu collaboration platform"
+category = "enterprise"
+icon = "🐦"
+protocol = "webhook"
+
+[metadata]
+url = "https://www.feishu.cn"
+docs = "https://open.feishu.cn/document/"

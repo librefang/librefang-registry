@@ -1,0 +1,10 @@
+id = "mastodon"
+name = "Mastodon"
+description = "Mastodon adapter for posting toots and reading timelines on Mastodon instances"
+category = "social"
+icon = "🐘"
+protocol = "rest-api"
+
+[metadata]
+url = "https://joinmastodon.org"
+docs = "https://docs.joinmastodon.org/api/"
