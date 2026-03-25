@@ -1,0 +1,10 @@
+id = "guilded"
+name = "Guilded"
+description = "Guilded bot adapter for messaging in Guilded servers and channels"
+category = "enterprise"
+icon = "🏰"
+protocol = "websocket"
+
+[metadata]
+url = "https://www.guilded.gg"
+docs = "https://www.guilded.gg/docs/api/"

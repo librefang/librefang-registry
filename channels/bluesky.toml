@@ -1,0 +1,10 @@
+id = "bluesky"
+name = "Bluesky"
+description = "Bluesky AT Protocol adapter for posting and reading from the decentralized social network"
+category = "social"
+icon = "🦋"
+protocol = "rest-api"
+
+[metadata]
+url = "https://bsky.app"
+docs = "https://docs.bsky.app"

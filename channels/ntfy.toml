@@ -1,0 +1,10 @@
+id = "ntfy"
+name = "ntfy"
+description = "ntfy adapter for sending push notifications via the ntfy pub-sub service"
+category = "iot"
+icon = "🔔"
+protocol = "rest-api"
+
+[metadata]
+url = "https://ntfy.sh"
+docs = "https://docs.ntfy.sh"

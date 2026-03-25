@@ -1,0 +1,10 @@
+id = "twitch"
+name = "Twitch"
+description = "Twitch adapter for reading and sending messages in Twitch stream chats"
+category = "social"
+icon = "🎮"
+protocol = "irc"
+
+[metadata]
+url = "https://www.twitch.tv"
+docs = "https://dev.twitch.tv/docs/irc/"

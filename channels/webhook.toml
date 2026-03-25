@@ -1,0 +1,10 @@
+id = "webhook"
+name = "Webhook"
+description = "Generic webhook adapter for sending and receiving messages via HTTP callbacks"
+category = "developer"
+icon = "🔗"
+protocol = "webhook"
+
+[metadata]
+url = ""
+docs = ""

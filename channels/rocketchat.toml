@@ -1,0 +1,10 @@
+id = "rocketchat"
+name = "Rocket.Chat"
+description = "Rocket.Chat adapter for messaging in self-hosted Rocket.Chat instances"
+category = "enterprise"
+icon = "🚀"
+protocol = "rest-api"
+
+[metadata]
+url = "https://www.rocket.chat"
+docs = "https://developer.rocket.chat/reference/api"

@@ -1,0 +1,10 @@
+id = "nostr"
+name = "Nostr"
+description = "Nostr adapter for publishing and reading events on the Nostr decentralized protocol"
+category = "messaging"
+icon = "🟣"
+protocol = "websocket"
+
+[metadata]
+url = "https://nostr.com"
+docs = "https://github.com/nostr-protocol/nips"

@@ -1,0 +1,10 @@
+id = "revolt"
+name = "Revolt"
+description = "Revolt adapter for messaging in the open-source Revolt chat platform"
+category = "developer"
+icon = "🔴"
+protocol = "websocket"
+
+[metadata]
+url = "https://revolt.chat"
+docs = "https://developers.revolt.chat/api/"

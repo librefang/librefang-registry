@@ -1,0 +1,10 @@
+id = "linkedin"
+name = "LinkedIn"
+description = "LinkedIn adapter for posting updates and messages via the LinkedIn API"
+category = "social"
+icon = "💼"
+protocol = "rest-api"
+
+[metadata]
+url = "https://www.linkedin.com"
+docs = "https://learn.microsoft.com/en-us/linkedin/"

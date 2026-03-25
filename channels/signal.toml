@@ -1,0 +1,10 @@
+id = "signal"
+name = "Signal"
+description = "Signal adapter for secure end-to-end encrypted messaging via Signal CLI"
+category = "messaging"
+icon = "🔒"
+protocol = "rest-api"
+
+[metadata]
+url = "https://signal.org"
+docs = "https://github.com/AsamK/signal-cli"

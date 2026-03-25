@@ -1,0 +1,10 @@
+id = "discord"
+name = "Discord"
+description = "Discord bot adapter for sending and receiving messages in Discord servers and channels"
+category = "messaging"
+icon = "🎮"
+protocol = "websocket"
+
+[metadata]
+url = "https://discord.com"
+docs = "https://discord.com/developers/docs/intro"

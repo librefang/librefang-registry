@@ -1,0 +1,10 @@
+id = "matrix"
+name = "Matrix"
+description = "Matrix adapter for decentralized messaging via the Matrix client-server API"
+category = "messaging"
+icon = "🟩"
+protocol = "matrix"
+
+[metadata]
+url = "https://matrix.org"
+docs = "https://spec.matrix.org/latest/client-server-api/"

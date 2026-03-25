@@ -1,0 +1,10 @@
+id = "whatsapp"
+name = "WhatsApp"
+description = "WhatsApp Business API adapter for sending and receiving messages on WhatsApp"
+category = "messaging"
+icon = "📱"
+protocol = "rest-api"
+
+[metadata]
+url = "https://www.whatsapp.com"
+docs = "https://developers.facebook.com/docs/whatsapp/cloud-api/"

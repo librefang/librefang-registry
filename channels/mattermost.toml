@@ -1,0 +1,10 @@
+id = "mattermost"
+name = "Mattermost"
+description = "Mattermost adapter for team messaging and notifications in Mattermost workspaces"
+category = "enterprise"
+icon = "🔵"
+protocol = "websocket"
+
+[metadata]
+url = "https://mattermost.com"
+docs = "https://api.mattermost.com"

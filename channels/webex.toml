@@ -1,0 +1,10 @@
+id = "webex"
+name = "Webex"
+description = "Cisco Webex adapter for messaging and notifications in Webex spaces"
+category = "enterprise"
+icon = "🌐"
+protocol = "webhook"
+
+[metadata]
+url = "https://www.webex.com"
+docs = "https://developer.webex.com/docs/api/getting-started"

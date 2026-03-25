@@ -1,0 +1,10 @@
+id = "gotify"
+name = "Gotify"
+description = "Gotify adapter for sending push notifications to a self-hosted Gotify server"
+category = "iot"
+icon = "🔊"
+protocol = "rest-api"
+
+[metadata]
+url = "https://gotify.net"
+docs = "https://gotify.net/docs/"

@@ -1,0 +1,10 @@
+id = "irc"
+name = "IRC"
+description = "IRC adapter for connecting to Internet Relay Chat networks and channels"
+category = "messaging"
+icon = "📡"
+protocol = "irc"
+
+[metadata]
+url = ""
+docs = "https://datatracker.ietf.org/doc/html/rfc2812"

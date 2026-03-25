@@ -1,0 +1,10 @@
+id = "telegram"
+name = "Telegram"
+description = "Telegram Bot API adapter for sending and receiving messages"
+category = "messaging"
+icon = "📱"
+protocol = "bot-api"
+
+[metadata]
+url = "https://telegram.org"
+docs = "https://core.telegram.org/bots/api"
