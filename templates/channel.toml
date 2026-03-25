@@ -1,9 +1,9 @@
 id = ""
 name = ""
 description = ""
-category = ""  # one of: messaging, social, enterprise, developer, iot, email
+category = ""    # one of: messaging, social, enterprise, developer, iot, email
 icon = ""
-protocol = ""  # one of: bot-api, webhook, websocket, rest-api, imap, xmpp, irc, mqtt, matrix
+protocol = ""    # one of: bot-api, webhook, websocket, rest-api, imap, xmpp, irc, mqtt, matrix
 
 [metadata]
 url = ""
