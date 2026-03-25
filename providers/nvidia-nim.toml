@@ -1,5 +1,5 @@
 # NVIDIA NIM — https://build.nvidia.com
-# Models: 0 (hosts third-party models, discovered dynamically at runtime)
+# Models: 22
 
 [provider]
 id = "nvidia-nim"
@@ -7,3 +7,303 @@ display_name = "NVIDIA NIM"
 api_key_env = "NVIDIA_API_KEY"
 base_url = "https://integrate.api.nvidia.com/v1"
 key_required = true
+
+# ── NVIDIA models ────────────────────────────────────────────────
+
+[[models]]
+id = "nvidia/llama-3.1-nemotron-ultra-253b-v1"
+display_name = "Nemotron Ultra 253B"
+tier = "frontier"
+context_window = 128000
+max_output_tokens = 4096
+input_cost_per_m = 3.00
+output_cost_per_m = 5.00
+supports_tools = true
+supports_vision = false
+supports_streaming = true
+aliases = ["nemotron-ultra"]
+
+[[models]]
+id = "nvidia/llama-3.3-nemotron-super-49b-v1.5"
+display_name = "Nemotron Super 49B v1.5"
+tier = "smart"
+context_window = 128000
+max_output_tokens = 4096
+input_cost_per_m = 0.40
+output_cost_per_m = 0.40
+supports_tools = true
+supports_vision = false
+supports_streaming = true
+aliases = ["nemotron-super"]
+
+[[models]]
+id = "nvidia/llama-3.1-nemotron-70b-instruct"
+display_name = "Nemotron 70B"
+tier = "balanced"
+context_window = 128000
+max_output_tokens = 4096
+input_cost_per_m = 0.10
+output_cost_per_m = 0.10
+supports_tools = true
+supports_vision = false
+supports_streaming = true
+aliases = ["nemotron-70b"]
+
+[[models]]
+id = "nvidia/nemotron-mini-4b-instruct"
+display_name = "Nemotron Mini 4B"
+tier = "fast"
+context_window = 4096
+max_output_tokens = 4096
+input_cost_per_m = 0.01
+output_cost_per_m = 0.01
+supports_tools = false
+supports_vision = false
+supports_streaming = true
+aliases = ["nemotron-mini"]
+
+# ── Meta Llama models ────────────────────────────────────────────
+
+[[models]]
+id = "meta/llama-4-maverick-17b-128e-instruct"
+display_name = "Llama 4 Maverick 128E"
+tier = "frontier"
+context_window = 128000
+max_output_tokens = 4096
+input_cost_per_m = 0.80
+output_cost_per_m = 0.80
+supports_tools = true
+supports_vision = true
+supports_streaming = true
+aliases = ["llama4-maverick"]
+
+[[models]]
+id = "meta/llama-4-scout-17b-16e-instruct"
+display_name = "Llama 4 Scout 16E"
+tier = "smart"
+context_window = 128000
+max_output_tokens = 4096
+input_cost_per_m = 0.15
+output_cost_per_m = 0.40
+supports_tools = true
+supports_vision = true
+supports_streaming = true
+aliases = ["llama4-scout"]
+
+[[models]]
+id = "meta/llama-3.3-70b-instruct"
+display_name = "Llama 3.3 70B"
+tier = "balanced"
+context_window = 128000
+max_output_tokens = 4096
+input_cost_per_m = 0.10
+output_cost_per_m = 0.10
+supports_tools = true
+supports_vision = false
+supports_streaming = true
+aliases = ["llama-70b"]
+
+[[models]]
+id = "meta/llama-3.1-405b-instruct"
+display_name = "Llama 3.1 405B"
+tier = "frontier"
+context_window = 128000
+max_output_tokens = 4096
+input_cost_per_m = 2.00
+output_cost_per_m = 2.00
+supports_tools = true
+supports_vision = false
+supports_streaming = true
+aliases = ["llama-405b"]
+
+[[models]]
+id = "meta/llama-3.1-8b-instruct"
+display_name = "Llama 3.1 8B"
+tier = "fast"
+context_window = 128000
+max_output_tokens = 4096
+input_cost_per_m = 0.03
+output_cost_per_m = 0.03
+supports_tools = true
+supports_vision = false
+supports_streaming = true
+aliases = []
+
+[[models]]
+id = "meta/llama-3.2-90b-vision-instruct"
+display_name = "Llama 3.2 90B Vision"
+tier = "smart"
+context_window = 128000
+max_output_tokens = 4096
+input_cost_per_m = 0.35
+output_cost_per_m = 0.40
+supports_tools = false
+supports_vision = true
+supports_streaming = true
+aliases = []
+
+[[models]]
+id = "meta/llama-3.2-11b-vision-instruct"
+display_name = "Llama 3.2 11B Vision"
+tier = "balanced"
+context_window = 128000
+max_output_tokens = 4096
+input_cost_per_m = 0.07
+output_cost_per_m = 0.07
+supports_tools = false
+supports_vision = true
+supports_streaming = true
+aliases = []
+
+# ── Mistral models ───────────────────────────────────────────────
+
+[[models]]
+id = "mistralai/mistral-large-3-675b-instruct-2512"
+display_name = "Mistral Large 3 675B"
+tier = "frontier"
+context_window = 128000
+max_output_tokens = 4096
+input_cost_per_m = 1.50
+output_cost_per_m = 4.50
+supports_tools = true
+supports_vision = false
+supports_streaming = true
+aliases = ["mistral-large-3"]
+
+[[models]]
+id = "mistralai/mistral-small-3.1-24b-instruct-2503"
+display_name = "Mistral Small 3.1 24B"
+tier = "balanced"
+context_window = 128000
+max_output_tokens = 4096
+input_cost_per_m = 0.10
+output_cost_per_m = 0.30
+supports_tools = true
+supports_vision = false
+supports_streaming = true
+aliases = ["mistral-small"]
+
+[[models]]
+id = "mistralai/mixtral-8x22b-instruct-v0.1"
+display_name = "Mixtral 8x22B"
+tier = "balanced"
+context_window = 65536
+max_output_tokens = 4096
+input_cost_per_m = 0.27
+output_cost_per_m = 0.27
+supports_tools = true
+supports_vision = false
+supports_streaming = true
+aliases = ["mixtral"]
+
+# ── DeepSeek models ──────────────────────────────────────────────
+
+[[models]]
+id = "deepseek-ai/deepseek-v3.2"
+display_name = "DeepSeek V3.2"
+tier = "frontier"
+context_window = 128000
+max_output_tokens = 8192
+input_cost_per_m = 0.50
+output_cost_per_m = 2.00
+supports_tools = true
+supports_vision = false
+supports_streaming = true
+aliases = ["deepseek-v3"]
+
+[[models]]
+id = "deepseek-ai/deepseek-r1-distill-qwen-32b"
+display_name = "DeepSeek R1 Distill 32B"
+tier = "balanced"
+context_window = 128000
+max_output_tokens = 8192
+input_cost_per_m = 0.10
+output_cost_per_m = 0.10
+supports_tools = false
+supports_vision = false
+supports_streaming = true
+aliases = ["deepseek-r1-32b"]
+
+# ── Qwen models ──────────────────────────────────────────────────
+
+[[models]]
+id = "qwen/qwen3.5-397b-a17b"
+display_name = "Qwen 3.5 397B MoE"
+tier = "frontier"
+context_window = 128000
+max_output_tokens = 8192
+input_cost_per_m = 0.60
+output_cost_per_m = 2.40
+supports_tools = true
+supports_vision = false
+supports_streaming = true
+aliases = ["qwen3.5"]
+
+[[models]]
+id = "qwen/qwen2.5-coder-32b-instruct"
+display_name = "Qwen 2.5 Coder 32B"
+tier = "balanced"
+context_window = 128000
+max_output_tokens = 8192
+input_cost_per_m = 0.10
+output_cost_per_m = 0.10
+supports_tools = true
+supports_vision = false
+supports_streaming = true
+aliases = ["qwen-coder"]
+
+[[models]]
+id = "qwen/qwq-32b"
+display_name = "QWQ 32B"
+tier = "balanced"
+context_window = 128000
+max_output_tokens = 16384
+input_cost_per_m = 0.10
+output_cost_per_m = 0.10
+supports_tools = false
+supports_vision = false
+supports_streaming = true
+aliases = []
+
+# ── Google Gemma models ──────────────────────────────────────────
+
+[[models]]
+id = "google/gemma-3-27b-it"
+display_name = "Gemma 3 27B"
+tier = "balanced"
+context_window = 128000
+max_output_tokens = 4096
+input_cost_per_m = 0.10
+output_cost_per_m = 0.10
+supports_tools = false
+supports_vision = false
+supports_streaming = true
+aliases = ["gemma"]
+
+# ── Microsoft Phi models ─────────────────────────────────────────
+
+[[models]]
+id = "microsoft/phi-4-multimodal-instruct"
+display_name = "Phi-4 Multimodal"
+tier = "balanced"
+context_window = 128000
+max_output_tokens = 4096
+input_cost_per_m = 0.07
+output_cost_per_m = 0.07
+supports_tools = true
+supports_vision = true
+supports_streaming = true
+aliases = ["phi-4"]
+
+[[models]]
+id = "microsoft/phi-4-mini-instruct"
+display_name = "Phi-4 Mini"
+tier = "fast"
+context_window = 16384
+max_output_tokens = 4096
+input_cost_per_m = 0.03
+output_cost_per_m = 0.03
+supports_tools = true
+supports_vision = false
+supports_streaming = true
+aliases = ["phi-4-mini"]
