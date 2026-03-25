@@ -23,8 +23,8 @@ display_name = "Nous: Hermes 3 405B Instruct"
 tier = "smart"
 context_window = 131072
 max_output_tokens = 16384
-input_cost_per_m = 1.0
-output_cost_per_m = 1.0
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
 supports_streaming = true
 
 [[models]]

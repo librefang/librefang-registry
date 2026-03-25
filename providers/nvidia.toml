@@ -43,8 +43,8 @@ display_name = "NVIDIA: Nemotron 3 Nano 30B A3B"
 tier = "fast"
 context_window = 262144
 max_output_tokens = 16384
-input_cost_per_m = 0.05
-output_cost_per_m = 0.2
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
 supports_streaming = true
 
 [[models]]
@@ -63,8 +63,8 @@ display_name = "NVIDIA: Nemotron 3 Super"
 tier = "fast"
 context_window = 262144
 max_output_tokens = 16384
-input_cost_per_m = 0.1
-output_cost_per_m = 0.5
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
 supports_streaming = true
 
 [[models]]
@@ -83,8 +83,8 @@ display_name = "NVIDIA: Nemotron Nano 12B 2 VL"
 tier = "fast"
 context_window = 131072
 max_output_tokens = 16384
-input_cost_per_m = 0.2
-output_cost_per_m = 0.6
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
 supports_streaming = true
 
 [[models]]
@@ -103,8 +103,8 @@ display_name = "NVIDIA: Nemotron Nano 9B V2"
 tier = "fast"
 context_window = 131072
 max_output_tokens = 16384
-input_cost_per_m = 0.04
-output_cost_per_m = 0.16
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
 supports_streaming = true
 
 [[models]]
