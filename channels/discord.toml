@@ -5,6 +5,24 @@ category = "messaging"
 icon = "🎮"
 protocol = "websocket"
 
+[i18n.zh]
+description = "Discord 机器人适配器，在 Discord 服务器和频道中收发消息"
+
+[i18n.zh-TW]
+description = "Discord 機器人適配器，在 Discord 伺服器和頻道中收發訊息"
+
+[i18n.ja]
+description = "Discordボットアダプター、Discordサーバーとチャンネルでのメッセージ送受信"
+
+[i18n.ko]
+description = "Discord 봇 어댑터, Discord 서버와 채널에서 메시지 송수신"
+
+[i18n.de]
+description = "Discord-Bot-Adapter zum Senden und Empfangen von Nachrichten in Discord-Servern und -Kanälen"
+
+[i18n.es]
+description = "Adaptador de bot Discord para enviar y recibir mensajes en servidores y canales de Discord"
+
 [metadata]
 url = "https://discord.com"
 docs = "https://discord.com/developers/docs/intro"

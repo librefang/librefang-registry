@@ -5,6 +5,24 @@ category = "enterprise"
 icon = "🐝"
 protocol = "webhook"
 
+[i18n.zh]
+description = "Pumble 适配器，在 Pumble 工作区中发送团队消息和通知"
+
+[i18n.zh-TW]
+description = "Pumble 適配器，在 Pumble 工作區中發送團隊訊息和通知"
+
+[i18n.ja]
+description = "Pumbleアダプター、Pumbleワークスペースでのチームメッセージングと通知"
+
+[i18n.ko]
+description = "Pumble 어댑터, Pumble 워크스페이스에서 팀 메시지 및 알림 전송"
+
+[i18n.de]
+description = "Pumble-Adapter für Team-Messaging und Benachrichtigungen in Pumble-Workspaces"
+
+[i18n.es]
+description = "Adaptador de Pumble para mensajería de equipo y notificaciones en espacios de trabajo Pumble"
+
 [metadata]
 url = "https://pumble.com"
 docs = "https://pumble.com/help"

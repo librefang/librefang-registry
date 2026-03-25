@@ -5,6 +5,24 @@ category = "messaging"
 icon = "🐧"
 protocol = "websocket"
 
+[i18n.zh]
+description = "QQ 机器人适配器，在腾讯 QQ 群组和频道中收发消息"
+
+[i18n.zh-TW]
+description = "QQ 機器人適配器，在騰訊 QQ 群組和頻道中收發訊息"
+
+[i18n.ja]
+description = "QQボットアダプター、Tencent QQグループとチャンネルでのメッセージング"
+
+[i18n.ko]
+description = "QQ 봇 어댑터, Tencent QQ 그룹 및 채널에서 메시지 송수신"
+
+[i18n.de]
+description = "QQ-Bot-Adapter für Nachrichten in Tencent QQ-Gruppen und -Kanälen"
+
+[i18n.es]
+description = "Adaptador de bot QQ para mensajería en grupos y canales de Tencent QQ"
+
 [metadata]
 url = "https://im.qq.com"
 docs = "https://bot.q.qq.com/wiki/"

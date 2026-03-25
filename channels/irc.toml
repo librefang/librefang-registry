@@ -5,6 +5,24 @@ category = "messaging"
 icon = "📡"
 protocol = "irc"
 
+[i18n.zh]
+description = "IRC 适配器，连接 Internet Relay Chat 网络和频道"
+
+[i18n.zh-TW]
+description = "IRC 適配器，連接 Internet Relay Chat 網路和頻道"
+
+[i18n.ja]
+description = "IRCアダプター、Internet Relay Chatネットワークとチャンネルへの接続"
+
+[i18n.ko]
+description = "IRC 어댑터, Internet Relay Chat 네트워크와 채널에 연결"
+
+[i18n.de]
+description = "IRC-Adapter zur Verbindung mit Internet Relay Chat-Netzwerken und -Kanälen"
+
+[i18n.es]
+description = "Adaptador IRC para conectar a redes y canales de Internet Relay Chat"
+
 [metadata]
 url = ""
 docs = "https://datatracker.ietf.org/doc/html/rfc2812"

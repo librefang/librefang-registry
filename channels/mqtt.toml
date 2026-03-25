@@ -5,6 +5,24 @@ category = "iot"
 icon = "📶"
 protocol = "mqtt"
 
+[i18n.zh]
+description = "MQTT 适配器，在 MQTT 代理上发布和订阅消息"
+
+[i18n.zh-TW]
+description = "MQTT 適配器，在 MQTT 代理上發布和訂閱訊息"
+
+[i18n.ja]
+description = "MQTTアダプター、MQTTブローカーでのメッセージのパブリッシュとサブスクライブ"
+
+[i18n.ko]
+description = "MQTT 어댑터, MQTT 브로커에서 메시지 발행 및 구독"
+
+[i18n.de]
+description = "MQTT-Adapter zum Veröffentlichen und Abonnieren von Nachrichten auf MQTT-Brokern"
+
+[i18n.es]
+description = "Adaptador MQTT para publicar y suscribirse a mensajes en brokers MQTT"
+
 [metadata]
 url = "https://mqtt.org"
 docs = "https://mqtt.org/mqtt-specification/"

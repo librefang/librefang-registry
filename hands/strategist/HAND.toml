@@ -614,7 +614,7 @@ activation_warning = "Strategist hand runs continuously and performs strategic a
 
 [i18n.zh]
 name = "策略分析 Hand"
-description = "自主策略分析师——市场研究、竞争分析、商业规划和战略建议"
+description = "自主战略分析——市场调研、竞品分析、商业规划与战略建议"
 category = "生产力"
 
 [i18n.zh.settings.focus_area]
@@ -648,6 +648,9 @@ description = "报告中纳入分析结论的最低置信度"
 [i18n.zh.settings.frameworks]
 label = "首选分析框架"
 description = "优先使用的战略分析框架（逗号分隔，例如 SWOT,Porter,PESTEL）"
+
+[i18n.zh-TW]
+description = "自主策略分析——市場調研、競品分析、商業規劃與策略建議"
 
 # ─── Spanish (Español) ────────────────────────────────────────────────────
 
@@ -692,7 +695,7 @@ description = "Marcos estratégicos a priorizar (separados por comas, ej. SWOT, 
 
 [i18n.ja]
 name = "戦略分析 Hand"
-description = "自律型戦略アナリスト——市場調査、競合分析、事業計画、戦略的提言"
+description = "自律型ストラテジーアナリスト——市場調査、競合分析、事業計画、戦略提案"
 category = "生産性"
 
 [i18n.ja.settings.focus_area]
@@ -809,7 +812,7 @@ description = "Bevorzugte strategische Analyse-Frameworks (kommagetrennt, z.B. S
 
 [i18n.ko]
 name = "전략 분석 Hand"
-description = "자율 전략 분석가 — 시장 조사, 경쟁 분석, 사업 계획 및 전략적 권고"
+description = "자율 전략 분석가 — 시장 조사, 경쟁 분석, 사업 계획, 전략 권고"
 category = "생산성"
 
 [i18n.ko.settings.focus_area]
