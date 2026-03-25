@@ -8,7 +8,7 @@ tags = ["git", "vcs", "code", "issues", "pull-requests", "ci"]
 [transport]
 type = "stdio"
 command = "npx"
-args = ["-y", "@modelcontextprotocol/server-github"]
+args = ["-y", "@modelcontextprotocol/server-github@2025.4.8"]
 
 [[required_env]]
 name = "GITHUB_PERSONAL_ACCESS_TOKEN"

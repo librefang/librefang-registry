@@ -8,7 +8,7 @@ tags = ["project-management", "issues", "agile", "atlassian", "tracking"]
 [transport]
 type = "stdio"
 command = "npx"
-args = ["-y", "@aashari/mcp-server-atlassian-jira"]
+args = ["-y", "@aashari/mcp-server-atlassian-jira@3.3.0"]
 
 [[required_env]]
 name = "JIRA_API_TOKEN"

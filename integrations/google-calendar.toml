@@ -8,7 +8,7 @@ tags = ["calendar", "scheduling", "google", "events", "meetings"]
 [transport]
 type = "stdio"
 command = "npx"
-args = ["-y", "@cocal/google-calendar-mcp"]
+args = ["-y", "@cocal/google-calendar-mcp@2.6.1"]
 
 [oauth]
 provider = "google"
