@@ -665,6 +665,22 @@ name = "API 测试 Hand"
 description = "自主 API 测试——端点发现、请求验证、压力测试与回归检测"
 category = "开发"
 
+[i18n.zh.agents.main]
+name = "API 测试协调器"
+description = "AI API 测试工具——发现端点、验证响应、运行压力测试、检测回归，并生成全面的测试报告"
+
+[i18n.zh.agents.tester]
+name = "测试工程师"
+description = "质量保障工程师，设计测试策略、编写测试用例、验证正确性。"
+
+[i18n.zh.agents.scanner]
+name = "安全审计员"
+description = "安全专家，审查 API 端点漏洞、检查配置、进行威胁建模。"
+
+[i18n.zh.agents.debugger]
+name = "调试专家"
+description = "调试专家，追踪 API 故障、分析错误响应、执行根因分析。"
+
 [i18n.zh.settings.base_url]
 label = "基础 URL"
 description = "待测试 API 的基础 URL（例如 https://api.example.com/v1）"

@@ -659,6 +659,22 @@ name = "DevOps Hand"
 description = "自主 DevOps 工程师——CI/CD 管理、基础设施监控、部署自动化与事件响应"
 category = "开发"
 
+[i18n.zh.agents.main]
+name = "DevOps 工程师"
+description = "AI DevOps 工程师——管理 CI/CD 流水线、监控基础设施、自动化部署、处理事件响应"
+
+[i18n.zh.agents.engineer]
+name = "DevOps 负责人"
+description = "DevOps 负责人，管理 CI/CD、基础设施、部署、监控和事件响应。"
+
+[i18n.zh.agents.monitor]
+name = "运维工程师"
+description = "运维代理，负责监控系统、运行诊断、管理部署。"
+
+[i18n.zh.agents.reviewer]
+name = "代码审查员"
+description = "高级代码审查员，在部署前审查 PR 和变更，发现问题并提出改进建议。"
+
 [i18n.zh.settings.infrastructure]
 label = "基础设施类型"
 description = "主要基础设施平台"

@@ -670,6 +670,22 @@ name = "情报采集 Hand"
 description = "自主情报收集器——持续监控目标，变化检测与知识图谱"
 category = "数据"
 
+[i18n.zh.agents.main]
+name = "情报采集协调器"
+description = "AI 情报收集器——通过 OSINT 技术、知识图谱和变化检测持续监控任意目标"
+
+[i18n.zh.agents.scout]
+name = "调研员"
+description = "调研代理，抓取网页内容并综合信息以支持情报收集。"
+
+[i18n.zh.agents.scholar]
+name = "学术研究员"
+description = "学术研究代理，搜索学术论文、总结研究发现、生成文献综述。"
+
+[i18n.zh.agents.localizer]
+name = "翻译员"
+description = "多语言翻译员，翻译外语来源以支持跨语言情报收集。"
+
 [i18n.zh.settings.target_subject]
 label = "监控目标"
 description = "要监控的对象（公司名称、人物、技术、市场、话题）"

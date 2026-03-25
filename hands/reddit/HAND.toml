@@ -998,6 +998,18 @@ name = "Reddit Hand"
 description = "自主 Reddit 管理——监控子版、发布内容、回复帖子、追踪 Karma 与互动"
 category = "通信"
 
+[i18n.zh.agents.main]
+name = "Reddit 管理协调器"
+description = "AI Reddit 管理——监控子版块、发布帖子、参与讨论、追踪社区互动"
+
+[i18n.zh.agents.moderator]
+name = "社区互动专员"
+description = "社区互动代理，回复评论、处理用户问题、管理社区氛围。"
+
+[i18n.zh.agents.writer]
+name = "内容编辑"
+description = "内容写作者，创作符合子版块文化和规范的 Reddit 帖子、评论和回复。"
+
 [i18n.zh.settings.subreddits]
 label = "子版块"
 description = "要监控的子版块列表（逗号分隔，例如 rust,programming,machinelearning）"

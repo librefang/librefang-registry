@@ -940,6 +940,18 @@ name = "视频剪辑 Hand"
 description = "将长视频自动转为带字幕和封面的竖版短视频"
 category = "内容"
 
+[i18n.zh.agents.main]
+name = "视频剪辑协调器"
+description = "AI 视频编辑器——从任意视频 URL 或文件中下载、转录并创建病毒式传播的短视频"
+
+[i18n.zh.agents.writer]
+name = "文案编辑"
+description = "内容写作者，为视频短片创作脚本、字幕、标题和描述。"
+
+[i18n.zh.agents.distributor]
+name = "社交媒体策略师"
+description = "社交媒体策略师，规划视频短片的分发、排期和互动策略。"
+
 [i18n.zh.settings.stt_provider]
 label = "语音转文字服务"
 description = "用于生成字幕和片段选择的音频转录方式"

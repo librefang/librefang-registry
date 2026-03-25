@@ -723,6 +723,18 @@ name = "数据分析 Hand"
 description = "自主数据分析——数据采集、分析、可视化、仪表盘与自动报告"
 category = "数据"
 
+[i18n.zh.agents.main]
+name = "数据分析协调器"
+description = "AI 数据分析师——采集数据、执行统计分析、创建可视化图表，并生成包含可操作洞察的自动化报告"
+
+[i18n.zh.agents.analyst]
+name = "数据分析师"
+description = "数据分析师，负责处理数据、生成洞察、创建报告。"
+
+[i18n.zh.agents.modeler]
+name = "数据科学家"
+description = "数据科学家，负责分析数据集、构建模型、创建可视化图表、执行统计分析。"
+
 [i18n.zh.settings.data_source]
 label = "数据源"
 description = "主要数据源类型"

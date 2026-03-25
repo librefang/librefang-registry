@@ -628,6 +628,22 @@ name = "深度研究 Hand"
 description = "自主深度研究员——详尽调查、交叉引用、事实核查与结构化报告"
 category = "生产力"
 
+[i18n.zh.agents.main]
+name = "深度研究协调器"
+description = "AI 深度研究员——进行详尽调查，交叉引用来源、事实核查，并生成结构化报告"
+
+[i18n.zh.agents.scholar]
+name = "学术研究员"
+description = "学术研究代理，搜索学术论文、总结研究发现、生成文献综述。"
+
+[i18n.zh.agents.coder]
+name = "编程助手"
+description = "软件工程师，编写数据采集、解析、分析和自动化脚本。"
+
+[i18n.zh.agents.writer]
+name = "报告撰写员"
+description = "内容写作者，将研究成果整理为清晰的报告、摘要和出版物。"
+
 [i18n.zh.settings.research_depth]
 label = "研究深度"
 description = "每次调研的详尽程度"
