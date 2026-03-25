@@ -1,0 +1,48 @@
+# allenai — auto-generated from OpenRouter API
+
+[provider]
+id = "allenai"
+display_name = "Allenai"
+api_key_env = "ALLENAI_API_KEY"
+base_url = ""
+key_required = true
+
+[[models]]
+id = "olmo-2-0325-32b-instruct"
+display_name = "AllenAI: Olmo 2 32B Instruct"
+tier = "fast"
+context_window = 128000
+max_output_tokens = 16384
+input_cost_per_m = 0.05
+output_cost_per_m = 0.2
+supports_streaming = true
+
+[[models]]
+id = "olmo-3-32b-think"
+display_name = "AllenAI: Olmo 3 32B Think"
+tier = "fast"
+context_window = 65536
+max_output_tokens = 65536
+input_cost_per_m = 0.15
+output_cost_per_m = 0.5
+supports_streaming = true
+
+[[models]]
+id = "olmo-3.1-32b-instruct"
+display_name = "AllenAI: Olmo 3.1 32B Instruct"
+tier = "fast"
+context_window = 65536
+max_output_tokens = 16384
+input_cost_per_m = 0.2
+output_cost_per_m = 0.6
+supports_streaming = true
+
+[[models]]
+id = "olmo-3.1-32b-think"
+display_name = "AllenAI: Olmo 3.1 32B Think"
+tier = "fast"
+context_window = 65536
+max_output_tokens = 65536
+input_cost_per_m = 0.15
+output_cost_per_m = 0.5
+supports_streaming = true

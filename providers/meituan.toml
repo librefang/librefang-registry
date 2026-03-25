@@ -1,0 +1,18 @@
+# meituan — auto-generated from OpenRouter API
+
+[provider]
+id = "meituan"
+display_name = "Meituan"
+api_key_env = "MEITUAN_API_KEY"
+base_url = ""
+key_required = true
+
+[[models]]
+id = "longcat-flash-chat"
+display_name = "Meituan: LongCat Flash Chat"
+tier = "fast"
+context_window = 131072
+max_output_tokens = 131072
+input_cost_per_m = 0.2
+output_cost_per_m = 0.8
+supports_streaming = true

@@ -1,0 +1,28 @@
+# microsoft — auto-generated from OpenRouter API
+
+[provider]
+id = "microsoft"
+display_name = "Microsoft"
+api_key_env = "MICROSOFT_API_KEY"
+base_url = ""
+key_required = true
+
+[[models]]
+id = "phi-4"
+display_name = "Microsoft: Phi 4"
+tier = "fast"
+context_window = 16384
+max_output_tokens = 16384
+input_cost_per_m = 0.065
+output_cost_per_m = 0.14
+supports_streaming = true
+
+[[models]]
+id = "wizardlm-2-8x22b"
+display_name = "WizardLM-2 8x22B"
+tier = "smart"
+context_window = 65535
+max_output_tokens = 8000
+input_cost_per_m = 0.62
+output_cost_per_m = 0.62
+supports_streaming = true
