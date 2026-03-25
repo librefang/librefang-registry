@@ -8,7 +8,7 @@ tags = ["project-management", "issues", "agile", "tracking", "sprint"]
 [transport]
 type = "stdio"
 command = "npx"
-args = ["-y", "linear-mcp"]
+args = ["-y", "linear-mcp@1.2.0"]
 
 [[required_env]]
 name = "LINEAR_API_KEY"

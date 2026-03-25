@@ -8,7 +8,7 @@ tags = ["search", "web", "brave", "api", "information-retrieval"]
 [transport]
 type = "stdio"
 command = "npx"
-args = ["-y", "@modelcontextprotocol/server-brave-search"]
+args = ["-y", "@modelcontextprotocol/server-brave-search@0.6.2"]
 
 [[required_env]]
 name = "BRAVE_API_KEY"

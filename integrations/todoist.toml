@@ -8,7 +8,7 @@ tags = ["tasks", "todo", "project-management", "productivity", "gtd"]
 [transport]
 type = "stdio"
 command = "npx"
-args = ["-y", "todoist-mcp"]
+args = ["-y", "todoist-mcp@1.3.0"]
 
 [[required_env]]
 name = "TODOIST_API_KEY"

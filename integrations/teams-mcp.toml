@@ -1,4 +1,4 @@
-id = "teams-mcp"
+id = "teams-mcp@0.3.3"
 name = "Microsoft Teams"
 description = "Access Microsoft Teams channels, chats, and messages through the MCP server"
 category = "communication"
@@ -8,7 +8,7 @@ tags = ["chat", "messaging", "microsoft", "enterprise", "collaboration"]
 [transport]
 type = "stdio"
 command = "npx"
-args = ["-y", "teams-mcp"]
+args = ["-y", "teams-mcp@0.3.3"]
 
 [oauth]
 provider = "microsoft"
