@@ -997,6 +997,18 @@ name = "LinkedIn Hand"
 description = "自主 LinkedIn 管理——个人资料优化、内容创作、社交与职业互动"
 category = "通信"
 
+[i18n.zh.agents.main]
+name = "LinkedIn 管理协调器"
+description = "AI LinkedIn 管理——创建专业内容、管理发布排期、处理互动、优化职业形象"
+
+[i18n.zh.agents.content]
+name = "内容创作者"
+description = "技术写作者，为 LinkedIn 创作专业内容、文章和文档。"
+
+[i18n.zh.agents.researcher]
+name = "行业研究员"
+description = "研究代理，收集行业趋势、公司动态和职业洞察以支持 LinkedIn 内容创作。"
+
 [i18n.zh.settings.content_style]
 label = "内容风格"
 description = "LinkedIn 帖子的语气和风格"

@@ -1017,6 +1017,18 @@ name = "Twitter Hand"
 description = "自主 Twitter/X 管理——内容创作、定时发布、互动与效果追踪"
 category = "通信"
 
+[i18n.zh.agents.main]
+name = "Twitter 管理协调器"
+description = "AI Twitter/X 管理——创作内容、管理发布排期、处理互动、追踪表现"
+
+[i18n.zh.agents.writer]
+name = "推文编辑"
+description = "内容写作者，创作针对 Twitter/X 互动优化的推文、推文串和回复。"
+
+[i18n.zh.agents.strategist]
+name = "社交媒体策略师"
+description = "社交媒体策略师，规划 Twitter 增长策略、互动战术和内容排期。"
+
 [i18n.zh.settings.twitter_bearer_token]
 label = "Twitter Bearer Token"
 description = "Twitter/X 开发者平台的 Bearer Token，所有 Twitter API 操作均需此凭证。"

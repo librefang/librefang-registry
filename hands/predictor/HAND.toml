@@ -1057,6 +1057,22 @@ name = "预测 Hand"
 description = "自主预测器——收集信号、构建推理链、做出校准预测并追踪准确率"
 category = "数据"
 
+[i18n.zh.agents.main]
+name = "预测协调器"
+description = "AI 预测引擎——收集信号、构建推理链、做出校准预测并长期追踪准确率"
+
+[i18n.zh.agents.orchestrator]
+name = "编排器"
+description = "元代理，分解复杂预测任务、协调专家分析、综合结果。"
+
+[i18n.zh.agents.planner]
+name = "场景规划师"
+description = "场景规划师，创建预测场景、估算概率、识别风险和关键不确定性。"
+
+[i18n.zh.agents.modeler]
+name = "数据科学家"
+description = "数据科学家，构建定量模型、运行统计预测、估算概率。"
+
 [i18n.zh.settings.prediction_domain]
 label = "预测领域"
 description = "预测的主要关注领域"

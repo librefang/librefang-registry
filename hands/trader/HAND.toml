@@ -1163,6 +1163,18 @@ name = "交易 Hand"
 description = "自主市场情报与交易引擎——多信号分析、多空对抗推理、校准置信度、严格风控与组合级分析"
 category = "数据"
 
+[i18n.zh.agents.main]
+name = "交易协调器"
+description = "AI 市场情报与交易引擎——多信号分析、对抗性推理、风险管理、投资组合分析"
+
+[i18n.zh.agents.accountant]
+name = "财务助理"
+description = "财务代理，追踪预算、分析支出、管理成本基础、提供财务摘要。"
+
+[i18n.zh.agents.researcher]
+name = "市场研究员"
+description = "市场研究员，收集财经新闻、财报数据、宏观指标和市场情绪。"
+
 [i18n.zh.settings.trading_mode]
 label = "交易模式"
 description = "交易 Hand 的运行方式——仅分析、模拟交易或实盘交易"

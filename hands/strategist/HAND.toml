@@ -617,6 +617,22 @@ name = "策略分析 Hand"
 description = "自主战略分析——市场调研、竞品分析、商业规划与战略建议"
 category = "生产力"
 
+[i18n.zh.agents.main]
+name = "战略分析协调器"
+description = "AI 战略分析师——进行市场调研、竞品分析、商业规划，并生成可操作的战略建议"
+
+[i18n.zh.agents.architect]
+name = "系统架构师"
+description = "系统架构师，设计战略分析框架、评估利弊权衡、构建结构化分析。"
+
+[i18n.zh.agents.counsel]
+name = "法务助理"
+description = "法务助理，审查监管要求、合同影响和战略决策的合规风险。"
+
+[i18n.zh.agents.analyst]
+name = "数据分析师"
+description = "数据分析师，提供数据驱动的洞察、市场分析和指标以支持战略决策。"
+
 [i18n.zh.settings.focus_area]
 label = "聚焦方向"
 description = "战略分析的主要方向"

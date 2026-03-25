@@ -837,6 +837,22 @@ name = "线索生成 Hand"
 description = "自主获客——按计划发现、充实并交付合格线索"
 category = "数据"
 
+[i18n.zh.agents.main]
+name = "线索生成协调器"
+description = "AI 获客引擎——按计划发现、充实、去重并交付合格的销售线索"
+
+[i18n.zh.agents.outreach]
+name = "销售助理"
+description = "销售助理，起草外联邮件、管理 CRM 数据、追踪销售管线、分析商机。"
+
+[i18n.zh.agents.recruiter]
+name = "招聘助手"
+description = "招聘代理，筛选简历、撰写职位描述、管理招聘流程。"
+
+[i18n.zh.agents.messenger]
+name = "邮件助手"
+description = "邮件助手，起草专业的外联邮件和跟进邮件，管理沟通工作流。"
+
 [i18n.zh.settings.target_industry]
 label = "目标行业"
 description = "重点关注的行业垂直领域（例如 SaaS、金融科技、医疗健康、电子商务）"

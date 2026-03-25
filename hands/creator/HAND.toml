@@ -333,6 +333,14 @@ name = "创作 Hand"
 description = "AI 媒体工作室——根据文本提示生成图片、视频、音乐和语音"
 category = "内容"
 
+[i18n.zh.agents.main]
+name = "创作工作室"
+description = "AI 媒体工作室——通过自然语言生成图片、视频、音乐和语音"
+
+[i18n.zh.agents.prompt_writer]
+name = "提示词工程师"
+description = "提示词工程师，为媒体生成模型编写详细、高效的提示词。"
+
 [i18n.zh.settings.default_provider]
 label = "首选提供商"
 description = "默认使用哪个提供商。自动模式会为每种能力选择首个可用的提供商。"

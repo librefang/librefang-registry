@@ -597,6 +597,18 @@ name = "浏览器 Hand"
 description = "自主浏览器——导航网站、填写表单、点击按钮，购买需用户审批"
 category = "生产力"
 
+[i18n.zh.agents.main]
+name = "浏览器协调器"
+description = "AI 浏览器——自主导航网站、填写表单、搜索产品，完成多步骤网页任务，并配有安全防护"
+
+[i18n.zh.agents.researcher]
+name = "网页研究员"
+description = "网页研究员，查找信息、比较选项、阅读文章、综合搜索结果。"
+
+[i18n.zh.agents.extractor]
+name = "自动化专家"
+description = "自动化专家，从网页中提取结构化数据，并自动化重复性浏览器任务。"
+
 [i18n.zh.settings.headless]
 label = "无头模式"
 description = "在不显示浏览器窗口的情况下运行（推荐用于服务器环境）"
