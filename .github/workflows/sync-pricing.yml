@@ -1,0 +1,36 @@
+name: Sync Model Pricing
+
+on:
+  schedule:
+    # Run daily at 06:00 UTC
+    - cron: '0 6 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  sync-pricing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Sync pricing from OpenRouter API
+        run: python scripts/sync-pricing.py --create-missing
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No pricing changes detected"
+          else
+            git commit -m "chore: sync model pricing from OpenRouter API"
+            git push
+            echo "Pricing updated and pushed to main"
+          fi

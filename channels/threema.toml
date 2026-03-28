@@ -1,0 +1,28 @@
+id = "threema"
+name = "Threema"
+description = "Threema Gateway adapter for secure messaging via the Threema platform"
+category = "messaging"
+icon = "🔏"
+protocol = "rest-api"
+
+[i18n.zh]
+description = "Threema Gateway 适配器，通过 Threema 平台进行安全通信"
+
+[i18n.zh-TW]
+description = "Threema Gateway 適配器，透過 Threema 平台進行安全通訊"
+
+[i18n.ja]
+description = "Threema Gatewayアダプター、Threemaプラットフォームによるセキュアメッセージング"
+
+[i18n.ko]
+description = "Threema Gateway 어댑터, Threema 플랫폼을 통한 보안 메시지 송수신"
+
+[i18n.de]
+description = "Threema Gateway-Adapter für sichere Nachrichten über die Threema-Plattform"
+
+[i18n.es]
+description = "Adaptador de Threema Gateway para mensajería segura a través de la plataforma Threema"
+
+[metadata]
+url = "https://threema.ch"
+docs = "https://gateway.threema.ch/en/developer/api"

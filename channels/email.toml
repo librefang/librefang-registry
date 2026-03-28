@@ -1,0 +1,28 @@
+id = "email"
+name = "Email"
+description = "Email adapter for sending and receiving messages via SMTP and IMAP protocols"
+category = "email"
+icon = "📧"
+protocol = "imap"
+
+[i18n.zh]
+description = "电子邮件适配器，通过 SMTP 和 IMAP 协议收发邮件"
+
+[i18n.zh-TW]
+description = "電子郵件適配器，透過 SMTP 和 IMAP 協議收發郵件"
+
+[i18n.ja]
+description = "メールアダプター、SMTPとIMAPプロトコルによるメッセージの送受信"
+
+[i18n.ko]
+description = "이메일 어댑터, SMTP 및 IMAP 프로토콜을 통한 메시지 송수신"
+
+[i18n.de]
+description = "E-Mail-Adapter zum Senden und Empfangen von Nachrichten über SMTP- und IMAP-Protokolle"
+
+[i18n.es]
+description = "Adaptador de correo electrónico para enviar y recibir mensajes mediante protocolos SMTP e IMAP"
+
+[metadata]
+url = ""
+docs = ""

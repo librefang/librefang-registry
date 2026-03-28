@@ -4,6 +4,10 @@ description = "Research pipeline that investigates a topic from multiple angles,
 category = "research"
 tags = ["research", "fact-check", "summarise", "analysis"]
 
+[i18n.zh]
+name = "调研与摘要"
+description = "调研流水线，从多个角度研究主题，交叉验证结果的准确性，并生成带引用的精炼摘要。"
+
 [[parameters]]
 name = "topic"
 description = "The research topic or question to investigate"

@@ -4,6 +4,10 @@ description = "Tiered customer support pipeline that classifies incoming request
 category = "support"
 tags = ["support", "triage", "customer-service", "escalation"]
 
+[i18n.zh]
+name = "客户支持分流"
+description = "分级客户支持流水线，按紧急程度和类别对请求进行分类，起草相应回复，并将复杂问题升级给专家处理。"
+
 [[parameters]]
 name = "customer_message"
 description = "The customer's support request or message"

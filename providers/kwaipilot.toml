@@ -1,0 +1,18 @@
+# kwaipilot — auto-generated from OpenRouter API
+
+[provider]
+id = "kwaipilot"
+display_name = "Kwaipilot"
+api_key_env = "KWAIPILOT_API_KEY"
+base_url = ""
+key_required = true
+
+[[models]]
+id = "kat-coder-pro"
+display_name = "Kwaipilot: KAT-Coder-Pro V1"
+tier = "fast"
+context_window = 256000
+max_output_tokens = 128000
+input_cost_per_m = 0.207
+output_cost_per_m = 0.828
+supports_streaming = true

@@ -1,0 +1,28 @@
+id = "ntfy"
+name = "ntfy"
+description = "ntfy adapter for sending push notifications via the ntfy pub-sub service"
+category = "iot"
+icon = "🔔"
+protocol = "rest-api"
+
+[i18n.zh]
+description = "ntfy 适配器，通过 ntfy 发布-订阅服务发送推送通知"
+
+[i18n.zh-TW]
+description = "ntfy 適配器，透過 ntfy 發布-訂閱服務發送推播通知"
+
+[i18n.ja]
+description = "ntfyアダプター、ntfyパブサブサービスによるプッシュ通知送信"
+
+[i18n.ko]
+description = "ntfy 어댑터, ntfy 발행-구독 서비스를 통한 푸시 알림 전송"
+
+[i18n.de]
+description = "ntfy-Adapter zum Senden von Push-Benachrichtigungen über den ntfy Pub-Sub-Dienst"
+
+[i18n.es]
+description = "Adaptador de ntfy para enviar notificaciones push a través del servicio pub-sub ntfy"
+
+[metadata]
+url = "https://ntfy.sh"
+docs = "https://docs.ntfy.sh"

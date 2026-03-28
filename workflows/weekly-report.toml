@@ -4,6 +4,10 @@ description = "Organize raw work notes into a polished weekly report"
 category = "business"
 tags = ["report", "weekly", "productivity"]
 
+[i18n.zh]
+name = "周报生成器"
+description = "将零散的工作笔记整理为一份精炼的周报"
+
 [[parameters]]
 name = "work_notes"
 description = "Raw work notes, bullet points, or activity log for the week"

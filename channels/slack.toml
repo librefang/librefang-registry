@@ -1,0 +1,29 @@
+id = "slack"
+name = "Slack"
+description = "Slack bot adapter for sending and receiving messages in Slack workspaces"
+category = "enterprise"
+tags = ["popular"]
+icon = "💜"
+protocol = "websocket"
+
+[i18n.zh]
+description = "Slack 机器人适配器，在 Slack 工作区中收发消息"
+
+[i18n.zh-TW]
+description = "Slack 機器人適配器，在 Slack 工作區中收發訊息"
+
+[i18n.ja]
+description = "Slackボットアダプター、Slackワークスペースでのメッセージ送受信"
+
+[i18n.ko]
+description = "Slack 봇 어댑터, Slack 워크스페이스에서 메시지 송수신"
+
+[i18n.de]
+description = "Slack-Bot-Adapter zum Senden und Empfangen von Nachrichten in Slack-Workspaces"
+
+[i18n.es]
+description = "Adaptador de bot Slack para enviar y recibir mensajes en espacios de trabajo Slack"
+
+[metadata]
+url = "https://slack.com"
+docs = "https://api.slack.com/docs"

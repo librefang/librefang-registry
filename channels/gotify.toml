@@ -1,0 +1,28 @@
+id = "gotify"
+name = "Gotify"
+description = "Gotify adapter for sending push notifications to a self-hosted Gotify server"
+category = "iot"
+icon = "🔊"
+protocol = "rest-api"
+
+[i18n.zh]
+description = "Gotify 适配器，向自托管 Gotify 服务器发送推送通知"
+
+[i18n.zh-TW]
+description = "Gotify 適配器，向自架 Gotify 伺服器發送推播通知"
+
+[i18n.ja]
+description = "Gotifyアダプター、セルフホストGotifyサーバーへのプッシュ通知送信"
+
+[i18n.ko]
+description = "Gotify 어댑터, 자체 호스팅 Gotify 서버에 푸시 알림 전송"
+
+[i18n.de]
+description = "Gotify-Adapter zum Senden von Push-Benachrichtigungen an einen selbstgehosteten Gotify-Server"
+
+[i18n.es]
+description = "Adaptador de Gotify para enviar notificaciones push a un servidor Gotify autoalojado"
+
+[metadata]
+url = "https://gotify.net"
+docs = "https://gotify.net/docs/"

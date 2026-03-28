@@ -4,6 +4,10 @@ description = "Research → Write → Edit pipeline for article creation"
 category = "creation"
 tags = ["content", "writing", "article"]
 
+[i18n.zh]
+name = "内容创作流水线"
+description = "调研 -> 撰写 -> 编辑的文章创作流水线"
+
 [[parameters]]
 name = "topic"
 description = "The topic to research and write about"

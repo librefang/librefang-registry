@@ -4,6 +4,10 @@ description = "Parallel code analysis pipeline that evaluates correctness, secur
 category = "engineering"
 tags = ["code", "review", "security", "quality"]
 
+[i18n.zh]
+name = "代码审查"
+description = "并行代码分析流水线，独立评估正确性、安全性和代码风格，然后将发现汇总为统一的审查报告。"
+
 [[parameters]]
 name = "code"
 description = "The source code or diff to review"

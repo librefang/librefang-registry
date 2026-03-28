@@ -4,6 +4,7 @@ name = "Researcher Hand"
 description = "Autonomous deep researcher — exhaustive investigation, cross-referencing, fact-checking, and structured reports"
 
 category = "productivity"
+tags = ["popular"]
 icon = "🧪"
 
 tools = [
@@ -626,8 +627,25 @@ activation_warning = "Researcher hand runs continuously and performs deep resear
 
 [i18n.zh]
 name = "深度研究 Hand"
-description = "自主深度研究员——全面调研、交叉验证、事实核查和结构化报告"
+description = "自主深度研究员——详尽调查、交叉引用、事实核查与结构化报告"
 category = "生产力"
+tags = ["popular"]
+
+[i18n.zh.agents.main]
+name = "深度研究协调器"
+description = "AI 深度研究员——进行详尽调查，交叉引用来源、事实核查，并生成结构化报告"
+
+[i18n.zh.agents.scholar]
+name = "学术研究员"
+description = "学术研究代理，搜索学术论文、总结研究发现、生成文献综述。"
+
+[i18n.zh.agents.coder]
+name = "编程助手"
+description = "软件工程师，编写数据采集、解析、分析和自动化脚本。"
+
+[i18n.zh.agents.writer]
+name = "报告撰写员"
+description = "内容写作者，将研究成果整理为清晰的报告、摘要和出版物。"
 
 [i18n.zh.settings.research_depth]
 label = "研究深度"
@@ -661,12 +679,16 @@ description = "报告中引用来源的格式"
 label = "语言"
 description = "研究和输出的主要语言"
 
+[i18n.zh-TW]
+description = "自主深度研究員——詳盡調查、交叉引用、事實查核與結構化報告"
+
 # ─── Korean (한국어) ────────────────────────────────────────────────────
 
 [i18n.ko]
 name = "심층 연구 Hand"
-description = "자율 심층 연구원 — 철저한 조사, 교차 검증, 팩트체크 및 구조화된 보고서"
+description = "자율 심층 연구원 — 철저한 조사, 교차 참조, 팩트체크, 구조화된 보고서"
 category = "생산성"
+tags = ["popular"]
 
 [i18n.ko.settings.research_depth]
 label = "연구 깊이"
@@ -704,8 +726,9 @@ description = "연구 및 출력의 주요 언어"
 
 [i18n.ja]
 name = "ディープリサーチ Hand"
-description = "自律型深層調査エージェント——徹底的な調査、クロスリファレンス、ファクトチェック、構造化レポート"
+description = "自律型ディープリサーチャー——徹底調査、相互参照、ファクトチェック、構造化レポート"
 category = "生産性"
+tags = ["popular"]
 
 [i18n.ja.settings.research_depth]
 label = "調査の深さ"
@@ -743,8 +766,9 @@ description = "調査と出力の主要言語"
 
 [i18n.es]
 name = "Hand de Investigación"
-description = "Investigador autónomo en profundidad — investigación exhaustiva, referencias cruzadas, verificación de hechos e informes estructurados"
+description = "Investigador autónomo profundo — investigación exhaustiva, referencias cruzadas, verificación de hechos e informes estructurados"
 category = "Productividad"
+tags = ["popular"]
 
 [i18n.es.settings.research_depth]
 label = "Profundidad de investigación"
@@ -784,6 +808,7 @@ description = "Idioma principal para la investigación y los resultados"
 name = "Hand de Recherche Approfondie"
 description = "Chercheur autonome en profondeur — recherche exhaustive, références croisées, vérification des faits et rapports structurés"
 category = "Productivité"
+tags = ["popular"]
 
 [i18n.fr.settings.research_depth]
 label = "Profondeur de recherche"
@@ -821,8 +846,9 @@ description = "Langue principale pour la recherche et les résultats"
 
 [i18n.de]
 name = "Tiefenforschungs-Hand"
-description = "Autonomer Tiefenforscher — gründliche Untersuchung, Querverweise, Faktencheck und strukturierte Berichte"
+description = "Autonomer Tiefenforscher — umfassende Untersuchung, Querverweise, Faktenprüfung und strukturierte Berichte"
 category = "Produktivität"
+tags = ["popular"]
 
 [i18n.de.settings.research_depth]
 label = "Forschungstiefe"

@@ -8,7 +8,7 @@ tags = ["search", "web", "ai", "neural", "semantic", "information-retrieval"]
 [transport]
 type = "stdio"
 command = "npx"
-args = ["-y", "exa-mcp-server"]
+args = ["-y", "exa-mcp-server@3.1.9"]
 
 [[required_env]]
 name = "EXA_API_KEY"

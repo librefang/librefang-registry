@@ -720,8 +720,20 @@ default_active = true
 
 [i18n.zh]
 name = "数据分析 Hand"
-description = "自主数据分析智能体——数据采集、分析、可视化、仪表盘和自动化报告"
+description = "自主数据分析——数据采集、分析、可视化、仪表盘与自动报告"
 category = "数据"
+
+[i18n.zh.agents.main]
+name = "数据分析协调器"
+description = "AI 数据分析师——采集数据、执行统计分析、创建可视化图表，并生成包含可操作洞察的自动化报告"
+
+[i18n.zh.agents.analyst]
+name = "数据分析师"
+description = "数据分析师，负责处理数据、生成洞察、创建报告。"
+
+[i18n.zh.agents.modeler]
+name = "数据科学家"
+description = "数据科学家，负责分析数据集、构建模型、创建可视化图表、执行统计分析。"
 
 [i18n.zh.settings.data_source]
 label = "数据源"
@@ -751,11 +763,14 @@ description = "定时报告的生成频率"
 label = "置信度阈值"
 description = "报告中纳入分析结论的最低置信度要求"
 
+[i18n.zh-TW]
+description = "自主資料分析——資料採集、分析、視覺化、儀表板與自動報告"
+
 # ─── Japanese (日本語) ────────────────────────────────────────────────────
 
 [i18n.ja]
 name = "データ分析 Hand"
-description = "自律型データ分析エージェント——データ収集、分析、可視化、ダッシュボード、自動レポート生成"
+description = "自律型データ分析エージェント——データ収集、分析、可視化、ダッシュボードと自動レポート"
 category = "データ"
 
 [i18n.ja.settings.data_source]
@@ -790,7 +805,7 @@ description = "レポートに分析結果を含めるための最低信頼度"
 
 [i18n.es]
 name = "Hand de Analítica"
-description = "Agente autónomo de analítica de datos — recopilación, análisis, visualización, paneles de control e informes automatizados"
+description = "Agente autónomo de análisis de datos — recopilación, análisis, visualización, dashboards e informes automatizados"
 category = "Datos"
 
 [i18n.es.settings.data_source]
@@ -895,7 +910,7 @@ description = "Mindest-Konfidenzniveau für die Aufnahme von Ergebnissen in Beri
 
 [i18n.ko]
 name = "데이터 분석 Hand"
-description = "자율 데이터 분석 에이전트 — 데이터 수집, 분석, 시각화, 대시보드 및 자동화 보고서"
+description = "자율 데이터 분석 에이전트 — 데이터 수집, 분석, 시각화, 대시보드 및 자동 보고"
 category = "데이터"
 
 [i18n.ko.settings.data_source]

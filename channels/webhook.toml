@@ -1,0 +1,28 @@
+id = "webhook"
+name = "Webhook"
+description = "Generic webhook adapter for sending and receiving messages via HTTP callbacks"
+category = "developer"
+icon = "🔗"
+protocol = "webhook"
+
+[i18n.zh]
+description = "通用 Webhook 适配器，通过 HTTP 回调收发消息"
+
+[i18n.zh-TW]
+description = "通用 Webhook 適配器，透過 HTTP 回呼收發訊息"
+
+[i18n.ja]
+description = "汎用Webhookアダプター、HTTPコールバックによるメッセージの送受信"
+
+[i18n.ko]
+description = "범용 Webhook 어댑터, HTTP 콜백을 통한 메시지 송수신"
+
+[i18n.de]
+description = "Generischer Webhook-Adapter zum Senden und Empfangen von Nachrichten über HTTP-Callbacks"
+
+[i18n.es]
+description = "Adaptador de webhook genérico para enviar y recibir mensajes mediante callbacks HTTP"
+
+[metadata]
+url = ""
+docs = ""
