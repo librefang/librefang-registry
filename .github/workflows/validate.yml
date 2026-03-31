@@ -25,12 +25,9 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - name: Install taplo
-        run: |
-          TAPLO_VERSION=$(curl -s https://api.github.com/repos/tamasfe/taplo/releases/latest | grep -o '"tag_name": ".*"' | cut -d'"' -f4 | tr -d 'v')
-          curl -fsSL "https://github.com/tamasfe/taplo/releases/download/${TAPLO_VERSION}/taplo-full-linux-x86_64.gz" \
-            | gunzip > /usr/local/bin/taplo
-          chmod +x /usr/local/bin/taplo
+      - uses: uncenter/setup-taplo@v1
+        with:
+          version: latest
 
       - name: Check TOML formatting
         run: find . -name '*.toml' -not -path './.git/*' | xargs taplo fmt --check
