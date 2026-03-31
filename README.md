@@ -11,8 +11,8 @@ This repository is the **single source of truth** for all installable content de
 | [Hands](#hands) | 14 | User-facing "apps" — agent + tools + settings + dashboard |
 | [Agents](#agents) | 32 | Autonomous agent definitions with model config and tools |
 | [Integrations](#integrations) | 25 | MCP server connections (GitHub, Slack, DBs, etc.) |
-| [Providers](#providers) | 48 | LLM provider & model metadata with pricing |
-| [Models](#providers) | 223 | Individual model definitions across all providers |
+| [Providers](#providers) | 49 | LLM provider & model metadata with pricing |
+| [Models](#providers) | 339 | Individual model definitions across all providers |
 | [Aliases](#aliases) | 70 | Short names mapped to canonical model IDs |
 | [Plugins](#plugins) | 10 | Memory, guardrails, and conversation plugins |
 | [Skills](#skills) | 2 | Reusable prompt templates and Python scripts |
@@ -44,7 +44,7 @@ librefang-registry/
 ├── providers/             # LLM provider & model metadata
 │   ├── anthropic.toml
 │   ├── openai.toml
-│   └── ...                (48 providers, 223 models)
+│   └── ...                (49 providers, 339 models)
 ├── plugins/               # Memory, guardrails, and utility plugins
 │   ├── episodic-memory/
 │   ├── guardrails/
@@ -195,9 +195,9 @@ is_secret = true
 
 Provider files define LLM providers and their models with pricing, context windows, and capability flags. See [schema.toml](schema.toml) for the full field reference.
 
-**48 providers** including: Anthropic, OpenAI, Google Gemini, DeepSeek, Groq, Mistral, Cohere, xAI, Together, Fireworks, Ollama (local), LM Studio (local), vLLM (self-hosted), and many more.
+**49 providers** including: Anthropic, OpenAI, Google Gemini, DeepSeek, Groq, Mistral, Cohere, xAI, Together, Fireworks, Ollama (local), LM Studio (local), vLLM (self-hosted), Alibaba Coding Plan, and many more.
 
-**223 models** with metadata for each: pricing (input/output per token), context window size, capability flags (vision, function calling, streaming), and tier classification.
+**339 models** with metadata for each: pricing (input/output per token), context window size, capability flags (vision, function calling, streaming), and tier classification.
 
 ### Aliases
 

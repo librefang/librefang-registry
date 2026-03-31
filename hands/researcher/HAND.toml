@@ -1,5 +1,5 @@
 id = "researcher"
-version = "1.1.0"
+version = "1.1.1"
 name = "Researcher Hand"
 description = "Autonomous deep researcher — exhaustive investigation, cross-referencing, fact-checking, and structured reports"
 
@@ -16,6 +16,7 @@ tools = [
   "web_search",
   "memory_store",
   "memory_recall",
+  "memory_list",
   "schedule_create",
   "schedule_list",
   "schedule_delete",
