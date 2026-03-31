@@ -300,7 +300,17 @@ example = "What this hand does"
 type = "string"
 required = true
 description = "Hand category"
-options = ["communication", "content", "data", "development", "devops", "finance", "productivity", "research", "social"]
+options = [
+  "communication",
+  "content",
+  "data",
+  "development",
+  "devops",
+  "finance",
+  "productivity",
+  "research",
+  "social",
+]
 example = "productivity"
 
 [hand.fields.icon]
@@ -605,7 +615,14 @@ description = "One-sentence description of what this integration provides"
 type = "string"
 required = false
 description = "Integration category"
-options = ["devtools", "communication", "storage", "monitoring", "data", "productivity"]
+options = [
+  "devtools",
+  "communication",
+  "storage",
+  "monitoring",
+  "data",
+  "productivity",
+]
 example = "devtools"
 
 [integration.fields.icon]
