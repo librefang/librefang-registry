@@ -1,0 +1,115 @@
+# Alibaba Coding Plan — https://www.alibabacloud.com/help/en/model-studio/coding-plan
+# Models: 8 (Pro plan: $50/month with quota-based access)
+# Note: Monthly subscription for AI coding tools. Uses plan-specific API key (sk-sp-xxxxx)
+# and dedicated base URL (https://coding-intl.dashscope.aliyuncs.com/v1)
+
+[provider]
+id = "alibaba-coding-plan"
+display_name = "Alibaba Coding Plan (Intl)"
+api_key_env = "ALIBABA_CODING_PLAN_API_KEY"
+base_url = "https://coding-intl.dashscope.aliyuncs.com/v1"
+key_required = true
+
+[[models]]
+id = "alibaba-coding-plan/qwen3.5-plus"
+display_name = "Qwen 3.5 Plus"
+tier = "smart"
+context_window = 1000000
+max_output_tokens = 65536
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
+supports_tools = true
+supports_vision = true
+supports_streaming = true
+aliases = []
+
+[[models]]
+id = "alibaba-coding-plan/qwen3-max-2026-01-23"
+display_name = "Qwen 3 Max (2026-01-23)"
+tier = "frontier"
+context_window = 262144
+max_output_tokens = 65536
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
+supports_tools = true
+supports_vision = false
+supports_streaming = true
+aliases = []
+
+[[models]]
+id = "alibaba-coding-plan/qwen3-coder-next"
+display_name = "Qwen 3 Coder Next"
+tier = "frontier"
+context_window = 262144
+max_output_tokens = 65536
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
+supports_tools = true
+supports_vision = false
+supports_streaming = true
+aliases = []
+
+[[models]]
+id = "alibaba-coding-plan/qwen3-coder-plus"
+display_name = "Qwen 3 Coder Plus"
+tier = "smart"
+context_window = 1000000
+max_output_tokens = 65536
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
+supports_tools = true
+supports_vision = false
+supports_streaming = true
+aliases = []
+
+[[models]]
+id = "alibaba-coding-plan/MiniMax-M2.5"
+display_name = "MiniMax M2.5"
+tier = "balanced"
+context_window = 196608
+max_output_tokens = 32768
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
+supports_tools = true
+supports_vision = false
+supports_streaming = true
+aliases = []
+
+[[models]]
+id = "alibaba-coding-plan/glm-5"
+display_name = "GLM 5"
+tier = "frontier"
+context_window = 202752
+max_output_tokens = 16384
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
+supports_tools = true
+supports_vision = false
+supports_streaming = true
+aliases = []
+
+[[models]]
+id = "alibaba-coding-plan/glm-4.7"
+display_name = "GLM 4.7"
+tier = "smart"
+context_window = 202752
+max_output_tokens = 16384
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
+supports_tools = true
+supports_vision = false
+supports_streaming = true
+aliases = []
+
+[[models]]
+id = "alibaba-coding-plan/kimi-k2.5"
+display_name = "Kimi K2.5"
+tier = "smart"
+context_window = 262144
+max_output_tokens = 32768
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
+supports_tools = true
+supports_vision = true
+supports_streaming = true
+aliases = []
