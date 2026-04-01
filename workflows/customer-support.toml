@@ -1,7 +1,7 @@
 id = "customer-support"
 name = "Customer Support Triage"
 description = "Tiered customer support pipeline that classifies incoming requests by urgency and category, drafts an appropriate response, and escalates complex issues to a specialist."
-category = "support"
+category = "business"
 tags = ["support", "triage", "customer-service", "escalation"]
 
 [i18n.zh]

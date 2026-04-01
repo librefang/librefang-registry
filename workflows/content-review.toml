@@ -1,7 +1,7 @@
 id = "content-review"
 name = "Content Review"
 description = "Multi-agent content review pipeline that drafts, reviews for quality and accuracy, then produces a final edited version incorporating feedback."
-category = "content"
+category = "creation"
 tags = ["content", "review", "writing", "editing"]
 
 [i18n.zh]

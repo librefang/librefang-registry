@@ -1,12 +1,12 @@
 id = "translate-polish"
 name = "Translation & Polish"
-description = "Auto-detect language, translate, and review for naturalness"
+description = "Translate text into a target language, then review for accuracy, naturalness, and cultural fit."
 category = "language"
-tags = ["translation", "language", "localization"]
+tags = ["translation", "language", "localization", "writing"]
 
 [i18n.zh]
 name = "翻译与润色"
-description = "自动检测语言，翻译文本，并审校译文的自然度"
+description = "将文本翻译为目标语言，再审校准确性、自然度和文化适配性。"
 
 [[parameters]]
 name = "source_text"
@@ -14,11 +14,30 @@ description = "The text to translate"
 param_type = "string"
 required = true
 
-[[steps]]
-name = "translator"
-prompt_template = "You are an expert translator. Translate the following text. Auto-detect the source language: if it's Chinese, translate to English; if it's English, translate to Chinese; for other languages, translate to both Chinese and English. Preserve the original tone, style, and formatting.\n\nText:\n{{source_text}}"
+[[parameters]]
+name = "target_language"
+description = "Target language (e.g. English, Chinese, Spanish, Japanese, French)"
+param_type = "string"
+required = false
+default = "auto: if Chinese → English, if English → Chinese, otherwise → English"
+
+[[parameters]]
+name = "register"
+description = "Desired register: formal, casual, technical, literary"
+param_type = "string"
+required = false
+default = "match source"
 
 [[steps]]
-name = "reviewer"
-prompt_template = "You are a bilingual language expert. Review the following translation for accuracy and naturalness. Check for: 1) Mistranslations or meaning shifts 2) Awkward phrasing that sounds translated 3) Cultural context issues. Output the improved final translation only.\n\nTranslation to review:\n{{translator}}"
-depends_on = ["translator"]
+name = "translate"
+prompt_template = "You are a professional translator. Translate the following text into {{target_language}}.\n\nGuidelines:\n- Preserve the original meaning, tone, and structure as closely as the target language allows\n- Use {{register}} register\n- For idiomatic expressions, translate the meaning rather than word-for-word\n- For proper nouns and technical terms, keep the original with a parenthetical explanation on first use if needed\n- If any passage is ambiguous in the source, note the ambiguity briefly after the translation\n\nSource text:\n{{source_text}}"
+
+[[steps]]
+name = "back_translate"
+prompt_template = "Back-translate the following {{target_language}} translation into the source language. Do not look at the original — produce an independent translation from the target language only.\n\nThis is used to verify accuracy by comparing the back-translation to the original.\n\nTranslation to back-translate:\n{{translate}}"
+depends_on = ["translate"]
+
+[[steps]]
+name = "review_and_polish"
+prompt_template = "You are a bilingual editor. Review the translation quality by comparing original, translation, and back-translation.\n\nCheck for:\n1. Meaning shifts — where the back-translation diverges from the original\n2. Unnatural phrasing that sounds translated rather than native\n3. Register consistency (target: {{register}})\n4. Cultural appropriateness for {{target_language}} readers\n\nOutput: the polished final translation only, with a brief note on any changes made.\n\nOriginal:\n{{source_text}}\n\nTranslation:\n{{translate}}\n\nBack-translation:\n{{back_translate}}"
+depends_on = ["translate", "back_translate"]
