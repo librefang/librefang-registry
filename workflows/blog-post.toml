@@ -30,19 +30,70 @@ default = "informative and engaging"
 
 [[steps]]
 name = "research"
-prompt_template = "You are a research journalist. For the blog topic below, compile:\n1. Key facts, statistics, and data points (with source type)\n2. Common misconceptions to debunk\n3. Expert perspectives and contrasting views\n4. Recent developments or trends\n5. Concrete examples and case studies\n6. Angles that haven't been covered well in existing content\n\nTopic: {{topic}}\nAudience: {{audience}}"
+prompt_template = """
+You are a research journalist. For the blog topic below, compile:
+1. Key facts, statistics, and data points (with source type)
+2. Common misconceptions to debunk
+3. Expert perspectives and contrasting views
+4. Recent developments or trends
+5. Concrete examples and case studies
+6. Angles that haven't been covered well in existing content
+
+Topic: {{topic}}
+Audience: {{audience}}
+"""
 
 [[steps]]
 name = "outline"
-prompt_template = "You are a content strategist. Create a detailed blog post outline:\n- Compelling headline (3 options)\n- Hook / opening angle\n- H2 sections with H3 subsections\n- Key point per section\n- Data or example to use in each section\n- Conclusion and CTA\n\nTarget length: 1200-1800 words.\nTone: {{tone}}\nAudience: {{audience}}\n\nResearch:\n{{research}}"
+prompt_template = """
+You are a content strategist. Create a detailed blog post outline:
+- Compelling headline (3 options)
+- Hook / opening angle
+- H2 sections with H3 subsections
+- Key point per section
+- Data or example to use in each section
+- Conclusion and CTA
+
+Target length: 1200-1800 words.
+Tone: {{tone}}
+Audience: {{audience}}
+
+Research:
+{{research}}
+"""
 depends_on = ["research"]
 
 [[steps]]
 name = "draft"
-prompt_template = "Write the full blog post following the outline. Guidelines:\n- Open with a hook that immediately addresses the reader's pain or curiosity\n- Use short paragraphs (3-4 sentences max)\n- Include the statistics and examples from research\n- Use subheadings to aid scannability\n- End with a clear takeaway and one actionable CTA\n- Tone: {{tone}}\n\nOutline:\n{{outline}}\n\nResearch:\n{{research}}"
+prompt_template = """
+Write the full blog post following the outline. Guidelines:
+- Open with a hook that immediately addresses the reader's pain or curiosity
+- Use short paragraphs (3-4 sentences max)
+- Include the statistics and examples from research
+- Use subheadings to aid scannability
+- End with a clear takeaway and one actionable CTA
+- Tone: {{tone}}
+
+Outline:
+{{outline}}
+
+Research:
+{{research}}
+"""
 depends_on = ["outline", "research"]
 
 [[steps]]
 name = "seo_optimise"
-prompt_template = "SEO-optimise the blog post:\n1. **Primary keyword** — identify the best target keyword\n2. **Meta title** (under 60 chars) and **meta description** (under 155 chars)\n3. **Keyword placement** — suggest where to naturally insert the primary keyword and 3 secondary keywords\n4. **Internal link opportunities** — topics to link to\n5. **Image alt text suggestions** — 2-3 descriptive alts\n6. **Revised headline** if needed for keyword inclusion\n\nDraft:\n{{draft}}"
+prompt_template = """
+SEO-optimise the blog post:
+1. **Primary keyword** — identify the best target keyword
+2. **Meta title** (under 60 chars) and **meta description** (under 155 chars)
+3. **Keyword placement** — suggest where to naturally insert the primary keyword and 3 secondary keywords
+4. **Internal link opportunities** — topics to link to
+5. **Image alt text suggestions** — 2-3 descriptive alts
+6. **Revised headline** if needed for keyword inclusion
+
+Draft:
+{{draft}}
+"""
 depends_on = ["draft"]

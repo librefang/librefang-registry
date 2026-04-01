@@ -23,14 +23,64 @@ default = ""
 
 [[steps]]
 name = "market_landscape"
-prompt_template = "You are a market research analyst. Map the current landscape for: {{market}}\n\n1. **Market definition** — precise scope and adjacent markets\n2. **Market size** — TAM, SAM, SOM estimates with methodology\n3. **Growth rate** — historical and projected CAGR\n4. **Maturity stage** — emerging / growth / mature / declining\n5. **Key trends** — top 5 forces shaping the market (technology, regulation, behaviour)\n6. **Geographic distribution** — where activity is concentrated\n\nContext: {{business_context}}"
+prompt_template = """
+You are a market research analyst. Map the current landscape for: {{market}}
+
+1. **Market definition** — precise scope and adjacent markets
+2. **Market size** — TAM, SAM, SOM estimates with methodology
+3. **Growth rate** — historical and projected CAGR
+4. **Maturity stage** — emerging / growth / mature / declining
+5. **Key trends** — top 5 forces shaping the market (technology, regulation, behaviour)
+6. **Geographic distribution** — where activity is concentrated
+
+Context: {{business_context}}
+"""
 
 [[steps]]
 name = "customer_segments"
-prompt_template = "Identify and profile the customer segments in this market:\n\nFor each segment (aim for 3-5):\n- Name and size\n- Demographics/firmographics\n- Key pain points and jobs-to-be-done\n- Current solutions they use\n- Willingness to pay signals\n- Acquisition channels\n- Which segment is most underserved\n\nMarket landscape:\n{{market_landscape}}"
+prompt_template = """
+Identify and profile the customer segments in this market:
+
+For each segment (aim for 3-5):
+- Name and size
+- Demographics/firmographics
+- Key pain points and jobs-to-be-done
+- Current solutions they use
+- Willingness to pay signals
+- Acquisition channels
+- Which segment is most underserved
+
+Market landscape:
+{{market_landscape}}
+"""
 depends_on = ["market_landscape"]
 
 [[steps]]
 name = "research_report"
-prompt_template = "Write a structured market research report:\n\n## Executive Summary\n3 bullet points: opportunity, risk, recommended entry point.\n\n## Market Overview\n## Customer Segments\n## Competitive Landscape\nTop players by segment, their moats and vulnerabilities.\n\n## Market Entry Analysis\n- Best beachhead segment\n- Entry barriers and how to overcome them\n- Differentiation opportunities\n- Estimated time to meaningful traction\n\n## Key Risks\n## Recommended Next Steps\n\nMarket landscape:\n{{market_landscape}}\n\nCustomer segments:\n{{customer_segments}}"
+prompt_template = """
+Write a structured market research report:
+
+## Executive Summary
+3 bullet points: opportunity, risk, recommended entry point.
+
+## Market Overview
+## Customer Segments
+## Competitive Landscape
+Top players by segment, their moats and vulnerabilities.
+
+## Market Entry Analysis
+- Best beachhead segment
+- Entry barriers and how to overcome them
+- Differentiation opportunities
+- Estimated time to meaningful traction
+
+## Key Risks
+## Recommended Next Steps
+
+Market landscape:
+{{market_landscape}}
+
+Customer segments:
+{{customer_segments}}
+"""
 depends_on = ["market_landscape", "customer_segments"]

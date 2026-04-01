@@ -23,14 +23,63 @@ default = ""
 
 [[steps]]
 name = "problem_definition"
-prompt_template = "You are a senior product manager. Define the problem clearly:\n1. **Problem statement** — one precise sentence\n2. **Who has this problem** — user segments and their specific pain\n3. **Current workarounds** — how users cope today\n4. **Why now** — why is this worth solving now\n5. **Success looks like** — quantifiable outcomes\n6. **Out of scope** — what this will deliberately not solve\n\nIdea: {{feature_idea}}\nContext: {{context}}"
+prompt_template = """
+You are a senior product manager. Define the problem clearly:
+1. **Problem statement** — one precise sentence
+2. **Who has this problem** — user segments and their specific pain
+3. **Current workarounds** — how users cope today
+4. **Why now** — why is this worth solving now
+5. **Success looks like** — quantifiable outcomes
+6. **Out of scope** — what this will deliberately not solve
+
+Idea: {{feature_idea}}
+Context: {{context}}
+"""
 
 [[steps]]
 name = "user_stories"
-prompt_template = "Write user stories in the format: As a [user type], I want to [action] so that [outcome].\n\nFor each story:\n- Given / When / Then acceptance criteria (3-5 criteria)\n- Priority: P0 (must-have) / P1 (should-have) / P2 (nice-to-have)\n- Estimated complexity: S / M / L / XL\n\nWrite at least 6 user stories covering happy paths, edge cases, and error states.\n\nProblem definition:\n{{problem_definition}}"
+prompt_template = """
+Write user stories in the format: As a [user type], I want to [action] so that [outcome].
+
+For each story:
+- Given / When / Then acceptance criteria (3-5 criteria)
+- Priority: P0 (must-have) / P1 (should-have) / P2 (nice-to-have)
+- Estimated complexity: S / M / L / XL
+
+Write at least 6 user stories covering happy paths, edge cases, and error states.
+
+Problem definition:
+{{problem_definition}}
+"""
 depends_on = ["problem_definition"]
 
 [[steps]]
 name = "prd"
-prompt_template = "Write a complete Product Requirements Document:\n\n## Overview\n## Problem Statement\n## Goals & Non-Goals\n## User Stories\n(from above)\n## Functional Requirements\nNumbered list of specific behaviours the system must exhibit.\n## Non-Functional Requirements\nPerformance, security, accessibility, internationalisation.\n## Technical Considerations\nKnown constraints, integration points, migration needs.\n## Metrics\nHow success will be measured (leading and lagging indicators).\n## Open Questions\nDecisions still needed, with suggested owners.\n## Timeline Sketch\nPhases with rough scope.\n\nProblem definition:\n{{problem_definition}}\n\nUser stories:\n{{user_stories}}"
+prompt_template = """
+Write a complete Product Requirements Document:
+
+## Overview
+## Problem Statement
+## Goals & Non-Goals
+## User Stories
+(from above)
+## Functional Requirements
+Numbered list of specific behaviours the system must exhibit.
+## Non-Functional Requirements
+Performance, security, accessibility, internationalisation.
+## Technical Considerations
+Known constraints, integration points, migration needs.
+## Metrics
+How success will be measured (leading and lagging indicators).
+## Open Questions
+Decisions still needed, with suggested owners.
+## Timeline Sketch
+Phases with rough scope.
+
+Problem definition:
+{{problem_definition}}
+
+User stories:
+{{user_stories}}
+"""
 depends_on = ["problem_definition", "user_stories"]

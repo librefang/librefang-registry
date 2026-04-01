@@ -37,19 +37,71 @@ default = "informative"
 
 [[steps]]
 name = "researcher"
-prompt_template = "You are a research journalist. Investigate the following topic for a {{audience}} audience:\n1. Background and context — why this topic matters now\n2. Key facts and data points (be specific)\n3. Multiple perspectives — mainstream view, contrarian view, expert consensus\n4. Recent developments or trends\n5. Concrete examples, case studies, or anecdotes\n6. Common misconceptions to address\n\nTopic: {{topic}}"
+prompt_template = """
+You are a research journalist. Investigate the following topic for a {{audience}} audience:
+1. Background and context — why this topic matters now
+2. Key facts and data points (be specific)
+3. Multiple perspectives — mainstream view, contrarian view, expert consensus
+4. Recent developments or trends
+5. Concrete examples, case studies, or anecdotes
+6. Common misconceptions to address
+
+Topic: {{topic}}
+"""
 
 [[steps]]
 name = "outline"
-prompt_template = "You are a content strategist. Create a detailed article outline using the research below.\n\nInclude:\n- Three headline options (hook-driven, question-based, and statement-based)\n- Opening hook strategy\n- H2 sections with H3 subsections and the key point each section makes\n- Which research fact or example belongs in each section\n- Closing argument and call to action\n\nTarget: {{word_count}} words, {{tone}} tone, audience: {{audience}}\n\nResearch:\n{{researcher}}"
+prompt_template = """
+You are a content strategist. Create a detailed article outline using the research below.
+
+Include:
+- Three headline options (hook-driven, question-based, and statement-based)
+- Opening hook strategy
+- H2 sections with H3 subsections and the key point each section makes
+- Which research fact or example belongs in each section
+- Closing argument and call to action
+
+Target: {{word_count}} words, {{tone}} tone, audience: {{audience}}
+
+Research:
+{{researcher}}
+"""
 depends_on = ["researcher"]
 
 [[steps]]
 name = "writer"
-prompt_template = "Write the full article following the outline. Requirements:\n- Use the best headline from the outline\n- Open with the hook strategy from the outline\n- Short paragraphs (3-4 sentences max)\n- Subheadings for each major section\n- Weave in the specific facts and examples from research — no vague generalities\n- Match the {{tone}} tone throughout\n- End with a concrete takeaway and CTA relevant to a {{audience}} reader\n- Target length: {{word_count}} words\n\nOutline:\n{{outline}}\n\nResearch:\n{{researcher}}"
+prompt_template = """
+Write the full article following the outline. Requirements:
+- Use the best headline from the outline
+- Open with the hook strategy from the outline
+- Short paragraphs (3-4 sentences max)
+- Subheadings for each major section
+- Weave in the specific facts and examples from research — no vague generalities
+- Match the {{tone}} tone throughout
+- End with a concrete takeaway and CTA relevant to a {{audience}} reader
+- Target length: {{word_count}} words
+
+Outline:
+{{outline}}
+
+Research:
+{{researcher}}
+"""
 depends_on = ["outline", "researcher"]
 
 [[steps]]
 name = "editor"
-prompt_template = "You are a senior editor. Polish the article below:\n1. Fix grammar, punctuation, and spelling\n2. Tighten wordy or repetitive sentences\n3. Improve transitions between sections\n4. Flag any factual claims that seem unsupported and suggest how to strengthen them\n5. Verify the tone is consistent with '{{tone}}' throughout\n\nOutput the final polished article only, then add a brief editor's note listing the main changes made.\n\nDraft:\n{{writer}}"
+prompt_template = """
+You are a senior editor. Polish the article below:
+1. Fix grammar, punctuation, and spelling
+2. Tighten wordy or repetitive sentences
+3. Improve transitions between sections
+4. Flag any factual claims that seem unsupported and suggest how to strengthen them
+5. Verify the tone is consistent with '{{tone}}' throughout
+
+Output the final polished article only, then add a brief editor's note listing the main changes made.
+
+Draft:
+{{writer}}
+"""
 depends_on = ["writer"]

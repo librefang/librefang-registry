@@ -22,14 +22,57 @@ required = true
 
 [[steps]]
 name = "competitor_profiles"
-prompt_template = "You are a market analyst. For each competitor listed, create a profile:\n- Core product and value proposition\n- Target customer segment\n- Pricing model and tiers\n- Key features and differentiators\n- Known weaknesses or complaints (from reviews, forums)\n- Go-to-market strategy\n- Estimated market share or traction signals\n\nOur product: {{product}}\nCompetitors: {{competitors}}"
+prompt_template = """
+You are a market analyst. For each competitor listed, create a profile:
+- Core product and value proposition
+- Target customer segment
+- Pricing model and tiers
+- Key features and differentiators
+- Known weaknesses or complaints (from reviews, forums)
+- Go-to-market strategy
+- Estimated market share or traction signals
+
+Our product: {{product}}
+Competitors: {{competitors}}
+"""
 
 [[steps]]
 name = "swot_comparison"
-prompt_template = "Perform a comparative SWOT analysis:\n1. For each competitor: their Strengths, Weaknesses, Opportunities they exploit, Threats they face\n2. Our position relative to each on: product depth, pricing, UX, distribution, brand\n3. Whitespace — what pain points do all competitors fail to address?\n\nCompetitor profiles:\n{{competitor_profiles}}"
+prompt_template = """
+Perform a comparative SWOT analysis:
+1. For each competitor: their Strengths, Weaknesses, Opportunities they exploit, Threats they face
+2. Our position relative to each on: product depth, pricing, UX, distribution, brand
+3. Whitespace — what pain points do all competitors fail to address?
+
+Competitor profiles:
+{{competitor_profiles}}
+"""
 depends_on = ["competitor_profiles"]
 
 [[steps]]
 name = "strategy_report"
-prompt_template = "Write a strategic positioning report:\n\n## Market Landscape\nSummary of the competitive field.\n\n## Our Differentiation\nWhere we win, where we are at parity, where we lag.\n\n## Attack Vectors\n3 specific opportunities to take share from each competitor.\n\n## Defensive Priorities\nWhat strengths to reinforce before competitors close the gap.\n\n## Recommended Positioning Statement\nOne sentence that clearly differentiates us from all listed competitors.\n\n## 90-Day Action Items\nTop 5 concrete actions sorted by impact.\n\nSWOT comparison:\n{{swot_comparison}}"
+prompt_template = """
+Write a strategic positioning report:
+
+## Market Landscape
+Summary of the competitive field.
+
+## Our Differentiation
+Where we win, where we are at parity, where we lag.
+
+## Attack Vectors
+3 specific opportunities to take share from each competitor.
+
+## Defensive Priorities
+What strengths to reinforce before competitors close the gap.
+
+## Recommended Positioning Statement
+One sentence that clearly differentiates us from all listed competitors.
+
+## 90-Day Action Items
+Top 5 concrete actions sorted by impact.
+
+SWOT comparison:
+{{swot_comparison}}
+"""
 depends_on = ["swot_comparison"]

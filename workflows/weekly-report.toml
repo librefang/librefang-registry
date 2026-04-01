@@ -30,9 +30,48 @@ default = "manager"
 
 [[steps]]
 name = "extract"
-prompt_template = "You are an executive assistant. Parse the following raw work notes and extract every item into structured categories:\n\n**Completed** — fully done tasks (include measurable outcomes if mentioned)\n**In Progress** — work started but not finished (include % complete or next milestone if available)\n**Blockers** — anything preventing progress, and who or what is blocking\n**Decisions Made** — choices or agreements reached this week\n**Metrics** — any numbers mentioned (velocity, usage, revenue, bugs closed, etc.)\n**Upcoming** — planned work mentioned for next week\n\nDo not summarise or rephrase — extract faithfully.\n\nTeam/Role: {{team_or_role}}\n\nRaw notes:\n{{work_notes}}"
+prompt_template = """
+You are an executive assistant. Parse the following raw work notes and extract every item into structured categories:
+
+**Completed** — fully done tasks (include measurable outcomes if mentioned)
+**In Progress** — work started but not finished (include % complete or next milestone if available)
+**Blockers** — anything preventing progress, and who or what is blocking
+**Decisions Made** — choices or agreements reached this week
+**Metrics** — any numbers mentioned (velocity, usage, revenue, bugs closed, etc.)
+**Upcoming** — planned work mentioned for next week
+
+Do not summarise or rephrase — extract faithfully.
+
+Team/Role: {{team_or_role}}
+
+Raw notes:
+{{work_notes}}
+"""
 
 [[steps]]
 name = "report_writer"
-prompt_template = "Write a polished weekly report for a {{audience}} audience. Tone should be professional and concise — no padding.\n\n## Highlights\nTop 3 achievements this week, each in one sentence with measurable impact where available.\n\n## Progress\nGrouped by project or workstream. For each: what was done, current status, and any dependency.\n\n## Metrics\nKey numbers from the week. If none were provided, omit this section.\n\n## Blockers & Risks\nEach blocker: description, impact, owner, and requested action.\n\n## Next Week\nTop 3-5 priorities with owner and expected outcome.\n\n## Notes\nDecisions made, process changes, or anything the audience should be aware of.\n\nExtracted data:\n{{extract}}"
+prompt_template = """
+Write a polished weekly report for a {{audience}} audience. Tone should be professional and concise — no padding.
+
+## Highlights
+Top 3 achievements this week, each in one sentence with measurable impact where available.
+
+## Progress
+Grouped by project or workstream. For each: what was done, current status, and any dependency.
+
+## Metrics
+Key numbers from the week. If none were provided, omit this section.
+
+## Blockers & Risks
+Each blocker: description, impact, owner, and requested action.
+
+## Next Week
+Top 3-5 priorities with owner and expected outcome.
+
+## Notes
+Decisions made, process changes, or anything the audience should be aware of.
+
+Extracted data:
+{{extract}}
+"""
 depends_on = ["extract"]

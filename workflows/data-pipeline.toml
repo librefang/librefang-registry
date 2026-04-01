@@ -30,14 +30,53 @@ default = "general summary and key insights"
 
 [[steps]]
 name = "profile"
-prompt_template = "You are a data engineer. Profile the following raw data:\n1. Detected format and structure\n2. Number of rows and columns/fields\n3. Data types per field\n4. Missing value count per field\n5. Obvious data quality issues (duplicates, inconsistent formatting, out-of-range values)\n6. Sample of first 5 rows for reference\n\nRaw data:\n{{raw_data}}"
+prompt_template = """
+You are a data engineer. Profile the following raw data:
+1. Detected format and structure
+2. Number of rows and columns/fields
+3. Data types per field
+4. Missing value count per field
+5. Obvious data quality issues (duplicates, inconsistent formatting, out-of-range values)
+6. Sample of first 5 rows for reference
+
+Raw data:
+{{raw_data}}
+"""
 
 [[steps]]
 name = "clean_transform"
-prompt_template = "Clean and transform the raw data based on the profile below. Apply:\n- Trim whitespace from string fields\n- Normalise dates to ISO-8601\n- Remove exact duplicate rows\n- Convert empty strings to null\n- Standardise inconsistent categorical values (e.g. 'Y'/'Yes'/'yes' → true)\n- Flag but preserve rows with suspicious values (do not silently drop them)\n\nOutput the cleaned data in {{output_format}} format, followed by a change log listing every transformation applied.\n\nData profile:\n{{profile}}\n\nRaw data:\n{{raw_data}}"
+prompt_template = """
+Clean and transform the raw data based on the profile below. Apply:
+- Trim whitespace from string fields
+- Normalise dates to ISO-8601
+- Remove exact duplicate rows
+- Convert empty strings to null
+- Standardise inconsistent categorical values (e.g. 'Y'/'Yes'/'yes' → true)
+- Flag but preserve rows with suspicious values (do not silently drop them)
+
+Output the cleaned data in {{output_format}} format, followed by a change log listing every transformation applied.
+
+Data profile:
+{{profile}}
+
+Raw data:
+{{raw_data}}
+"""
 depends_on = ["profile"]
 
 [[steps]]
 name = "analyse"
-prompt_template = "Analyse the cleaned data to address the following goal: {{analysis_goal}}\n\nProvide:\n1. Key statistics (counts, totals, averages, distributions as appropriate)\n2. Notable patterns or trends\n3. Outliers or anomalies worth investigating\n4. Correlations between fields (if applicable)\n5. Top 3 actionable insights from the data\n\nCleaned data:\n{{clean_transform}}"
+prompt_template = """
+Analyse the cleaned data to address the following goal: {{analysis_goal}}
+
+Provide:
+1. Key statistics (counts, totals, averages, distributions as appropriate)
+2. Notable patterns or trends
+3. Outliers or anomalies worth investigating
+4. Correlations between fields (if applicable)
+5. Top 3 actionable insights from the data
+
+Cleaned data:
+{{clean_transform}}
+"""
 depends_on = ["clean_transform"]

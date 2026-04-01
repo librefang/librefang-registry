@@ -37,14 +37,50 @@ default = "5 hours per week"
 
 [[steps]]
 name = "gap_analysis"
-prompt_template = "You are an expert educator in {{skill}}. Analyse the learner's situation:\n1. **Knowledge map** — the full topic broken into sub-skills and concepts\n2. **Current position** — what they likely know given their stated level\n3. **Target position** — what they need to know to reach their goal\n4. **Critical gaps** — the 5 most important things to learn first\n5. **Common pitfalls** — mistakes beginners make, concepts people find hardest\n\nSkill: {{skill}}\nCurrent level: {{current_level}}\nGoal: {{goal}}"
+prompt_template = """
+You are an expert educator in {{skill}}. Analyse the learner's situation:
+1. **Knowledge map** — the full topic broken into sub-skills and concepts
+2. **Current position** — what they likely know given their stated level
+3. **Target position** — what they need to know to reach their goal
+4. **Critical gaps** — the 5 most important things to learn first
+5. **Common pitfalls** — mistakes beginners make, concepts people find hardest
+
+Skill: {{skill}}
+Current level: {{current_level}}
+Goal: {{goal}}
+"""
 
 [[steps]]
 name = "roadmap"
-prompt_template = "Design a learning roadmap divided into phases. For each phase:\n- Name and duration estimate\n- Learning objectives (what they'll be able to do)\n- Core concepts to master\n- 3-5 specific resources (books, courses, docs, tutorials — real names where possible)\n- Practice project or exercise\n- How to know the phase is complete (milestone)\n\nTime available: {{time_available}}\n\nGap analysis:\n{{gap_analysis}}"
+prompt_template = """
+Design a learning roadmap divided into phases. For each phase:
+- Name and duration estimate
+- Learning objectives (what they'll be able to do)
+- Core concepts to master
+- 3-5 specific resources (books, courses, docs, tutorials — real names where possible)
+- Practice project or exercise
+- How to know the phase is complete (milestone)
+
+Time available: {{time_available}}
+
+Gap analysis:
+{{gap_analysis}}
+"""
 depends_on = ["gap_analysis"]
 
 [[steps]]
 name = "week1_plan"
-prompt_template = "Create a concrete day-by-day plan for the first week of learning. For each day:\n- Specific topic to cover\n- Exact resource to use (chapter, video, section)\n- Time estimate\n- Exercise or thing to build/practice\n- End-of-day check: how to verify understanding\n\nAssume {{time_available}} is available.\n\nRoadmap:\n{{roadmap}}"
+prompt_template = """
+Create a concrete day-by-day plan for the first week of learning. For each day:
+- Specific topic to cover
+- Exact resource to use (chapter, video, section)
+- Time estimate
+- Exercise or thing to build/practice
+- End-of-day check: how to verify understanding
+
+Assume {{time_available}} is available.
+
+Roadmap:
+{{roadmap}}
+"""
 depends_on = ["roadmap"]

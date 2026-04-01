@@ -23,14 +23,48 @@ default = ""
 
 [[steps]]
 name = "resource_model"
-prompt_template = "You are an API architect. From the requirements below, identify the core resources and their relationships:\n1. List every resource (noun)\n2. Define attributes and types for each\n3. Map relationships (one-to-many, many-to-many)\n4. Identify which resources need CRUD vs. action-oriented endpoints\n\nRequirements:\n{{requirements}}\n\nTech stack / conventions:\n{{tech_stack}}"
+prompt_template = """
+You are an API architect. From the requirements below, identify the core resources and their relationships:
+1. List every resource (noun)
+2. Define attributes and types for each
+3. Map relationships (one-to-many, many-to-many)
+4. Identify which resources need CRUD vs. action-oriented endpoints
+
+Requirements:
+{{requirements}}
+
+Tech stack / conventions:
+{{tech_stack}}
+"""
 
 [[steps]]
 name = "endpoint_design"
-prompt_template = "Design the full set of REST endpoints based on the resource model. For each endpoint specify:\n- Method + path\n- Path/query parameters\n- Request body schema (JSON)\n- Success response schema + status code\n- Error responses (4xx, 5xx)\n- Auth requirement\n- Idempotency and side-effect notes\n\nResource model:\n{{resource_model}}"
+prompt_template = """
+Design the full set of REST endpoints based on the resource model. For each endpoint specify:
+- Method + path
+- Path/query parameters
+- Request body schema (JSON)
+- Success response schema + status code
+- Error responses (4xx, 5xx)
+- Auth requirement
+- Idempotency and side-effect notes
+
+Resource model:
+{{resource_model}}
+"""
 depends_on = ["resource_model"]
 
 [[steps]]
 name = "openapi_spec"
-prompt_template = "Write a complete OpenAPI 3.1 YAML specification for the API designed above. Include:\n- info block with title, version, description\n- All paths with operations\n- Reusable schemas in components/schemas\n- Security schemes\n- Example request/response bodies\n\nEndpoint design:\n{{endpoint_design}}"
+prompt_template = """
+Write a complete OpenAPI 3.1 YAML specification for the API designed above. Include:
+- info block with title, version, description
+- All paths with operations
+- Reusable schemas in components/schemas
+- Security schemes
+- Example request/response bodies
+
+Endpoint design:
+{{endpoint_design}}
+"""
 depends_on = ["endpoint_design"]
