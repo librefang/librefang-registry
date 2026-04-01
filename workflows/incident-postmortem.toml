@@ -1,0 +1,36 @@
+id = "incident-postmortem"
+name = "Incident Postmortem"
+description = "Turn raw incident notes into a structured postmortem: timeline, root cause, impact assessment, and action items."
+category = "engineering"
+tags = ["incident", "postmortem", "devops", "reliability"]
+
+[i18n.zh]
+name = "故障复盘"
+description = "将原始故障记录整理为结构化复盘报告：时间线、根因分析、影响评估和行动项。"
+
+[[parameters]]
+name = "incident_notes"
+description = "Raw notes, chat logs, or timeline from the incident"
+param_type = "string"
+required = true
+
+[[parameters]]
+name = "service_name"
+description = "Name of the affected service or system"
+param_type = "string"
+required = false
+default = ""
+
+[[steps]]
+name = "timeline"
+prompt_template = "You are an SRE writing a postmortem. From the raw incident notes below, reconstruct a clean chronological timeline:\n- Format: [HH:MM UTC] — event description\n- Include: first alert, detection, escalation, mitigation steps, resolution\n- Note who was involved at each stage\n- Mark the start and end of user impact\n\nService: {{service_name}}\n\nRaw notes:\n{{incident_notes}}"
+
+[[steps]]
+name = "root_cause_analysis"
+prompt_template = "Perform a thorough root cause analysis using the 5-Whys method:\n1. Immediate trigger\n2. Five-whys chain down to the systemic root cause\n3. Contributing factors (monitoring gaps, process failures, dependency issues)\n4. Detection gap — why it took as long as it did to detect\n\nTimeline:\n{{timeline}}"
+depends_on = ["timeline"]
+
+[[steps]]
+name = "postmortem_report"
+prompt_template = "Write a complete postmortem report with these sections:\n\n## Summary\nOne paragraph: what happened, impact, duration, resolution.\n\n## Impact\nQuantified: users affected, error rate, revenue/SLA impact.\n\n## Timeline\n(Use the timeline above)\n\n## Root Cause\n(Use the RCA above)\n\n## What Went Well\n## What Went Wrong\n## Action Items\nTable: | Action | Owner | Priority | Due date |\nMinimum 5 concrete, measurable actions.\n\n## Lessons Learned\n\nTimeline:\n{{timeline}}\n\nRoot cause analysis:\n{{root_cause_analysis}}"
+depends_on = ["timeline", "root_cause_analysis"]

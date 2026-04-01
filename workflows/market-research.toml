@@ -1,0 +1,36 @@
+id = "market-research"
+name = "Market Research Report"
+description = "Analyse a market opportunity: size, trends, customer segments, key players, and go-to-market entry points."
+category = "business"
+tags = ["market", "research", "strategy", "business"]
+
+[i18n.zh]
+name = "市场调研报告"
+description = "分析市场机会：市场规模、趋势、客户细分、主要参与者和进入市场的切入点。"
+
+[[parameters]]
+name = "market"
+description = "The market or industry to research"
+param_type = "string"
+required = true
+
+[[parameters]]
+name = "business_context"
+description = "Your company, product, or investment thesis context"
+param_type = "string"
+required = false
+default = ""
+
+[[steps]]
+name = "market_landscape"
+prompt_template = "You are a market research analyst. Map the current landscape for: {{market}}\n\n1. **Market definition** — precise scope and adjacent markets\n2. **Market size** — TAM, SAM, SOM estimates with methodology\n3. **Growth rate** — historical and projected CAGR\n4. **Maturity stage** — emerging / growth / mature / declining\n5. **Key trends** — top 5 forces shaping the market (technology, regulation, behaviour)\n6. **Geographic distribution** — where activity is concentrated\n\nContext: {{business_context}}"
+
+[[steps]]
+name = "customer_segments"
+prompt_template = "Identify and profile the customer segments in this market:\n\nFor each segment (aim for 3-5):\n- Name and size\n- Demographics/firmographics\n- Key pain points and jobs-to-be-done\n- Current solutions they use\n- Willingness to pay signals\n- Acquisition channels\n- Which segment is most underserved\n\nMarket landscape:\n{{market_landscape}}"
+depends_on = ["market_landscape"]
+
+[[steps]]
+name = "research_report"
+prompt_template = "Write a structured market research report:\n\n## Executive Summary\n3 bullet points: opportunity, risk, recommended entry point.\n\n## Market Overview\n## Customer Segments\n## Competitive Landscape\nTop players by segment, their moats and vulnerabilities.\n\n## Market Entry Analysis\n- Best beachhead segment\n- Entry barriers and how to overcome them\n- Differentiation opportunities\n- Estimated time to meaningful traction\n\n## Key Risks\n## Recommended Next Steps\n\nMarket landscape:\n{{market_landscape}}\n\nCustomer segments:\n{{customer_segments}}"
+depends_on = ["market_landscape", "customer_segments"]

@@ -1,0 +1,48 @@
+id = "blog-post"
+name = "Blog Post Writer"
+description = "Research a topic, build a structured outline, write a full-length blog post, then optimise for SEO."
+category = "creation"
+tags = ["writing", "blog", "seo", "content"]
+
+[i18n.zh]
+name = "博客文章撰写"
+description = "调研主题，构建结构化提纲，撰写完整博客文章，并进行 SEO 优化。"
+
+[[parameters]]
+name = "topic"
+description = "Blog post topic or working title"
+param_type = "string"
+required = true
+
+[[parameters]]
+name = "audience"
+description = "Target audience and their expertise level"
+param_type = "string"
+required = false
+default = "general audience"
+
+[[parameters]]
+name = "tone"
+description = "Desired tone (e.g. technical, conversational, authoritative)"
+param_type = "string"
+required = false
+default = "informative and engaging"
+
+[[steps]]
+name = "research"
+prompt_template = "You are a research journalist. For the blog topic below, compile:\n1. Key facts, statistics, and data points (with source type)\n2. Common misconceptions to debunk\n3. Expert perspectives and contrasting views\n4. Recent developments or trends\n5. Concrete examples and case studies\n6. Angles that haven't been covered well in existing content\n\nTopic: {{topic}}\nAudience: {{audience}}"
+
+[[steps]]
+name = "outline"
+prompt_template = "You are a content strategist. Create a detailed blog post outline:\n- Compelling headline (3 options)\n- Hook / opening angle\n- H2 sections with H3 subsections\n- Key point per section\n- Data or example to use in each section\n- Conclusion and CTA\n\nTarget length: 1200-1800 words.\nTone: {{tone}}\nAudience: {{audience}}\n\nResearch:\n{{research}}"
+depends_on = ["research"]
+
+[[steps]]
+name = "draft"
+prompt_template = "Write the full blog post following the outline. Guidelines:\n- Open with a hook that immediately addresses the reader's pain or curiosity\n- Use short paragraphs (3-4 sentences max)\n- Include the statistics and examples from research\n- Use subheadings to aid scannability\n- End with a clear takeaway and one actionable CTA\n- Tone: {{tone}}\n\nOutline:\n{{outline}}\n\nResearch:\n{{research}}"
+depends_on = ["outline", "research"]
+
+[[steps]]
+name = "seo_optimise"
+prompt_template = "SEO-optimise the blog post:\n1. **Primary keyword** — identify the best target keyword\n2. **Meta title** (under 60 chars) and **meta description** (under 155 chars)\n3. **Keyword placement** — suggest where to naturally insert the primary keyword and 3 secondary keywords\n4. **Internal link opportunities** — topics to link to\n5. **Image alt text suggestions** — 2-3 descriptive alts\n6. **Revised headline** if needed for keyword inclusion\n\nDraft:\n{{draft}}"
+depends_on = ["draft"]

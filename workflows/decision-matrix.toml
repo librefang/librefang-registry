@@ -1,0 +1,35 @@
+id = "decision-matrix"
+name = "Decision Matrix"
+description = "Evaluate competing options against weighted criteria to produce a clear, defensible recommendation."
+category = "thinking"
+tags = ["decision", "analysis", "strategy", "thinking"]
+
+[i18n.zh]
+name = "决策矩阵"
+description = "对竞争方案按加权标准进行评估，输出清晰、有据可查的推荐结论。"
+
+[[parameters]]
+name = "decision"
+description = "The decision to be made and its context"
+param_type = "string"
+required = true
+
+[[parameters]]
+name = "options"
+description = "The options or alternatives being considered"
+param_type = "string"
+required = true
+
+[[steps]]
+name = "criteria"
+prompt_template = "You are a decision analyst. For the decision below, define the evaluation criteria:\n1. List 5-8 criteria that matter most for this decision\n2. For each criterion: define what 'good' looks like (high score) and 'bad' looks like (low score)\n3. Assign weights (must sum to 100%) based on business importance\n4. Note which criteria are must-haves (disqualifiers if failed)\n\nDecision: {{decision}}\nOptions: {{options}}"
+
+[[steps]]
+name = "scoring"
+prompt_template = "Score each option against each criterion on a 1-10 scale. Justify every score with one sentence of evidence or reasoning. Then calculate weighted scores.\n\nFormat as a table: Option | Criterion | Raw Score | Weight | Weighted Score.\n\nAdd a totals row per option.\n\nDecision: {{decision}}\nOptions: {{options}}\n\nCriteria and weights:\n{{criteria}}"
+depends_on = ["criteria"]
+
+[[steps]]
+name = "recommendation"
+prompt_template = "Synthesise the analysis into a decision memo:\n\n## Recommendation\nClear winner with one-sentence rationale.\n\n## Why Not the Others\nFor each non-recommended option: the decisive weakness.\n\n## Key Risks of the Recommended Option\nTop 3 risks and mitigations.\n\n## Conditions That Would Change This Recommendation\nWhat new information would flip the decision.\n\n## Next Steps\n3 immediate actions to execute the decision.\n\nScoring:\n{{scoring}}"
+depends_on = ["scoring"]

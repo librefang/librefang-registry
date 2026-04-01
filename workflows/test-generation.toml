@@ -1,0 +1,36 @@
+id = "test-generation"
+name = "Test Suite Generation"
+description = "Analyse code to generate comprehensive unit tests, integration tests, and edge case coverage."
+category = "engineering"
+tags = ["testing", "quality", "engineering", "tdd"]
+
+[i18n.zh]
+name = "测试用例生成"
+description = "分析代码，生成完整的单元测试、集成测试和边界情况覆盖。"
+
+[[parameters]]
+name = "code"
+description = "Source code to generate tests for"
+param_type = "string"
+required = true
+
+[[parameters]]
+name = "language"
+description = "Programming language and test framework to use"
+param_type = "string"
+required = false
+default = "auto-detect"
+
+[[steps]]
+name = "code_analysis"
+prompt_template = "Analyse the following {{language}} code as a QA engineer:\n1. List every public function/method and its contract (inputs → outputs)\n2. Identify all branches and conditional paths\n3. Note external dependencies that need mocking\n4. Flag complex logic most likely to contain bugs\n5. List data types and their valid/invalid ranges\n\nCode:\n{{code}}"
+
+[[steps]]
+name = "edge_cases"
+prompt_template = "Based on the code analysis, enumerate all edge cases and boundary conditions:\n- Null/empty/zero inputs\n- Maximum/minimum values\n- Concurrent access scenarios\n- Error propagation paths\n- State machine transitions\n- External dependency failures\n\nCode analysis:\n{{code_analysis}}"
+depends_on = ["code_analysis"]
+
+[[steps]]
+name = "test_suite"
+prompt_template = "Write a complete test suite in {{language}} covering:\n1. **Happy path tests** — one per public function\n2. **Edge case tests** — from the edge case list\n3. **Error handling tests** — each error path\n4. **Integration tests** — cross-component interactions\n\nUse descriptive test names following the pattern: `test_<function>_<scenario>_<expected_result>`.\nInclude setup/teardown where needed. Add a comment explaining the intent of non-obvious tests.\n\nCode:\n{{code}}\n\nEdge cases:\n{{edge_cases}}"
+depends_on = ["code_analysis", "edge_cases"]

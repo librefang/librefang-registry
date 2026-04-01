@@ -1,0 +1,40 @@
+id = "job-application"
+name = "Job Application Package"
+description = "Tailor a resume and cover letter to a specific job posting, then prepare targeted interview talking points."
+category = "productivity"
+tags = ["career", "resume", "job", "interview"]
+
+[i18n.zh]
+name = "求职材料准备"
+description = "针对特定职位定制简历和求职信，并准备有针对性的面试谈话要点。"
+
+[[parameters]]
+name = "job_posting"
+description = "The full job posting or description"
+param_type = "string"
+required = true
+
+[[parameters]]
+name = "resume"
+description = "Your current resume or experience summary"
+param_type = "string"
+required = true
+
+[[steps]]
+name = "job_analysis"
+prompt_template = "Analyse the job posting as an experienced recruiter:\n1. **Must-have requirements** — skills/experience that are non-negotiable\n2. **Nice-to-have requirements** — preferred but not required\n3. **Company signals** — culture, values, team dynamics from the language used\n4. **Role signals** — what success looks like in 90 days, key challenges\n5. **Keywords** — ATS-critical terms to include in application materials\n6. **Red flags** — anything unusual or concerning in the posting\n\nJob posting:\n{{job_posting}}"
+
+[[steps]]
+name = "resume_tailoring"
+prompt_template = "Tailor the resume for this specific role:\n1. **Reorder sections** — put most relevant experience first\n2. **Rewrite bullet points** — for each experience, suggest stronger versions that match job keywords\n3. **Quantify impacts** — flag any bullet points that should have metrics added\n4. **Gaps to address** — experience or skills missing vs. the role requirements\n5. **Summary statement** — write a 3-sentence tailored summary for the top of the resume\n\nJob analysis:\n{{job_analysis}}\n\nResume:\n{{resume}}"
+depends_on = ["job_analysis"]
+
+[[steps]]
+name = "cover_letter"
+prompt_template = "Write a compelling cover letter (3-4 paragraphs, under 400 words):\n- Opening: specific hook connecting your background to the company's mission\n- Body: 2 concrete achievements that directly address the job's must-haves\n- Closing: clear ask + why this specific company\n\nAvoid clichés like 'I am writing to apply' or 'I am a hard worker'.\n\nJob analysis:\n{{job_analysis}}\n\nResume:\n{{resume}}"
+depends_on = ["job_analysis"]
+
+[[steps]]
+name = "interview_prep"
+prompt_template = "Prepare interview talking points:\n1. **STAR stories** — 3 specific situations from the resume mapped to the job's key requirements\n2. **Questions to ask** — 5 smart questions that show deep interest\n3. **Difficult questions** — likely tough questions for this role with suggested answers\n4. **Salary research** — how to position compensation discussion\n\nJob analysis:\n{{job_analysis}}\n\nResume:\n{{resume}}"
+depends_on = ["job_analysis", "resume_tailoring"]

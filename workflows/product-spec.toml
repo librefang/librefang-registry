@@ -1,0 +1,36 @@
+id = "product-spec"
+name = "Product Spec Writer"
+description = "Turn a product idea or feature request into a complete PRD: user stories, acceptance criteria, technical notes, and open questions."
+category = "business"
+tags = ["product", "prd", "planning", "engineering"]
+
+[i18n.zh]
+name = "产品需求文档撰写"
+description = "将产品想法或功能需求转化为完整 PRD：用户故事、验收标准、技术备注和待确认事项。"
+
+[[parameters]]
+name = "feature_idea"
+description = "Feature idea or problem statement to spec out"
+param_type = "string"
+required = true
+
+[[parameters]]
+name = "context"
+description = "Product context, target users, and any constraints"
+param_type = "string"
+required = false
+default = ""
+
+[[steps]]
+name = "problem_definition"
+prompt_template = "You are a senior product manager. Define the problem clearly:\n1. **Problem statement** — one precise sentence\n2. **Who has this problem** — user segments and their specific pain\n3. **Current workarounds** — how users cope today\n4. **Why now** — why is this worth solving now\n5. **Success looks like** — quantifiable outcomes\n6. **Out of scope** — what this will deliberately not solve\n\nIdea: {{feature_idea}}\nContext: {{context}}"
+
+[[steps]]
+name = "user_stories"
+prompt_template = "Write user stories in the format: As a [user type], I want to [action] so that [outcome].\n\nFor each story:\n- Given / When / Then acceptance criteria (3-5 criteria)\n- Priority: P0 (must-have) / P1 (should-have) / P2 (nice-to-have)\n- Estimated complexity: S / M / L / XL\n\nWrite at least 6 user stories covering happy paths, edge cases, and error states.\n\nProblem definition:\n{{problem_definition}}"
+depends_on = ["problem_definition"]
+
+[[steps]]
+name = "prd"
+prompt_template = "Write a complete Product Requirements Document:\n\n## Overview\n## Problem Statement\n## Goals & Non-Goals\n## User Stories\n(from above)\n## Functional Requirements\nNumbered list of specific behaviours the system must exhibit.\n## Non-Functional Requirements\nPerformance, security, accessibility, internationalisation.\n## Technical Considerations\nKnown constraints, integration points, migration needs.\n## Metrics\nHow success will be measured (leading and lagging indicators).\n## Open Questions\nDecisions still needed, with suggested owners.\n## Timeline Sketch\nPhases with rough scope.\n\nProblem definition:\n{{problem_definition}}\n\nUser stories:\n{{user_stories}}"
+depends_on = ["problem_definition", "user_stories"]
