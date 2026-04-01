@@ -1,12 +1,12 @@
 id = "weekly-report"
 name = "Weekly Report Generator"
-description = "Organize raw work notes into a polished weekly report"
-category = "business"
-tags = ["report", "weekly", "productivity"]
+description = "Turn raw work notes into a polished weekly report with highlights, metrics, blockers, and next week's priorities."
+category = "productivity"
+tags = ["report", "weekly", "productivity", "management"]
 
 [i18n.zh]
 name = "周报生成器"
-description = "将零散的工作笔记整理为一份精炼的周报"
+description = "将零散工作笔记整理为规范周报，包含亮点、指标、阻塞项和下周计划。"
 
 [[parameters]]
 name = "work_notes"
@@ -14,11 +14,64 @@ description = "Raw work notes, bullet points, or activity log for the week"
 param_type = "string"
 required = true
 
+[[parameters]]
+name = "team_or_role"
+description = "Your team name or role (used to frame context appropriately)"
+param_type = "string"
+required = false
+default = ""
+
+[[parameters]]
+name = "audience"
+description = "Who will read this report (manager, team, executive)"
+param_type = "string"
+required = false
+default = "manager"
+
 [[steps]]
-name = "organizer"
-prompt_template = "You are an executive assistant. Organize the following raw work notes into structured categories: 1) Completed tasks 2) In-progress items 3) Blockers/Issues 4) Key decisions made. Extract and list each item clearly, even if the notes are messy.\n\nRaw notes:\n{{work_notes}}"
+name = "extract"
+prompt_template = """
+You are an executive assistant. Parse the following raw work notes and extract every item into structured categories:
+
+**Completed** — fully done tasks (include measurable outcomes if mentioned)
+**In Progress** — work started but not finished (include % complete or next milestone if available)
+**Blockers** — anything preventing progress, and who or what is blocking
+**Decisions Made** — choices or agreements reached this week
+**Metrics** — any numbers mentioned (velocity, usage, revenue, bugs closed, etc.)
+**Upcoming** — planned work mentioned for next week
+
+Do not summarise or rephrase — extract faithfully.
+
+Team/Role: {{team_or_role}}
+
+Raw notes:
+{{work_notes}}
+"""
 
 [[steps]]
 name = "report_writer"
-prompt_template = "You are a professional report writer. Transform the organized items below into a polished weekly report with these sections:\n\n## This Week's Highlights\n(top 3 achievements)\n\n## Progress Details\n(organized by project/area)\n\n## Challenges & Solutions\n(any blockers and how they were addressed)\n\n## Next Week's Priorities\n(based on in-progress items)\n\nKeep it concise and professional.\n\nOrganized items:\n{{organizer}}"
-depends_on = ["organizer"]
+prompt_template = """
+Write a polished weekly report for a {{audience}} audience. Tone should be professional and concise — no padding.
+
+## Highlights
+Top 3 achievements this week, each in one sentence with measurable impact where available.
+
+## Progress
+Grouped by project or workstream. For each: what was done, current status, and any dependency.
+
+## Metrics
+Key numbers from the week. If none were provided, omit this section.
+
+## Blockers & Risks
+Each blocker: description, impact, owner, and requested action.
+
+## Next Week
+Top 3-5 priorities with owner and expected outcome.
+
+## Notes
+Decisions made, process changes, or anything the audience should be aware of.
+
+Extracted data:
+{{extract}}
+"""
+depends_on = ["extract"]

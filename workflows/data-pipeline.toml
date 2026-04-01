@@ -1,36 +1,82 @@
 id = "data-pipeline"
-name = "Data Pipeline"
-description = "ETL pipeline that extracts data from a source, transforms it into a target format, and validates the output for completeness and correctness."
-category = "data"
-tags = ["etl", "data", "pipeline", "transform"]
+name = "Data Analysis & Transform"
+description = "Clean, transform, analyse, and summarise raw data. Handles messy inputs: CSV, JSON, tables, or free-form text."
+category = "engineering"
+tags = ["data", "analysis", "transform", "etl"]
 
 [i18n.zh]
-name = "数据流水线"
-description = "ETL 流水线，从数据源提取数据，转换为目标格式，并验证输出的完整性和正确性。"
+name = "数据分析与转换"
+description = "清洗、转换、分析并摘要原始数据，支持 CSV、JSON、表格或自由文本等杂乱输入。"
 
 [[parameters]]
-name = "data_source"
-description = "URL or file path to the data source"
+name = "raw_data"
+description = "The raw data to process (paste CSV, JSON, table, or any structured text)"
 param_type = "string"
 required = true
 
 [[parameters]]
 name = "output_format"
-description = "Desired output format (json, csv, markdown)"
+description = "Desired output format for the transformed data (json, csv, markdown-table)"
 param_type = "string"
 required = false
 default = "json"
 
-[[steps]]
-name = "extract"
-prompt_template = "Extract raw data from the following source: {{data_source}}. Return the complete dataset without any transformation, preserving the original structure."
+[[parameters]]
+name = "analysis_goal"
+description = "What you want to understand or extract from the data"
+param_type = "string"
+required = false
+default = "general summary and key insights"
 
 [[steps]]
-name = "transform"
-prompt_template = "Transform the following raw data into well-structured {{output_format}} format. Apply standard cleaning: trim whitespace, normalise dates to ISO-8601, remove duplicate rows, and convert empty strings to null.\n\nRaw data:\n{{extract}}"
-depends_on = ["extract"]
+name = "profile"
+prompt_template = """
+You are a data engineer. Profile the following raw data:
+1. Detected format and structure
+2. Number of rows and columns/fields
+3. Data types per field
+4. Missing value count per field
+5. Obvious data quality issues (duplicates, inconsistent formatting, out-of-range values)
+6. Sample of first 5 rows for reference
+
+Raw data:
+{{raw_data}}
+"""
 
 [[steps]]
-name = "validate"
-prompt_template = "Validate the transformed data below for completeness and correctness. Check for: missing required fields, type mismatches, invalid date formats, out-of-range values, and referential integrity. Return a validation report with pass/fail status and any issues found.\n\nTransformed data:\n{{transform}}"
-depends_on = ["transform"]
+name = "clean_transform"
+prompt_template = """
+Clean and transform the raw data based on the profile below. Apply:
+- Trim whitespace from string fields
+- Normalise dates to ISO-8601
+- Remove exact duplicate rows
+- Convert empty strings to null
+- Standardise inconsistent categorical values (e.g. 'Y'/'Yes'/'yes' → true)
+- Flag but preserve rows with suspicious values (do not silently drop them)
+
+Output the cleaned data in {{output_format}} format, followed by a change log listing every transformation applied.
+
+Data profile:
+{{profile}}
+
+Raw data:
+{{raw_data}}
+"""
+depends_on = ["profile"]
+
+[[steps]]
+name = "analyse"
+prompt_template = """
+Analyse the cleaned data to address the following goal: {{analysis_goal}}
+
+Provide:
+1. Key statistics (counts, totals, averages, distributions as appropriate)
+2. Notable patterns or trends
+3. Outliers or anomalies worth investigating
+4. Correlations between fields (if applicable)
+5. Top 3 actionable insights from the data
+
+Cleaned data:
+{{clean_transform}}
+"""
+depends_on = ["clean_transform"]

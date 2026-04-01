@@ -1,7 +1,7 @@
 id = "customer-support"
 name = "Customer Support Triage"
 description = "Tiered customer support pipeline that classifies incoming requests by urgency and category, drafts an appropriate response, and escalates complex issues to a specialist."
-category = "support"
+category = "business"
 tags = ["support", "triage", "customer-service", "escalation"]
 
 [i18n.zh]
@@ -30,14 +30,49 @@ default = ""
 
 [[steps]]
 name = "classify"
-prompt_template = "Classify the following customer support request. Determine:\n1. Category: billing, technical, account, feature-request, bug-report, or general\n2. Urgency: low, medium, high, critical\n3. Sentiment: positive, neutral, frustrated, angry\n4. Whether escalation to a human specialist is needed (true/false)\n\nReturn a structured assessment with reasoning for each classification.\n\nProduct context: {{product_context}}\n\nCustomer message:\n{{customer_message}}"
+prompt_template = """
+Classify the following customer support request. Determine:
+1. Category: billing, technical, account, feature-request, bug-report, or general
+2. Urgency: low, medium, high, critical
+3. Sentiment: positive, neutral, frustrated, angry
+4. Whether escalation to a human specialist is needed (true/false)
+
+Return a structured assessment with reasoning for each classification.
+
+Product context: {{product_context}}
+
+Customer message:
+{{customer_message}}
+"""
 
 [[steps]]
 name = "draft_response"
-prompt_template = "Draft a helpful, empathetic support response for {{customer_name}} based on the classification below. The response should:\n- Acknowledge the customer's concern\n- Provide a clear solution or next steps\n- Match the appropriate tone for the detected sentiment\n- Include specific action items\n\nClassification:\n{{classify}}\n\nOriginal message:\n{{customer_message}}"
+prompt_template = """
+Draft a helpful, empathetic support response for {{customer_name}} based on the classification below. The response should:
+- Acknowledge the customer's concern
+- Provide a clear solution or next steps
+- Match the appropriate tone for the detected sentiment
+- Include specific action items
+
+Classification:
+{{classify}}
+
+Original message:
+{{customer_message}}
+"""
 depends_on = ["classify"]
 
 [[steps]]
 name = "escalation_check"
-prompt_template = "Review the classification and drafted response below. Determine if this case requires escalation beyond automated support. If escalation is needed, prepare a concise internal handoff note for the specialist team that includes: summary, category, urgency, customer sentiment, attempted resolution, and recommended next steps.\n\nIf no escalation is needed, confirm the drafted response is complete and ready to send.\n\nClassification:\n{{classify}}\n\nDrafted response:\n{{draft_response}}"
+prompt_template = """
+Review the classification and drafted response below. Determine if this case requires escalation beyond automated support. If escalation is needed, prepare a concise internal handoff note for the specialist team that includes: summary, category, urgency, customer sentiment, attempted resolution, and recommended next steps.
+
+If no escalation is needed, confirm the drafted response is complete and ready to send.
+
+Classification:
+{{classify}}
+
+Drafted response:
+{{draft_response}}
+"""
 depends_on = ["classify", "draft_response"]

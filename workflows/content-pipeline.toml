@@ -1,12 +1,12 @@
 id = "content-pipeline"
 name = "Content Creation Pipeline"
-description = "Research → Write → Edit pipeline for article creation"
+description = "Research a topic, build a structured outline, write a full article, then edit for clarity, flow, and factual consistency."
 category = "creation"
-tags = ["content", "writing", "article"]
+tags = ["content", "writing", "article", "research"]
 
 [i18n.zh]
 name = "内容创作流水线"
-description = "调研 -> 撰写 -> 编辑的文章创作流水线"
+description = "调研主题，构建结构化提纲，撰写完整文章，再编辑润色以提升清晰度、流畅性和事实准确性。"
 
 [[parameters]]
 name = "topic"
@@ -15,22 +15,93 @@ param_type = "string"
 required = true
 
 [[parameters]]
+name = "audience"
+description = "Target audience (e.g. general public, developers, executives, students)"
+param_type = "string"
+required = false
+default = "general audience"
+
+[[parameters]]
 name = "word_count"
 description = "Target word count for the article"
 param_type = "string"
 required = false
 default = "800-1200"
 
-[[steps]]
-name = "researcher"
-prompt_template = "You are a research assistant. Research the following topic thoroughly and provide: 1) Background and context 2) Key facts and data points 3) Different perspectives on the topic 4) Recent developments. Be specific and detailed.\n\nTopic: {{topic}}"
+[[parameters]]
+name = "tone"
+description = "Desired tone (informative, conversational, technical, persuasive)"
+param_type = "string"
+required = false
+default = "informative"
 
 [[steps]]
-name = "writer"
-prompt_template = "You are a professional writer. Based on the research below, write a well-structured article ({{word_count}} words). Include: a compelling headline, an engaging introduction, clear sections with subheadings, and a strong conclusion. Write in a clear, accessible style.\n\nResearch:\n{{researcher}}"
+name = "researcher"
+prompt_template = """
+You are a research journalist. Investigate the following topic for a {{audience}} audience:
+1. Background and context — why this topic matters now
+2. Key facts and data points (be specific)
+3. Multiple perspectives — mainstream view, contrarian view, expert consensus
+4. Recent developments or trends
+5. Concrete examples, case studies, or anecdotes
+6. Common misconceptions to address
+
+Topic: {{topic}}
+"""
+
+[[steps]]
+name = "outline"
+prompt_template = """
+You are a content strategist. Create a detailed article outline using the research below.
+
+Include:
+- Three headline options (hook-driven, question-based, and statement-based)
+- Opening hook strategy
+- H2 sections with H3 subsections and the key point each section makes
+- Which research fact or example belongs in each section
+- Closing argument and call to action
+
+Target: {{word_count}} words, {{tone}} tone, audience: {{audience}}
+
+Research:
+{{researcher}}
+"""
 depends_on = ["researcher"]
 
 [[steps]]
+name = "writer"
+prompt_template = """
+Write the full article following the outline. Requirements:
+- Use the best headline from the outline
+- Open with the hook strategy from the outline
+- Short paragraphs (3-4 sentences max)
+- Subheadings for each major section
+- Weave in the specific facts and examples from research — no vague generalities
+- Match the {{tone}} tone throughout
+- End with a concrete takeaway and CTA relevant to a {{audience}} reader
+- Target length: {{word_count}} words
+
+Outline:
+{{outline}}
+
+Research:
+{{researcher}}
+"""
+depends_on = ["outline", "researcher"]
+
+[[steps]]
 name = "editor"
-prompt_template = "You are a senior editor. Review and polish the following article. Fix any grammar issues, improve flow, tighten wordy sentences, and ensure factual consistency. Output the final polished version only, no commentary.\n\nDraft:\n{{writer}}"
+prompt_template = """
+You are a senior editor. Polish the article below:
+1. Fix grammar, punctuation, and spelling
+2. Tighten wordy or repetitive sentences
+3. Improve transitions between sections
+4. Flag any factual claims that seem unsupported and suggest how to strengthen them
+5. Verify the tone is consistent with '{{tone}}' throughout
+
+Output the final polished article only, then add a brief editor's note listing the main changes made.
+
+Draft:
+{{writer}}
+"""
 depends_on = ["writer"]

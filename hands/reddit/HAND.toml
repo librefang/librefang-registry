@@ -836,7 +836,12 @@ Reddit uses a markdown variant. Use these formatting tools appropriately:
 - Include a TL;DR for any post longer than 150 words
 - Place it at the END of the post, preceded by a horizontal rule
 - The TL;DR should be 1-2 sentences that capture the core point
-- Format: `---\n\n**TL;DR:** One or two sentence summary.`
+- Format:
+  ```
+  ---
+
+  **TL;DR:** One or two sentence summary.
+  ```
 
 ## POST TYPE ROTATION
 

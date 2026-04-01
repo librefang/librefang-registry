@@ -1,7 +1,7 @@
 id = "content-review"
 name = "Content Review"
 description = "Multi-agent content review pipeline that drafts, reviews for quality and accuracy, then produces a final edited version incorporating feedback."
-category = "content"
+category = "creation"
 tags = ["content", "review", "writing", "editing"]
 
 [i18n.zh]
@@ -34,15 +34,36 @@ prompt_template = "Write a {{tone}} article about {{topic}} with approximately {
 
 [[steps]]
 name = "review_quality"
-prompt_template = "Review the following draft for writing quality. Evaluate clarity, coherence, grammar, tone consistency (target: {{tone}}), and overall readability. Provide specific, actionable feedback with line-level suggestions.\n\nDraft:\n{{draft}}"
+prompt_template = """
+Review the following draft for writing quality. Evaluate clarity, coherence, grammar, tone consistency (target: {{tone}}), and overall readability. Provide specific, actionable feedback with line-level suggestions.
+
+Draft:
+{{draft}}
+"""
 depends_on = ["draft"]
 
 [[steps]]
 name = "review_accuracy"
-prompt_template = "Review the following draft for factual accuracy and logical consistency. Flag any claims that appear unsupported, statistics that need citation, logical fallacies, or misleading statements. List each issue with a suggested correction.\n\nDraft:\n{{draft}}"
+prompt_template = """
+Review the following draft for factual accuracy and logical consistency. Flag any claims that appear unsupported, statistics that need citation, logical fallacies, or misleading statements. List each issue with a suggested correction.
+
+Draft:
+{{draft}}
+"""
 depends_on = ["draft"]
 
 [[steps]]
 name = "final_edit"
-prompt_template = "Produce a final edited version of the draft below, incorporating the quality and accuracy feedback. Preserve the original voice and intent while addressing all identified issues.\n\nOriginal draft:\n{{draft}}\n\nQuality feedback:\n{{review_quality}}\n\nAccuracy feedback:\n{{review_accuracy}}"
+prompt_template = """
+Produce a final edited version of the draft below, incorporating the quality and accuracy feedback. Preserve the original voice and intent while addressing all identified issues.
+
+Original draft:
+{{draft}}
+
+Quality feedback:
+{{review_quality}}
+
+Accuracy feedback:
+{{review_accuracy}}
+"""
 depends_on = ["review_quality", "review_accuracy"]

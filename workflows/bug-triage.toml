@@ -1,0 +1,67 @@
+id = "bug-triage"
+name = "Bug Triage & Fix Plan"
+description = "Analyse a bug report, reproduce the failure path, identify root cause, and produce a prioritised fix plan with test cases."
+category = "engineering"
+tags = ["bug", "debugging", "triage", "engineering"]
+
+[i18n.zh]
+name = "Bug 分析与修复计划"
+description = "分析 Bug 报告，还原失败路径，定位根因，输出优先级排序的修复计划与测试用例。"
+
+[[parameters]]
+name = "bug_report"
+description = "The bug report, error message, or stack trace"
+param_type = "string"
+required = true
+
+[[parameters]]
+name = "codebase_context"
+description = "Relevant code snippets or architecture description"
+param_type = "string"
+required = false
+default = ""
+
+[[steps]]
+name = "reproduce_path"
+prompt_template = """
+You are a senior engineer doing bug triage. Given the bug report below, reconstruct the exact failure path:
+1. Preconditions that must be true
+2. Step-by-step sequence that triggers the bug
+3. What the system does vs. what it should do
+4. Affected components and data flow
+
+Bug report:
+{{bug_report}}
+
+Codebase context:
+{{codebase_context}}
+"""
+
+[[steps]]
+name = "root_cause"
+prompt_template = """
+You are a debugging expert. Based on the failure path analysis, identify the root cause:
+1. Immediate cause (the direct code/logic fault)
+2. Contributing factors (environment, race condition, assumption violation)
+3. Why this was not caught earlier (missing test, wrong assumption)
+4. Blast radius — what else could be affected
+
+Failure path:
+{{reproduce_path}}
+"""
+depends_on = ["reproduce_path"]
+
+[[steps]]
+name = "fix_plan"
+prompt_template = """
+You are a tech lead. Produce a concrete fix plan:
+1. **Recommended fix** — specific code change with rationale
+2. **Alternative approaches** — trade-offs of each
+3. **Test cases to add** — unit, integration, regression
+4. **Rollout recommendation** — hotfix vs. normal release, feature flag needed?
+5. **Prevention** — process or tooling changes to prevent recurrence
+
+Root cause analysis:
+{{root_cause}}
+"""
+depends_on = ["root_cause"]
