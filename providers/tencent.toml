@@ -5,7 +5,7 @@ id = "tencent"
 display_name = "Tencent"
 api_key_env = "TENCENT_API_KEY"
 base_url = ""
-key_required = true
+key_required = false
 
 [[models]]
 id = "hunyuan-a13b-instruct"

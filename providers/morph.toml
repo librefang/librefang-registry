@@ -4,7 +4,7 @@
 id = "morph"
 display_name = "Morph"
 api_key_env = "MORPH_API_KEY"
-base_url = ""
+base_url = "https://api.morphlabs.io/v1"
 key_required = true
 
 [[models]]

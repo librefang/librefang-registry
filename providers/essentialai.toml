@@ -5,7 +5,7 @@ id = "essentialai"
 display_name = "Essentialai"
 api_key_env = "ESSENTIALAI_API_KEY"
 base_url = ""
-key_required = true
+key_required = false
 
 [[models]]
 id = "rnj-1-instruct"

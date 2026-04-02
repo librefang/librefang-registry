@@ -5,7 +5,7 @@ id = "relace"
 display_name = "Relace"
 api_key_env = "RELACE_API_KEY"
 base_url = ""
-key_required = true
+key_required = false
 
 [[models]]
 id = "relace-apply-3"

@@ -4,7 +4,7 @@
 id = "upstage"
 display_name = "Upstage"
 api_key_env = "UPSTAGE_API_KEY"
-base_url = ""
+base_url = "https://api.upstage.ai/v1"
 key_required = true
 
 [[models]]

@@ -5,7 +5,7 @@ id = "ibm-granite"
 display_name = "Ibm Granite"
 api_key_env = "IBM_GRANITE_API_KEY"
 base_url = ""
-key_required = true
+key_required = false
 
 [[models]]
 id = "granite-4.0-h-micro"

@@ -5,7 +5,7 @@ id = "liquid"
 display_name = "Liquid"
 api_key_env = "LIQUID_API_KEY"
 base_url = ""
-key_required = true
+key_required = false
 
 [[models]]
 id = "lfm-2-24b-a2b"

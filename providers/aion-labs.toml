@@ -5,7 +5,7 @@ id = "aion-labs"
 display_name = "Aion Labs"
 api_key_env = "AION_LABS_API_KEY"
 base_url = ""
-key_required = true
+key_required = false
 
 [[models]]
 id = "aion-1.0"

@@ -5,7 +5,7 @@ id = "tngtech"
 display_name = "Tngtech"
 api_key_env = "TNGTECH_API_KEY"
 base_url = ""
-key_required = true
+key_required = false
 
 [[models]]
 id = "deepseek-r1t2-chimera"

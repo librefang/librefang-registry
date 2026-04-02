@@ -5,7 +5,7 @@ id = "microsoft"
 display_name = "Microsoft"
 api_key_env = "MICROSOFT_API_KEY"
 base_url = ""
-key_required = true
+key_required = false
 
 [[models]]
 id = "phi-4"

@@ -5,7 +5,7 @@ id = "kwaipilot"
 display_name = "Kwaipilot"
 api_key_env = "KWAIPILOT_API_KEY"
 base_url = ""
-key_required = true
+key_required = false
 
 [[models]]
 id = "kat-coder-pro"

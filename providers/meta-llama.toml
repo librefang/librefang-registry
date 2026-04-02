@@ -5,7 +5,7 @@ id = "meta-llama"
 display_name = "Meta Llama"
 api_key_env = "META_LLAMA_API_KEY"
 base_url = ""
-key_required = true
+key_required = false
 
 [[models]]
 id = "llama-3-70b-instruct"

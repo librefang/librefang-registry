@@ -5,7 +5,7 @@ id = "nex-agi"
 display_name = "Nex Agi"
 api_key_env = "NEX_AGI_API_KEY"
 base_url = ""
-key_required = true
+key_required = false
 
 [[models]]
 id = "deepseek-v3.1-nex-n1"

@@ -5,7 +5,7 @@ id = "meituan"
 display_name = "Meituan"
 api_key_env = "MEITUAN_API_KEY"
 base_url = ""
-key_required = true
+key_required = false
 
 [[models]]
 id = "longcat-flash-chat"

@@ -5,7 +5,7 @@ id = "nousresearch"
 display_name = "Nousresearch"
 api_key_env = "NOUSRESEARCH_API_KEY"
 base_url = ""
-key_required = true
+key_required = false
 
 [[models]]
 id = "hermes-2-pro-llama-3-8b"

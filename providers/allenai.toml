@@ -5,7 +5,7 @@ id = "allenai"
 display_name = "Allenai"
 api_key_env = "ALLENAI_API_KEY"
 base_url = ""
-key_required = true
+key_required = false
 
 [[models]]
 id = "olmo-2-0325-32b-instruct"

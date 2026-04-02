@@ -5,7 +5,7 @@ id = "deepcogito"
 display_name = "Deepcogito"
 api_key_env = "DEEPCOGITO_API_KEY"
 base_url = ""
-key_required = true
+key_required = false
 
 [[models]]
 id = "cogito-v2.1-671b"

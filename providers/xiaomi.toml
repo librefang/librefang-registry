@@ -5,7 +5,7 @@ id = "xiaomi"
 display_name = "Xiaomi"
 api_key_env = "XIAOMI_API_KEY"
 base_url = ""
-key_required = true
+key_required = false
 
 [[models]]
 id = "mimo-v2-flash"

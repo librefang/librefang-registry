@@ -36,6 +36,27 @@ SKIP_PROVIDERS = {
     "anthracite-org", "alpindale", "alfredpros", "mancer",
 }
 
+# Skip creating NEW provider files for these — they overlap with hand-written
+# providers but may contain unique models, so existing files are kept.
+SKIP_DUPLICATES = {
+    "alibaba",      # overlaps with qwen.toml but has unique models
+    "amazon",       # overlaps with bedrock.toml but has unique models
+    "bytedance",    # overlaps with volcengine.toml but has unique models
+    "nvidia",       # overlaps with nvidia-nim.toml but has unique models
+    "rekaai",       # overlaps with reka.toml but has unique models
+}
+
+# Providers with known public APIs — set their official base_url + api_key_env.
+# Providers NOT in this map are OpenRouter-only and get key_required = false.
+PROVIDER_API = {
+    "arcee-ai":     ("https://api.arcee.ai/v1", "ARCEE_API_KEY"),
+    "inception":    ("https://api.inceptionlabs.ai/v1", "INCEPTION_API_KEY"),
+    "morph":        ("https://api.morphlabs.io/v1", "MORPH_API_KEY"),
+    "nvidia":       ("https://integrate.api.nvidia.com/v1", "NVIDIA_API_KEY"),
+    "reka":         ("https://api.reka.ai/v1", "REKA_API_KEY"),
+    "upstage":      ("https://api.upstage.ai/v1", "UPSTAGE_API_KEY"),
+}
+
 
 def fetch_openrouter_models():
     """Fetch all models from OpenRouter."""
@@ -119,8 +140,18 @@ def generate_provider_toml(provider_id, models, dry_run=False):
     if toml_path.exists():
         return 0
 
-    # Derive api_key_env from provider name: FOO_BAR -> FOO_BAR_API_KEY
-    env_key = our_name.upper().replace("-", "_") + "_API_KEY"
+    if our_name in SKIP_DUPLICATES:
+        return 0
+
+    # Check if provider has a known public API
+    if our_name in PROVIDER_API:
+        base_url, env_key = PROVIDER_API[our_name]
+        key_required = "true"
+    else:
+        # No known public API — only accessible via OpenRouter/hosting providers
+        env_key = our_name.upper().replace("-", "_") + "_API_KEY"
+        base_url = ""
+        key_required = "false"
 
     lines = [
         f'# {provider_id} — auto-generated from OpenRouter API',
@@ -129,8 +160,8 @@ def generate_provider_toml(provider_id, models, dry_run=False):
         f'id = "{our_name}"',
         f'display_name = "{provider_id.replace("-", " ").title()}"',
         f'api_key_env = "{env_key}"',
-        f'base_url = ""',
-        f"key_required = true",
+        f'base_url = "{base_url}"',
+        f"key_required = {key_required}",
         f"",
     ]
 

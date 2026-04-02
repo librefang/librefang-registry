@@ -4,7 +4,7 @@
 id = "reka"
 display_name = "Reka"
 api_key_env = "REKA_API_KEY"
-base_url = ""
+base_url = "https://api.reka.ai/v1"
 key_required = true
 
 [[models]]
@@ -15,4 +15,14 @@ context_window = 16384
 max_output_tokens = 16384
 input_cost_per_m = 0.1
 output_cost_per_m = 0.1
+supports_streaming = true
+
+[[models]]
+id = "reka-flash-3"
+display_name = "Reka: Flash 3"
+tier = "fast"
+context_window = 131072
+max_output_tokens = 32768
+input_cost_per_m = 0.15
+output_cost_per_m = 0.6
 supports_streaming = true

@@ -5,7 +5,7 @@ id = "switchpoint"
 display_name = "Switchpoint"
 api_key_env = "SWITCHPOINT_API_KEY"
 base_url = ""
-key_required = true
+key_required = false
 
 [[models]]
 id = "router"

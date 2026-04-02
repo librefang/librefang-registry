@@ -5,7 +5,7 @@ id = "eleutherai"
 display_name = "Eleutherai"
 api_key_env = "ELEUTHERAI_API_KEY"
 base_url = ""
-key_required = true
+key_required = false
 
 [[models]]
 id = "llemma_7b"

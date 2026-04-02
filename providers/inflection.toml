@@ -5,7 +5,7 @@ id = "inflection"
 display_name = "Inflection"
 api_key_env = "INFLECTION_API_KEY"
 base_url = ""
-key_required = true
+key_required = false
 
 [[models]]
 id = "inflection-3-pi"
