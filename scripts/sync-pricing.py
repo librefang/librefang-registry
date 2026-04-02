@@ -49,12 +49,19 @@ SKIP_DUPLICATES = {
 # Providers with known public APIs — set their official base_url + api_key_env.
 # Providers NOT in this map route through OpenRouter.
 PROVIDER_API = {
+    "aion-labs":    ("https://api.aionlabs.ai/v1", "AION_LABS_API_KEY"),
     "arcee-ai":     ("https://api.arcee.ai/v1", "ARCEE_API_KEY"),
+    "eleutherai":   ("https://api.krater.ai/v1", "KRATER_API_KEY"),
+    "ibm-granite":  ("https://us-south.ml.cloud.ibm.com/ml/v1", "WATSONX_API_KEY"),
     "inception":    ("https://api.inceptionlabs.ai/v1", "INCEPTION_API_KEY"),
+    "meta-llama":   ("https://api.llama.com/v1", "LLAMA_API_KEY"),
+    "microsoft":    ("https://models.inference.ai.azure.com", "GITHUB_TOKEN"),
     "morph":        ("https://api.morphllm.com/v1", "MORPH_API_KEY"),
     "nvidia":       ("https://integrate.api.nvidia.com/v1", "NVIDIA_API_KEY"),
     "reka":         ("https://api.reka.ai/v1", "REKA_API_KEY"),
+    "tencent":      ("https://api.hunyuan.cloud.tencent.com/v1", "HUNYUAN_API_KEY"),
     "upstage":      ("https://api.upstage.ai/v1", "UPSTAGE_API_KEY"),
+    "xiaomi":       ("https://cnbj3-cloud-ml.api.xiaomi.net", "XIAOMI_ACCESS_KEY_ID"),
 }
 
 
