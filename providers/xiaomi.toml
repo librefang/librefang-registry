@@ -3,9 +3,9 @@
 [provider]
 id = "xiaomi"
 display_name = "Xiaomi"
-api_key_env = "XIAOMI_API_KEY"
-base_url = ""
-key_required = false
+api_key_env = "OPENROUTER_API_KEY"
+base_url = "https://openrouter.ai/api/v1"
+key_required = true
 
 [[models]]
 id = "mimo-v2-flash"

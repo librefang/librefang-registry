@@ -47,11 +47,11 @@ SKIP_DUPLICATES = {
 }
 
 # Providers with known public APIs — set their official base_url + api_key_env.
-# Providers NOT in this map are OpenRouter-only and get key_required = false.
+# Providers NOT in this map route through OpenRouter.
 PROVIDER_API = {
     "arcee-ai":     ("https://api.arcee.ai/v1", "ARCEE_API_KEY"),
     "inception":    ("https://api.inceptionlabs.ai/v1", "INCEPTION_API_KEY"),
-    "morph":        ("https://api.morphlabs.io/v1", "MORPH_API_KEY"),
+    "morph":        ("https://api.morphllm.com/v1", "MORPH_API_KEY"),
     "nvidia":       ("https://integrate.api.nvidia.com/v1", "NVIDIA_API_KEY"),
     "reka":         ("https://api.reka.ai/v1", "REKA_API_KEY"),
     "upstage":      ("https://api.upstage.ai/v1", "UPSTAGE_API_KEY"),
@@ -146,12 +146,11 @@ def generate_provider_toml(provider_id, models, dry_run=False):
     # Check if provider has a known public API
     if our_name in PROVIDER_API:
         base_url, env_key = PROVIDER_API[our_name]
-        key_required = "true"
     else:
-        # No known public API — only accessible via OpenRouter/hosting providers
-        env_key = our_name.upper().replace("-", "_") + "_API_KEY"
-        base_url = ""
-        key_required = "false"
+        # No known public API — route through OpenRouter
+        base_url = "https://openrouter.ai/api/v1"
+        env_key = "OPENROUTER_API_KEY"
+    key_required = "true"
 
     lines = [
         f'# {provider_id} — auto-generated from OpenRouter API',
