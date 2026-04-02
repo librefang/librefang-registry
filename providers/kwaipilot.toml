@@ -3,9 +3,9 @@
 [provider]
 id = "kwaipilot"
 display_name = "Kwaipilot"
-api_key_env = "KWAIPILOT_API_KEY"
-base_url = ""
-key_required = false
+api_key_env = "OPENROUTER_API_KEY"
+base_url = "https://openrouter.ai/api/v1"
+key_required = true
 
 [[models]]
 id = "kat-coder-pro"

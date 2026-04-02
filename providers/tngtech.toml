@@ -3,9 +3,9 @@
 [provider]
 id = "tngtech"
 display_name = "Tngtech"
-api_key_env = "TNGTECH_API_KEY"
-base_url = ""
-key_required = false
+api_key_env = "OPENROUTER_API_KEY"
+base_url = "https://openrouter.ai/api/v1"
+key_required = true
 
 [[models]]
 id = "deepseek-r1t2-chimera"
