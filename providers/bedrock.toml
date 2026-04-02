@@ -111,3 +111,33 @@ supports_tools = true
 supports_vision = false
 supports_streaming = true
 aliases = []
+
+[[models]]
+id = "bedrock/amazon.nova-2-lite-v1:0"
+display_name = "Amazon: Nova 2 Lite"
+tier = "fast"
+context_window = 1000000
+max_output_tokens = 65535
+input_cost_per_m = 0.3
+output_cost_per_m = 2.5
+supports_streaming = true
+
+[[models]]
+id = "bedrock/amazon.nova-micro-v1:0"
+display_name = "Amazon: Nova Micro 1.0"
+tier = "fast"
+context_window = 128000
+max_output_tokens = 5120
+input_cost_per_m = 0.035
+output_cost_per_m = 0.14
+supports_streaming = true
+
+[[models]]
+id = "bedrock/amazon.nova-premier-v1:0"
+display_name = "Amazon: Nova Premier 1.0"
+tier = "frontier"
+context_window = 1000000
+max_output_tokens = 65535
+input_cost_per_m = 2.5
+output_cost_per_m = 12.5
+supports_streaming = true

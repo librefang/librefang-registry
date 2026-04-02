@@ -4,7 +4,7 @@
 id = "inception"
 display_name = "Inception"
 api_key_env = "INCEPTION_API_KEY"
-base_url = ""
+base_url = "https://api.inceptionlabs.ai/v1"
 key_required = true
 
 [[models]]

@@ -3,8 +3,8 @@
 [provider]
 id = "nex-agi"
 display_name = "Nex Agi"
-api_key_env = "NEX_AGI_API_KEY"
-base_url = ""
+api_key_env = "OPENROUTER_API_KEY"
+base_url = "https://openrouter.ai/api/v1"
 key_required = true
 
 [[models]]

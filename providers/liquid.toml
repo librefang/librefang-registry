@@ -3,8 +3,8 @@
 [provider]
 id = "liquid"
 display_name = "Liquid"
-api_key_env = "LIQUID_API_KEY"
-base_url = ""
+api_key_env = "OPENROUTER_API_KEY"
+base_url = "https://openrouter.ai/api/v1"
 key_required = true
 
 [[models]]

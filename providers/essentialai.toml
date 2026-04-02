@@ -3,8 +3,8 @@
 [provider]
 id = "essentialai"
 display_name = "Essentialai"
-api_key_env = "ESSENTIALAI_API_KEY"
-base_url = ""
+api_key_env = "OPENROUTER_API_KEY"
+base_url = "https://openrouter.ai/api/v1"
 key_required = true
 
 [[models]]

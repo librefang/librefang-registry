@@ -157,3 +157,13 @@ supports_tools = false
 supports_vision = true
 supports_streaming = true
 aliases = []
+
+[[models]]
+id = "tongyi-deepresearch-30b-a3b"
+display_name = "Tongyi DeepResearch 30B A3B"
+tier = "fast"
+context_window = 131072
+max_output_tokens = 131072
+input_cost_per_m = 0.09
+output_cost_per_m = 0.45
+supports_streaming = true

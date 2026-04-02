@@ -3,8 +3,8 @@
 [provider]
 id = "arcee-ai"
 display_name = "Arcee Ai"
-api_key_env = "ARCEE_AI_API_KEY"
-base_url = ""
+api_key_env = "ARCEE_API_KEY"
+base_url = "https://api.arcee.ai/v1"
 key_required = true
 
 [[models]]
