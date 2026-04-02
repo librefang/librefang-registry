@@ -3,8 +3,8 @@
 [provider]
 id = "microsoft"
 display_name = "Microsoft"
-api_key_env = "OPENROUTER_API_KEY"
-base_url = "https://openrouter.ai/api/v1"
+api_key_env = "GITHUB_TOKEN"
+base_url = "https://models.inference.ai.azure.com"
 key_required = true
 
 [[models]]
