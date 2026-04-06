@@ -144,6 +144,8 @@ default = "true"
 [agents.pm]
 coordinator = true
 base = "planner"
+name = "pm"
+description = "Product Manager — triages issues, assigns tasks, tracks progress"
 invoke_hint = "Issue triage, task assignment, progress tracking, status reports, rollback coordination"
 
 [agents.pm.model]
@@ -193,6 +195,8 @@ max_llm_tokens_per_hour = 200000
 
 [agents.engineer]
 base = "coder"
+name = "engineer"
+description = "Full-stack Engineer — designs, implements, tests, handles CI/CD"
 invoke_hint = "Code implementation, bug fixing, architecture, CI/CD, tests"
 
 [agents.engineer.model]
@@ -247,6 +251,8 @@ max_llm_tokens_per_hour = 300000
 
 [agents.qa]
 base = "code-reviewer"
+name = "qa"
+description = "QA Engineer — reviews code, runs tests, catches bugs"
 invoke_hint = "Code review, testing, quality verification, security audit"
 # QA can't modify code — only read and verify
 tool_blocklist = ["file_write"]
