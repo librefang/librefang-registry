@@ -23,7 +23,11 @@ tools = [
   "knowledge_add_relation",
   "knowledge_query",
   "event_publish",
+  "agent_list",
 ]
+
+# MCP servers for richer GitHub integration (optional — hand works without them via CLI/API fallback)
+mcp_servers = ["github"]
 
 # ─── Requirements ────────────────────────────────────────────────────────────
 
@@ -47,6 +51,19 @@ optional = false
 [requires.install]
 macos = "brew install python3"
 linux_apt = "sudo apt install python3"
+
+[[requires]]
+key = "gh"
+label = "GitHub CLI (preferred for GitHub operations, falls back to MCP/API without it)"
+requirement_type = "binary"
+check_value = "gh"
+optional = true
+
+[requires.install]
+macos = "brew install gh"
+linux_apt = "sudo apt install gh"
+manual_url = "https://cli.github.com/"
+estimated_time = "2-5 min"
 
 [[requires]]
 key = "GITHUB_TOKEN"
@@ -192,6 +209,25 @@ label = "Git Flow (develop + release branches)"
 value = "trunk"
 label = "Trunk-based (short-lived branches)"
 
+[[settings]]
+key = "issue_tracker"
+label = "Issue Tracker"
+description = "Primary issue tracker. GitHub Issues is always available. Linear/Jira add MCP integration for richer project management."
+setting_type = "select"
+default = "github"
+
+[[settings.options]]
+value = "github"
+label = "GitHub Issues (built-in)"
+
+[[settings.options]]
+value = "linear"
+label = "Linear (requires Linear MCP integration)"
+
+[[settings.options]]
+value = "jira"
+label = "Jira (requires Jira MCP integration)"
+
 # ─── Agents ──────────────────────────────────────────────────────────────────
 
 [agents.pm]
@@ -206,7 +242,23 @@ temperature = 0.3
 max_iterations = 40
 system_prompt = """You are the Product Manager (PM) of an autonomous dev team.
 
-You own the **what** and **when**. You do NOT write code -- you coordinate via GitHub API and delegate implementation to Engineer.
+You own the **what** and **when**. You do NOT write code -- you coordinate and delegate implementation to Engineer.
+
+## GitHub Interaction: gh > MCP > curl API
+
+For ALL GitHub operations (issues, PRs, reviews, merges), use this priority:
+1. **`gh` CLI** (preferred) — if `gh` is on PATH, use it. It handles auth, pagination, and JSON output natively:
+   - `gh issue list --repo {repo_url} --state open --json number,title,labels,assignees,createdAt`
+   - `gh issue view {number} --repo {repo_url} --json body,comments`
+   - `gh pr list --repo {repo_url} --state open --json number,title,headRefName,author`
+   - `gh pr review {number} --repo {repo_url} --approve --body "QA passed"`
+   - `gh pr merge {number} --repo {repo_url} --squash`
+   - `gh issue close {number} --repo {repo_url} --reason completed`
+   - `gh issue comment {number} --repo {repo_url} --body "message"`
+2. **GitHub MCP tools** — if gh CLI is not available but GitHub MCP is connected, use its tools for the same operations.
+3. **curl + GitHub REST API** — last resort fallback, use the curl commands documented below.
+
+On startup, detect which is available: `which gh && gh auth status` — if it works, prefer gh for everything.
 
 ## Shared Repo
 
@@ -407,6 +459,13 @@ temperature = 0.2
 max_iterations = 60
 system_prompt = """You are the Engineer of an autonomous dev team. You are a senior full-stack developer who handles architecture, implementation, testing, CI/CD, and UI work.
 
+## GitHub Interaction: gh > MCP > curl API
+Prefer `gh` CLI when available, fall back to GitHub MCP tools, then curl. Examples:
+- Create PR: `gh pr create --repo {repo_url} --title "fix: desc (#N)" --body "Closes #N" --head {branch} --base main`
+- Comment on PR: `gh pr comment {pr_number} --repo {repo_url} --body "Addressed feedback"`
+- Submit review: `gh pr review {pr_number} --repo {repo_url} --request-changes --body "See comments"`
+If `gh` is not available, use curl as documented in the fallback sections below.
+
 ## Shared Repo
 
 All agents share one checkout at `../shared/repo/`. You own it -- clone on first task, and all agents read from it.
@@ -538,6 +597,13 @@ max_tokens = 8192
 temperature = 0.2
 max_iterations = 30
 system_prompt = """You are the QA Engineer of an autonomous dev team. Your job is to be skeptical -- assume the implementation has bugs until proven otherwise.
+
+## GitHub Interaction: gh > MCP > curl API
+Prefer `gh` CLI when available, fall back to GitHub MCP tools, then curl. Examples:
+- Approve PR: `gh pr review {pr_number} --repo {repo_url} --approve --body "QA passed"`
+- Request changes: `gh pr review {pr_number} --repo {repo_url} --request-changes --body "Found issues"`
+- Comment: `gh pr comment {pr_number} --repo {repo_url} --body "Details"`
+If `gh` is not available, use curl as documented below.
 
 ## Shared Repo
 
@@ -681,6 +747,10 @@ description = "开启时 PM 等待人工审批后才合并 PR。关闭时 QA 通
 [i18n.zh.settings.branch_strategy]
 label = "分支策略"
 description = "Git 分支模型"
+
+[i18n.zh.settings.issue_tracker]
+label = "Issue 跟踪器"
+description = "主要 Issue 跟踪器。GitHub Issues 始终可用。Linear/Jira 需要对应的 MCP 集成。"
 
 [i18n.ja]
 name = "開発チーム"

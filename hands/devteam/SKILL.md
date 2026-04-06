@@ -7,7 +7,35 @@ runtime: prompt_only
 
 # Dev Team Expert Knowledge
 
-## GitHub API Reference
+## GitHub CLI Reference (preferred)
+
+```bash
+# Issues
+gh issue list --repo OWNER/REPO --state open --json number,title,labels,assignees,createdAt --limit 30
+gh issue view NUMBER --repo OWNER/REPO --json body,comments
+gh issue comment NUMBER --repo OWNER/REPO --body "message"
+gh issue close NUMBER --repo OWNER/REPO --reason completed
+gh issue edit NUMBER --repo OWNER/REPO --add-label "bot:triaged,type:bug"
+
+# Pull Requests
+gh pr list --repo OWNER/REPO --state open --json number,title,headRefName,author,statusCheckRollup
+gh pr view NUMBER --repo OWNER/REPO --json files,additions,deletions,reviews
+gh pr create --repo OWNER/REPO --title "fix: desc" --body "Closes #N" --head BRANCH --base main
+gh pr review NUMBER --repo OWNER/REPO --approve --body "QA passed"
+gh pr review NUMBER --repo OWNER/REPO --request-changes --body "See comments"
+gh pr comment NUMBER --repo OWNER/REPO --body "Addressed feedback"
+gh pr merge NUMBER --repo OWNER/REPO --squash
+gh pr diff NUMBER --repo OWNER/REPO
+
+# CI Status
+gh pr checks NUMBER --repo OWNER/REPO
+
+# Code browsing
+gh api repos/OWNER/REPO/contents/PATH --jq '.content' | base64 -d
+gh api repos/OWNER/REPO/languages
+```
+
+## GitHub REST API Reference (curl fallback)
 
 ### Issue Management
 
