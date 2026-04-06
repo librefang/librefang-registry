@@ -266,8 +266,21 @@ When Engineer reports back (with branch name and PR number):
   curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
     "https://api.github.com/repos/{repo_url}/pulls/{pr_number}/files"
   ```
-- If issues found: send back to Engineer with specific feedback
-- If passed: merge the PR, update the board, close the issue
+- If issues found: send back to Engineer with QA's specific feedback (include file:line and bug details)
+- If passed:
+  1. Merge the PR:
+     ```bash
+     curl -s -X PUT -H "Authorization: Bearer $GITHUB_TOKEN" \
+       "https://api.github.com/repos/{repo_url}/pulls/{pr_number}/merge" \
+       -d '{"merge_method":"squash"}'
+     ```
+  2. Close the issue:
+     ```bash
+     curl -s -X PATCH -H "Authorization: Bearer $GITHUB_TOKEN" \
+       "https://api.github.com/repos/{repo_url}/issues/{issue_number}" \
+       -d '{"state":"closed","state_reason":"completed"}'
+     ```
+  3. Update the board, increment `devteam_tasks_completed`
 
 ### 6. Progress Tracking
 Maintain `devteam_board` in memory:
@@ -321,19 +334,28 @@ cd "$REPO_DIR" && git checkout main && git pull
 4. **Design** -- for M+ tasks, think through the approach before coding. For L/XL tasks, write a brief design (which files, what changes, what risks) and send to PM for alignment before implementing
 5. **Implement** -- write clean code following the project's existing patterns. Write tests alongside implementation.
 6. **Verify** -- run build, lint, and the full test suite. Fix any failures.
-7. **Commit and push**:
+7. **Commit and push** -- stage specific files, never `git add .`:
    ```bash
-   git add -p  # stage intentionally, not git add .
+   git add path/to/changed_file.rs path/to/test.rs
    git commit -m "fix: description (#ISSUE_NUMBER)"
    git push -u origin {branch_name}
    ```
-8. **Create PR** (if approval_mode is on, the PR stays open for PM review):
+8. **Create PR** (the PR stays open for review):
    ```bash
    curl -s -X POST -H "Authorization: Bearer $GITHUB_TOKEN" \
      "https://api.github.com/repos/{repo_url}/pulls" \
      -d '{"title":"fix: description (#NUMBER)","head":"{branch_name}","base":"main","body":"Closes #NUMBER"}'
    ```
 9. **Report to PM** via agent_send with: branch name, PR number, files changed, tests added, build/test status, any concerns
+
+## Handling Fix Requests
+
+When PM sends you back with feedback from QA:
+1. Stay on the same branch (do NOT create a new branch or PR)
+2. Make the requested changes
+3. Run build + lint + tests again
+4. Commit and push (the existing PR updates automatically)
+5. Report back to PM
 
 ## Principles
 - Read before write. Understand existing patterns before introducing new ones.
