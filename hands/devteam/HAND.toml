@@ -296,6 +296,40 @@ model = "default"
 max_tokens = 8192
 temperature = 0.3
 max_iterations = 40
+profile = "automation"
+
+[agents.pm.resources]
+max_llm_tokens_per_hour = 200000
+
+[[agents.pm.fallback_models]]
+provider = "default"
+model = "default"
+
+[agents.pm.capabilities]
+tools = [
+  "web_fetch",
+  "web_search",
+  "shell_exec",
+  "file_read",
+  "file_list",
+  "memory_store",
+  "memory_recall",
+  "memory_list",
+  "schedule_create",
+  "schedule_list",
+  "schedule_delete",
+  "knowledge_add_entity",
+  "knowledge_add_relation",
+  "knowledge_query",
+  "event_publish",
+  "agent_send",
+  "agent_list",
+  "workflow_run",
+]
+memory_read = ["*"]
+memory_write = ["self.*", "shared.*"]
+agent_message = ["*"]
+shell = ["gh *", "curl *", "cat *", "python3 *"]
 system_prompt = """You are the Product Manager (PM) of an autonomous dev team.
 
 You own the **what** and **when**. You do NOT write code -- you coordinate and delegate implementation to Engineer.
@@ -377,7 +411,13 @@ For each new issue (not already on the board):
 2. Check labels and assignees -- skip issues already assigned to a human or labeled `wontfix`/`duplicate`.
 3. Classify: bug / feature / refactor / docs
 4. Estimate: S (< 50 lines) / M (50-200) / L (200-1000) / XL (1000+, decompose first)
-5. For XL issues: break into sub-tasks, create follow-up issues if needed
+5. For XL issues, apply the Planner methodology to decompose:
+   - SCOPE: define in/out of scope for this issue
+   - DECOMPOSE: break into S/M-sized sub-issues (create them on GitHub)
+   - SEQUENCE: identify dependencies between sub-issues
+   - ESTIMATE: size each sub-issue
+   - RISK: flag the riskiest part to tackle first
+   Use `workflow_run product-spec` for vague feature XLs to generate a proper PRD first.
 6. Label the issue and comment (all GitHub comments MUST be in English):
    ```bash
    curl -s -X POST -H "Authorization: Bearer $GITHUB_TOKEN" \
@@ -559,6 +599,36 @@ model = "default"
 max_tokens = 16384
 temperature = 0.2
 max_iterations = 60
+profile = "coding"
+
+[agents.engineer.resources]
+max_llm_tokens_per_hour = 300000
+max_concurrent_tools = 10
+
+[[agents.engineer.fallback_models]]
+provider = "default"
+model = "default"
+
+[agents.engineer.capabilities]
+tools = [
+  "file_read",
+  "file_write",
+  "file_list",
+  "shell_exec",
+  "web_fetch",
+  "web_search",
+  "memory_store",
+  "memory_recall",
+  "knowledge_add_entity",
+  "knowledge_add_relation",
+  "knowledge_query",
+  "agent_send",
+  "workflow_run",
+]
+network = ["*"]
+memory_read = ["*"]
+memory_write = ["self.*", "shared.*"]
+shell = ["cargo *", "rustc *", "npm *", "node *", "python *", "pip *", "go *", "swift *", "mvn *", "git *", "gh *", "curl *", "make *", "docker *"]
 system_prompt = """You are the Engineer of an autonomous dev team. You are a senior full-stack developer who handles architecture, implementation, testing, CI/CD, and UI work.
 
 ## GitHub Interaction: gh > MCP > curl API
@@ -734,6 +804,30 @@ model = "default"
 max_tokens = 8192
 temperature = 0.2
 max_iterations = 30
+profile = "coding"
+
+[agents.qa.resources]
+max_llm_tokens_per_hour = 150000
+
+[[agents.qa.fallback_models]]
+provider = "default"
+model = "default"
+
+[agents.qa.capabilities]
+tools = [
+  "file_read",
+  "file_list",
+  "shell_exec",
+  "web_fetch",
+  "memory_store",
+  "memory_recall",
+  "knowledge_query",
+  "agent_send",
+  "workflow_run",
+]
+memory_read = ["*"]
+memory_write = ["self.*", "shared.*"]
+shell = ["cargo test *", "cargo clippy *", "cargo audit *", "npm test *", "npm run lint *", "pytest *", "ruff *", "go test *", "golangci-lint *", "swift test *", "mvn test *", "git *", "gh *", "curl *"]
 system_prompt = """You are the QA Engineer of an autonomous dev team. Your job is to be skeptical -- assume the implementation has bugs until proven otherwise.
 
 ## GitHub Interaction: gh > MCP > curl API
