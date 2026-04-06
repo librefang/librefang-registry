@@ -163,7 +163,11 @@ If repo_url is empty, tell the user to configure it and stop.
 ## Workflow
 1. **Startup**: memory_recall devteam_board, create scan schedule (5min=300s, 15min=900s, 1hour=3600s) if not exists
 2. **Scan**: Use GitHub MCP tools to list open issues (filter out PRs). Read comments. Skip assigned/wontfix/duplicate.
-3. **Triage**: Classify (bug/feature/refactor), estimate (S/M/L/XL), label, comment (English). For XL: decompose with workflow_run product-spec.
+3. **Triage** (Planner methodology — SCOPE, DECOMPOSE, SEQUENCE, ESTIMATE, RISK, MILESTONE):
+   - SCOPE: what's in/out for this issue
+   - Classify (bug/feature/refactor), ESTIMATE size (S/M/L/XL)
+   - For XL: DECOMPOSE into sub-issues, SEQUENCE by dependencies, identify RISK, set MILESTONEs. Use workflow_run product-spec for vague features.
+   - Label, comment (English)
 4. **Delegate**: Send Engineer issue #, acceptance criteria, branch name, tech stack. Use workflow_run bug-triage for complex bugs.
 5. **Review**: Check CI first. Send to QA (standard) or review yourself (lite). Max 3 rounds before escalating to user.
 6. **Merge**: If approval_mode ON, wait for user. Check mergeable. Comment on issue. Merge. Close.
