@@ -1,22 +1,19 @@
 # Dev Team Hand
 
-Autonomous software development team -- PM triages issues, architect designs, developers implement, QA validates, DevOps ships.
+Autonomous software development team -- PM triages issues and coordinates, Engineer implements, QA validates.
 
-## Configuration
+## Why 3 Agents, Not 7
 
-| Field | Value |
-|-------|-------|
-| Category | `development` |
-| Agents | `pm` (coordinator), `architect`, `frontend`, `backend`, `devops`, `qa`, `designer` |
-| Routing | `dev team`, `development team`, `software team`, `project team`, `build a project`, `issue triage` |
+A dev team hand with PM/Architect/Frontend/Backend/DevOps/QA/Designer sounds good on paper, but agent_send is synchronous -- PM waits for each response. A 7-agent pipeline means 5-6 serial round-trips per issue, massive token consumption, and information loss at every handoff.
 
-## Team Tiers
+Instead: one strong **Engineer** who handles architecture, implementation, testing, and CI/CD in a single context. A separate **QA** because verification requires a skeptical perspective independent from the implementer. And **PM** to hold the global view without getting polluted by implementation details.
 
-| Tier | Roles | Best For |
-|------|-------|----------|
-| **Simple** | PM + Backend | Solo projects, quick fixes, small features |
-| **Standard** | PM + Architect + Backend + QA | Most projects -- design review + testing |
-| **Full** | All 7 roles | Large projects with frontend, CI/CD, and design needs |
+## Tiers
+
+| Tier | Agents | When to Use |
+|------|--------|-------------|
+| **Lite** | PM + Engineer | Small projects, quick fixes. PM does QA. |
+| **Standard** | PM + Engineer + QA | Most projects. Separate verification. |
 
 ## Workflow
 
@@ -24,50 +21,41 @@ Autonomous software development team -- PM triages issues, architect designs, de
 GitHub Issue
   |
   v
-PM scans & triages (via cron)
+PM scans & triages (cron)
   |
   v
-PM assigns to role based on tier
+PM assigns to Engineer (with acceptance criteria)
   |
   v
-Architect designs (standard/full) -----> Developer implements
-  |                                           |
-  v                                           v
-Designer provides UI spec (full)         QA verifies (standard/full)
-  |                                           |
-  v                                           v
-DevOps deploys (full)                    PM reviews & closes issue
+Engineer: read code -> design (if needed) -> implement + test -> report
+  |
+  v
+QA verifies (standard) / PM verifies (lite)
+  |
+  v
+PM closes issue, updates board
 ```
 
 ## Settings
 
-- **Team Size** -- `simple`, `standard`, `full`
-- **Repository URL** -- GitHub `owner/repo` to work on
-- **Issue Scan Interval** -- `5min`, `15min`, `1hour`, `manual`
-- **Tech Stack** -- `auto`, `rust`, `typescript`, `python`, `go`, `java`, `swift`
-- **Approval Mode** -- Require human approval before commits (default: on)
-- **Branch Strategy** -- `feature_branch`, `gitflow`, `trunk`
+| Setting | Options | Default |
+|---------|---------|---------|
+| Team Size | `lite`, `standard` | `standard` |
+| Repository URL | `owner/repo` | (empty) |
+| Issue Scan Interval | `5min`, `15min`, `1hour`, `manual` | `15min` |
+| Tech Stack | `auto`, `rust`, `typescript`, `python`, `go`, `java`, `swift` | `auto` |
+| Approval Mode | on/off | on |
+| Branch Strategy | `feature_branch`, `gitflow`, `trunk` | `feature_branch` |
 
 ## Requirements
 
-- `git` -- installed on PATH
-- `GITHUB_TOKEN` -- for issue scanning and PR creation
+- `git` on PATH
+- `GITHUB_TOKEN` env var
 
 ## Usage
 
 ```bash
-# Activate with default settings (standard tier)
 librefang hand activate devteam
-
-# Configure
 librefang hand set devteam repo_url "owner/repo"
-librefang hand set devteam team_size "full"
-
-# Chat with the team
 librefang hand chat devteam
-
-# Send a task
-curl -s -X POST http://127.0.0.1:4545/api/hands/instances/{id}/message \
-  -H "Content-Type: application/json" \
-  -d '{"message": "Implement issue #42"}'
 ```
