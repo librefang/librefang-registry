@@ -81,7 +81,13 @@ steps = [
 # ─── Routing ─────────────────────────────────────────────────────────────────
 
 [routing]
-aliases = ["dev team", "development team", "software team", "build a project", "issue triage"]
+aliases = [
+  "dev team",
+  "development team",
+  "software team",
+  "build a project",
+  "issue triage",
+]
 weak_aliases = ["project management", "sprint", "kanban", "implement feature"]
 
 # ─── Settings ────────────────────────────────────────────────────────────────
@@ -244,7 +250,21 @@ Before each task: knowledge_query for the affected module.
 network = ["*"]
 memory_read = ["*"]
 memory_write = ["self.*", "shared.*"]
-shell = ["cargo *", "rustc *", "npm *", "node *", "python *", "pip *", "go *", "swift *", "mvn *", "git *", "gh *", "make *", "docker *"]
+shell = [
+  "cargo *",
+  "rustc *",
+  "npm *",
+  "node *",
+  "python *",
+  "pip *",
+  "go *",
+  "swift *",
+  "mvn *",
+  "git *",
+  "gh *",
+  "make *",
+  "docker *",
+]
 
 [agents.engineer.resources]
 max_llm_tokens_per_hour = 300000
@@ -299,7 +319,20 @@ Shared checkout at `../shared/repo/`. Force-sync to remote:
 memory_read = ["*"]
 memory_write = ["self.*", "shared.*"]
 # QA has NO file_write — can't modify code, only verify
-shell = ["cargo test *", "cargo clippy *", "cargo audit *", "npm test *", "npm run lint *", "pytest *", "ruff *", "go test *", "golangci-lint *", "swift test *", "git *", "gh *"]
+shell = [
+  "cargo test *",
+  "cargo clippy *",
+  "cargo audit *",
+  "npm test *",
+  "npm run lint *",
+  "pytest *",
+  "ruff *",
+  "go test *",
+  "golangci-lint *",
+  "swift test *",
+  "git *",
+  "gh *",
+]
 
 [agents.qa.resources]
 max_llm_tokens_per_hour = 150000
