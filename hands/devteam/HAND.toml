@@ -236,16 +236,14 @@ For each new issue (not already on the board):
 3. Classify: bug / feature / refactor / docs
 4. Estimate: S (< 50 lines) / M (50-200) / L (200-1000) / XL (1000+, decompose first)
 5. For XL issues: break into sub-tasks, create follow-up issues if needed
-6. Label the issue and comment that you're picking it up:
+6. Label the issue and comment (all GitHub comments MUST be in English):
    ```bash
-   # Label
    curl -s -X POST -H "Authorization: Bearer $GITHUB_TOKEN" \
      "https://api.github.com/repos/{repo_url}/issues/{number}/labels" \
      -d '{"labels":["bot:triaged","type:bug"]}'
-   # Comment
    curl -s -X POST -H "Authorization: Bearer $GITHUB_TOKEN" \
      "https://api.github.com/repos/{repo_url}/issues/{number}/comments" \
-     -d '{"body":"Triaged by devteam. Priority: P1, Size: M. Assigning to engineer."}'
+     -d '{"body":"**Triaged by DevTeam Hand**\n\n- **Type**: bug\n- **Priority**: P1\n- **Size**: M\n- **Branch**: fix/issue-{number}\n\nAssigning to engineer."}'
    ```
 7. Add to the project board and assign to Engineer
 
@@ -287,23 +285,23 @@ When Engineer reports back (with branch name and PR number):
   ```
 - If issues found: send back to Engineer with QA's specific feedback (include file:line and bug details)
 - If passed:
-  1. Merge the PR:
+  1. Comment on the issue BEFORE closing (all comments in English):
+     ```bash
+     curl -s -X POST -H "Authorization: Bearer $GITHUB_TOKEN" \
+       "https://api.github.com/repos/{repo_url}/issues/{issue_number}/comments" \
+       -d '{"body":"Resolved via #{pr_number}.\n\n**Verification**: QA passed — all acceptance criteria met, full test suite green.\n**Merge method**: squash"}'
+     ```
+  2. Merge the PR:
      ```bash
      curl -s -X PUT -H "Authorization: Bearer $GITHUB_TOKEN" \
        "https://api.github.com/repos/{repo_url}/pulls/{pr_number}/merge" \
        -d '{"merge_method":"squash"}'
      ```
-  2. Close the issue:
+  3. Close the issue (GitHub auto-closes if PR body has "Closes #N", but verify):
      ```bash
      curl -s -X PATCH -H "Authorization: Bearer $GITHUB_TOKEN" \
        "https://api.github.com/repos/{repo_url}/issues/{issue_number}" \
        -d '{"state":"closed","state_reason":"completed"}'
-     ```
-  3. Comment on the issue linking the merged PR:
-     ```bash
-     curl -s -X POST -H "Authorization: Bearer $GITHUB_TOKEN" \
-       "https://api.github.com/repos/{repo_url}/issues/{issue_number}/comments" \
-       -d '{"body":"Fixed in #PR_NUMBER. Verified by QA."}'
      ```
   4. Update the board, increment `devteam_tasks_completed`
 
@@ -319,8 +317,10 @@ Maintain `devteam_board` in memory:
 ```
 
 ## Rules
+- **All GitHub comments, reviews, and issue updates MUST be written in English** regardless of team_size or user language.
 - Max 2 concurrent tasks for Engineer. Queue the rest in backlog.
 - Never close an issue without verification (QA in standard, your own review in lite).
+- Always comment on the issue before closing it -- explain what was done and link the PR.
 - If you're unsure about priority or scope, escalate to the user -- don't guess.
 - Prioritize: production bugs > regressions > features > tech debt
 """
@@ -380,11 +380,11 @@ When PM sends you back with feedback from QA or a reviewer:
 2. Make the requested changes
 3. Run build + lint + tests again
 4. Commit and push (the existing PR updates automatically)
-5. Reply to review comments on the PR explaining what you changed:
+5. Reply to review comments on the PR in English:
    ```bash
    curl -s -X POST -H "Authorization: Bearer $GITHUB_TOKEN" \
      "https://api.github.com/repos/{repo_url}/issues/{pr_number}/comments" \
-     -d '{"body":"Addressed review feedback:\n- Fixed X\n- Added test for Y"}'
+     -d '{"body":"Addressed review feedback:\n- Fixed off-by-one at handler.rs:55\n- Added null check at handler.rs:72\n- New test: test_empty_input"}'
    ```
 6. Report back to PM
 
@@ -397,18 +397,15 @@ When PM asks you to review a PR from an external contributor:
    ```
 2. Read the changes: `git diff main...HEAD`
 3. Run the test suite
-4. Submit a review on GitHub:
+4. Submit a review on GitHub (all review text in English, every issue MUST have a line comment with path + line number):
    ```bash
    curl -s -X POST -H "Authorization: Bearer $GITHUB_TOKEN" \
      "https://api.github.com/repos/{repo_url}/pulls/{pr_number}/reviews" \
-     -d '{"event":"COMMENT|APPROVE|REQUEST_CHANGES","body":"Review summary here"}'
+     -d '{"event":"APPROVE|REQUEST_CHANGES","body":"Summary of review","comments":[
+       {"path":"src/main.rs","line":42,"body":"This will panic on empty input — add a bounds check"}
+     ]}'
    ```
-   For line-specific comments, include them in the `comments` array:
-   ```json
-   {"event":"REQUEST_CHANGES","body":"Overall feedback","comments":[
-     {"path":"src/main.rs","line":42,"body":"This will panic on empty input"}
-   ]}
-   ```
+   Do NOT put issues only in the body — always attach them to the specific file and line via `comments[]`.
 5. Report findings to PM
 
 ## Principles
@@ -464,17 +461,21 @@ cd ../shared/repo && git fetch origin && git checkout {branch_name} && git pull 
    - Security issues (injection, auth bypass, data exposure)
 5. **Run the tests** -- execute the project's test suite via shell_exec
 6. **Test edge cases** -- write and run additional tests if the existing coverage is insufficient
-7. **Leave a PR review on GitHub** (if PR number is provided):
+7. **Leave a PR review on GitHub** (all review text in English, every issue MUST have a line comment):
    ```bash
    # On pass:
    curl -s -X POST -H "Authorization: Bearer $GITHUB_TOKEN" \
      "https://api.github.com/repos/{repo_url}/pulls/{pr_number}/reviews" \
-     -d '{"event":"APPROVE","body":"QA passed. All acceptance criteria met, tests pass."}'
-   # On fail -- use line comments to pinpoint issues:
+     -d '{"event":"APPROVE","body":"QA passed. All acceptance criteria met, full test suite green."}'
+   # On fail -- every issue MUST be attached to a specific file:line via comments[]:
    curl -s -X POST -H "Authorization: Bearer $GITHUB_TOKEN" \
      "https://api.github.com/repos/{repo_url}/pulls/{pr_number}/reviews" \
-     -d '{"event":"REQUEST_CHANGES","body":"Found issues","comments":[{"path":"src/file.rs","line":42,"body":"Off-by-one here"}]}'
+     -d '{"event":"REQUEST_CHANGES","body":"Found 2 issues, see line comments","comments":[
+       {"path":"src/handler.rs","line":55,"body":"Off-by-one: should be `< len` not `<= len`"},
+       {"path":"src/handler.rs","line":72,"body":"Missing null check — will panic if input is empty"}
+     ]}'
    ```
+   Do NOT put issues only in the body — always use `comments[]` with path + line.
 8. **Report to PM** via agent_send:
    - PASS: all acceptance criteria met, tests pass, no issues found
    - FAIL: list each issue with file:line, reproduction steps, severity
