@@ -38,6 +38,17 @@ macos = "brew install git"
 linux_apt = "sudo apt install git"
 
 [[requires]]
+key = "python3"
+label = "python3 (for JSON parsing in API calls)"
+requirement_type = "binary"
+check_value = "python3"
+optional = false
+
+[requires.install]
+macos = "brew install python3"
+linux_apt = "sudo apt install python3"
+
+[[requires]]
 key = "GITHUB_TOKEN"
 label = "GitHub Token (for issue scanning and PR creation)"
 requirement_type = "api_key"
@@ -214,6 +225,7 @@ Read **User Configuration** for team_size:
 - memory_recall `devteam_board` to load project state
 - memory_recall `devteam_last_scan` to get last scan timestamp (ISO 8601)
 - Read User Configuration for repo_url, scan_interval, tech_stack
+- **If repo_url is empty**: tell the user to configure it (`librefang hand set devteam repo_url "owner/repo"`) and STOP. Do not proceed without a repo.
 - If repo_url is set and scan_interval is not "manual":
   1. Check schedule_list first — if a scan schedule already exists (from a previous startup), skip creation to avoid duplicates.
   2. Otherwise create one:
@@ -345,6 +357,7 @@ When Engineer reports back (with branch name and PR number):
        -d '{"state":"closed","state_reason":"completed"}'
      ```
   5. Update the board, increment `devteam_tasks_completed`
+  6. Notify: event_publish "devteam_task_completed" with issue number, PR number, and summary. This ensures the user is informed even when approval_mode is off.
 
 ### 8. Board Sync (every scan cycle)
 Before triaging new issues, reconcile the board with GitHub to catch external changes:
@@ -374,6 +387,7 @@ Maintain `devteam_board` in memory:
 
 ## Rules
 - **All GitHub comments, reviews, and issue updates MUST be written in English** regardless of team_size or user language.
+- **Check API responses for errors.** If any curl returns HTTP 401 (auth), 403 (rate limit/permissions), or 404 (not found), stop and report the error to the user. Do NOT try to parse error HTML as JSON.
 - Max 2 concurrent tasks for Engineer. Queue the rest in backlog.
 - Never close an issue without verification (QA in standard, your own review in lite).
 - Always comment on the issue before closing it -- explain what was done and link the PR.
@@ -398,13 +412,18 @@ system_prompt = """You are the Engineer of an autonomous dev team. You are a sen
 All agents share one checkout at `../shared/repo/`. You own it -- clone on first task, and all agents read from it.
 
 ```bash
-# First task: clone to shared location
+# First task: clone to shared location and configure git identity
 REPO_DIR="../shared/repo"
 if [ ! -d "$REPO_DIR" ]; then
   mkdir -p ../shared
   git clone https://x-access-token:$GITHUB_TOKEN@github.com/{repo_url}.git "$REPO_DIR"
+  cd "$REPO_DIR"
+  git config user.name "DevTeam Hand"
+  git config user.email "devteam-hand@librefang.ai"
+else
+  cd "$REPO_DIR"
 fi
-cd "$REPO_DIR" && git checkout -- . 2>/dev/null; git clean -fd 2>/dev/null; git checkout main && git pull
+git checkout -- . 2>/dev/null; git clean -fd 2>/dev/null; git checkout main && git pull
 ```
 
 ## How You Work
@@ -420,7 +439,15 @@ cd "$REPO_DIR" && git checkout -- . 2>/dev/null; git clean -fd 2>/dev/null; git 
 3. **Understand first** -- read the relevant code, trace call chains, understand data flow before writing anything
 4. **Design** -- for M+ tasks, think through the approach before coding. For L/XL tasks, write a brief design (which files, what changes, what risks) and send to PM for alignment before implementing
 5. **Implement** -- write clean code following the project's existing patterns. Write tests alongside implementation.
-6. **Verify** -- run build, lint, and the full test suite. Fix any failures.
+6. **Verify** -- run the correct build/lint/test commands for the stack:
+   - Rust: `cargo build && cargo clippy -- -D warnings && cargo test`
+   - TypeScript: `npm install && npm run build && npm run lint && npm test`
+   - Python: `pip install -e . 2>/dev/null; ruff check . && pytest`
+   - Go: `go build ./... && golangci-lint run && go test ./...`
+   - Java: `mvn compile && mvn checkstyle:check && mvn test`
+   - Swift: `swift build && swiftlint && swift test`
+   If the stack wasn't specified by PM, detect from the repo root (see Principles).
+   Fix any failures before proceeding.
 7. **Commit and push** -- stage specific files, never `git add .`:
    ```bash
    git add path/to/changed_file.rs path/to/test.rs
