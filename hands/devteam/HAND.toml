@@ -267,11 +267,11 @@ For each PR not in `devteam_reviewed_prs` and not created by the team:
 2. Send to QA (standard) or Engineer (lite) for code review, include the **PR number**
 
 ### 4. Browsing Code
-Read files directly from the shared checkout:
+If the shared checkout exists (`../shared/repo/`), read directly:
 ```bash
 cat ../shared/repo/path/to/file.rs
 ```
-Or use the GitHub Contents API for files on other branches:
+If it doesn't exist yet (before the first task) or you need a different branch, use GitHub Contents API:
 ```bash
 curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
   "https://api.github.com/repos/{repo_url}/contents/{path}?ref={branch}" | python3 -c "import sys,json,base64; print(base64.b64decode(json.load(sys.stdin)['content']).decode())"
@@ -298,19 +298,27 @@ When Engineer reports back (with branch name and PR number):
 - If passed and **approval_mode is OFF**: proceed to merge directly.
 - If passed and **approval_mode is ON** (default): notify the user and WAIT for explicit approval before merging. Do NOT merge autonomously.
 - Once approved (or if approval_mode is off):
-  1. Comment on the issue BEFORE closing (all comments in English):
+  1. Check CI status before merging:
+     ```bash
+     curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
+       "https://api.github.com/repos/{repo_url}/pulls/{pr_number}" \
+       | python3 -c "import sys,json; d=json.load(sys.stdin); print('mergeable:', d.get('mergeable'), 'state:', d.get('mergeable_state'))"
+     ```
+     If `mergeable` is false (conflict) or CI is failing: send back to Engineer to rebase/fix, do NOT merge.
+  2. Comment on the issue BEFORE closing (all comments in English):
      ```bash
      curl -s -X POST -H "Authorization: Bearer $GITHUB_TOKEN" \
        "https://api.github.com/repos/{repo_url}/issues/{issue_number}/comments" \
        -d '{"body":"Resolved via #{pr_number}.\n\n**Verification**: QA passed — all acceptance criteria met, full test suite green.\n**Merge method**: squash"}'
      ```
-  2. Merge the PR:
+  3. Merge the PR:
      ```bash
      curl -s -X PUT -H "Authorization: Bearer $GITHUB_TOKEN" \
        "https://api.github.com/repos/{repo_url}/pulls/{pr_number}/merge" \
        -d '{"merge_method":"squash"}'
      ```
-  3. Close the issue (GitHub auto-closes if PR body has "Closes #N", but verify):
+     If merge fails (409 conflict), send back to Engineer: "PR has merge conflicts, please rebase on main and push."
+  4. Close the issue (GitHub auto-closes if PR body has "Closes #N", but verify):
      ```bash
      curl -s -X PATCH -H "Authorization: Bearer $GITHUB_TOKEN" \
        "https://api.github.com/repos/{repo_url}/issues/{issue_number}" \
@@ -384,13 +392,15 @@ cd "$REPO_DIR" && git checkout main && git pull
    git commit -m "fix: description (#ISSUE_NUMBER)"
    git push -u origin {branch_name}
    ```
-8. **Create PR** (the PR stays open for review):
+8. **Create PR** and extract the PR number from the response:
    ```bash
-   curl -s -X POST -H "Authorization: Bearer $GITHUB_TOKEN" \
+   PR_RESPONSE=$(curl -s -X POST -H "Authorization: Bearer $GITHUB_TOKEN" \
      "https://api.github.com/repos/{repo_url}/pulls" \
-     -d '{"title":"fix: description (#NUMBER)","head":"{branch_name}","base":"main","body":"Closes #NUMBER"}'  # use "develop" as base for gitflow
+     -d '{"title":"fix: description (#NUMBER)","head":"{branch_name}","base":"main","body":"Closes #NUMBER"}')  # use "develop" as base for gitflow
+   PR_NUMBER=$(echo "$PR_RESPONSE" | python3 -c "import sys,json; print(json.load(sys.stdin)['number'])")
+   echo "Created PR #$PR_NUMBER"
    ```
-9. **Report to PM** via agent_send with: branch name, PR number, files changed, tests added, build/test status, any concerns
+9. **Report to PM** via agent_send with: branch name, **PR number** (from step 8), files changed, tests added, build/test status, any concerns
 
 ## Handling Fix Requests
 
@@ -499,6 +509,15 @@ cd ../shared/repo && git fetch origin && git checkout {branch_name} && git pull 
    - PASS: all acceptance criteria met, tests pass, no issues found
    - FAIL: list each issue with file:line, reproduction steps, severity
 
+## Reviewing External PRs
+
+When PM asks you to review a PR from an external contributor:
+1. Fetch and checkout: `cd ../shared/repo && git fetch origin pull/{pr_number}/head:pr-{pr_number} && git checkout pr-{pr_number}`
+2. Read changes: `git diff main...HEAD`
+3. Run the full test suite
+4. Submit a PR review (same rules: English, line comments for every issue)
+5. Report findings to PM
+
 ## What Makes a Good Bug Report
 ```
 Bug: [concise title]
@@ -589,7 +608,7 @@ description = "主要技术栈（auto = 从仓库自动检测）"
 
 [i18n.zh.settings.approval_mode]
 label = "审批模式"
-description = "提交代码或创建 PR 前需要人工审批"
+description = "开启时 PM 等待人工审批后才合并 PR。关闭时 QA 通过后 PM 自动合并。"
 
 [i18n.zh.settings.branch_strategy]
 label = "分支策略"
