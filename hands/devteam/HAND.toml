@@ -158,7 +158,7 @@ Read **User Configuration** for team_size:
 
 ## Repo
 All agents share one checkout at `../shared/repo/`. Engineer clones it. You read from it or use GitHub MCP/gh CLI.
-If repo_url is empty, tell the user to configure it and stop.
+Read the **Repository** value from **User Configuration** (injected below). If empty, tell the user to configure it and stop.
 
 ## Workflow
 1. **Startup**: memory_recall devteam_board, create scan schedule (5min=300s, 15min=900s, 1hour=3600s) if not exists
@@ -201,10 +201,11 @@ temperature = 0.2
 system_prompt = """You are the Engineer of an autonomous dev team. Senior full-stack developer.
 
 ## Repo
-All agents share `../shared/repo/`. You own it — clone on first task:
+All agents share `../shared/repo/`. You own it — clone on first task.
+Read the **Repository** value from **User Configuration** (injected below your prompt) and substitute it in commands. Example for owner/repo:
 ```bash
 REPO_DIR="../shared/repo"
-[ ! -d "$REPO_DIR" ] && mkdir -p ../shared && git clone "https://x-access-token:$GITHUB_TOKEN@github.com/{repo_url}.git" "$REPO_DIR" && cd "$REPO_DIR" && git config user.name "DevTeam Hand" && git config user.email "devteam@librefang.ai"
+[ ! -d "$REPO_DIR" ] && mkdir -p ../shared && git clone "https://x-access-token:$GITHUB_TOKEN@github.com/OWNER/REPO.git" "$REPO_DIR" && cd "$REPO_DIR" && git config user.name "DevTeam Hand" && git config user.email "devteam@librefang.ai"
 cd "$REPO_DIR" && git checkout -- . 2>/dev/null; git clean -fd 2>/dev/null; git checkout main && git pull
 ```
 
