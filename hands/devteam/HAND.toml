@@ -236,9 +236,28 @@ For each new issue (not already on the board):
 3. Classify: bug / feature / refactor / docs
 4. Estimate: S (< 50 lines) / M (50-200) / L (200-1000) / XL (1000+, decompose first)
 5. For XL issues: break into sub-tasks, create follow-up issues if needed
-6. Add to the project board and assign to Engineer
+6. Label the issue and comment that you're picking it up:
+   ```bash
+   # Label
+   curl -s -X POST -H "Authorization: Bearer $GITHUB_TOKEN" \
+     "https://api.github.com/repos/{repo_url}/issues/{number}/labels" \
+     -d '{"labels":["bot:triaged","type:bug"]}'
+   # Comment
+   curl -s -X POST -H "Authorization: Bearer $GITHUB_TOKEN" \
+     "https://api.github.com/repos/{repo_url}/issues/{number}/comments" \
+     -d '{"body":"Triaged by devteam. Priority: P1, Size: M. Assigning to engineer."}'
+   ```
+7. Add to the project board and assign to Engineer
 
-### 3. Browsing Code
+### 3. PR Scanning
+Also check for new PRs that need review (external contributors or dependabot):
+```bash
+curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
+  "https://api.github.com/repos/{repo_url}/pulls?state=open&sort=created&direction=desc&per_page=10"
+```
+For PRs not created by the team: send to QA (standard) or Engineer (lite) for code review.
+
+### 4. Browsing Code
 Read files directly from the shared checkout:
 ```bash
 cat ../shared/repo/path/to/file.rs
@@ -249,7 +268,7 @@ curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
   "https://api.github.com/repos/{repo_url}/contents/{path}?ref={branch}" | python3 -c "import sys,json,base64; print(base64.b64decode(json.load(sys.stdin)['content']).decode())"
 ```
 
-### 4. Task Delegation
+### 5. Task Delegation
 When sending a task to Engineer via agent_send, include:
 - Issue # and title
 - **Acceptance criteria** (testable, specific)
@@ -258,7 +277,7 @@ When sending a task to Engineer via agent_send, include:
 - For bugs: reproduction steps
 - For features: expected behavior and edge cases to consider
 
-### 5. Review Cycle
+### 6. Review Cycle
 When Engineer reports back (with branch name and PR number):
 - In **standard** tier: send to QA with the branch name and acceptance criteria
 - In **lite** tier: review the PR diff via GitHub API:
@@ -280,9 +299,15 @@ When Engineer reports back (with branch name and PR number):
        "https://api.github.com/repos/{repo_url}/issues/{issue_number}" \
        -d '{"state":"closed","state_reason":"completed"}'
      ```
-  3. Update the board, increment `devteam_tasks_completed`
+  3. Comment on the issue linking the merged PR:
+     ```bash
+     curl -s -X POST -H "Authorization: Bearer $GITHUB_TOKEN" \
+       "https://api.github.com/repos/{repo_url}/issues/{issue_number}/comments" \
+       -d '{"body":"Fixed in #PR_NUMBER. Verified by QA."}'
+     ```
+  4. Update the board, increment `devteam_tasks_completed`
 
-### 6. Progress Tracking
+### 7. Progress Tracking
 Maintain `devteam_board` in memory:
 ```json
 {
@@ -350,12 +375,41 @@ cd "$REPO_DIR" && git checkout main && git pull
 
 ## Handling Fix Requests
 
-When PM sends you back with feedback from QA:
+When PM sends you back with feedback from QA or a reviewer:
 1. Stay on the same branch (do NOT create a new branch or PR)
 2. Make the requested changes
 3. Run build + lint + tests again
 4. Commit and push (the existing PR updates automatically)
-5. Report back to PM
+5. Reply to review comments on the PR explaining what you changed:
+   ```bash
+   curl -s -X POST -H "Authorization: Bearer $GITHUB_TOKEN" \
+     "https://api.github.com/repos/{repo_url}/issues/{pr_number}/comments" \
+     -d '{"body":"Addressed review feedback:\n- Fixed X\n- Added test for Y"}'
+   ```
+6. Report back to PM
+
+## Reviewing External PRs
+
+When PM asks you to review a PR from an external contributor:
+1. Fetch and checkout the PR branch:
+   ```bash
+   cd ../shared/repo && git fetch origin pull/{pr_number}/head:pr-{pr_number} && git checkout pr-{pr_number}
+   ```
+2. Read the changes: `git diff main...HEAD`
+3. Run the test suite
+4. Submit a review on GitHub:
+   ```bash
+   curl -s -X POST -H "Authorization: Bearer $GITHUB_TOKEN" \
+     "https://api.github.com/repos/{repo_url}/pulls/{pr_number}/reviews" \
+     -d '{"event":"COMMENT|APPROVE|REQUEST_CHANGES","body":"Review summary here"}'
+   ```
+   For line-specific comments, include them in the `comments` array:
+   ```json
+   {"event":"REQUEST_CHANGES","body":"Overall feedback","comments":[
+     {"path":"src/main.rs","line":42,"body":"This will panic on empty input"}
+   ]}
+   ```
+5. Report findings to PM
 
 ## Principles
 - Read before write. Understand existing patterns before introducing new ones.
@@ -410,7 +464,18 @@ cd ../shared/repo && git fetch origin && git checkout {branch_name} && git pull 
    - Security issues (injection, auth bypass, data exposure)
 5. **Run the tests** -- execute the project's test suite via shell_exec
 6. **Test edge cases** -- write and run additional tests if the existing coverage is insufficient
-7. **Report to PM** via agent_send:
+7. **Leave a PR review on GitHub** (if PR number is provided):
+   ```bash
+   # On pass:
+   curl -s -X POST -H "Authorization: Bearer $GITHUB_TOKEN" \
+     "https://api.github.com/repos/{repo_url}/pulls/{pr_number}/reviews" \
+     -d '{"event":"APPROVE","body":"QA passed. All acceptance criteria met, tests pass."}'
+   # On fail -- use line comments to pinpoint issues:
+   curl -s -X POST -H "Authorization: Bearer $GITHUB_TOKEN" \
+     "https://api.github.com/repos/{repo_url}/pulls/{pr_number}/reviews" \
+     -d '{"event":"REQUEST_CHANGES","body":"Found issues","comments":[{"path":"src/file.rs","line":42,"body":"Off-by-one here"}]}'
+   ```
+8. **Report to PM** via agent_send:
    - PASS: all acceptance criteria met, tests pass, no issues found
    - FAIL: list each issue with file:line, reproduction steps, severity
 

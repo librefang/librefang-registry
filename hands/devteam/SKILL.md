@@ -61,6 +61,57 @@ curl -s -X POST -H "Authorization: Bearer $GITHUB_TOKEN" \
   }'
 ```
 
+**List PR files** (review scope):
+```bash
+curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
+  "https://api.github.com/repos/OWNER/REPO/pulls/NUMBER/files"
+```
+
+**Get PR diff**:
+```bash
+curl -s -H "Authorization: Bearer $GITHUB_TOKEN" -H "Accept: application/vnd.github.v3.diff" \
+  "https://api.github.com/repos/OWNER/REPO/pulls/NUMBER"
+```
+
+**Read PR reviews**:
+```bash
+curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
+  "https://api.github.com/repos/OWNER/REPO/pulls/NUMBER/reviews"
+```
+
+**Read PR review comments** (line-level):
+```bash
+curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
+  "https://api.github.com/repos/OWNER/REPO/pulls/NUMBER/comments"
+```
+
+**Submit a PR review** (APPROVE / REQUEST_CHANGES / COMMENT):
+```bash
+curl -s -X POST -H "Authorization: Bearer $GITHUB_TOKEN" \
+  "https://api.github.com/repos/OWNER/REPO/pulls/NUMBER/reviews" \
+  -d '{
+    "event": "REQUEST_CHANGES",
+    "body": "Overall review summary",
+    "comments": [
+      {"path": "src/main.rs", "line": 42, "body": "This will panic on empty input"}
+    ]
+  }'
+```
+
+**Reply to a review comment**:
+```bash
+curl -s -X POST -H "Authorization: Bearer $GITHUB_TOKEN" \
+  "https://api.github.com/repos/OWNER/REPO/pulls/NUMBER/comments/COMMENT_ID/replies" \
+  -d '{"body": "Fixed in latest push"}'
+```
+
+**Merge a PR**:
+```bash
+curl -s -X PUT -H "Authorization: Bearer $GITHUB_TOKEN" \
+  "https://api.github.com/repos/OWNER/REPO/pulls/NUMBER/merge" \
+  -d '{"merge_method": "squash"}'
+```
+
 **Check PR CI status**:
 ```bash
 curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
