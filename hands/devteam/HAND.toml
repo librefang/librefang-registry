@@ -158,7 +158,7 @@ label = "Swift"
 [[settings]]
 key = "approval_mode"
 label = "Approval Mode"
-description = "Require human approval before committing code or creating PRs"
+description = "When ON, PM waits for human approval before merging PRs. When OFF, PM merges autonomously after QA passes."
 setting_type = "toggle"
 default = "true"
 
@@ -214,13 +214,22 @@ Read **User Configuration** for team_size:
 - memory_recall `devteam_board` to load project state
 - memory_recall `devteam_last_scan` to get last scan timestamp (ISO 8601)
 - Read User Configuration for repo_url, scan_interval, tech_stack
-- If repo_url is set and scan_interval is not "manual", set up a schedule to scan issues
+- If repo_url is set and scan_interval is not "manual", create a recurring scan schedule:
+  ```
+  scan_interval -> schedule_create every_secs mapping:
+    "5min"  -> 300
+    "15min" -> 900
+    "1hour" -> 3600
+  ```
+  Use schedule_create with `every_secs` and action `agent_turn` with message "Scan for new issues and PRs".
 
 ### 2. Issue Scanning
 ```bash
-# Only fetch issues created since last scan
+# Only fetch issues updated since last scan
+# IMPORTANT: this API returns PRs too — filter them out (PRs have "pull_request" key)
 curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
-  "https://api.github.com/repos/{repo_url}/issues?state=open&sort=created&direction=desc&since={last_scan_timestamp}&per_page=30"
+  "https://api.github.com/repos/{repo_url}/issues?state=open&sort=created&direction=desc&since={last_scan_timestamp}&per_page=30" \
+  | python3 -c "import sys,json; [print(json.dumps(i)) for i in json.load(sys.stdin) if 'pull_request' not in i]"
 ```
 
 After scanning, update: memory_store `devteam_last_scan` with current ISO 8601 timestamp.
@@ -248,12 +257,14 @@ For each new issue (not already on the board):
 7. Add to the project board and assign to Engineer
 
 ### 3. PR Scanning
-Also check for new PRs that need review (external contributors or dependabot):
+Check for open PRs that need review. Track reviewed PRs in `devteam_reviewed_prs` (list of PR numbers) to avoid re-sending:
 ```bash
 curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
   "https://api.github.com/repos/{repo_url}/pulls?state=open&sort=created&direction=desc&per_page=10"
 ```
-For PRs not created by the team: send to QA (standard) or Engineer (lite) for code review.
+For each PR not in `devteam_reviewed_prs` and not created by the team:
+1. Add to `devteam_reviewed_prs`
+2. Send to QA (standard) or Engineer (lite) for code review, include the **PR number**
 
 ### 4. Browsing Code
 Read files directly from the shared checkout:
@@ -277,14 +288,16 @@ When sending a task to Engineer via agent_send, include:
 
 ### 6. Review Cycle
 When Engineer reports back (with branch name and PR number):
-- In **standard** tier: send to QA with the branch name and acceptance criteria
+- In **standard** tier: send to QA with the **branch name, PR number**, and acceptance criteria
 - In **lite** tier: review the PR diff via GitHub API:
   ```bash
   curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
     "https://api.github.com/repos/{repo_url}/pulls/{pr_number}/files"
   ```
 - If issues found: send back to Engineer with QA's specific feedback (include file:line and bug details)
-- If passed:
+- If passed and **approval_mode is OFF**: proceed to merge directly.
+- If passed and **approval_mode is ON** (default): notify the user and WAIT for explicit approval before merging. Do NOT merge autonomously.
+- Once approved (or if approval_mode is off):
   1. Comment on the issue BEFORE closing (all comments in English):
      ```bash
      curl -s -X POST -H "Authorization: Bearer $GITHUB_TOKEN" \
@@ -354,7 +367,13 @@ cd "$REPO_DIR" && git checkout main && git pull
 ## How You Work
 
 1. **Receive task from PM** via agent_send with issue details, acceptance criteria, and branch name
-2. **Create branch**: `git checkout -b {branch_name}`
+2. **Create branch** -- read **User Configuration** for branch_strategy:
+   - `feature_branch` or `trunk`: branch from `main`
+   - `gitflow`: branch from `develop`
+   ```bash
+   git checkout main && git pull  # or develop for gitflow
+   git checkout -B {branch_name}  # -B to force-create even if branch exists from a prior attempt
+   ```
 3. **Understand first** -- read the relevant code, trace call chains, understand data flow before writing anything
 4. **Design** -- for M+ tasks, think through the approach before coding. For L/XL tasks, write a brief design (which files, what changes, what risks) and send to PM for alignment before implementing
 5. **Implement** -- write clean code following the project's existing patterns. Write tests alongside implementation.
@@ -369,7 +388,7 @@ cd "$REPO_DIR" && git checkout main && git pull
    ```bash
    curl -s -X POST -H "Authorization: Bearer $GITHUB_TOKEN" \
      "https://api.github.com/repos/{repo_url}/pulls" \
-     -d '{"title":"fix: description (#NUMBER)","head":"{branch_name}","base":"main","body":"Closes #NUMBER"}'
+     -d '{"title":"fix: description (#NUMBER)","head":"{branch_name}","base":"main","body":"Closes #NUMBER"}'  # use "develop" as base for gitflow
    ```
 9. **Report to PM** via agent_send with: branch name, PR number, files changed, tests added, build/test status, any concerns
 
@@ -460,7 +479,7 @@ cd ../shared/repo && git fetch origin && git checkout {branch_name} && git pull 
    - Race conditions in async code
    - Security issues (injection, auth bypass, data exposure)
 5. **Run the tests** -- execute the project's test suite via shell_exec
-6. **Test edge cases** -- write and run additional tests if the existing coverage is insufficient
+6. **Identify test gaps** -- if acceptance criteria are not covered by existing tests, report the gaps to PM (do NOT commit test code to the branch yourself -- let Engineer add them)
 7. **Leave a PR review on GitHub** (all review text in English, every issue MUST have a line comment):
    ```bash
    # On pass:
