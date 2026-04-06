@@ -26,8 +26,17 @@ tools = [
   "agent_list",
 ]
 
-# MCP servers for richer GitHub integration (optional — hand works without them via CLI/API fallback)
-mcp_servers = ["github"]
+# MCP server allowlist — hand works without any of them (falls back to CLI/API),
+# but connecting them gives agents richer capabilities.
+# Users only need to configure the ones they want; unconfigured servers are silently skipped.
+mcp_servers = [
+  "github",         # Issues, PRs, reviews, code browsing
+  "linear",         # Project management (if issue_tracker = linear)
+  "jira",           # Project management (if issue_tracker = jira)
+  "sentry",         # Error tracking — Engineer reads crash reports when fixing bugs
+  "slack",          # Notifications — PM posts updates to a Slack channel
+  "discord-mcp",    # Notifications — PM posts updates to Discord (alternative to Slack)
+]
 
 # ─── Requirements ────────────────────────────────────────────────────────────
 
@@ -64,6 +73,30 @@ macos = "brew install gh"
 linux_apt = "sudo apt install gh"
 manual_url = "https://cli.github.com/"
 estimated_time = "2-5 min"
+
+[[requires]]
+key = "npx"
+label = "npx (for MCP servers like GitHub, Linear, Sentry)"
+requirement_type = "binary"
+check_value = "npx"
+optional = true
+
+[requires.install]
+macos = "brew install node"
+linux_apt = "sudo apt install nodejs npm"
+estimated_time = "2-5 min"
+
+[[requires]]
+key = "SENTRY_AUTH_TOKEN"
+label = "Sentry Auth Token (optional — for error tracking context)"
+requirement_type = "api_key"
+check_value = "SENTRY_AUTH_TOKEN"
+optional = true
+
+[requires.install]
+signup_url = "https://sentry.io/settings/account/api/auth-tokens/"
+env_example = "SENTRY_AUTH_TOKEN=sntrys_..."
+estimated_time = "2 min"
 
 [[requires]]
 key = "GITHUB_TOKEN"
@@ -208,6 +241,25 @@ label = "Git Flow (develop + release branches)"
 [[settings.options]]
 value = "trunk"
 label = "Trunk-based (short-lived branches)"
+
+[[settings]]
+key = "notify_channel"
+label = "Notification Channel"
+description = "Where PM sends status updates (task completed, issue triaged, QA results). Requires corresponding MCP integration."
+setting_type = "select"
+default = "none"
+
+[[settings.options]]
+value = "none"
+label = "None (event_publish only)"
+
+[[settings.options]]
+value = "slack"
+label = "Slack (requires Slack MCP)"
+
+[[settings.options]]
+value = "discord"
+label = "Discord (requires Discord MCP)"
 
 [[settings]]
 key = "issue_tracker"
@@ -437,6 +489,14 @@ Maintain `devteam_board` in memory:
 }
 ```
 
+### 10. Notifications
+Read **User Configuration** for notify_channel:
+- `none`: only use event_publish (default)
+- `slack`: post updates to Slack via MCP tools (if Slack MCP is connected)
+- `discord`: post updates to Discord via MCP tools (if Discord MCP is connected)
+
+Notify on: issue triaged, task completed, QA passed/failed, PR merged, escalations.
+
 ## Rules
 - **All GitHub comments, reviews, and issue updates MUST be written in English** regardless of team_size or user language.
 - **Check API responses for errors.** If any curl returns HTTP 401 (auth), 403 (rate limit/permissions), or 404 (not found), stop and report the error to the user. Do NOT try to parse error HTML as JSON.
@@ -577,6 +637,12 @@ When a task requires design choices:
 - Prefer the simplest solution that meets the requirements
 - If the task touches shared contracts (APIs, types, DB schema), flag the blast radius to PM
 - Check who calls the code you're changing before modifying signatures
+
+## Error Context (Sentry)
+When fixing a bug, if Sentry MCP is connected, look up the error for stack traces and frequency:
+- Use Sentry MCP tools to search for the error by issue title keywords
+- Check: which code path triggers it, how often, which users are affected
+- This context helps you fix the root cause, not just the symptom
 
 ## CI/CD and DevOps
 You also handle infrastructure tasks when assigned:
@@ -747,6 +813,10 @@ description = "开启时 PM 等待人工审批后才合并 PR。关闭时 QA 通
 [i18n.zh.settings.branch_strategy]
 label = "分支策略"
 description = "Git 分支模型"
+
+[i18n.zh.settings.notify_channel]
+label = "通知渠道"
+description = "PM 发送状态更新的渠道（任务完成、Issue 分拣、QA 结果）。需要对应的 MCP 集成。"
 
 [i18n.zh.settings.issue_tracker]
 label = "Issue 跟踪器"
