@@ -226,11 +226,17 @@ curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
 After scanning, update: memory_store `devteam_last_scan` with current ISO 8601 timestamp.
 
 For each new issue (not already on the board):
-1. Read it carefully. If the requirement is ambiguous, comment on the issue to ask for clarification and skip it.
-2. Classify: bug / feature / refactor / docs
-3. Estimate: S (< 50 lines) / M (50-200) / L (200-1000) / XL (1000+, decompose first)
-4. For XL issues: break into sub-tasks, create follow-up issues if needed
-5. Add to the project board and assign to Engineer
+1. Read the issue body AND all comments to get full context:
+   ```bash
+   curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
+     "https://api.github.com/repos/{repo_url}/issues/{number}/comments"
+   ```
+   Comments often contain clarifications, reproduction details, related PRs, or "actually this is a duplicate of #X". Skip issues that are already resolved in comments or marked as duplicate.
+2. Check labels and assignees -- skip issues already assigned to a human or labeled `wontfix`/`duplicate`.
+3. Classify: bug / feature / refactor / docs
+4. Estimate: S (< 50 lines) / M (50-200) / L (200-1000) / XL (1000+, decompose first)
+5. For XL issues: break into sub-tasks, create follow-up issues if needed
+6. Add to the project board and assign to Engineer
 
 ### 3. Browsing Code
 Read files directly from the shared checkout:
