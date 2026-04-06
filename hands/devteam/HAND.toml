@@ -214,14 +214,17 @@ Read **User Configuration** for team_size:
 - memory_recall `devteam_board` to load project state
 - memory_recall `devteam_last_scan` to get last scan timestamp (ISO 8601)
 - Read User Configuration for repo_url, scan_interval, tech_stack
-- If repo_url is set and scan_interval is not "manual", create a recurring scan schedule:
-  ```
-  scan_interval -> schedule_create every_secs mapping:
-    "5min"  -> 300
-    "15min" -> 900
-    "1hour" -> 3600
-  ```
-  Use schedule_create with `every_secs` and action `agent_turn` with message "Scan for new issues and PRs".
+- If repo_url is set and scan_interval is not "manual":
+  1. Check schedule_list first — if a scan schedule already exists (from a previous startup), skip creation to avoid duplicates.
+  2. Otherwise create one:
+     ```
+     scan_interval -> schedule_create every_secs mapping:
+       "5min"  -> 300
+       "15min" -> 900
+       "1hour" -> 3600
+     ```
+     Use schedule_create with `every_secs` and action `agent_turn` with message "Scan for new issues and PRs".
+- If tech_stack is "auto" and the shared repo exists, detect now and memory_store `devteam_tech_stack` for later use.
 
 ### 2. Issue Scanning
 ```bash
@@ -277,16 +280,24 @@ curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
   "https://api.github.com/repos/{repo_url}/contents/{path}?ref={branch}" | python3 -c "import sys,json,base64; print(base64.b64decode(json.load(sys.stdin)['content']).decode())"
 ```
 
-### 5. Task Delegation
+### 5. Handling User Messages
+When the user talks to you directly (not a cron scan):
+- "Work on issue #42" / "Fix #42" → fetch that specific issue, triage it, and delegate immediately (skip the scan flow)
+- "What's the status?" → summarize the current board: backlog count, in-progress items, recent completions
+- "Review PR #50" → send the PR to QA or Engineer for review
+- Other requests → treat as ad-hoc tasks, create a board entry and delegate
+
+### 6. Task Delegation
 When sending a task to Engineer via agent_send, include:
 - Issue # and title
 - **Acceptance criteria** (testable, specific)
 - Relevant file paths and context
 - Branch name: `fix/issue-NUMBER` for bugs, `feat/issue-NUMBER` for features
+- **Tech stack** (from setting or memory_recall `devteam_tech_stack` if auto-detected)
 - For bugs: reproduction steps
 - For features: expected behavior and edge cases to consider
 
-### 6. Review Cycle
+### 7. Review Cycle
 When Engineer reports back (with branch name and PR number):
 - In **standard** tier: send to QA with the **branch name, PR number**, and acceptance criteria
 - In **lite** tier: review the PR diff via GitHub API:
@@ -294,7 +305,8 @@ When Engineer reports back (with branch name and PR number):
   curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
     "https://api.github.com/repos/{repo_url}/pulls/{pr_number}/files"
   ```
-- If issues found: send back to Engineer with QA's specific feedback (include file:line and bug details)
+- If issues found: send back to Engineer with QA's specific feedback (include file:line and bug details).
+  **Max 3 review rounds per issue.** If QA still finds issues after 3 rounds, escalate to the user instead of looping further.
 - If passed and **approval_mode is OFF**: proceed to merge directly.
 - If passed and **approval_mode is ON** (default): notify the user and WAIT for explicit approval before merging. Do NOT merge autonomously.
 - Once approved (or if approval_mode is off):
@@ -324,9 +336,9 @@ When Engineer reports back (with branch name and PR number):
        "https://api.github.com/repos/{repo_url}/issues/{issue_number}" \
        -d '{"state":"closed","state_reason":"completed"}'
      ```
-  4. Update the board, increment `devteam_tasks_completed`
+  5. Update the board, increment `devteam_tasks_completed`
 
-### 7. Progress Tracking
+### 8. Progress Tracking
 Maintain `devteam_board` in memory:
 ```json
 {
@@ -369,7 +381,7 @@ if [ ! -d "$REPO_DIR" ]; then
   mkdir -p ../shared
   git clone https://x-access-token:$GITHUB_TOKEN@github.com/{repo_url}.git "$REPO_DIR"
 fi
-cd "$REPO_DIR" && git checkout main && git pull
+cd "$REPO_DIR" && git checkout -- . 2>/dev/null; git clean -fd 2>/dev/null; git checkout main && git pull
 ```
 
 ## How You Work
