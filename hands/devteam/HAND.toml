@@ -24,7 +24,11 @@ tools = [
   "knowledge_query",
   "event_publish",
   "agent_list",
+  "workflow_run",
 ]
+
+# Workflows the agents can invoke for structured multi-step tasks
+skills = []  # empty = all skills allowed
 
 # MCP server allowlist — hand works without any of them (falls back to CLI/API),
 # but connecting them gives agents richer capabilities.
@@ -342,7 +346,17 @@ Read **User Configuration** for team_size:
      Use schedule_create with `every_secs` and action `agent_turn` with message "Scan for new issues and PRs".
 - If tech_stack is "auto" and the shared repo exists, detect now and memory_store `devteam_tech_stack` for later use.
 
-### 2. Issue Scanning
+### 2. Repo Onboarding (first activation only)
+If memory_recall `devteam_onboarded` returns nothing, this is a fresh activation. Send Engineer a special onboarding task:
+> "Onboard: clone the repo, analyze the project structure, detect tech stack, find CI config, identify key entry points, and report back a repo profile."
+
+When Engineer reports back, store the profile:
+- memory_store `devteam_tech_stack` with the detected stack
+- memory_store `devteam_repo_profile` with the full profile (directories, CI, test commands, key files)
+- memory_store `devteam_onboarded` = true
+- knowledge_add_entity for the repo, major modules, CI system, test framework
+
+### 3. Issue Scanning
 ```bash
 # Only fetch issues updated since last scan
 # IMPORTANT: this API returns PRs too — filter them out (PRs have "pull_request" key)
@@ -375,7 +389,7 @@ For each new issue (not already on the board):
    ```
 7. Add to the project board and assign to Engineer
 
-### 3. PR Scanning
+### 4. PR Scanning
 Check for open PRs that need review. Track reviewed PRs in `devteam_reviewed_prs` (list of PR numbers) to avoid re-sending:
 ```bash
 curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
@@ -385,7 +399,7 @@ For each PR not in `devteam_reviewed_prs` and not created by the team:
 1. Add to `devteam_reviewed_prs`
 2. Send to QA (standard) or Engineer (lite) for code review, include the **PR number**
 
-### 4. Browsing Code
+### 5. Browsing Code
 If the shared checkout exists (`../shared/repo/`), read directly:
 ```bash
 cat ../shared/repo/path/to/file.rs
@@ -396,7 +410,7 @@ curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
   "https://api.github.com/repos/{repo_url}/contents/{path}?ref={branch}" | python3 -c "import sys,json,base64; print(base64.b64decode(json.load(sys.stdin)['content']).decode())"
 ```
 
-### 5. Handling User Messages
+### 6. Handling User Messages
 When the user talks to you directly (not a cron scan):
 - "Work on issue #42" / "Fix #42" → fetch that specific issue, triage it, and delegate immediately (skip the scan flow)
 - "What's the status?" → summarize the current board: backlog count, in-progress items, recent completions
@@ -404,7 +418,7 @@ When the user talks to you directly (not a cron scan):
 - "Stop #42" / "Cancel #42" → remove from board, comment on the issue that work is paused, do NOT close the issue
 - Other requests → treat as ad-hoc tasks, create a board entry and delegate
 
-### 6. Task Delegation
+### 7. Task Delegation
 When sending a task to Engineer via agent_send, include:
 - Issue # and title
 - **Acceptance criteria** (testable, specific)
@@ -414,7 +428,7 @@ When sending a task to Engineer via agent_send, include:
 - For bugs: reproduction steps
 - For features: expected behavior and edge cases to consider
 
-### 7. Review Cycle
+### 8. Review Cycle
 When Engineer reports back (with branch name and PR number):
 - First, check CI status on the PR before involving QA:
   ```bash
@@ -463,7 +477,7 @@ When Engineer reports back (with branch name and PR number):
   5. Update the board, increment `devteam_tasks_completed`
   6. Notify: event_publish "devteam_task_completed" with issue number, PR number, and summary. This ensures the user is informed even when approval_mode is off.
 
-### 8. Board Sync (every scan cycle)
+### 9. Board Sync (every scan cycle)
 Before triaging new issues, reconcile the board with GitHub to catch external changes:
 - For each `in_progress` or `in_review` item, check if the issue was closed externally:
   ```bash
@@ -478,7 +492,7 @@ Before triaging new issues, reconcile the board with GitHub to catch external ch
   ```
 - Prune `done` items older than 30 entries to keep memory compact.
 
-### 9. Progress Tracking
+### 10. Progress Tracking
 Maintain `devteam_board` in memory:
 ```json
 {
@@ -489,7 +503,35 @@ Maintain `devteam_board` in memory:
 }
 ```
 
-### 10. Notifications
+### 11. Workflows
+Use built-in workflows for structured tasks:
+- **Bug triage**: when triaging a bug issue, run `workflow_run bug-triage` with the issue body as `bug_report` for root cause analysis and fix plan
+- **Product spec**: when a feature issue is vague, run `workflow_run product-spec` with the idea to generate a proper PRD before delegating
+- **Weekly report**: on your standup schedule, run `workflow_run weekly-report` with the board state as `work_notes`
+- **Incident postmortem**: if a merged PR caused a regression, run `workflow_run incident-postmortem` after rollback
+
+### 12. Daily Standup
+If scan_interval is not "manual", also create a daily standup schedule (schedule_create, `cron` = `0 9 * * 1-5` in user's timezone or UTC):
+- memory_recall `devteam_board` to get current state
+- Generate a summary: completed since last standup, in-progress items, blockers, next priorities
+- Post via notify_channel (if configured) or event_publish "devteam_standup"
+
+### 13. Rollback
+When the user reports a regression from a recent merge:
+1. Identify the PR that caused it (check recent merged PRs + board done list)
+2. Revert it: `gh pr revert {pr_number} --repo {repo_url}` (or create a revert PR manually)
+3. Comment on the original issue: "Reverted via #{revert_pr}. Regression reported: {description}"
+4. Re-open the original issue
+5. Move it back to backlog on the board
+6. Run `workflow_run incident-postmortem` if the regression was severe
+
+### 14. Knowledge Accumulation
+After each issue is resolved:
+- knowledge_add_entity for the bug/feature (what was the problem, how it was fixed)
+- knowledge_add_relation linking it to affected files/modules
+- If the same module appears in 3+ bug fixes, flag it to the user as a hotspot: "Module X has had 3 bugs this month, consider refactoring"
+
+### 15. Notifications
 Read **User Configuration** for notify_channel:
 - `none`: only use event_publish (default)
 - `slack`: post updates to Slack via MCP tools (if Slack MCP is connected)
@@ -544,6 +586,36 @@ else
 fi
 git checkout -- . 2>/dev/null; git clean -fd 2>/dev/null; git checkout main && git pull
 ```
+
+## Repo Onboarding (first activation)
+When PM sends you "Onboard: ...", analyze the repo and report back:
+```bash
+cd ../shared/repo
+# Project structure
+find . -maxdepth 3 -type f -name "*.toml" -o -name "*.json" -o -name "*.yaml" -o -name "*.yml" -o -name "Makefile" -o -name "Dockerfile" | head -40
+# Detect stack
+ls Cargo.toml package.json go.mod pyproject.toml pom.xml Package.swift 2>/dev/null
+# CI config
+ls .github/workflows/*.yml .gitlab-ci.yml Jenkinsfile .circleci/config.yml 2>/dev/null
+# README
+head -50 README.md 2>/dev/null
+# Directory layout
+find . -maxdepth 2 -type d | grep -v node_modules | grep -v target | grep -v .git | head -30
+```
+Report to PM: tech stack, build/test/lint commands, CI setup, directory layout, key entry points.
+
+## Workflows
+Use built-in workflows for structured work:
+- **`workflow_run test-generation`**: when adding test coverage for existing code
+- **`workflow_run code-review`**: when reviewing external PRs (provides parallel correctness+security+style analysis)
+- **`workflow_run refactor-plan`**: when PM assigns a refactoring task
+- **`workflow_run api-design`**: when implementing a new API endpoint
+- **`workflow_run bug-triage`**: when a bug is hard to reproduce, use this before coding
+
+## Knowledge
+After completing a task:
+- knowledge_add_entity for the change (what was done, which files, why)
+- Before starting a new task, knowledge_query for the affected module to see if there's prior context
 
 ## How You Work
 
@@ -677,6 +749,11 @@ All agents share one checkout at `../shared/repo/` (Engineer clones it). Always 
 ```bash
 cd ../shared/repo && git fetch origin && git checkout -B {branch_name} origin/{branch_name}
 ```
+
+## Workflows
+Use built-in workflows for thorough reviews:
+- **`workflow_run code-review`**: for comprehensive parallel review (correctness + security + style)
+- **`workflow_run test-generation`**: when reporting test gaps, use this to suggest specific tests PM can forward to Engineer
 
 ## How You Work
 
