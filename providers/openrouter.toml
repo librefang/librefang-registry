@@ -1,5 +1,5 @@
 # OpenRouter — https://openrouter.ai
-# Models: 17 (10 paid + 7 free)
+# Models: 18 (11 paid + 7 free)
 
 [provider]
 id = "openrouter"
@@ -7,6 +7,22 @@ display_name = "OpenRouter"
 api_key_env = "OPENROUTER_API_KEY"
 base_url = "https://openrouter.ai/api/v1"
 key_required = true
+
+# Default for the provider: the first [[models]] entry is returned by
+# default_model_for_provider("openrouter") when no alias override is set.
+
+[[models]]
+id = "openrouter/qwen/qwen3.6-plus"
+display_name = "Qwen 3.6 Plus (OpenRouter)"
+tier = "smart"
+context_window = 1000000
+max_output_tokens = 65536
+input_cost_per_m = 0.33
+output_cost_per_m = 1.95
+supports_tools = true
+supports_vision = true
+supports_streaming = true
+aliases = []
 
 [[models]]
 id = "openrouter/google/gemini-2.5-flash"
@@ -100,7 +116,7 @@ supports_streaming = true
 aliases = []
 
 [[models]]
-id = "openrouter/mistralai/mistral-large-latest"
+id = "openrouter/mistralai/mistral-large"
 display_name = "Mistral Large (OpenRouter)"
 tier = "smart"
 context_window = 128000
@@ -138,11 +154,80 @@ supports_vision = false
 supports_streaming = true
 aliases = []
 
-# Free models
+# Free models — verified against openrouter.ai/api/v1/models on 2026-04-10.
+# Previous entries (stepfun/step-3.5-flash:free, gemma-2-9b-it:free,
+# llama-3.1-8b-instruct:free, qwen-2.5-7b-instruct:free, mistral-7b-instruct:free,
+# zephyr-7b-beta:free, deepseek-r1:free) have all been delisted by OpenRouter
+# and replaced below. See librefang#2283.
 
 [[models]]
-id = "openrouter/stepfun/step-3.5-flash:free"
-display_name = "Step 3.5 Flash Free (OpenRouter)"
+id = "openrouter/meta-llama/llama-3.3-70b-instruct:free"
+display_name = "Llama 3.3 70B Free (OpenRouter)"
+tier = "balanced"
+context_window = 65536
+max_output_tokens = 8192
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
+supports_tools = true
+supports_vision = false
+supports_streaming = true
+aliases = []
+
+[[models]]
+id = "openrouter/qwen/qwen3-next-80b-a3b-instruct:free"
+display_name = "Qwen3 Next 80B Free (OpenRouter)"
+tier = "smart"
+context_window = 262144
+max_output_tokens = 8192
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
+supports_tools = true
+supports_vision = false
+supports_streaming = true
+aliases = []
+
+[[models]]
+id = "openrouter/openai/gpt-oss-120b:free"
+display_name = "GPT-OSS 120B Free (OpenRouter)"
+tier = "smart"
+context_window = 131072
+max_output_tokens = 32768
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
+supports_tools = true
+supports_vision = false
+supports_streaming = true
+aliases = []
+
+[[models]]
+id = "openrouter/z-ai/glm-4.5-air:free"
+display_name = "GLM 4.5 Air Free (OpenRouter)"
+tier = "balanced"
+context_window = 131072
+max_output_tokens = 32768
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
+supports_tools = true
+supports_vision = false
+supports_streaming = true
+aliases = []
+
+[[models]]
+id = "openrouter/google/gemma-3-27b-it:free"
+display_name = "Gemma 3 27B Free (OpenRouter)"
+tier = "fast"
+context_window = 131072
+max_output_tokens = 8192
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
+supports_tools = false
+supports_vision = true
+supports_streaming = true
+aliases = []
+
+[[models]]
+id = "openrouter/nvidia/nemotron-nano-9b-v2:free"
+display_name = "Nemotron Nano 9B Free (OpenRouter)"
 tier = "fast"
 context_window = 128000
 max_output_tokens = 8192
@@ -154,76 +239,11 @@ supports_streaming = true
 aliases = []
 
 [[models]]
-id = "openrouter/google/gemma-2-9b-it:free"
-display_name = "Gemma 2 9B Free (OpenRouter)"
-tier = "fast"
-context_window = 8192
-max_output_tokens = 4096
-input_cost_per_m = 0.0
-output_cost_per_m = 0.0
-supports_tools = false
-supports_vision = false
-supports_streaming = true
-aliases = []
-
-[[models]]
-id = "openrouter/meta-llama/llama-3.1-8b-instruct:free"
-display_name = "Llama 3.1 8B Free (OpenRouter)"
+id = "openrouter/meta-llama/llama-3.2-3b-instruct:free"
+display_name = "Llama 3.2 3B Free (OpenRouter)"
 tier = "fast"
 context_window = 131072
 max_output_tokens = 4096
-input_cost_per_m = 0.0
-output_cost_per_m = 0.0
-supports_tools = true
-supports_vision = false
-supports_streaming = true
-aliases = []
-
-[[models]]
-id = "openrouter/qwen/qwen-2.5-7b-instruct:free"
-display_name = "Qwen 2.5 7B Free (OpenRouter)"
-tier = "fast"
-context_window = 32768
-max_output_tokens = 4096
-input_cost_per_m = 0.0
-output_cost_per_m = 0.0
-supports_tools = true
-supports_vision = false
-supports_streaming = true
-aliases = []
-
-[[models]]
-id = "openrouter/mistralai/mistral-7b-instruct:free"
-display_name = "Mistral 7B Free (OpenRouter)"
-tier = "fast"
-context_window = 32768
-max_output_tokens = 4096
-input_cost_per_m = 0.0
-output_cost_per_m = 0.0
-supports_tools = false
-supports_vision = false
-supports_streaming = true
-aliases = []
-
-[[models]]
-id = "openrouter/huggingfaceh4/zephyr-7b-beta:free"
-display_name = "Zephyr 7B Free (OpenRouter)"
-tier = "fast"
-context_window = 4096
-max_output_tokens = 2048
-input_cost_per_m = 0.0
-output_cost_per_m = 0.0
-supports_tools = false
-supports_vision = false
-supports_streaming = true
-aliases = []
-
-[[models]]
-id = "openrouter/deepseek/deepseek-r1:free"
-display_name = "DeepSeek R1 Free (OpenRouter)"
-tier = "smart"
-context_window = 128000
-max_output_tokens = 32768
 input_cost_per_m = 0.0
 output_cost_per_m = 0.0
 supports_tools = false
