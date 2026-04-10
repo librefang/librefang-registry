@@ -238,6 +238,44 @@ def validate_skill_file(filepath: Path) -> list[str]:
     return errors
 
 
+def validate_skill_md_file(filepath: Path) -> list[str]:
+    """Validate a Claude Code-style SKILL.md file with YAML frontmatter."""
+    errors = []
+    rel = filepath.relative_to(filepath.parent.parent)
+
+    try:
+        text = filepath.read_text(encoding="utf-8")
+    except OSError as e:
+        return [f"{rel}: Failed to read file: {e}"]
+
+    if not text.startswith("---"):
+        errors.append(f"{rel}: Missing YAML frontmatter (must start with '---')")
+        return errors
+
+    end = text.find("\n---", 3)
+    if end == -1:
+        errors.append(f"{rel}: Unterminated YAML frontmatter (missing closing '---')")
+        return errors
+
+    fm = text[3:end].strip()
+    meta: dict[str, str] = {}
+    for line in fm.splitlines():
+        line = line.strip()
+        if not line or line.startswith("#"):
+            continue
+        if ":" not in line:
+            continue
+        k, _, v = line.partition(":")
+        meta[k.strip()] = v.strip().strip('"').strip("'")
+
+    if not meta.get("name"):
+        errors.append(f"{rel}: Missing frontmatter field 'name'")
+    if not meta.get("description"):
+        errors.append(f"{rel}: Missing frontmatter field 'description'")
+
+    return errors
+
+
 def validate_aliases_file(filepath: Path) -> list[str]:
     """Validate aliases.toml."""
     if not filepath.exists():
@@ -370,10 +408,13 @@ def main():
         skill_dirs = sorted([d for d in skills_dir.iterdir() if d.is_dir() and not d.name.startswith(".")])
         for d in skill_dirs:
             skill_toml = d / "skill.toml"
+            skill_md = d / "SKILL.md"
             if skill_toml.exists():
                 all_errors.extend(validate_skill_file(skill_toml))
+            elif skill_md.exists():
+                all_errors.extend(validate_skill_md_file(skill_md))
             else:
-                all_errors.append(f"skills/{d.name}: Missing skill.toml")
+                all_errors.append(f"skills/{d.name}: Missing skill.toml or SKILL.md")
         stats["skills"] = len(skill_dirs)
 
     # --- Plugins ---
