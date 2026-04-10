@@ -1,0 +1,121 @@
+name = "mempalace-indexer"
+version = "0.3.0"
+description = "Auto-index conversations into MemPalace and recall relevant memories. No API keys, no cloud."
+author = "LibreFang Community"
+requirements = "requirements.txt"
+librefang_min_version = "2026.4.0"
+
+# ---------------------------------------------------------------------------
+# Hook execution settings
+#
+# MUST sit above [hooks] so they land on the top-level table instead of being
+# folded into [hooks] by TOML table scoping rules (validate.py iterates
+# data["hooks"].items() expecting every value to be a hook file path).
+# ---------------------------------------------------------------------------
+
+# ingest is fast (vector search) — 30 s is generous.
+# after_turn does classification + write — 60 s covers a slow machine or large turn.
+hook_timeout_secs = 30
+
+# A temporary mempalace outage should not block the agent turn.
+on_hook_failure = "warn"
+
+# One silent retry handles transient ChromaDB lock contention.
+max_retries = 1
+retry_delay_ms = 500
+
+# Python interpreter startup is ~200 ms. Keep subprocesses alive between calls
+# to eliminate that overhead on every user message.
+persistent_subprocess = true
+
+# ingest results are deterministic for the same message text — cache for 60 s
+# to avoid redundant embedding lookups on rapid follow-up turns.
+hook_cache_ttl_secs = 60
+
+# Priority 0 (default). Raise to e.g. 10 to run before other recall plugins.
+priority = 0
+
+# ---------------------------------------------------------------------------
+# System binary requirements
+# ---------------------------------------------------------------------------
+
+[[requires]]
+binary = "python3"
+install_hint = "Install Python 3.9+ from https://python.org or via your system package manager (apt install python3 / brew install python)"
+
+# ---------------------------------------------------------------------------
+# Hook scripts
+#
+# Every value in this section MUST be a path relative to the plugin directory.
+# Execution settings live above at the top level.
+# ---------------------------------------------------------------------------
+
+[hooks]
+ingest = "hooks/ingest.py"
+after_turn = "hooks/after_turn.py"
+
+# ---------------------------------------------------------------------------
+# [config] — user-configurable settings
+#
+# The runtime merges user overrides with these defaults and writes the result
+# as JSON to the path in LIBREFANG_PLUGIN_CONFIG before each hook subprocess.
+# Hooks should read that file (falling back to environment variables for
+# backward compatibility with direct invocation).
+# ---------------------------------------------------------------------------
+
+[config.palace_path]
+type = "string"
+default = "~/.mempalace/palace"
+description = "Path to the MemPalace directory (passed to mempalace APIs and ChromaDB)."
+
+[config.min_chars]
+type = "number"
+default = 80
+description = "Minimum character length of extracted conversation text to be worth saving. Shorter exchanges are skipped by after_turn."
+
+[config.window_size]
+type = "number"
+default = 6
+description = "Number of recent messages the after_turn hook considers when extracting text (sliding window from the end of the conversation)."
+
+[config.dedup_max]
+type = "number"
+default = 500
+description = "Maximum number of SHA-256 content hashes kept in the per-agent deduplication store. Oldest entries are dropped first when the cap is reached."
+
+[config.lang_detect]
+type = "boolean"
+default = true
+description = "Enable language detection via langdetect. When true, non-English exchanges bypass the English keyword relevance filter and are indexed on length alone."
+
+[config.max_chars]
+type = "number"
+default = 300
+description = "Maximum characters per injected memory snippet in the ingest hook. Longer texts are truncated at the nearest word boundary."
+
+[config.min_similarity]
+type = "number"
+default = 0.3
+description = "Minimum similarity score (0-1, higher = more relevant) for memories returned by the ingest hook. Results below this threshold are dropped. Set to 0 to disable filtering."
+
+[config.n_results]
+type = "number"
+default = 5
+description = "Number of memories the ingest hook retrieves from MemPalace per turn."
+
+[config.max_age_days]
+type = "number"
+default = 90
+description = "Prune drawers older than this many days when running hooks/prune.py. Set to 0 to disable TTL pruning."
+
+# ---------------------------------------------------------------------------
+# [integrity] — SHA-256 hashes verified at load time
+#
+# Regenerate after editing hook files:
+#   sha256sum hooks/ingest.py hooks/after_turn.py hooks/prune.py
+# ---------------------------------------------------------------------------
+
+[integrity]
+"hooks/ingest.py" = "621b17f2d0afbd6142a49963fb57187a500cfeac057c13cb80961b6222bd03e2"
+"hooks/after_turn.py" = "1c5bcdade4ca0d785878d60910105208fcff38f74872426ee821363ce5bf9811"
+"hooks/prune.py" = "2dceeb9bb0d0b7ee224291bfce600f629f38b4a853cd437774d9b66ef226838d"
