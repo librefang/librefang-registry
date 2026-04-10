@@ -238,24 +238,25 @@ def validate_skill_file(filepath: Path) -> list[str]:
     return errors
 
 
-def validate_skill_md_file(filepath: Path) -> list[str]:
-    """Validate a Claude Code-style SKILL.md file with YAML frontmatter."""
-    errors = []
+def parse_skill_md_frontmatter(filepath: Path) -> tuple[dict[str, str], list[str]]:
+    """Parse YAML frontmatter from a SKILL.md file.
+
+    Returns (metadata, errors). Metadata may be empty if parsing fails.
+    """
+    errors: list[str] = []
     rel = filepath.relative_to(filepath.parent.parent)
 
     try:
         text = filepath.read_text(encoding="utf-8")
     except OSError as e:
-        return [f"{rel}: Failed to read file: {e}"]
+        return {}, [f"{rel}: Failed to read file: {e}"]
 
     if not text.startswith("---"):
-        errors.append(f"{rel}: Missing YAML frontmatter (must start with '---')")
-        return errors
+        return {}, [f"{rel}: Missing YAML frontmatter (must start with '---')"]
 
     end = text.find("\n---", 3)
     if end == -1:
-        errors.append(f"{rel}: Unterminated YAML frontmatter (missing closing '---')")
-        return errors
+        return {}, [f"{rel}: Unterminated YAML frontmatter (missing closing '---')"]
 
     fm = text[3:end].strip()
     meta: dict[str, str] = {}
@@ -268,12 +269,26 @@ def validate_skill_md_file(filepath: Path) -> list[str]:
         k, _, v = line.partition(":")
         meta[k.strip()] = v.strip().strip('"').strip("'")
 
+    return meta, errors
+
+
+def validate_skill_md_file(filepath: Path) -> tuple[dict[str, str], list[str]]:
+    """Validate a Claude Code-style SKILL.md file with YAML frontmatter.
+
+    Returns (metadata, errors) so callers can cross-check against skill.toml.
+    """
+    meta, errors = parse_skill_md_frontmatter(filepath)
+    rel = filepath.relative_to(filepath.parent.parent)
+
+    if errors:
+        return meta, errors
+
     if not meta.get("name"):
         errors.append(f"{rel}: Missing frontmatter field 'name'")
     if not meta.get("description"):
         errors.append(f"{rel}: Missing frontmatter field 'description'")
 
-    return errors
+    return meta, errors
 
 
 def validate_aliases_file(filepath: Path) -> list[str]:
@@ -409,12 +424,27 @@ def main():
         for d in skill_dirs:
             skill_toml = d / "skill.toml"
             skill_md = d / "SKILL.md"
+
+            if not skill_md.exists():
+                all_errors.append(f"skills/{d.name}: Missing SKILL.md (required entry point)")
+                continue
+
+            md_meta, md_errors = validate_skill_md_file(skill_md)
+            all_errors.extend(md_errors)
+
             if skill_toml.exists():
                 all_errors.extend(validate_skill_file(skill_toml))
-            elif skill_md.exists():
-                all_errors.extend(validate_skill_md_file(skill_md))
-            else:
-                all_errors.append(f"skills/{d.name}: Missing skill.toml or SKILL.md")
+                toml_data, _ = load_toml(skill_toml)
+                if toml_data:
+                    toml_skill = toml_data.get("skill", {}) or {}
+                    for field in ("name", "description"):
+                        md_val = md_meta.get(field)
+                        toml_val = toml_skill.get(field)
+                        if md_val and toml_val and md_val != toml_val:
+                            all_errors.append(
+                                f"skills/{d.name}: {field} mismatch between SKILL.md "
+                                f"('{md_val}') and skill.toml ('{toml_val}')"
+                            )
         stats["skills"] = len(skill_dirs)
 
     # --- Plugins ---
