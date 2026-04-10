@@ -1,5 +1,5 @@
 # OpenRouter — https://openrouter.ai
-# Models: 18 (11 paid + 7 free)
+# Models: 18 (10 paid + 8 free)
 
 [provider]
 id = "openrouter"
@@ -12,13 +12,13 @@ key_required = true
 # default_model_for_provider("openrouter") when no alias override is set.
 
 [[models]]
-id = "openrouter/qwen/qwen3.6-plus"
-display_name = "Qwen 3.6 Plus (OpenRouter)"
+id = "openrouter/qwen/qwen3.6-plus:free"
+display_name = "Qwen 3.6 Plus Free (OpenRouter)"
 tier = "smart"
 context_window = 1000000
 max_output_tokens = 65536
-input_cost_per_m = 0.33
-output_cost_per_m = 1.95
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
 supports_tools = true
 supports_vision = true
 supports_streaming = true
