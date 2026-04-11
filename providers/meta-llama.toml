@@ -53,8 +53,8 @@ display_name = "Meta: Llama 3.2 11B Vision Instruct"
 tier = "fast"
 context_window = 131072
 max_output_tokens = 16384
-input_cost_per_m = 0.049
-output_cost_per_m = 0.049
+input_cost_per_m = 0.245
+output_cost_per_m = 0.245
 supports_streaming = true
 
 [[models]]
