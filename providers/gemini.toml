@@ -20,6 +20,7 @@ output_cost_per_m = 12.0
 supports_tools = true
 supports_vision = true
 supports_streaming = true
+supports_thinking = true
 aliases = ["gemini-pro"]
 
 [[models]]
@@ -33,6 +34,7 @@ output_cost_per_m = 3.0
 supports_tools = true
 supports_vision = true
 supports_streaming = true
+supports_thinking = true
 aliases = ["gemini-flash"]
 
 [[models]]
@@ -46,6 +48,7 @@ output_cost_per_m = 1.5
 supports_tools = true
 supports_vision = true
 supports_streaming = true
+supports_thinking = true
 aliases = []
 
 [[models]]
@@ -59,6 +62,7 @@ output_cost_per_m = 0.39999999999999997
 supports_tools = true
 supports_vision = true
 supports_streaming = true
+supports_thinking = true
 aliases = []
 
 [[models]]
@@ -72,6 +76,7 @@ output_cost_per_m = 10.0
 supports_tools = true
 supports_vision = true
 supports_streaming = true
+supports_thinking = true
 aliases = []
 
 [[models]]
@@ -85,6 +90,7 @@ output_cost_per_m = 2.5
 supports_tools = true
 supports_vision = true
 supports_streaming = true
+supports_thinking = true
 aliases = ["flash"]
 
 [[models]]

@@ -19,6 +19,7 @@ output_cost_per_m = 25.0
 supports_tools = true
 supports_vision = true
 supports_streaming = true
+supports_thinking = true
 aliases = ["opus", "claude-opus"]
 
 [[models]]
@@ -32,6 +33,7 @@ output_cost_per_m = 15.0
 supports_tools = true
 supports_vision = true
 supports_streaming = true
+supports_thinking = true
 aliases = ["sonnet", "claude-sonnet"]
 
 [[models]]
@@ -45,6 +47,7 @@ output_cost_per_m = 75.0
 supports_tools = true
 supports_vision = true
 supports_streaming = true
+supports_thinking = true
 aliases = []
 
 [[models]]
@@ -58,6 +61,7 @@ output_cost_per_m = 15.0
 supports_tools = true
 supports_vision = true
 supports_streaming = true
+supports_thinking = true
 aliases = []
 
 [[models]]
@@ -71,6 +75,7 @@ output_cost_per_m = 1.25
 supports_tools = true
 supports_vision = true
 supports_streaming = true
+supports_thinking = true
 aliases = ["haiku", "claude-haiku"]
 
 [[models]]
@@ -84,6 +89,7 @@ output_cost_per_m = 15.0
 supports_tools = true
 supports_vision = true
 supports_streaming = true
+supports_thinking = true
 aliases = []
 
 [[models]]
@@ -97,4 +103,5 @@ output_cost_per_m = 15.0
 supports_tools = true
 supports_vision = true
 supports_streaming = true
+supports_thinking = true
 aliases = []
