@@ -1,9 +1,170 @@
+# Codex CLI — subprocess-based provider (wraps the `codex` CLI from openai/codex).
+#
+# Models below mirror the Codex CLI model catalog at
+# https://github.com/openai/codex/blob/main/codex-rs/models-manager/models.json
+# and are passed to the CLI via `--model <slug>`. The driver in
+# librefang-runtime-drivers passes any unknown slug through verbatim, so new
+# models appearing in the upstream list can be added here without a binary
+# release.
+#
+# Pricing is intentionally zeroed out: Codex CLI bills against the user's
+# ChatGPT subscription, not per-token — metering reports zero cost for calls
+# routed through this provider.
+
 [provider]
 id = "codex-cli"
 display_name = "Codex CLI"
 api_key_env = ""
 base_url = ""
 key_required = false
+
+# ---------------------------------------------------------------------------
+# GPT-5 family (current Codex CLI lineup)
+# ---------------------------------------------------------------------------
+
+[[models]]
+id = "codex-cli/gpt-5.4"
+display_name = "GPT-5.4 (Codex CLI)"
+provider = "codex-cli"
+tier = "frontier"
+context_window = 272000
+max_output_tokens = 128000
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
+supports_tools = false
+supports_vision = false
+supports_streaming = false
+aliases = ["codex-cli-gpt-5.4"]
+
+[[models]]
+id = "codex-cli/gpt-5.3-codex"
+display_name = "GPT-5.3 Codex (Codex CLI)"
+provider = "codex-cli"
+tier = "frontier"
+context_window = 272000
+max_output_tokens = 128000
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
+supports_tools = false
+supports_vision = false
+supports_streaming = false
+aliases = ["codex-cli-gpt-5.3-codex"]
+
+[[models]]
+id = "codex-cli/gpt-5.2-codex"
+display_name = "GPT-5.2 Codex (Codex CLI)"
+provider = "codex-cli"
+tier = "frontier"
+context_window = 272000
+max_output_tokens = 128000
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
+supports_tools = false
+supports_vision = false
+supports_streaming = false
+aliases = ["codex-cli-gpt-5.2-codex"]
+
+[[models]]
+id = "codex-cli/gpt-5.2"
+display_name = "GPT-5.2 (Codex CLI)"
+provider = "codex-cli"
+tier = "frontier"
+context_window = 272000
+max_output_tokens = 128000
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
+supports_tools = false
+supports_vision = false
+supports_streaming = false
+aliases = ["codex-cli-gpt-5.2"]
+
+[[models]]
+id = "codex-cli/gpt-5.1-codex-max"
+display_name = "GPT-5.1 Codex Max (Codex CLI)"
+provider = "codex-cli"
+tier = "frontier"
+context_window = 272000
+max_output_tokens = 128000
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
+supports_tools = false
+supports_vision = false
+supports_streaming = false
+aliases = ["codex-cli-gpt-5.1-codex-max"]
+
+[[models]]
+id = "codex-cli/gpt-5.1-codex"
+display_name = "GPT-5.1 Codex (Codex CLI)"
+provider = "codex-cli"
+tier = "smart"
+context_window = 272000
+max_output_tokens = 128000
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
+supports_tools = false
+supports_vision = false
+supports_streaming = false
+aliases = ["codex-cli-gpt-5.1-codex"]
+
+[[models]]
+id = "codex-cli/gpt-5.1-codex-mini"
+display_name = "GPT-5.1 Codex Mini (Codex CLI)"
+provider = "codex-cli"
+tier = "fast"
+context_window = 272000
+max_output_tokens = 128000
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
+supports_tools = false
+supports_vision = false
+supports_streaming = false
+aliases = ["codex-cli-gpt-5.1-codex-mini"]
+
+[[models]]
+id = "codex-cli/gpt-5.1"
+display_name = "GPT-5.1 (Codex CLI)"
+provider = "codex-cli"
+tier = "smart"
+context_window = 272000
+max_output_tokens = 128000
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
+supports_tools = false
+supports_vision = false
+supports_streaming = false
+aliases = ["codex-cli-gpt-5.1"]
+
+[[models]]
+id = "codex-cli/gpt-5-codex"
+display_name = "GPT-5 Codex (Codex CLI)"
+provider = "codex-cli"
+tier = "smart"
+context_window = 272000
+max_output_tokens = 128000
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
+supports_tools = false
+supports_vision = false
+supports_streaming = false
+aliases = ["codex-cli-gpt-5-codex"]
+
+[[models]]
+id = "codex-cli/gpt-5"
+display_name = "GPT-5 (Codex CLI)"
+provider = "codex-cli"
+tier = "smart"
+context_window = 272000
+max_output_tokens = 128000
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
+supports_tools = false
+supports_vision = false
+supports_streaming = false
+aliases = ["codex-cli-gpt-5"]
+
+# ---------------------------------------------------------------------------
+# Legacy models (kept for backwards compatibility with existing agent configs)
+# ---------------------------------------------------------------------------
 
 [[models]]
 id = "codex-cli/o4-mini"
