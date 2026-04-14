@@ -71,4 +71,5 @@ output_cost_per_m = 1.72
 supports_tools = true
 supports_vision = true
 supports_streaming = true
+supports_thinking = true
 aliases = ["kimi-k2.5-0711"]

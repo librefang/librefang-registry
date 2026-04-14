@@ -17,6 +17,7 @@ output_cost_per_m = 0.0
 supports_tools = false
 supports_vision = false
 supports_streaming = false
+supports_thinking = true
 aliases = ["aider-sonnet"]
 
 [[models]]

@@ -58,4 +58,5 @@ output_cost_per_m = 1.14
 supports_tools = false
 supports_vision = true
 supports_streaming = true
+supports_thinking = true
 aliases = ["stepfun-vision"]
