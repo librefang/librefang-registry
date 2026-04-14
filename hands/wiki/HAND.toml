@@ -790,7 +790,7 @@ format = "number"
 
 [metadata]
 frequency = "on-demand"
-token_consumption = "variable — scales with wiki size and operation type"
+token_consumption = "high"
 default_active = false
 
 # ─── i18n ────────────────────────────────────────────────────────────────────
