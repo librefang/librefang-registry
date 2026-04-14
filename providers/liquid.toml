@@ -46,6 +46,7 @@ max_output_tokens = 8192
 input_cost_per_m = 0.0
 output_cost_per_m = 0.0
 supports_streaming = true
+supports_thinking = true
 
 [[models]]
 id = "lfm2-8b-a1b"

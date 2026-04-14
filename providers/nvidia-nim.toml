@@ -222,6 +222,7 @@ output_cost_per_m = 0.10
 supports_tools = false
 supports_vision = false
 supports_streaming = true
+supports_thinking = true
 aliases = ["deepseek-r1-32b"]
 
 # ── Qwen models ──────────────────────────────────────────────────
@@ -237,6 +238,7 @@ output_cost_per_m = 2.34
 supports_tools = true
 supports_vision = false
 supports_streaming = true
+supports_thinking = true
 aliases = ["qwen3.5"]
 
 [[models]]
@@ -263,6 +265,7 @@ output_cost_per_m = 0.58
 supports_tools = false
 supports_vision = false
 supports_streaming = true
+supports_thinking = true
 aliases = []
 
 # ── Google Gemma models ──────────────────────────────────────────

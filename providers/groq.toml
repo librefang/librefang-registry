@@ -123,6 +123,7 @@ output_cost_per_m = 0.20
 supports_tools = true
 supports_vision = false
 supports_streaming = true
+supports_thinking = true
 aliases = []
 
 [[models]]
