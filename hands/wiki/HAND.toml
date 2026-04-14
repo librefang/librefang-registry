@@ -537,6 +537,8 @@ Re-ingesting the same source: OVERWRITE the source summary page with fresh extra
 memory_read = ["*"]
 memory_write = ["self.*"]
 shell = ["*"]
+
+[agents.analyst]
 name = "analyst"
 description = "Query answering agent — synthesizes answers from wiki pages with wikilink citations, confidence tracking, and gap identification."
 module = "builtin:chat"
