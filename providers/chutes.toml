@@ -32,6 +32,7 @@ output_cost_per_m = 2.19
 supports_tools = false
 supports_vision = false
 supports_streaming = true
+supports_thinking = true
 aliases = ["chutes-deepseek-r1"]
 
 [[models]]
@@ -58,6 +59,7 @@ output_cost_per_m = 0.35
 supports_tools = true
 supports_vision = false
 supports_streaming = true
+supports_thinking = true
 aliases = ["chutes-qwen3"]
 
 [[models]]
