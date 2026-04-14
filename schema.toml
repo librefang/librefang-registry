@@ -114,6 +114,12 @@ required = false
 description = "Streaming response support"
 default = true
 
+[provider.sections.models.fields.supports_thinking]
+type = "bool"
+required = false
+description = "Extended thinking / reasoning support"
+default = false
+
 [provider.sections.models.fields.aliases]
 type = "array"
 required = false

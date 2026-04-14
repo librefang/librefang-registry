@@ -23,6 +23,7 @@ output_cost_per_m = 0.0
 supports_tools = true
 supports_vision = true
 supports_streaming = true
+supports_thinking = true
 aliases = ["codex-cli-gpt-5.4"]
 
 [[models]]
@@ -37,6 +38,7 @@ output_cost_per_m = 0.0
 supports_tools = true
 supports_vision = true
 supports_streaming = true
+supports_thinking = true
 aliases = ["codex-cli-gpt-5.3-codex"]
 
 [[models]]
@@ -51,6 +53,7 @@ output_cost_per_m = 0.0
 supports_tools = true
 supports_vision = true
 supports_streaming = true
+supports_thinking = true
 aliases = ["codex-cli-gpt-5.2"]
 
 [[models]]
@@ -65,6 +68,7 @@ output_cost_per_m = 0.0
 supports_tools = true
 supports_vision = true
 supports_streaming = true
+supports_thinking = true
 aliases = ["codex-cli-gpt-5.2-codex"]
 
 [[models]]
@@ -79,6 +83,7 @@ output_cost_per_m = 0.0
 supports_tools = true
 supports_vision = true
 supports_streaming = true
+supports_thinking = true
 aliases = ["codex-cli-gpt-5.1-codex-max"]
 
 [[models]]
@@ -93,4 +98,5 @@ output_cost_per_m = 0.0
 supports_tools = true
 supports_vision = true
 supports_streaming = true
+supports_thinking = true
 aliases = ["codex-cli-gpt-5.1-codex-mini"]

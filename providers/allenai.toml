@@ -26,6 +26,7 @@ max_output_tokens = 65536
 input_cost_per_m = 0.15
 output_cost_per_m = 0.5
 supports_streaming = true
+supports_thinking = true
 
 [[models]]
 id = "olmo-3.1-32b-instruct"
@@ -46,3 +47,4 @@ max_output_tokens = 65536
 input_cost_per_m = 0.15
 output_cost_per_m = 0.5
 supports_streaming = true
+supports_thinking = true

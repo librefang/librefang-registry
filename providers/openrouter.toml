@@ -22,6 +22,7 @@ output_cost_per_m = 0.0
 supports_tools = true
 supports_vision = true
 supports_streaming = true
+supports_thinking = true
 aliases = []
 
 [[models]]
@@ -35,6 +36,7 @@ output_cost_per_m = 0.60
 supports_tools = true
 supports_vision = true
 supports_streaming = true
+supports_thinking = true
 aliases = []
 
 [[models]]
@@ -48,6 +50,7 @@ output_cost_per_m = 15.0
 supports_tools = true
 supports_vision = true
 supports_streaming = true
+supports_thinking = true
 aliases = []
 
 [[models]]
@@ -113,6 +116,7 @@ output_cost_per_m = 10.0
 supports_tools = true
 supports_vision = true
 supports_streaming = true
+supports_thinking = true
 aliases = []
 
 [[models]]
@@ -152,6 +156,7 @@ output_cost_per_m = 2.19
 supports_tools = false
 supports_vision = false
 supports_streaming = true
+supports_thinking = true
 aliases = []
 
 # Free models — verified against openrouter.ai/api/v1/models on 2026-04-10.
@@ -184,6 +189,7 @@ output_cost_per_m = 0.0
 supports_tools = true
 supports_vision = false
 supports_streaming = true
+supports_thinking = true
 aliases = []
 
 [[models]]

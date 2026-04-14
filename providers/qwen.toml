@@ -104,6 +104,7 @@ output_cost_per_m = 1.82
 supports_tools = true
 supports_vision = false
 supports_streaming = true
+supports_thinking = true
 aliases = ["qwen3"]
 
 [[models]]
@@ -117,6 +118,7 @@ output_cost_per_m = 0.28
 supports_tools = true
 supports_vision = false
 supports_streaming = true
+supports_thinking = true
 aliases = []
 
 [[models]]

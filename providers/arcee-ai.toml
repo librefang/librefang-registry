@@ -26,6 +26,7 @@ max_output_tokens = 32000
 input_cost_per_m = 0.9
 output_cost_per_m = 3.3
 supports_streaming = true
+supports_thinking = true
 
 [[models]]
 id = "spotlight"

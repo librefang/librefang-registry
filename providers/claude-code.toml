@@ -19,6 +19,7 @@ output_cost_per_m = 25.0
 supports_tools = false
 supports_vision = false
 supports_streaming = true
+supports_thinking = true
 aliases = ["claude-code-opus"]
 
 [[models]]
@@ -32,6 +33,7 @@ output_cost_per_m = 15.0
 supports_tools = false
 supports_vision = false
 supports_streaming = true
+supports_thinking = true
 aliases = ["claude-code", "claude-code-sonnet"]
 
 [[models]]
@@ -45,4 +47,5 @@ output_cost_per_m = 1.25
 supports_tools = false
 supports_vision = false
 supports_streaming = true
+supports_thinking = true
 aliases = ["claude-code-haiku"]

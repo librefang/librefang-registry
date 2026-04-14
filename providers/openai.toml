@@ -85,6 +85,7 @@ output_cost_per_m = 8.0
 supports_tools = true
 supports_vision = true
 supports_streaming = true
+supports_thinking = true
 aliases = []
 
 [[models]]
@@ -98,6 +99,7 @@ output_cost_per_m = 4.40
 supports_tools = true
 supports_vision = false
 supports_streaming = true
+supports_thinking = true
 aliases = []
 
 [[models]]
@@ -111,6 +113,7 @@ output_cost_per_m = 4.4
 supports_tools = true
 supports_vision = true
 supports_streaming = true
+supports_thinking = true
 aliases = []
 
 [[models]]
@@ -243,4 +246,5 @@ output_cost_per_m = 4.40
 supports_tools = true
 supports_vision = true
 supports_streaming = true
+supports_thinking = true
 aliases = ["codex-o4"]
