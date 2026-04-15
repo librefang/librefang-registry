@@ -133,8 +133,8 @@ display_name = "Llama Guard 3 8B"
 tier = "fast"
 context_window = 131072
 max_output_tokens = 16384
-input_cost_per_m = 0.02
-output_cost_per_m = 0.06
+input_cost_per_m = 0.48
+output_cost_per_m = 0.03
 supports_streaming = true
 
 [[models]]
