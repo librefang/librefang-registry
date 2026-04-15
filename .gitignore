@@ -3,3 +3,5 @@
 __pycache__/
 *.pyc
 .env
+.make-setup-done
+.sync_marker

@@ -12,6 +12,19 @@ SKILLS_DIR    := skills
 PLUGINS_DIR   := plugins
 PROVIDERS_DIR := providers
 
+# ── Setup ────────────────────────────────────────────────────────────────────
+
+.PHONY: setup
+setup: ## Configure git hooks for auto-formatting
+	git config core.hooksPath .githooks
+	@echo "Git hooks installed (.githooks/pre-commit)"
+
+# Auto-configure hooks on first make invocation
+-include .make-setup-done
+.make-setup-done:
+	@git config core.hooksPath .githooks 2>/dev/null || true
+	@touch .make-setup-done
+
 # ── Validation ────────────────────────────────────────────────────────────────
 
 .PHONY: validate
