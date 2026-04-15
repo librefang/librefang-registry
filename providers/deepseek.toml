@@ -1,5 +1,5 @@
 # DeepSeek — https://deepseek.com
-# Models: 4
+# Models: 2
 
 [provider]
 id = "deepseek"
@@ -34,29 +34,3 @@ supports_vision = false
 supports_streaming = true
 supports_thinking = true
 aliases = ["deepseek-r1"]
-
-[[models]]
-id = "deepseek-coder"
-display_name = "DeepSeek Coder V2"
-tier = "balanced"
-context_window = 128000
-max_output_tokens = 8192
-input_cost_per_m = 0.14
-output_cost_per_m = 0.28
-supports_tools = true
-supports_vision = false
-supports_streaming = true
-aliases = []
-
-[[models]]
-id = "deepseek-chat-v3-0324"
-display_name = "DeepSeek V3 0324"
-tier = "smart"
-context_window = 64000
-max_output_tokens = 8192
-input_cost_per_m = 0.19999999999999998
-output_cost_per_m = 0.77
-supports_tools = true
-supports_vision = false
-supports_streaming = true
-aliases = []

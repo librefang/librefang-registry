@@ -1,4 +1,5 @@
-# meta-llama — auto-generated from OpenRouter API
+# meta-llama — https://llama.com
+# Models: 5
 
 [provider]
 id = "meta-llama"
@@ -6,106 +7,6 @@ display_name = "Meta Llama"
 api_key_env = "LLAMA_API_KEY"
 base_url = "https://api.llama.com/v1"
 key_required = true
-
-[[models]]
-id = "llama-3-70b-instruct"
-display_name = "Meta: Llama 3 70B Instruct"
-tier = "smart"
-context_window = 8192
-max_output_tokens = 8000
-input_cost_per_m = 0.51
-output_cost_per_m = 0.74
-supports_streaming = true
-
-[[models]]
-id = "llama-3-8b-instruct"
-display_name = "Meta: Llama 3 8B Instruct"
-tier = "fast"
-context_window = 8192
-max_output_tokens = 16384
-input_cost_per_m = 0.03
-output_cost_per_m = 0.04
-supports_streaming = true
-
-[[models]]
-id = "llama-3.1-70b-instruct"
-display_name = "Meta: Llama 3.1 70B Instruct"
-tier = "fast"
-context_window = 131072
-max_output_tokens = 16384
-input_cost_per_m = 0.4
-output_cost_per_m = 0.4
-supports_streaming = true
-
-[[models]]
-id = "llama-3.1-8b-instruct"
-display_name = "Meta: Llama 3.1 8B Instruct"
-tier = "fast"
-context_window = 16384
-max_output_tokens = 16384
-input_cost_per_m = 0.02
-output_cost_per_m = 0.05
-supports_streaming = true
-
-[[models]]
-id = "llama-3.2-11b-vision-instruct"
-display_name = "Meta: Llama 3.2 11B Vision Instruct"
-tier = "fast"
-context_window = 131072
-max_output_tokens = 16384
-input_cost_per_m = 0.245
-output_cost_per_m = 0.245
-supports_streaming = true
-
-[[models]]
-id = "llama-3.2-1b-instruct"
-display_name = "Meta: Llama 3.2 1B Instruct"
-tier = "fast"
-context_window = 60000
-max_output_tokens = 15000
-input_cost_per_m = 0.027
-output_cost_per_m = 0.2
-supports_streaming = true
-
-[[models]]
-id = "llama-3.2-3b-instruct"
-display_name = "Meta: Llama 3.2 3B Instruct"
-tier = "fast"
-context_window = 80000
-max_output_tokens = 16384
-input_cost_per_m = 0.051
-output_cost_per_m = 0.34
-supports_streaming = true
-
-[[models]]
-id = "llama-3.2-3b-instruct:free"
-display_name = "Meta: Llama 3.2 3B Instruct (free)"
-tier = "fast"
-context_window = 131072
-max_output_tokens = 16384
-input_cost_per_m = 0.0
-output_cost_per_m = 0.0
-supports_streaming = true
-
-[[models]]
-id = "llama-3.3-70b-instruct"
-display_name = "Meta: Llama 3.3 70B Instruct"
-tier = "fast"
-context_window = 131072
-max_output_tokens = 16384
-input_cost_per_m = 0.1
-output_cost_per_m = 0.32
-supports_streaming = true
-
-[[models]]
-id = "llama-3.3-70b-instruct:free"
-display_name = "Meta: Llama 3.3 70B Instruct (free)"
-tier = "fast"
-context_window = 65536
-max_output_tokens = 16384
-input_cost_per_m = 0.0
-output_cost_per_m = 0.0
-supports_streaming = true
 
 [[models]]
 id = "llama-4-maverick"
@@ -128,8 +29,8 @@ output_cost_per_m = 0.3
 supports_streaming = true
 
 [[models]]
-id = "llama-guard-3-8b"
-display_name = "Llama Guard 3 8B"
+id = "llama-3.3-70b-instruct"
+display_name = "Meta: Llama 3.3 70B Instruct"
 tier = "fast"
 context_window = 131072
 max_output_tokens = 16384
