@@ -5,7 +5,7 @@
 [provider]
 id = "github-copilot"
 display_name = "GitHub Copilot"
-api_key_env = "GITHUB_TOKEN"
+api_key_env = "GITHUB_COPILOT_TOKEN"
 base_url = "https://api.githubcopilot.com"
 key_required = true
 

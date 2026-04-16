@@ -3,7 +3,7 @@
 [provider]
 id = "microsoft"
 display_name = "Microsoft"
-api_key_env = "GITHUB_TOKEN"
+api_key_env = "GITHUB_MODELS_TOKEN"
 base_url = "https://models.inference.ai.azure.com"
 key_required = true
 
