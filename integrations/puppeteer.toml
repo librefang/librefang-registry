@@ -1,0 +1,24 @@
+id = "puppeteer"
+name = "Puppeteer"
+description = "Control a headless Chrome browser — navigate pages, take screenshots, fill forms, and scrape JavaScript-rendered content"
+category = "devtools"
+icon = "🤖"
+tags = ["browser", "puppeteer", "headless", "screenshot", "scraping", "automation", "chrome"]
+
+[transport]
+type = "stdio"
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-puppeteer@latest"]
+
+[health_check]
+interval_secs = 60
+unhealthy_threshold = 3
+
+setup_instructions = """
+Requires Chrome or Chromium to be installed:
+- macOS: `brew install --cask google-chrome`
+- Ubuntu/Debian: `sudo apt install chromium-browser`
+- Docker: add `--cap-add=SYS_ADMIN` to your container run command
+
+No API key required.
+"""

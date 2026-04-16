@@ -1,0 +1,31 @@
+id = "google-maps"
+name = "Google Maps"
+description = "Geocoding, reverse geocoding, directions, distance matrix, and place search via Google Maps Platform"
+category = "data"
+icon = "🗺️"
+tags = ["maps", "geocoding", "directions", "places", "google", "location"]
+
+[transport]
+type = "stdio"
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-google-maps@latest"]
+
+[[required_env]]
+name = "GOOGLE_MAPS_API_KEY"
+label = "Google Maps API Key"
+help = "Enable Maps JavaScript API, Geocoding API, and Places API in Google Cloud Console, then create an API key"
+is_secret = true
+get_url = "https://console.cloud.google.com/apis/credentials"
+
+[health_check]
+interval_secs = 120
+unhealthy_threshold = 3
+
+setup_instructions = """
+1. Go to https://console.cloud.google.com
+2. Enable: Geocoding API, Directions API, Places API, Distance Matrix API
+3. Create credentials → API Key
+4. Paste the key into the field above
+
+Free tier includes $200/month credit (~40,000 geocoding requests).
+"""
