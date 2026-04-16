@@ -1,0 +1,34 @@
+id = "time"
+name = "Time & Timezone"
+description = "Get current time in any timezone, convert between timezones, and calculate time differences"
+category = "productivity"
+icon = "🕐"
+tags = ["time", "timezone", "clock", "datetime", "conversion"]
+
+[transport]
+type = "stdio"
+command = "uvx"
+args = ["mcp-server-time", "--local-timezone", "UTC"]
+
+[health_check]
+interval_secs = 60
+unhealthy_threshold = 3
+
+setup_instructions = """
+No API key required. Requires `uv`:
+- macOS/Linux: `curl -LsSf https://astral.sh/uv/install.sh | sh`
+
+To set your local timezone, update config.toml:
+
+```toml
+[[mcp_servers]]
+name = "time"
+
+[mcp_servers.transport]
+type = "stdio"
+command = "uvx"
+args = ["mcp-server-time", "--local-timezone", "Asia/Shanghai"]
+```
+
+Supports all IANA timezone names (e.g. `America/New_York`, `Europe/London`, `Asia/Tokyo`).
+"""
