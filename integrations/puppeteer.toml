@@ -3,7 +3,15 @@ name = "Puppeteer"
 description = "Control a headless Chrome browser — navigate pages, take screenshots, fill forms, and scrape JavaScript-rendered content"
 category = "devtools"
 icon = "🤖"
-tags = ["browser", "puppeteer", "headless", "screenshot", "scraping", "automation", "chrome"]
+tags = [
+  "browser",
+  "puppeteer",
+  "headless",
+  "screenshot",
+  "scraping",
+  "automation",
+  "chrome",
+]
 
 [transport]
 type = "stdio"

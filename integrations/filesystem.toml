@@ -8,7 +8,10 @@ tags = ["files", "local", "read", "write", "search"]
 [transport]
 type = "stdio"
 command = "sh"
-args = ["-c", "exec npx -y @modelcontextprotocol/server-filesystem@latest \"$HOME\""]
+args = [
+  "-c",
+  "exec npx -y @modelcontextprotocol/server-filesystem@latest \"$HOME\"",
+]
 
 [health_check]
 interval_secs = 60
