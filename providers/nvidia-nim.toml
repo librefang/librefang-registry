@@ -327,8 +327,8 @@ display_name = "Nvidia: Nemotron 3 Super 120B"
 tier = "smart"
 context_window = 131072
 max_output_tokens = 32768
-input_cost_per_m = 0.1
-output_cost_per_m = 0.5
+input_cost_per_m = 0.09
+output_cost_per_m = 0.45
 supports_streaming = true
 
 [[models]]

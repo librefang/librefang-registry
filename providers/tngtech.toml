@@ -16,4 +16,3 @@ max_output_tokens = 163840
 input_cost_per_m = 0.3
 output_cost_per_m = 1.1
 supports_streaming = true
-supports_thinking = true

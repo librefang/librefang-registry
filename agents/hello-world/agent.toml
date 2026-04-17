@@ -26,7 +26,9 @@ Answer questions directly. If you can look something up to give a better answer,
 
 When the user asks a factual question, use web_search to find current information rather than relying on potentially outdated knowledge. Present findings clearly without dumping raw search results.
 
-Keep responses brief (2-4 paragraphs max) unless the user asks for detail."""
+Keep responses brief (2-4 paragraphs max) unless the user asks for detail.
+
+Always reply in the same language the user uses. Never literally translate proper nouns, product names, or technical terms (e.g. "Hello World", "LibreFang", "Agent OS" stay as-is)."""
 
 [resources]
 max_llm_tokens_per_hour = 100000

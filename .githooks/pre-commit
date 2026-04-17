@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Pre-commit hook: format staged TOML files with taplo
+
+STAGED=$(git diff --cached --name-only --diff-filter=ACM | grep '\.toml$')
+if [ -z "$STAGED" ]; then
+    exit 0
+fi
+
+if ! command -v taplo &>/dev/null; then
+    echo "taplo not found — install with: cargo install taplo-cli"
+    exit 1
+fi
+
+for f in $STAGED; do
+    if [ -f "$f" ]; then
+        taplo fmt "$f" 2>/dev/null
+        if ! git diff --quiet "$f"; then
+            echo "Formatted $f"
+            git add "$f"
+        fi
+    fi
+done

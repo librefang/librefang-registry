@@ -26,7 +26,6 @@ max_output_tokens = 32000
 input_cost_per_m = 0.9
 output_cost_per_m = 3.3
 supports_streaming = true
-supports_thinking = true
 
 [[models]]
 id = "spotlight"
@@ -49,6 +48,16 @@ output_cost_per_m = 0.0
 supports_streaming = true
 
 [[models]]
+id = "trinity-large-thinking"
+display_name = "Arcee AI: Trinity Large Thinking"
+tier = "fast"
+context_window = 262144
+max_output_tokens = 262144
+input_cost_per_m = 0.22
+output_cost_per_m = 0.85
+supports_streaming = true
+
+[[models]]
 id = "trinity-mini"
 display_name = "Arcee AI: Trinity Mini"
 tier = "fast"
@@ -56,16 +65,6 @@ context_window = 131072
 max_output_tokens = 131072
 input_cost_per_m = 0.045
 output_cost_per_m = 0.15
-supports_streaming = true
-
-[[models]]
-id = "trinity-mini:free"
-display_name = "Arcee AI: Trinity Mini (free)"
-tier = "fast"
-context_window = 131072
-max_output_tokens = 16384
-input_cost_per_m = 0.0
-output_cost_per_m = 0.0
 supports_streaming = true
 
 [[models]]

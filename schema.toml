@@ -41,6 +41,12 @@ required = true
 description = "Whether an API key is needed (false for local providers)"
 example = true
 
+[provider.fields.api_key]
+type = "string"
+required = false
+description = "API key value (stored securely in secrets.env, not in the TOML file)"
+secret = true
+
 # --- Provider: nested [[models]] section ---
 
 [provider.sections.models]
