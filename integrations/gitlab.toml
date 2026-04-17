@@ -26,3 +26,32 @@ setup_instructions = """
 2. Create a new personal access token with the 'api' scope and an appropriate expiration date.
 3. Paste the token into the GITLAB_PERSONAL_ACCESS_TOKEN field above.
 """
+
+
+[i18n.zh]
+name = "GitLab"
+description = "通过 MCP 服务器访问 GitLab 项目、Merge Request、Issue 与 CI/CD 流水线。"
+
+[i18n.zh-TW]
+name = "GitLab"
+description = "透過 MCP 伺服器存取 GitLab 專案、Merge Request、Issue 與 CI/CD Pipeline。"
+
+[i18n.ja]
+name = "GitLab"
+description = "MCP サーバー経由で GitLab のプロジェクト、マージリクエスト、Issue、CI/CD パイプラインを操作。"
+
+[i18n.ko]
+name = "GitLab"
+description = "MCP 서버를 통해 GitLab 프로젝트, 머지 요청, 이슈, CI/CD 파이프라인에 접근."
+
+[i18n.de]
+name = "GitLab"
+description = "Zugriff auf GitLab-Projekte, Merge Requests, Issues und CI/CD-Pipelines über den MCP-Server."
+
+[i18n.es]
+name = "GitLab"
+description = "Accede a proyectos, merge requests, issues y pipelines de CI/CD de GitLab mediante el servidor MCP."
+
+[i18n.fr]
+name = "GitLab"
+description = "Accès aux projets, merge requests, issues et pipelines CI/CD GitLab via le serveur MCP."

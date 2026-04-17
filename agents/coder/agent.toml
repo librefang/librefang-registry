@@ -64,3 +64,32 @@ network = ["*"]
 memory_read = ["*"]
 memory_write = ["self.*"]
 shell = ["cargo *", "rustc *", "git *", "npm *", "python *"]
+
+
+[i18n.zh]
+name = "编码工程师"
+description = "资深软件工程师：阅读、编写与分析代码。"
+
+[i18n.zh-TW]
+name = "編碼工程師"
+description = "資深軟體工程師：閱讀、撰寫與分析程式碼。"
+
+[i18n.ja]
+name = "コーダー"
+description = "エキスパートソフトウェアエンジニア：コードの読解・作成・解析を行う。"
+
+[i18n.ko]
+name = "코더"
+description = "숙련된 소프트웨어 엔지니어: 코드를 읽고, 쓰고, 분석한다."
+
+[i18n.de]
+name = "Coder"
+description = "Erfahrener Softwareentwickler: liest, schreibt und analysiert Code."
+
+[i18n.es]
+name = "Programador"
+description = "Ingeniero de software experto: lee, escribe y analiza código."
+
+[i18n.fr]
+name = "Codeur"
+description = "Ingénieur logiciel confirmé : lit, écrit et analyse du code."

@@ -59,3 +59,32 @@ tools = [
 memory_read = ["*"]
 memory_write = ["self.*", "shared.*"]
 agent_message = ["*"]
+
+
+[i18n.zh]
+name = "系统架构师"
+description = "系统架构师：设计软件架构、权衡取舍、编写技术规格。"
+
+[i18n.zh-TW]
+name = "系統架構師"
+description = "系統架構師：設計軟體架構、權衡取捨、撰寫技術規格。"
+
+[i18n.ja]
+name = "アーキテクト"
+description = "ソフトウェアアーキテクチャの設計、トレードオフ評価、技術仕様の策定を行う。"
+
+[i18n.ko]
+name = "아키텍트"
+description = "소프트웨어 아키텍처 설계, 트레이드오프 평가, 기술 사양서 작성을 담당."
+
+[i18n.de]
+name = "Architekt"
+description = "Systemarchitekt: entwirft Softwarearchitekturen, bewertet Trade-offs, erstellt technische Spezifikationen."
+
+[i18n.es]
+name = "Arquitecto"
+description = "Arquitecto de sistemas: diseña arquitecturas de software, evalúa compromisos y redacta especificaciones técnicas."
+
+[i18n.fr]
+name = "Architecte"
+description = "Architecte système : conçoit des architectures logicielles, évalue les compromis, rédige des spécifications techniques."

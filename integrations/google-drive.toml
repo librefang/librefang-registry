@@ -25,3 +25,32 @@ setup_instructions = """
 2. Grant LibreFang read-only access to your Google Drive files when prompted.
 3. The connection will be established automatically after authorization.
 """
+
+
+[i18n.zh]
+name = "Google Drive"
+description = "通过 Anthropic MCP 服务器浏览、搜索并读取 Google Drive 中的文件。"
+
+[i18n.zh-TW]
+name = "Google Drive"
+description = "透過 Anthropic MCP 伺服器瀏覽、搜尋並讀取 Google Drive 中的檔案。"
+
+[i18n.ja]
+name = "Google Drive"
+description = "Anthropic MCP サーバー経由で Google Drive のファイルを閲覧・検索・読み取り。"
+
+[i18n.ko]
+name = "Google Drive"
+description = "Anthropic MCP 서버를 통해 Google Drive의 파일을 탐색, 검색, 읽기."
+
+[i18n.de]
+name = "Google Drive"
+description = "Dateien aus Google Drive über den Anthropic-MCP-Server durchsuchen und lesen."
+
+[i18n.es]
+name = "Google Drive"
+description = "Navega, busca y lee archivos de Google Drive mediante el servidor MCP de Anthropic."
+
+[i18n.fr]
+name = "Google Drive"
+description = "Parcours, recherche et lecture de fichiers Google Drive via le serveur MCP Anthropic."

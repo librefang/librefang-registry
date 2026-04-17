@@ -6,3 +6,32 @@ author = "librefang"
 [hooks]
 ingest = "hooks/ingest.py"
 after_turn = "hooks/after_turn.py"
+
+
+[i18n.zh]
+name = "情景记忆"
+description = "基于情景的记忆分段与召回，实现跨会话的上下文延续。"
+
+[i18n.zh-TW]
+name = "情景記憶"
+description = "基於情景的記憶分段與召回，實現跨會話的上下文延續。"
+
+[i18n.ja]
+name = "エピソード記憶"
+description = "エピソード単位の記憶セグメンテーションと想起でセッションを跨ぐ文脈継続を実現。"
+
+[i18n.ko]
+name = "에피소드 메모리"
+description = "에피소드 기반 기억 분할과 회상으로 세션 간 컨텍스트 연속성을 제공."
+
+[i18n.de]
+name = "Episodisches Gedächtnis"
+description = "Episodenbasierte Gedächtnissegmentierung und -abruf für sitzungsübergreifenden Kontext."
+
+[i18n.es]
+name = "Memoria episódica"
+description = "Segmentación y recuerdo de memoria por episodios para continuidad de contexto entre conversaciones."
+
+[i18n.fr]
+name = "Mémoire épisodique"
+description = "Segmentation et rappel de mémoire par épisodes pour une continuité de contexte entre conversations."

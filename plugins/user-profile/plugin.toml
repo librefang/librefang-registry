@@ -6,3 +6,32 @@ author = "librefang"
 [hooks]
 ingest = "hooks/ingest.py"
 after_turn = "hooks/after_turn.py"
+
+
+[i18n.zh]
+name = "用户画像"
+description = "从对话模式中持续构建用户画像，用于个性化的 Agent 回复。"
+
+[i18n.zh-TW]
+name = "使用者畫像"
+description = "從對話模式中持續建立使用者畫像，用於個人化的 Agent 回覆。"
+
+[i18n.ja]
+name = "ユーザープロファイル"
+description = "会話パターンから継続的にユーザープロファイルを構築し、パーソナライズ応答に活用。"
+
+[i18n.ko]
+name = "사용자 프로필"
+description = "대화 패턴에서 지속적으로 사용자 프로필을 구축하여 개인화된 응답에 활용."
+
+[i18n.de]
+name = "User-Profil"
+description = "Persistente Nutzerprofilerstellung aus Konversationsmustern für personalisierte Agent-Antworten."
+
+[i18n.es]
+name = "Perfil de usuario"
+description = "Perfilado persistente del usuario a partir de patrones de conversación para respuestas personalizadas."
+
+[i18n.fr]
+name = "Profil utilisateur"
+description = "Profilage persistant basé sur les motifs de conversation pour des réponses personnalisées."

@@ -6,3 +6,32 @@ author = "librefang"
 [hooks]
 ingest = "hooks/ingest.py"
 after_turn = "hooks/after_turn.py"
+
+
+[i18n.zh]
+name = "待办追踪"
+description = "识别对话中的行动项与任务，持久化保存并作为上下文召回。"
+
+[i18n.zh-TW]
+name = "待辦追蹤"
+description = "辨識對話中的行動項目與任務，持久化保存並作為上下文召回。"
+
+[i18n.ja]
+name = "ToDo トラッカー"
+description = "会話内のアクションアイテム・タスクを検出し、永続化して文脈として呼び戻す。"
+
+[i18n.ko]
+name = "할 일 추적기"
+description = "대화에서 액션 아이템과 작업을 감지해 저장하고 컨텍스트로 회상."
+
+[i18n.de]
+name = "Todo-Tracker"
+description = "Erkennt in Konversationen genannte Action-Items und Aufgaben, speichert sie und ruft sie als Kontext zurück."
+
+[i18n.es]
+name = "Rastreador de tareas"
+description = "Detecta tareas y acciones mencionadas en las conversaciones, las persiste y las recupera como contexto."
+
+[i18n.fr]
+name = "Suivi de tâches"
+description = "Détecte les actions et tâches mentionnées dans les conversations, les persiste et les rappelle comme contexte."

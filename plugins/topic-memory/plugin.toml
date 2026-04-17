@@ -6,3 +6,32 @@ author = "librefang"
 [hooks]
 ingest = "hooks/ingest.py"
 after_turn = "hooks/after_turn.py"
+
+
+[i18n.zh]
+name = "话题记忆"
+description = "按话题召回记忆，结合关键词聚类实现跨会话的上下文关联。"
+
+[i18n.zh-TW]
+name = "話題記憶"
+description = "依話題召回記憶，結合關鍵字分群實現跨會話的上下文關聯。"
+
+[i18n.ja]
+name = "トピックメモリ"
+description = "トピック単位のメモリ想起にキーワードクラスタリングを組み合わせ、セッションを跨ぐ文脈を維持。"
+
+[i18n.ko]
+name = "주제 메모리"
+description = "주제별 기억 회상과 키워드 클러스터링으로 세션 간 컨텍스트를 연결."
+
+[i18n.de]
+name = "Topic-Gedächtnis"
+description = "Themenbewusster Gedächtnisabruf mit Keyword-Clustering für sitzungsübergreifenden Kontext."
+
+[i18n.es]
+name = "Memoria por temas"
+description = "Recuerdo de memoria consciente del tema con agrupamiento de palabras clave para contexto entre conversaciones."
+
+[i18n.fr]
+name = "Mémoire par sujets"
+description = "Rappel de mémoire orienté sujet avec clustering de mots-clés pour un contexte inter-conversations."

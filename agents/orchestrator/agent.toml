@@ -80,3 +80,32 @@ memory_read = ["*"]
 memory_write = ["*"]
 agent_spawn = true
 agent_message = ["*"]
+
+
+[i18n.zh]
+name = "调度编排 Agent"
+description = "元 Agent：拆解复杂任务、委派给专业 Agent 并汇总结果。"
+
+[i18n.zh-TW]
+name = "調度編排 Agent"
+description = "元 Agent：拆解複雜任務、委派給專業 Agent 並彙總結果。"
+
+[i18n.ja]
+name = "オーケストレーター"
+description = "複雑タスクを分解し、専門 Agent へ委任し結果を統合するメタ Agent。"
+
+[i18n.ko]
+name = "오케스트레이터"
+description = "복잡한 작업을 분해하여 전문 Agent에 위임하고 결과를 통합하는 메타 Agent."
+
+[i18n.de]
+name = "Orchestrator"
+description = "Meta-Agent: zerlegt komplexe Aufgaben, delegiert an Spezialisten-Agenten und synthetisiert die Ergebnisse."
+
+[i18n.es]
+name = "Orquestador"
+description = "Meta-agente: descompone tareas complejas, delega en agentes especialistas y sintetiza resultados."
+
+[i18n.fr]
+name = "Orchestrateur"
+description = "Méta-agent : décompose les tâches complexes, délègue aux agents spécialistes et synthétise les résultats."

@@ -40,3 +40,32 @@ setup_instructions = """
 2. Generate an access key pair and note down the Access Key ID and Secret Access Key.
 3. Paste both credentials and your preferred AWS region (default: us-east-1) into the fields above.
 """
+
+
+[i18n.zh]
+name = "AWS"
+description = "通过 MCP 服务器管理 Amazon Web Services 资源（S3、EC2、Lambda 等）。"
+
+[i18n.zh-TW]
+name = "AWS"
+description = "透過 MCP 伺服器管理 Amazon Web Services 資源（S3、EC2、Lambda 等）。"
+
+[i18n.ja]
+name = "AWS"
+description = "MCP サーバー経由で AWS リソース（S3、EC2、Lambda 等）を管理。"
+
+[i18n.ko]
+name = "AWS"
+description = "MCP 서버를 통해 AWS 리소스(S3, EC2, Lambda 등)를 관리."
+
+[i18n.de]
+name = "AWS"
+description = "Verwaltet AWS-Ressourcen (S3, EC2, Lambda u. a.) über den MCP-Server."
+
+[i18n.es]
+name = "AWS"
+description = "Gestiona recursos de AWS (S3, EC2, Lambda, etc.) a través del servidor MCP."
+
+[i18n.fr]
+name = "AWS"
+description = "Gère les ressources AWS (S3, EC2, Lambda, etc.) via le serveur MCP."

@@ -88,3 +88,32 @@ tools = [
 network = ["*"]
 memory_read = ["*"]
 memory_write = ["self.*", "shared.*"]
+
+
+[i18n.zh]
+name = "法律助手"
+description = "法律助手 Agent：合同审查、法律检索、合规检查与文书起草。"
+
+[i18n.zh-TW]
+name = "法律助手"
+description = "法律助手 Agent：合約審查、法律檢索、合規檢查與文書草擬。"
+
+[i18n.ja]
+name = "リーガルアシスタント"
+description = "契約レビュー、法務調査、コンプライアンス確認、書面草稿を行う法務 Agent。"
+
+[i18n.ko]
+name = "법률 도우미"
+description = "계약 검토, 법률 조사, 컴플라이언스 점검, 문서 초안 작성을 담당하는 법무 Agent."
+
+[i18n.de]
+name = "Rechtsassistent"
+description = "Legal-Agent für Vertragsprüfung, juristische Recherche, Compliance-Checks und Dokumentenerstellung."
+
+[i18n.es]
+name = "Asistente legal"
+description = "Agente legal: revisión de contratos, investigación jurídica, cumplimiento y redacción de documentos."
+
+[i18n.fr]
+name = "Assistant juridique"
+description = "Agent juridique : revue de contrats, recherche juridique, conformité et rédaction de documents."

@@ -84,3 +84,32 @@ tools = [
 network = ["*"]
 memory_read = ["*"]
 memory_write = ["self.*", "shared.*"]
+
+
+[i18n.zh]
+name = "邮件助手"
+description = "邮件分拣、起草、日程安排与收件箱管理 Agent。"
+
+[i18n.zh-TW]
+name = "郵件助手"
+description = "郵件分揀、草擬、行程安排與收件匣管理 Agent。"
+
+[i18n.ja]
+name = "メールアシスタント"
+description = "メールのトリアージ、下書き、スケジュール、受信トレイ管理を行う Agent。"
+
+[i18n.ko]
+name = "이메일 도우미"
+description = "이메일 분류, 초안 작성, 일정 관리, 받은 편지함 관리를 담당하는 Agent."
+
+[i18n.de]
+name = "E-Mail-Assistent"
+description = "Agent für E-Mail-Triage, Entwurfserstellung, Terminplanung und Postfach-Verwaltung."
+
+[i18n.es]
+name = "Asistente de correo"
+description = "Agente para clasificación, redacción, agenda y gestión de la bandeja de entrada."
+
+[i18n.fr]
+name = "Assistant e-mail"
+description = "Agent de triage, rédaction, planification et gestion de la boîte de réception."

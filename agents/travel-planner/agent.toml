@@ -87,3 +87,32 @@ tools = [
 network = ["*"]
 memory_read = ["*"]
 memory_write = ["self.*", "shared.*"]
+
+
+[i18n.zh]
+name = "旅行规划师"
+description = "旅行规划 Agent：行程制定、预订调研、预算估算与出行安排。"
+
+[i18n.zh-TW]
+name = "旅行規劃師"
+description = "旅行規劃 Agent：行程制定、訂票調研、預算估算與出行安排。"
+
+[i18n.ja]
+name = "トラベルプランナー"
+description = "旅程作成、予約リサーチ、予算見積、旅行手配を行う旅行 Agent。"
+
+[i18n.ko]
+name = "여행 플래너"
+description = "여행 일정 작성, 예약 조사, 예산 산정, 여행 준비를 돕는 Agent."
+
+[i18n.de]
+name = "Reiseplaner"
+description = "Reise-Agent für Routenplanung, Buchungsrecherche, Budgetschätzung und Reise-Logistik."
+
+[i18n.es]
+name = "Planificador de viajes"
+description = "Agente de viajes: itinerarios, búsqueda de reservas, estimación de presupuesto y logística."
+
+[i18n.fr]
+name = "Planificateur voyage"
+description = "Agent voyage : itinéraires, recherche de réservations, estimation budgétaire et logistique."

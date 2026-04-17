@@ -5,3 +5,32 @@ author = "librefang"
 
 [hooks]
 after_turn = "hooks/after_turn.py"
+
+
+[i18n.zh]
+name = "对话日志"
+description = "将所有会话写入 JSONL 文件，便于审计、分析与调试。"
+
+[i18n.zh-TW]
+name = "對話日誌"
+description = "將所有會話寫入 JSONL 檔案，便於稽核、分析與除錯。"
+
+[i18n.ja]
+name = "会話ロガー"
+description = "全会話を JSONL に記録し、監査・分析・デバッグに利用。"
+
+[i18n.ko]
+name = "대화 로거"
+description = "모든 대화를 JSONL 파일로 기록하여 감사, 분석, 디버깅에 활용."
+
+[i18n.de]
+name = "Konversations-Logger"
+description = "Protokolliert alle Konversationen in JSONL-Dateien für Audit, Analytics und Debugging."
+
+[i18n.es]
+name = "Registro de conversaciones"
+description = "Registra todas las conversaciones en archivos JSONL para auditoría, analítica y depuración."
+
+[i18n.fr]
+name = "Journal de conversations"
+description = "Enregistre toutes les conversations en JSONL pour audit, analytics et débogage."

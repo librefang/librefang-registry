@@ -119,3 +119,32 @@ description = "Prune drawers older than this many days when running hooks/prune.
 "hooks/ingest.py" = "621b17f2d0afbd6142a49963fb57187a500cfeac057c13cb80961b6222bd03e2"
 "hooks/after_turn.py" = "1c5bcdade4ca0d785878d60910105208fcff38f74872426ee821363ce5bf9811"
 "hooks/prune.py" = "2dceeb9bb0d0b7ee224291bfce600f629f38b4a853cd437774d9b66ef226838d"
+
+
+[i18n.zh]
+name = "MemPalace 索引器"
+description = "自动把对话索引进 MemPalace 并召回相关记忆。无需 API key、不依赖云端。"
+
+[i18n.zh-TW]
+name = "MemPalace 索引器"
+description = "自動將對話索引進 MemPalace 並召回相關記憶。無需 API key、不依賴雲端。"
+
+[i18n.ja]
+name = "MemPalace インデクサ"
+description = "会話を MemPalace に自動索引し関連メモリを想起。API キー不要・クラウド不要。"
+
+[i18n.ko]
+name = "MemPalace 인덱서"
+description = "대화를 MemPalace에 자동 색인하고 관련 기억을 회상. API 키 불필요, 클라우드 불필요."
+
+[i18n.de]
+name = "MemPalace-Indexer"
+description = "Indiziert Gespräche automatisch in MemPalace und ruft passende Erinnerungen ab. Ohne API-Keys, ohne Cloud."
+
+[i18n.es]
+name = "Indexador MemPalace"
+description = "Indexa automáticamente las conversaciones en MemPalace y recupera memorias relevantes. Sin API keys ni cloud."
+
+[i18n.fr]
+name = "Indexeur MemPalace"
+description = "Indexe automatiquement les conversations dans MemPalace et rappelle les mémoires pertinentes. Sans clé d'API, sans cloud."

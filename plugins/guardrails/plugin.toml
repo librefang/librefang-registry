@@ -5,3 +5,32 @@ author = "librefang"
 
 [hooks]
 ingest = "hooks/ingest.py"
+
+
+[i18n.zh]
+name = "安全护栏"
+description = "检测潜在有害内容模式，向 Agent 上下文注入警告提示。"
+
+[i18n.zh-TW]
+name = "安全護欄"
+description = "偵測潛在有害內容模式，向 Agent 上下文注入警告提示。"
+
+[i18n.ja]
+name = "ガードレール"
+description = "有害な可能性のあるコンテンツパターンを検出し、Agent のコンテキストに警告を注入。"
+
+[i18n.ko]
+name = "가드레일"
+description = "잠재적으로 유해한 콘텐츠 패턴을 탐지하고 Agent 컨텍스트에 경고를 삽입."
+
+[i18n.de]
+name = "Guardrails"
+description = "Erkennt potenziell schädliche Inhaltsmuster und fügt Warnungen in den Agenten-Kontext ein."
+
+[i18n.es]
+name = "Guardrails"
+description = "Detecta patrones de contenido potencialmente dañinos e inyecta advertencias en el contexto del agente."
+
+[i18n.fr]
+name = "Garde-fous"
+description = "Détecte les motifs de contenu potentiellement nuisibles et injecte des avertissements dans le contexte de l'agent."

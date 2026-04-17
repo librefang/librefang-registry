@@ -60,3 +60,32 @@ network = ["*"]
 memory_read = ["*"]
 memory_write = ["self.*", "shared.*"]
 shell = ["python *", "cargo *"]
+
+
+[i18n.zh]
+name = "数据分析师"
+description = "数据分析师：处理数据、挖掘洞察、撰写报告。"
+
+[i18n.zh-TW]
+name = "數據分析師"
+description = "數據分析師：處理數據、挖掘洞察、撰寫報告。"
+
+[i18n.ja]
+name = "アナリスト"
+description = "データの処理、インサイト抽出、レポート作成を行うアナリスト。"
+
+[i18n.ko]
+name = "분석가"
+description = "데이터 처리, 인사이트 도출, 보고서 작성을 담당하는 분석가."
+
+[i18n.de]
+name = "Analyst"
+description = "Datenanalyst: verarbeitet Daten, gewinnt Erkenntnisse, erstellt Berichte."
+
+[i18n.es]
+name = "Analista"
+description = "Analista de datos: procesa datos, genera insights y crea informes."
+
+[i18n.fr]
+name = "Analyste"
+description = "Analyste de données : traite les données, génère des insights et rédige des rapports."

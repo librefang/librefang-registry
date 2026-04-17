@@ -87,3 +87,32 @@ tools = [
 network = ["*"]
 memory_read = ["*"]
 memory_write = ["self.*", "shared.*"]
+
+
+[i18n.zh]
+name = "翻译员"
+description = "多语言翻译 Agent：文档翻译、本地化与跨文化沟通。"
+
+[i18n.zh-TW]
+name = "翻譯員"
+description = "多語言翻譯 Agent：文件翻譯、在地化與跨文化溝通。"
+
+[i18n.ja]
+name = "翻訳者"
+description = "ドキュメント翻訳、ローカライズ、異文化コミュニケーションを支援する多言語翻訳 Agent。"
+
+[i18n.ko]
+name = "번역가"
+description = "문서 번역, 로컬라이제이션, 다문화 커뮤니케이션을 지원하는 다국어 번역 Agent."
+
+[i18n.de]
+name = "Übersetzer"
+description = "Multilingualer Übersetzungs-Agent für Dokumentübersetzung, Lokalisierung und interkulturelle Kommunikation."
+
+[i18n.es]
+name = "Traductor"
+description = "Agente de traducción multilingüe: traducción de documentos, localización y comunicación intercultural."
+
+[i18n.fr]
+name = "Traducteur"
+description = "Agent de traduction multilingue : traduction de documents, localisation et communication interculturelle."

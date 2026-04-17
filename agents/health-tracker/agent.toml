@@ -82,3 +82,32 @@ tools = [
 ]
 memory_read = ["*"]
 memory_write = ["self.*"]
+
+
+[i18n.zh]
+name = "健康追踪器"
+description = "健康追踪 Agent：记录健康指标、用药提醒、健身目标与生活习惯。"
+
+[i18n.zh-TW]
+name = "健康追蹤器"
+description = "健康追蹤 Agent：記錄健康指標、用藥提醒、健身目標與生活習慣。"
+
+[i18n.ja]
+name = "ヘルストラッカー"
+description = "健康指標、服薬リマインダー、運動目標、生活習慣を記録するウェルネス Agent。"
+
+[i18n.ko]
+name = "건강 추적기"
+description = "건강 지표, 복약 알림, 운동 목표, 생활 습관을 기록하는 웰니스 Agent."
+
+[i18n.de]
+name = "Gesundheits-Tracker"
+description = "Wellness-Agent für Gesundheitsmetriken, Medikamentenerinnerungen, Fitnessziele und Lebensgewohnheiten."
+
+[i18n.es]
+name = "Monitor de salud"
+description = "Agente de bienestar: métricas de salud, recordatorios de medicación, objetivos de fitness y hábitos."
+
+[i18n.fr]
+name = "Suivi santé"
+description = "Agent bien-être : indicateurs de santé, rappels médicaux, objectifs fitness et habitudes de vie."

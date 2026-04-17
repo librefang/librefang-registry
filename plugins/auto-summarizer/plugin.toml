@@ -6,3 +6,32 @@ author = "librefang"
 [hooks]
 ingest = "hooks/ingest.py"
 after_turn = "hooks/after_turn.py"
+
+
+[i18n.zh]
+name = "自动摘要"
+description = "持续维护会话摘要，帮助 Agent 在长对话中不丢失上下文。"
+
+[i18n.zh-TW]
+name = "自動摘要"
+description = "持續維護會話摘要，幫助 Agent 在長對話中不遺失上下文。"
+
+[i18n.ja]
+name = "自動要約"
+description = "会話の要約を逐次更新し、長い会話でもコンテキストを失わないよう支援。"
+
+[i18n.ko]
+name = "자동 요약"
+description = "진행 중인 대화 요약을 유지하여 긴 대화에서 컨텍스트 손실을 방지."
+
+[i18n.de]
+name = "Auto-Zusammenfassung"
+description = "Pflegt eine laufende Konversations-Zusammenfassung, damit Agenten bei langen Gesprächen den Kontext behalten."
+
+[i18n.es]
+name = "Auto-resumen"
+description = "Mantiene un resumen continuo de la conversación para que los agentes no pierdan contexto en diálogos largos."
+
+[i18n.fr]
+name = "Auto-résumé"
+description = "Maintient un résumé continu de la conversation pour que les agents ne perdent pas de contexte dans les longs échanges."

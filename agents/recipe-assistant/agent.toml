@@ -81,3 +81,32 @@ tools = [
 network = ["*"]
 memory_read = ["*"]
 memory_write = ["self.*"]
+
+
+[i18n.zh]
+name = "菜谱助手"
+description = "烹饪助手：菜谱检索、餐单规划、食材替代与份量调整。"
+
+[i18n.zh-TW]
+name = "食譜助手"
+description = "烹飪助手：食譜檢索、餐單規劃、食材替代與份量調整。"
+
+[i18n.ja]
+name = "レシピアシスタント"
+description = "レシピ検索、献立計画、材料代替、分量調整を行う料理アシスタント。"
+
+[i18n.ko]
+name = "레시피 도우미"
+description = "레시피 검색, 식단 계획, 재료 대체, 분량 조정을 돕는 요리 Agent."
+
+[i18n.de]
+name = "Rezept-Assistent"
+description = "Koch-Assistent für Rezepte, Essensplanung, Zutatenersatz und Portionsanpassung."
+
+[i18n.es]
+name = "Asistente de recetas"
+description = "Asistente de cocina: recetas, planes de comidas, sustituciones de ingredientes y ajuste de porciones."
+
+[i18n.fr]
+name = "Assistant recettes"
+description = "Assistant culinaire : recettes, planification des repas, substitutions d'ingrédients et ajustement des portions."

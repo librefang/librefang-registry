@@ -92,3 +92,32 @@ tools = [
 network = ["*"]
 memory_read = ["*"]
 memory_write = ["self.*", "shared.*"]
+
+
+[i18n.zh]
+name = "客户支持"
+description = "客户支持 Agent：处理工单、解决问题、与客户沟通。"
+
+[i18n.zh-TW]
+name = "客戶支援"
+description = "客戶支援 Agent：處理工單、解決問題、與客戶溝通。"
+
+[i18n.ja]
+name = "カスタマーサポート"
+description = "チケット対応、問題解決、顧客コミュニケーションを担うサポート Agent。"
+
+[i18n.ko]
+name = "고객 지원"
+description = "티켓 처리, 문제 해결, 고객 커뮤니케이션을 담당하는 지원 Agent."
+
+[i18n.de]
+name = "Kundensupport"
+description = "Support-Agent für Ticketbearbeitung, Problemlösung und Kundenkommunikation."
+
+[i18n.es]
+name = "Atención al cliente"
+description = "Agente de soporte: gestión de tickets, resolución de incidencias y comunicación con clientes."
+
+[i18n.fr]
+name = "Support client"
+description = "Agent de support : gestion des tickets, résolution d'incidents, communication client."

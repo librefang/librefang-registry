@@ -5,3 +5,32 @@ author = "librefang"
 
 [hooks]
 ingest = "hooks/ingest.py"
+
+
+[i18n.zh]
+name = "情绪追踪"
+description = "分析用户消息的情绪，并把情感上下文注入 Agent，让回复更贴合情绪。"
+
+[i18n.zh-TW]
+name = "情緒追蹤"
+description = "分析使用者訊息的情緒，並將情感上下文注入 Agent，讓回覆更貼合情緒。"
+
+[i18n.ja]
+name = "感情トラッカー"
+description = "ユーザーメッセージの感情を分析し、感情コンテキストを注入して適切なトーンで応答できるようにする。"
+
+[i18n.ko]
+name = "감정 추적기"
+description = "사용자 메시지의 감정을 분석하여 Agent 컨텍스트에 감정 정보를 주입하고 적절한 어조로 응답하게 함."
+
+[i18n.de]
+name = "Sentiment-Tracker"
+description = "Analysiert die Stimmung von Nutzernachrichten und fügt emotionalen Kontext ein, damit Antworten den passenden Ton treffen."
+
+[i18n.es]
+name = "Rastreador de sentimiento"
+description = "Analiza el sentimiento de los mensajes del usuario e inyecta contexto emocional para que el agente responda con el tono adecuado."
+
+[i18n.fr]
+name = "Suivi de sentiment"
+description = "Analyse le sentiment des messages utilisateur et injecte un contexte émotionnel pour que l'agent réponde avec le bon ton."

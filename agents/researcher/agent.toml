@@ -65,3 +65,32 @@ tools = [
 network = ["*"]
 memory_read = ["*"]
 memory_write = ["self.*", "shared.*"]
+
+
+[i18n.zh]
+name = "研究员"
+description = "研究员 Agent：抓取网页内容并综合信息。"
+
+[i18n.zh-TW]
+name = "研究員"
+description = "研究員 Agent：抓取網頁內容並綜合資訊。"
+
+[i18n.ja]
+name = "リサーチャー"
+description = "ウェブコンテンツを取得し情報を統合するリサーチ Agent。"
+
+[i18n.ko]
+name = "리서처"
+description = "웹 콘텐츠를 가져와 정보를 통합하는 리서치 Agent."
+
+[i18n.de]
+name = "Forscher"
+description = "Recherche-Agent: ruft Webinhalte ab und synthetisiert Informationen."
+
+[i18n.es]
+name = "Investigador"
+description = "Agente de investigación: obtiene contenido web y sintetiza información."
+
+[i18n.fr]
+name = "Chercheur"
+description = "Agent de recherche : récupère du contenu web et synthétise l'information."

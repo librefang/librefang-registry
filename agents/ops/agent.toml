@@ -57,3 +57,32 @@ shell = [
   "df *",
   "free *",
 ]
+
+
+[i18n.zh]
+name = "运维 Agent"
+description = "DevOps Agent：监控系统、运行诊断、管理部署。"
+
+[i18n.zh-TW]
+name = "維運 Agent"
+description = "DevOps Agent：監控系統、執行診斷、管理部署。"
+
+[i18n.ja]
+name = "Ops Agent"
+description = "システム監視、診断実行、デプロイ管理を行う DevOps Agent。"
+
+[i18n.ko]
+name = "Ops Agent"
+description = "시스템 모니터링, 진단 실행, 배포 관리를 담당하는 DevOps Agent."
+
+[i18n.de]
+name = "Ops-Agent"
+description = "DevOps-Agent: überwacht Systeme, führt Diagnosen aus und verwaltet Deployments."
+
+[i18n.es]
+name = "Agente de Ops"
+description = "Agente DevOps: monitoriza sistemas, ejecuta diagnósticos y gestiona despliegues."
+
+[i18n.fr]
+name = "Agent Ops"
+description = "Agent DevOps : supervise les systèmes, exécute des diagnostics et gère les déploiements."

@@ -68,3 +68,32 @@ tools = [
 memory_read = ["*"]
 memory_write = ["self.*", "shared.*"]
 shell = ["cargo audit *", "cargo tree *", "git log *"]
+
+
+[i18n.zh]
+name = "安全审计员"
+description = "安全专家：审查代码漏洞、检查配置、做威胁建模。"
+
+[i18n.zh-TW]
+name = "安全稽核員"
+description = "安全專家：審查程式碼漏洞、檢查設定、進行威脅建模。"
+
+[i18n.ja]
+name = "セキュリティ監査官"
+description = "コードの脆弱性レビュー、設定チェック、脅威モデリングを行うセキュリティ専門家。"
+
+[i18n.ko]
+name = "보안 감사관"
+description = "코드 취약점 검토, 설정 점검, 위협 모델링을 수행하는 보안 전문가."
+
+[i18n.de]
+name = "Sicherheits-Auditor"
+description = "Sicherheitsexperte: prüft Code auf Schwachstellen, kontrolliert Konfigurationen und führt Threat Modeling durch."
+
+[i18n.es]
+name = "Auditor de seguridad"
+description = "Especialista en seguridad: revisa vulnerabilidades de código, verifica configuraciones y realiza threat modeling."
+
+[i18n.fr]
+name = "Auditeur sécurité"
+description = "Expert sécurité : revue des vulnérabilités de code, vérification des configurations et modélisation des menaces."

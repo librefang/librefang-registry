@@ -5,3 +5,32 @@ author = "librefang"
 
 [hooks]
 ingest = "hooks/ingest.py"
+
+
+[i18n.zh]
+name = "关键词记忆"
+description = "从用户消息中抽取关键词与命名实体，作为上下文记忆返回。"
+
+[i18n.zh-TW]
+name = "關鍵字記憶"
+description = "從使用者訊息中抽取關鍵字與命名實體，作為上下文記憶返回。"
+
+[i18n.ja]
+name = "キーワードメモリ"
+description = "ユーザーメッセージからキーワードと固有表現を抽出し、文脈メモリとして返す。"
+
+[i18n.ko]
+name = "키워드 메모리"
+description = "사용자 메시지에서 키워드와 개체명을 추출하여 컨텍스트 메모리로 반환."
+
+[i18n.de]
+name = "Keyword-Gedächtnis"
+description = "Extrahiert Schlüsselwörter und Named-Entities aus Nutzernachrichten und liefert sie als Kontext-Gedächtnis zurück."
+
+[i18n.es]
+name = "Memoria por palabras clave"
+description = "Extrae palabras clave y entidades de los mensajes del usuario y las devuelve como memoria contextual."
+
+[i18n.fr]
+name = "Mémoire par mots-clés"
+description = "Extrait mots-clés et entités nommées des messages utilisateur et les restitue comme mémoire contextuelle."

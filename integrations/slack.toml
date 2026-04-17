@@ -39,3 +39,32 @@ setup_instructions = """
 2. Install the app to your workspace and copy the Bot User OAuth Token (starts with xoxb-).
 3. Paste the bot token and your workspace Team ID into the fields above, or use the OAuth flow to authorize directly.
 """
+
+
+[i18n.zh]
+name = "Slack"
+description = "通过 MCP 服务器访问 Slack 频道、消息与用户。"
+
+[i18n.zh-TW]
+name = "Slack"
+description = "透過 MCP 伺服器存取 Slack 頻道、訊息與使用者。"
+
+[i18n.ja]
+name = "Slack"
+description = "MCP サーバー経由で Slack のチャンネル、メッセージ、ユーザーにアクセス。"
+
+[i18n.ko]
+name = "Slack"
+description = "MCP 서버를 통해 Slack 채널, 메시지, 사용자에 접근."
+
+[i18n.de]
+name = "Slack"
+description = "Zugriff auf Slack-Kanäle, -Nachrichten und -Nutzer über den MCP-Server."
+
+[i18n.es]
+name = "Slack"
+description = "Accede a canales, mensajes y usuarios de Slack mediante el servidor MCP."
+
+[i18n.fr]
+name = "Slack"
+description = "Accès aux salons, messages et utilisateurs Slack via le serveur MCP."

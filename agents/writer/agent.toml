@@ -60,3 +60,32 @@ tools = [
 network = ["*"]
 memory_read = ["*"]
 memory_write = ["self.*"]
+
+
+[i18n.zh]
+name = "作者"
+description = "内容作者：撰写文档、文章与技术写作。"
+
+[i18n.zh-TW]
+name = "作者"
+description = "內容作者：撰寫文件、文章與技術寫作。"
+
+[i18n.ja]
+name = "ライター"
+description = "ドキュメント、記事、技術文章を執筆するコンテンツライター。"
+
+[i18n.ko]
+name = "작가"
+description = "문서, 아티클, 기술 문서를 작성하는 콘텐츠 작가."
+
+[i18n.de]
+name = "Autor"
+description = "Content-Autor: erstellt Dokumentation, Artikel und technische Texte."
+
+[i18n.es]
+name = "Redactor"
+description = "Redactor de contenidos: documentación, artículos y redacción técnica."
+
+[i18n.fr]
+name = "Rédacteur"
+description = "Rédacteur de contenu : documentation, articles et rédaction technique."

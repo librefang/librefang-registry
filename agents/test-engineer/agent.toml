@@ -70,3 +70,32 @@ tools = [
 memory_read = ["*"]
 memory_write = ["self.*", "shared.*"]
 shell = ["cargo test *", "cargo check *"]
+
+
+[i18n.zh]
+name = "测试工程师"
+description = "QA 工程师：设计测试策略、编写测试用例、验证正确性。"
+
+[i18n.zh-TW]
+name = "測試工程師"
+description = "QA 工程師：設計測試策略、撰寫測試案例、驗證正確性。"
+
+[i18n.ja]
+name = "テストエンジニア"
+description = "テスト戦略設計、テスト実装、正当性検証を行う QA エンジニア。"
+
+[i18n.ko]
+name = "테스트 엔지니어"
+description = "테스트 전략 설계, 테스트 작성, 정확성 검증을 담당하는 QA 엔지니어."
+
+[i18n.de]
+name = "Test-Ingenieur"
+description = "QA-Ingenieur: entwirft Teststrategien, schreibt Tests und validiert die Korrektheit."
+
+[i18n.es]
+name = "Ingeniero de pruebas"
+description = "Ingeniero de QA: diseña estrategias de pruebas, escribe tests y valida la corrección."
+
+[i18n.fr]
+name = "Ingénieur test"
+description = "Ingénieur QA : conçoit des stratégies de test, écrit des tests et valide la conformité."

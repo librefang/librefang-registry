@@ -6,3 +6,32 @@ author = "librefang"
 [hooks]
 ingest = "hooks/ingest.py"
 after_turn = "hooks/after_turn.py"
+
+
+[i18n.zh]
+name = "上下文衰减"
+description = "基于时间的记忆衰减 + 相关性评分，模拟自然遗忘。"
+
+[i18n.zh-TW]
+name = "上下文衰減"
+description = "基於時間的記憶衰減 + 相關性評分，模擬自然遺忘。"
+
+[i18n.ja]
+name = "コンテキスト減衰"
+description = "時間経過に基づく記憶減衰と関連度スコアで自然な忘却を再現。"
+
+[i18n.ko]
+name = "컨텍스트 감쇠"
+description = "시간 기반 기억 감쇠와 관련성 점수로 자연스러운 망각을 구현."
+
+[i18n.de]
+name = "Kontext-Verfall"
+description = "Zeitbasierter Gedächtnisverfall mit Relevanz-Scoring für natürliches Vergessen."
+
+[i18n.es]
+name = "Decaimiento de contexto"
+description = "Decaimiento de memoria basado en el tiempo con puntuación de relevancia para un olvido natural."
+
+[i18n.fr]
+name = "Déclin du contexte"
+description = "Déclin de mémoire basé sur le temps avec scoring de pertinence pour un oubli naturel."

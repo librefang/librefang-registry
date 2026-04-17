@@ -26,3 +26,32 @@ setup_instructions = """
 2. Ensure the database user has the necessary read/write permissions for the collections you want to access.
 3. Paste the full connection URI into the MONGODB_URI field above.
 """
+
+
+[i18n.zh]
+name = "MongoDB"
+description = "通过 MCP 服务器查询与管理 MongoDB 数据库和集合。"
+
+[i18n.zh-TW]
+name = "MongoDB"
+description = "透過 MCP 伺服器查詢與管理 MongoDB 資料庫和集合。"
+
+[i18n.ja]
+name = "MongoDB"
+description = "MCP サーバー経由で MongoDB のデータベースとコレクションを問い合わせ・管理。"
+
+[i18n.ko]
+name = "MongoDB"
+description = "MCP 서버를 통해 MongoDB 데이터베이스와 컬렉션을 조회 및 관리."
+
+[i18n.de]
+name = "MongoDB"
+description = "MongoDB-Datenbanken und Collections über den MCP-Server abfragen und verwalten."
+
+[i18n.es]
+name = "MongoDB"
+description = "Consulta y gestiona bases de datos y colecciones de MongoDB mediante el servidor MCP."
+
+[i18n.fr]
+name = "MongoDB"
+description = "Interroge et gère les bases et collections MongoDB via le serveur MCP."

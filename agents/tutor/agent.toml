@@ -90,3 +90,32 @@ network = ["*"]
 memory_read = ["*"]
 memory_write = ["self.*", "shared.*"]
 shell = ["python *"]
+
+
+[i18n.zh]
+name = "辅导老师"
+description = "教学与讲解 Agent：学习辅导、答疑解惑与教育内容制作。"
+
+[i18n.zh-TW]
+name = "輔導老師"
+description = "教學與講解 Agent：學習輔導、答疑解惑與教育內容製作。"
+
+[i18n.ja]
+name = "チューター"
+description = "学習支援、個別指導、教育コンテンツ作成を行う教育 Agent。"
+
+[i18n.ko]
+name = "튜터"
+description = "학습 지원, 개별 지도, 교육 콘텐츠 제작을 담당하는 Agent."
+
+[i18n.de]
+name = "Tutor"
+description = "Lehr-Agent für Lernbegleitung, Nachhilfe und die Erstellung von Lerninhalten."
+
+[i18n.es]
+name = "Tutor"
+description = "Agente educativo: aprendizaje, tutoría y creación de contenidos formativos."
+
+[i18n.fr]
+name = "Tuteur"
+description = "Agent éducatif : apprentissage, tutorat et création de contenus pédagogiques."

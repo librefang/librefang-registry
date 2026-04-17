@@ -26,3 +26,32 @@ setup_instructions = """
 2. Navigate to API Keys (https://dashboard.exa.ai/api-keys) and generate a new key.
 3. Paste the API key into the EXA_API_KEY field above.
 """
+
+
+[i18n.zh]
+name = "Exa Search"
+description = "通过 Exa MCP 服务器执行 AI 神经搜索并获取网页内容。"
+
+[i18n.zh-TW]
+name = "Exa Search"
+description = "透過 Exa MCP 伺服器執行 AI 神經搜尋並擷取網頁內容。"
+
+[i18n.ja]
+name = "Exa Search"
+description = "Exa MCP サーバー経由で AI ニューラル検索とウェブコンテンツ取得を実行。"
+
+[i18n.ko]
+name = "Exa Search"
+description = "Exa MCP 서버를 통해 AI 뉴럴 검색과 웹 콘텐츠 조회를 수행."
+
+[i18n.de]
+name = "Exa Search"
+description = "KI-gestützte neuronale Suche und Webinhalts-Abruf über den Exa-MCP-Server."
+
+[i18n.es]
+name = "Exa Search"
+description = "Realiza búsquedas neuronales con IA y recupera contenido web mediante el servidor MCP de Exa."
+
+[i18n.fr]
+name = "Exa Search"
+description = "Recherches neuronales IA et récupération de contenu web via le serveur MCP Exa."

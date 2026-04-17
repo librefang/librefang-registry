@@ -76,3 +76,32 @@ tools = [
 memory_read = ["*"]
 memory_write = ["self.*", "shared.*"]
 shell = ["python *"]
+
+
+[i18n.zh]
+name = "个人财务"
+description = "个人财务 Agent：预算追踪、支出分析、储蓄目标与理财规划。"
+
+[i18n.zh-TW]
+name = "個人財務"
+description = "個人財務 Agent：預算追蹤、支出分析、儲蓄目標與理財規劃。"
+
+[i18n.ja]
+name = "パーソナルファイナンス"
+description = "家計簿、支出分析、貯蓄目標、資産計画を行うファイナンス Agent。"
+
+[i18n.ko]
+name = "개인 재무"
+description = "예산 추적, 지출 분석, 저축 목표, 재무 계획을 돕는 Agent."
+
+[i18n.de]
+name = "Persönliche Finanzen"
+description = "Finanz-Agent für Budgetverfolgung, Ausgabenanalyse, Sparziele und Finanzplanung."
+
+[i18n.es]
+name = "Finanzas personales"
+description = "Agente de finanzas: seguimiento de presupuesto, análisis de gastos, objetivos de ahorro y planificación."
+
+[i18n.fr]
+name = "Finances personnelles"
+description = "Agent de finances : suivi budgétaire, analyse des dépenses, objectifs d'épargne et planification."

@@ -78,3 +78,32 @@ tools = [
 network = ["*"]
 memory_read = ["*"]
 memory_write = ["self.*", "shared.*"]
+
+
+[i18n.zh]
+name = "销售助手"
+description = "销售助手 Agent：更新 CRM、撰写触达内容、管理销售管道与跟进成交。"
+
+[i18n.zh-TW]
+name = "銷售助手"
+description = "銷售助手 Agent：更新 CRM、撰寫接觸內容、管理銷售管道與追蹤成交。"
+
+[i18n.ja]
+name = "セールスアシスタント"
+description = "CRM 更新、アウトリーチ下書き、パイプライン管理、商談追跡を行うセールス Agent。"
+
+[i18n.ko]
+name = "세일즈 도우미"
+description = "CRM 업데이트, 아웃리치 작성, 파이프라인 관리, 거래 추적을 담당."
+
+[i18n.de]
+name = "Vertriebs-Assistent"
+description = "Sales-Agent für CRM-Updates, Outreach-Entwürfe, Pipeline-Management und Deal-Tracking."
+
+[i18n.es]
+name = "Asistente de ventas"
+description = "Agente de ventas: actualiza CRM, redacta contactos, gestiona el pipeline y hace seguimiento de oportunidades."
+
+[i18n.fr]
+name = "Assistant commercial"
+description = "Agent commercial : mises à jour CRM, rédaction d'outreach, gestion du pipeline et suivi des deals."

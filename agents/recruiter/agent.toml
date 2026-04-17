@@ -85,3 +85,32 @@ tools = [
 network = ["*"]
 memory_read = ["*"]
 memory_write = ["self.*", "shared.*"]
+
+
+[i18n.zh]
+name = "招聘 Agent"
+description = "招聘 Agent：筛选简历、候选人触达、撰写 JD 与招聘流程管理。"
+
+[i18n.zh-TW]
+name = "招募 Agent"
+description = "招募 Agent：篩選履歷、候選人接觸、撰寫 JD 與招募流程管理。"
+
+[i18n.ja]
+name = "リクルーター"
+description = "履歴書スクリーニング、候補者アウトリーチ、求人票作成、採用パイプライン管理を行う。"
+
+[i18n.ko]
+name = "리크루터"
+description = "이력서 스크리닝, 후보자 아웃리치, 채용 공고 작성, 채용 파이프라인 관리를 담당."
+
+[i18n.de]
+name = "Recruiter"
+description = "Recruiting-Agent: Lebenslauf-Screening, Kandidatenansprache, Stellenausschreibungen und Pipeline-Management."
+
+[i18n.es]
+name = "Reclutador"
+description = "Agente de reclutamiento: criba de CVs, contacto con candidatos, redacción de ofertas y gestión del pipeline."
+
+[i18n.fr]
+name = "Recruteur"
+description = "Agent de recrutement : tri des CV, prise de contact, rédaction de fiches de poste et gestion du pipeline."

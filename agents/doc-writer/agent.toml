@@ -60,3 +60,32 @@ tools = [
 ]
 memory_read = ["*"]
 memory_write = ["self.*", "shared.*"]
+
+
+[i18n.zh]
+name = "文档作者"
+description = "技术文档作者：编写 README、API 文档、教程与架构指南。"
+
+[i18n.zh-TW]
+name = "文件作者"
+description = "技術文件作者：撰寫 README、API 文件、教學與架構指南。"
+
+[i18n.ja]
+name = "ドキュメントライター"
+description = "README、API ドキュメント、チュートリアル、アーキテクチャガイドを執筆するテクニカルライター。"
+
+[i18n.ko]
+name = "문서 작성자"
+description = "README, API 문서, 튜토리얼, 아키텍처 가이드를 작성하는 테크니컬 라이터."
+
+[i18n.de]
+name = "Dokumentations-Autor"
+description = "Technischer Autor für README-Dateien, API-Dokumentationen, Tutorials und Architekturleitfäden."
+
+[i18n.es]
+name = "Redactor de documentación"
+description = "Redactor técnico: crea documentación, README, referencias de API, tutoriales y guías de arquitectura."
+
+[i18n.fr]
+name = "Rédacteur de documentation"
+description = "Rédacteur technique : crée de la documentation, des README, des docs d'API, tutoriels et guides d'architecture."

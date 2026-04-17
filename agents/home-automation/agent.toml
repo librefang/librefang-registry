@@ -83,3 +83,32 @@ network = ["*"]
 memory_read = ["*"]
 memory_write = ["self.*", "shared.*"]
 shell = ["curl *", "python *", "ping *"]
+
+
+[i18n.zh]
+name = "智能家居控制"
+description = "智能家居控制 Agent：管理 IoT 设备、自动化规则与家居监控。"
+
+[i18n.zh-TW]
+name = "智慧家居控制"
+description = "智慧家居控制 Agent：管理 IoT 裝置、自動化規則與家居監控。"
+
+[i18n.ja]
+name = "ホームオートメーション"
+description = "IoT デバイス管理、自動化ルール、ホームモニタリングを行うスマートホーム制御 Agent。"
+
+[i18n.ko]
+name = "홈 오토메이션"
+description = "IoT 기기 관리, 자동화 규칙, 홈 모니터링을 담당하는 스마트홈 제어 Agent."
+
+[i18n.de]
+name = "Smart-Home-Steuerung"
+description = "Smart-Home-Agent für IoT-Geräteverwaltung, Automatisierungsregeln und Hausüberwachung."
+
+[i18n.es]
+name = "Automatización del hogar"
+description = "Agente de hogar inteligente: gestión de dispositivos IoT, reglas de automatización y monitorización."
+
+[i18n.fr]
+name = "Domotique"
+description = "Agent de maison connectée : gestion d'appareils IoT, règles d'automatisation et surveillance."

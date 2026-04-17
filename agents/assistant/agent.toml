@@ -103,3 +103,32 @@ memory_read = ["*"]
 memory_write = ["self.*", "shared.*"]
 agent_message = ["*"]
 shell = ["python *", "cargo *", "git *", "npm *"]
+
+
+[i18n.zh]
+name = "通用助手"
+description = "通用助手 Agent：默认的日常任务、问答与对话 Agent。"
+
+[i18n.zh-TW]
+name = "通用助手"
+description = "通用助手 Agent：預設的日常任務、問答與對話 Agent。"
+
+[i18n.ja]
+name = "アシスタント"
+description = "日常のタスク・質問・会話を処理する汎用アシスタント Agent。"
+
+[i18n.ko]
+name = "어시스턴트"
+description = "일상 작업, 질문, 대화를 처리하는 범용 어시스턴트 Agent."
+
+[i18n.de]
+name = "Assistent"
+description = "Allzweck-Assistent für alltägliche Aufgaben, Fragen und Unterhaltungen."
+
+[i18n.es]
+name = "Asistente"
+description = "Asistente general para tareas cotidianas, preguntas y conversaciones."
+
+[i18n.fr]
+name = "Assistant"
+description = "Assistant polyvalent pour les tâches quotidiennes, les questions et les conversations."

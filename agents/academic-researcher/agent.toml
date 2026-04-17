@@ -93,3 +93,32 @@ tools = [
 network = ["*"]
 memory_read = ["*"]
 memory_write = ["self.*", "shared.*"]
+
+
+[i18n.zh]
+name = "学术研究员"
+description = "学术研究 Agent：检索学术论文、归纳结论、撰写文献综述。"
+
+[i18n.zh-TW]
+name = "學術研究員"
+description = "學術研究 Agent：檢索學術論文、歸納結論、撰寫文獻綜述。"
+
+[i18n.ja]
+name = "学術リサーチャー"
+description = "学術論文の検索、要点整理、文献レビュー生成を行う研究 Agent。"
+
+[i18n.ko]
+name = "학술 연구원"
+description = "학술 논문 검색, 요약, 문헌 리뷰 작성을 수행하는 연구 Agent."
+
+[i18n.de]
+name = "Akademischer Forscher"
+description = "Forschungs-Agent für wissenschaftliche Recherche, Ergebniszusammenfassung und Literaturübersichten."
+
+[i18n.es]
+name = "Investigador académico"
+description = "Agente de investigación académica: busca artículos, resume hallazgos y genera revisiones de literatura."
+
+[i18n.fr]
+name = "Chercheur académique"
+description = "Agent de recherche académique : recherche d'articles, synthèse et revues de littérature."

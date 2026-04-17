@@ -69,3 +69,32 @@ network = ["*"]
 memory_read = ["*"]
 memory_write = ["self.*", "shared.*"]
 shell = ["cargo *", "git log *", "git diff *", "git show *", "python *"]
+
+
+[i18n.zh]
+name = "调试专家"
+description = "调试专家：追踪 Bug、分析堆栈、定位根因。"
+
+[i18n.zh-TW]
+name = "除錯專家"
+description = "除錯專家：追蹤 Bug、分析堆疊、定位根因。"
+
+[i18n.ja]
+name = "デバッガー"
+description = "バグの追跡、スタックトレース解析、根本原因分析を行うエキスパート。"
+
+[i18n.ko]
+name = "디버거"
+description = "버그 추적, 스택 트레이스 분석, 근본 원인 분석을 수행하는 전문가."
+
+[i18n.de]
+name = "Debugger"
+description = "Experte für Bug-Tracing, Stack-Trace-Analyse und Root-Cause-Analysis."
+
+[i18n.es]
+name = "Depurador"
+description = "Experto en rastreo de bugs, análisis de stack traces y análisis de causa raíz."
+
+[i18n.fr]
+name = "Débogueur"
+description = "Expert en traçage de bugs, analyse de piles d'appels et recherche de causes racines."

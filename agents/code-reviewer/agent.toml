@@ -62,3 +62,32 @@ tools = [
 memory_read = ["*"]
 memory_write = ["self.*", "shared.*"]
 shell = ["cargo clippy *", "cargo fmt *", "git diff *", "git log *"]
+
+
+[i18n.zh]
+name = "代码评审员"
+description = "资深代码评审员：审查 PR、发现问题，按生产标准给出改进建议。"
+
+[i18n.zh-TW]
+name = "程式碼評審員"
+description = "資深程式碼評審員：審查 PR、發現問題，按生產標準給出改進建議。"
+
+[i18n.ja]
+name = "コードレビュアー"
+description = "シニアコードレビュアー：PR を精査し、本番品質を基準に問題を指摘し改善案を提示。"
+
+[i18n.ko]
+name = "코드 리뷰어"
+description = "시니어 코드 리뷰어: PR을 검토하고 프로덕션 기준으로 문제 지적 및 개선 제안."
+
+[i18n.de]
+name = "Code-Reviewer"
+description = "Senior Code-Reviewer: prüft PRs, erkennt Probleme, schlägt Verbesserungen nach Produktionsstandards vor."
+
+[i18n.es]
+name = "Revisor de código"
+description = "Revisor senior: inspecciona PRs, detecta problemas y sugiere mejoras con estándares de producción."
+
+[i18n.fr]
+name = "Relecteur de code"
+description = "Relecteur senior : examine les PR, identifie les problèmes et propose des améliorations aux standards de production."

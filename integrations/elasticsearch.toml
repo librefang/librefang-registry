@@ -33,3 +33,32 @@ setup_instructions = """
 2. Create an API key in Kibana (Stack Management > API Keys) with appropriate index permissions.
 3. Paste the cluster URL and API key into the fields above.
 """
+
+
+[i18n.zh]
+name = "Elasticsearch"
+description = "通过 MCP 服务器搜索与管理 Elasticsearch 索引和文档。"
+
+[i18n.zh-TW]
+name = "Elasticsearch"
+description = "透過 MCP 伺服器搜尋與管理 Elasticsearch 索引與文件。"
+
+[i18n.ja]
+name = "Elasticsearch"
+description = "MCP サーバー経由で Elasticsearch のインデックスとドキュメントを検索・管理。"
+
+[i18n.ko]
+name = "Elasticsearch"
+description = "MCP 서버를 통해 Elasticsearch 인덱스와 문서를 검색 및 관리."
+
+[i18n.de]
+name = "Elasticsearch"
+description = "Suchen und Verwalten von Elasticsearch-Indizes und -Dokumenten über den MCP-Server."
+
+[i18n.es]
+name = "Elasticsearch"
+description = "Busca y gestiona índices y documentos de Elasticsearch mediante el servidor MCP."
+
+[i18n.fr]
+name = "Elasticsearch"
+description = "Recherche et gestion des index et documents Elasticsearch via le serveur MCP."

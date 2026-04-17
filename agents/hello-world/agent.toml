@@ -47,3 +47,32 @@ network = ["*"]
 memory_read = ["*"]
 memory_write = ["self.*"]
 agent_spawn = false
+
+
+[i18n.zh]
+name = "Hello World"
+description = "友好的问候 Agent，可以读文件、搜索网页、回答日常问题。"
+
+[i18n.zh-TW]
+name = "Hello World"
+description = "友善的問候 Agent，可讀檔案、搜尋網頁、回答日常問題。"
+
+[i18n.ja]
+name = "Hello World"
+description = "ファイルの読み取り、ウェブ検索、日常の質問に答えるフレンドリーな挨拶 Agent。"
+
+[i18n.ko]
+name = "Hello World"
+description = "파일 읽기, 웹 검색, 일상 질문에 답하는 친근한 인사 Agent."
+
+[i18n.de]
+name = "Hello World"
+description = "Freundlicher Begrüßungs-Agent, der Dateien lesen, das Web durchsuchen und Alltagsfragen beantworten kann."
+
+[i18n.es]
+name = "Hello World"
+description = "Agente de saludo amigable que lee archivos, busca en la web y responde preguntas cotidianas."
+
+[i18n.fr]
+name = "Hello World"
+description = "Agent de bienvenue amical, capable de lire des fichiers, chercher sur le web et répondre aux questions courantes."

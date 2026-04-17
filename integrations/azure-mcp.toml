@@ -47,3 +47,32 @@ setup_instructions = """
 2. Create a client secret under Certificates & Secrets for the registered application.
 3. Assign the appropriate RBAC roles to the application on your subscription, then paste all four values into the fields above.
 """
+
+
+[i18n.zh]
+name = "Microsoft Azure"
+description = "通过 MCP 服务器管理 Azure 资源（虚拟机、存储、App Services 等）。"
+
+[i18n.zh-TW]
+name = "Microsoft Azure"
+description = "透過 MCP 伺服器管理 Azure 資源（虛擬機、儲存體、App Services 等）。"
+
+[i18n.ja]
+name = "Microsoft Azure"
+description = "MCP サーバー経由で Azure リソース（VM、ストレージ、App Services）を管理。"
+
+[i18n.ko]
+name = "Microsoft Azure"
+description = "MCP 서버를 통해 Azure 리소스(VM, 스토리지, App Services)를 관리."
+
+[i18n.de]
+name = "Microsoft Azure"
+description = "Verwaltet Azure-Ressourcen (VMs, Storage, App Services) über den MCP-Server."
+
+[i18n.es]
+name = "Microsoft Azure"
+description = "Gestiona recursos de Azure (VMs, Storage, App Services) a través del servidor MCP."
+
+[i18n.fr]
+name = "Microsoft Azure"
+description = "Gère les ressources Azure (VM, Storage, App Services) via le serveur MCP."

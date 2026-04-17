@@ -26,3 +26,32 @@ setup_instructions = """
 2. Generate a JSON key file for the service account and save it to a secure location on your filesystem.
 3. Enter the absolute path to the JSON key file in the GOOGLE_APPLICATION_CREDENTIALS field above.
 """
+
+
+[i18n.zh]
+name = "Google Cloud Platform"
+description = "通过 MCP 服务器管理 GCP 资源（Compute Engine、Cloud Storage、BigQuery 等）。"
+
+[i18n.zh-TW]
+name = "Google Cloud Platform"
+description = "透過 MCP 伺服器管理 GCP 資源（Compute Engine、Cloud Storage、BigQuery 等）。"
+
+[i18n.ja]
+name = "Google Cloud Platform"
+description = "MCP サーバー経由で GCP リソース（Compute Engine、Cloud Storage、BigQuery）を管理。"
+
+[i18n.ko]
+name = "Google Cloud Platform"
+description = "MCP 서버를 통해 GCP 리소스(Compute Engine, Cloud Storage, BigQuery)를 관리."
+
+[i18n.de]
+name = "Google Cloud Platform"
+description = "Verwaltet GCP-Ressourcen (Compute Engine, Cloud Storage, BigQuery) über den MCP-Server."
+
+[i18n.es]
+name = "Google Cloud Platform"
+description = "Gestiona recursos de GCP (Compute Engine, Cloud Storage, BigQuery) mediante el servidor MCP."
+
+[i18n.fr]
+name = "Google Cloud Platform"
+description = "Gère les ressources GCP (Compute Engine, Cloud Storage, BigQuery) via le serveur MCP."

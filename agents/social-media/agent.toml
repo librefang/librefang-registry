@@ -87,3 +87,32 @@ tools = [
 network = ["*"]
 memory_read = ["*"]
 memory_write = ["self.*", "shared.*"]
+
+
+[i18n.zh]
+name = "社媒运营"
+description = "社交媒体内容创作、排期发布与互动策略 Agent。"
+
+[i18n.zh-TW]
+name = "社群媒體"
+description = "社群媒體內容創作、排程發佈與互動策略 Agent。"
+
+[i18n.ja]
+name = "ソーシャルメディア"
+description = "SNS コンテンツ制作、投稿スケジュール、エンゲージメント戦略を担当する Agent。"
+
+[i18n.ko]
+name = "소셜 미디어"
+description = "소셜 미디어 콘텐츠 제작, 스케줄링, 참여 전략을 담당하는 Agent."
+
+[i18n.de]
+name = "Social Media"
+description = "Agent für Social-Media-Content, Veröffentlichungsplanung und Engagement-Strategie."
+
+[i18n.es]
+name = "Redes sociales"
+description = "Agente de creación de contenido, programación y estrategia de interacción en redes sociales."
+
+[i18n.fr]
+name = "Réseaux sociaux"
+description = "Agent de création de contenu, planification et stratégie d'engagement sur les réseaux sociaux."
