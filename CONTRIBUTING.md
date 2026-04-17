@@ -77,14 +77,14 @@ default = "true"
 - [ ] `[[requires]]` sections list any external dependencies (binaries, services)
 - [ ] `[[settings]]` sections provide user-configurable options where appropriate
 
-## Adding an Integration
+## Adding an MCP Server
 
-Create a file `integrations/<name>.toml`:
+Create a file `mcp/<name>.toml`:
 
 ```toml
 id = "my-service"
 name = "My Service"
-description = "What this integration provides"
+description = "What this MCP server provides"
 category = "devtools"  # devtools | communication | storage | monitoring | data
 icon = "🔌"
 tags = ["relevant", "tags"]
@@ -107,7 +107,7 @@ setup_instructions = """
 """
 ```
 
-### Integration Checklist
+### MCP Server Checklist
 
 - [ ] `id` matches the filename (without `.toml`)
 - [ ] `[transport]` section is correct (test the MCP server command locally)

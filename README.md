@@ -2,7 +2,7 @@
 
 Community-maintained content registry for [LibreFang](https://github.com/librefang/librefang) — the open-source Agent Operating System.
 
-This repository is the **single source of truth** for all installable content definitions. Anyone can submit a PR to add new agents, hands, integrations, skills, or provider models — no changes to the LibreFang binary required.
+This repository is the **single source of truth** for all installable content definitions. Anyone can submit a PR to add new agents, hands, MCP servers, skills, or provider models — no changes to the LibreFang binary required.
 
 ## Overview
 
@@ -10,7 +10,7 @@ This repository is the **single source of truth** for all installable content de
 |------|------:|-------------|
 | [Hands](#hands) | 14 | User-facing "apps" — agent + tools + settings + dashboard |
 | [Agents](#agents) | 32 | Autonomous agent definitions with model config and tools |
-| [Integrations](#integrations) | 25 | MCP server connections (GitHub, Slack, DBs, etc.) |
+| [MCP Servers](#mcp-servers) | 25 | MCP server connections (GitHub, Slack, DBs, etc.) |
 | [Providers](#providers) | 49 | LLM provider & model metadata with pricing |
 | [Models](#providers) | 339 | Individual model definitions across all providers |
 | [Aliases](#aliases) | 70 | Short names mapped to canonical model IDs |
@@ -37,10 +37,10 @@ librefang-registry/
 │   │   ├── HAND.toml
 │   │   └── SKILL.md
 │   └── ...                (14 hands)
-├── integrations/          # MCP server integration templates
+├── mcp/                   # MCP server templates
 │   ├── github.toml
 │   ├── slack.toml
-│   └── ...                (25 integrations)
+│   └── ...                (25 MCP servers)
 ├── providers/             # LLM provider & model metadata
 │   ├── anthropic.toml
 │   ├── openai.toml
@@ -161,9 +161,9 @@ tools = ["web_search", "file_read"]
 
 **32 built-in agents:** academic-researcher, analyst, architect, assistant, code-reviewer, coder, customer-support, data-scientist, debugger, devops-lead, doc-writer, email-assistant, health-tracker, hello-world, home-automation, legal-assistant, meeting-assistant, ops, orchestrator, personal-finance, planner, recipe-assistant, recruiter, researcher, sales-assistant, security-auditor, social-media, test-engineer, translator, travel-planner, tutor, writer
 
-### Integrations
+### MCP Servers
 
-Integration templates define [MCP](https://modelcontextprotocol.io/) server connections with transport configuration, required environment variables, and setup instructions.
+MCP server templates define [MCP](https://modelcontextprotocol.io/) server connections with transport configuration, required environment variables, and setup instructions.
 
 ```toml
 id = "github"
@@ -180,9 +180,9 @@ name = "GITHUB_PERSONAL_ACCESS_TOKEN"
 is_secret = true
 ```
 
-**25 integrations across 6 categories:**
+**25 MCP servers across 6 categories:**
 
-| Category | Integrations |
+| Category | MCP Servers |
 |----------|-------------|
 | DevTools | bitbucket, github, gitlab, jira, linear, sentry |
 | Data | elasticsearch, mongodb, postgresql, redis, sqlite |
@@ -264,8 +264,8 @@ librefang catalog update
 # Install a specific hand
 librefang hand install browser
 
-# Install a specific integration
-librefang integration install github
+# Install a specific MCP server
+librefang mcp install github
 ```
 
 ### Custom Local Content

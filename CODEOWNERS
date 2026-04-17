@@ -4,7 +4,7 @@
 providers/          @librefang/models
 agents/             @librefang/agents
 hands/              @librefang/agents
-integrations/       @librefang/integrations
+mcp/                @librefang/integrations
 skills/             @librefang/agents
 plugins/            @librefang/agents
 scripts/            @librefang/core

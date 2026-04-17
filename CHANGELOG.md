@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Changed
+
+- `chore: rename integrations/ directory to mcp/ (no content change; every entry is an MCP server template)`
+
 ## [1.0.0] - 2026-03-21
 
 ### Added
