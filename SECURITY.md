@@ -2,11 +2,11 @@
 
 ## Scope
 
-This repository contains TOML content definitions (agents, hands, integrations, skills, plugins, providers). Security concerns include:
+This repository contains TOML content definitions (agents, hands, MCP servers, skills, plugins, providers). Security concerns include:
 
 - Malicious content in system prompts or descriptions
-- Command injection in integration transport commands
-- Integration URLs pointing to phishing or malicious sites
+- Command injection in MCP server transport commands
+- MCP server URLs pointing to phishing or malicious sites
 - Credential exposure in TOML files
 
 ## Reporting a Vulnerability

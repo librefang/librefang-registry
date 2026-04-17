@@ -4,7 +4,7 @@
 
 - [ ] Agent (`agents/`)
 - [ ] Hand (`hands/`)
-- [ ] Integration (`integrations/`)
+- [ ] MCP Server (`mcp/`)
 - [ ] Skill (`skills/`)
 - [ ] Plugin (`plugins/`)
 - [ ] Provider / Model (`providers/`)
@@ -42,7 +42,7 @@
 - [ ] `[[requires]]` lists external dependencies
 - [ ] `[[settings]]` provides user-configurable options
 
-### Integrations (if applicable)
+### MCP Servers (if applicable)
 - [ ] `[transport]` config tested locally
 - [ ] `[[required_env]]` lists all needed variables
 - [ ] `setup_instructions` are clear for first-time users

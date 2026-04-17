@@ -47,7 +47,7 @@ REQUIRED_MODEL_FIELDS = {
     "input_cost_per_m", "output_cost_per_m",
 }
 
-VALID_CONTENT_TYPES = {"providers", "agents", "hands", "integrations", "skills", "plugins", "aliases"}
+VALID_CONTENT_TYPES = {"providers", "agents", "hands", "mcp", "skills", "plugins", "aliases"}
 
 
 def load_toml(filepath: Path) -> tuple[dict | None, str | None]:
@@ -138,8 +138,8 @@ def validate_hand_file(filepath: Path, integration_ids: set[str]) -> list[str]:
 
     Args:
         filepath: Path to the HAND.toml file.
-        integration_ids: Set of known integration IDs (filenames without .toml
-            from the integrations/ directory) for cross-reference validation.
+        integration_ids: Set of known MCP server IDs (filenames without .toml
+            from the mcp/ directory) for cross-reference validation.
     """
     data, err = load_toml(filepath)
     if err:
@@ -175,7 +175,7 @@ def validate_hand_file(filepath: Path, integration_ids: set[str]) -> list[str]:
                 if req_key and req_key not in integration_ids:
                     errors.append(
                         f"{rel}: [[requires]] references integration '{req_key}' "
-                        f"but no integrations/{req_key}.toml exists"
+                        f"but no mcp/{req_key}.toml exists"
                     )
 
     return errors
@@ -348,11 +348,11 @@ def main():
     all_errors = []
     stats = {}
 
-    # --- Collect integration IDs for cross-reference validation ---
-    integrations_dir = root / "integrations"
+    # --- Collect MCP server IDs for cross-reference validation ---
+    mcp_dir = root / "mcp"
     integration_ids: set[str] = set()
-    if integrations_dir.is_dir():
-        for fp in integrations_dir.glob("*.toml"):
+    if mcp_dir.is_dir():
+        for fp in mcp_dir.glob("*.toml"):
             integration_ids.add(fp.stem)
 
     # --- Providers ---
@@ -410,12 +410,12 @@ def main():
                 all_errors.append(f"hands/{d.name}: Missing HAND.toml")
         stats["hands"] = len(hand_dirs)
 
-    # --- Integrations ---
-    if integrations_dir.is_dir() and should_validate("integrations", args.content_type):
-        int_files = sorted(integrations_dir.glob("*.toml"))
+    # --- MCP Servers ---
+    if mcp_dir.is_dir() and should_validate("mcp", args.content_type):
+        int_files = sorted(mcp_dir.glob("*.toml"))
         for fp in int_files:
             all_errors.extend(validate_integration_file(fp))
-        stats["integrations"] = len(int_files)
+        stats["mcp"] = len(int_files)
 
     # --- Skills ---
     skills_dir = root / "skills"
@@ -537,7 +537,7 @@ def main():
         print()
 
     print("Content summary:")
-    for key in ("providers", "models", "agents", "hands", "integrations", "skills", "plugins"):
+    for key in ("providers", "models", "agents", "hands", "mcp", "skills", "plugins"):
         if key in stats:
             print(f"  {key:20s} {stats[key]:>4}")
     print()

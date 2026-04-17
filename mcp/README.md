@@ -1,23 +1,23 @@
-# Integrations
+# MCP Servers
 
-MCP (Model Context Protocol) server integration templates for LibreFang. Each integration connects LibreFang to an external service (GitHub, Slack, databases, etc.).
+MCP (Model Context Protocol) server templates for LibreFang. Each entry connects LibreFang to an external service (GitHub, Slack, databases, etc.).
 
 ## Structure
 
 ```
-integrations/
+mcp/
 ├── github.toml
 ├── slack.toml
 ├── postgresql.toml
 └── ...
 ```
 
-## Integration TOML Format
+## MCP Server TOML Format
 
 ```toml
 id = "service-id"                 # Must match filename (without .toml)
 name = "Service Name"
-description = "What this integration provides"
+description = "What this MCP server provides"
 category = "devtools"             # devtools | communication | storage | monitoring | data
 icon = "🐙"
 tags = ["relevant", "tags"]
@@ -49,19 +49,19 @@ Step-by-step setup guide for users.
 """
 ```
 
-## Current Integrations (25)
+## Current MCP Servers (25)
 
-| Integration | Category | Service |
-|-------------|----------|---------|
+| MCP Server | Category | Service |
+|------------|----------|---------|
 | github | devtools | GitHub repos, issues, PRs |
 | slack | communication | Slack messaging |
 | notion | productivity | Notion pages and databases |
 | postgresql | storage | PostgreSQL database |
 | ... | | See each file for details |
 
-## Adding a New Integration
+## Adding a New MCP Server
 
-1. Create `integrations/<name>.toml`
+1. Create `mcp/<name>.toml`
 2. Ensure `id` matches the filename
 3. Test the MCP server command locally
 4. Run `python scripts/validate.py`
