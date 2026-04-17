@@ -87,3 +87,27 @@ Resume:
 {{resume}}
 """
 depends_on = ["job_analysis", "resume_tailoring"]
+
+[i18n.zh-TW]
+name = "求職應聘包"
+description = "針對特定職位客製履歷與求職信，並準備具針對性的面試談話要點。"
+
+[i18n.ja]
+name = "応募パッケージ"
+description = "特定の求人に合わせて履歴書とカバーレターをカスタマイズし、的を射た面接トーキングポイントを準備。"
+
+[i18n.ko]
+name = "입사 지원 패키지"
+description = "특정 채용 공고에 맞춰 이력서와 커버레터를 맞춤화하고, 타겟팅된 면접 대화 포인트를 준비."
+
+[i18n.de]
+name = "Bewerbungspaket"
+description = "Lebenslauf und Anschreiben passgenau auf eine Stellenausschreibung zuschneiden und gezielte Gesprächspunkte für das Interview vorbereiten."
+
+[i18n.es]
+name = "Paquete de candidatura"
+description = "Adapta el CV y la carta de presentación a una oferta específica y prepara puntos clave enfocados para la entrevista."
+
+[i18n.fr]
+name = "Dossier de candidature"
+description = "Adapter un CV et une lettre de motivation à une offre précise, puis préparer des points de discussion ciblés pour l’entretien."

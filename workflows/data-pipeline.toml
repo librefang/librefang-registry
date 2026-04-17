@@ -80,3 +80,27 @@ Cleaned data:
 {{clean_transform}}
 """
 depends_on = ["clean_transform"]
+
+[i18n.zh-TW]
+name = "資料分析與轉換"
+description = "清洗、轉換、分析並摘要原始資料，支援 CSV、JSON、表格或自由文字等雜亂輸入。"
+
+[i18n.ja]
+name = "データ分析と変換"
+description = "生データをクレンジング・変換・分析・要約。CSV、JSON、表、自由記述など乱雑な入力に対応。"
+
+[i18n.ko]
+name = "데이터 분석 및 변환"
+description = "원본 데이터를 정제·변환·분석·요약합니다. CSV, JSON, 표, 자유 텍스트 등 지저분한 입력을 처리."
+
+[i18n.de]
+name = "Datenanalyse & Transformation"
+description = "Rohdaten bereinigen, transformieren, analysieren und zusammenfassen. Verarbeitet unsaubere Eingaben wie CSV, JSON, Tabellen oder Freitext."
+
+[i18n.es]
+name = "Análisis y transformación de datos"
+description = "Limpia, transforma, analiza y resume datos crudos. Admite entradas desordenadas: CSV, JSON, tablas o texto libre."
+
+[i18n.fr]
+name = "Analyse et transformation de données"
+description = "Nettoie, transforme, analyse et résume les données brutes. Gère les entrées désordonnées : CSV, JSON, tableaux ou texte libre."

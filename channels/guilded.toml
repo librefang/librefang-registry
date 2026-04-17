@@ -32,3 +32,7 @@ description = "Adaptador de bot Guilded para mensajería en servidores y canales
 [metadata]
 url = "https://www.guilded.gg"
 docs = "https://www.guilded.gg/docs/api/"
+
+[i18n.fr]
+name = "Guilded"
+description = "Adaptateur bot Guilded — messagerie dans les serveurs et salons Guilded."

@@ -32,3 +32,7 @@ description = "Adaptador de Reddit para publicar y leer contenido a través de l
 [metadata]
 url = "https://www.reddit.com"
 docs = "https://www.reddit.com/dev/api/"
+
+[i18n.fr]
+name = "Reddit"
+description = "Adaptateur Reddit — publication et lecture de contenu via l'API Reddit."

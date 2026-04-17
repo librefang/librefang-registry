@@ -32,3 +32,7 @@ description = "Adaptador de bot Viber para enviar y recibir mensajes a través d
 [metadata]
 url = "https://www.viber.com"
 docs = "https://developers.viber.com/docs/api/"
+
+[i18n.fr]
+name = "Viber"
+description = "Adaptateur bot Viber — envoie et reçoit des messages via l'API Viber Bot."

@@ -33,3 +33,7 @@ description = "Adaptador de Telegram Bot API para enviar y recibir mensajes"
 [metadata]
 url = "https://telegram.org"
 docs = "https://core.telegram.org/bots/api"
+
+[i18n.fr]
+name = "Telegram"
+description = "Adaptateur Telegram Bot API — envoie et reçoit des messages."

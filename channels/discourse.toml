@@ -32,3 +32,7 @@ description = "Adaptador de foro Discourse para publicar temas y respuestas a tr
 [metadata]
 url = "https://www.discourse.org"
 docs = "https://docs.discourse.org"
+
+[i18n.fr]
+name = "Discourse"
+description = "Adaptateur de forum Discourse — publie sujets et réponses via l'API Discourse."

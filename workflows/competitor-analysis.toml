@@ -76,3 +76,27 @@ SWOT comparison:
 {{swot_comparison}}
 """
 depends_on = ["swot_comparison"]
+
+[i18n.zh-TW]
+name = "競爭對手分析"
+description = "調研競爭對手、梳理其優劣勢，輸出策略定位報告。"
+
+[i18n.ja]
+name = "競合分析"
+description = "競合を調査し強み・弱みを整理、戦略ポジショニングレポートを作成。"
+
+[i18n.ko]
+name = "경쟁사 분석"
+description = "경쟁사를 조사하고 강점·약점을 정리해 전략적 포지셔닝 보고서를 생성."
+
+[i18n.de]
+name = "Wettbewerbsanalyse"
+description = "Konkurrenten recherchieren, Stärken und Schwächen aufzeigen und einen strategischen Positionierungsbericht erstellen."
+
+[i18n.es]
+name = "Análisis de competencia"
+description = "Investiga competidores, mapea sus fortalezas y debilidades y produce un informe de posicionamiento estratégico."
+
+[i18n.fr]
+name = "Analyse concurrentielle"
+description = "Étudier les concurrents, cartographier forces et faiblesses et produire un rapport de positionnement stratégique."

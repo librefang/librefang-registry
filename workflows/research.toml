@@ -76,3 +76,27 @@ Alternative perspectives:
 {{research_counter}}
 """
 depends_on = ["fact_check"]
+
+[i18n.zh-TW]
+name = "研究與摘要"
+description = "從多個角度調研主題、交叉驗證結果準確性，並產生含引用的精煉摘要。"
+
+[i18n.ja]
+name = "リサーチと要約"
+description = "多角的にトピックを調査し、結果を相互検証、引用付きの要約を生成するリサーチパイプライン。"
+
+[i18n.ko]
+name = "리서치 및 요약"
+description = "다양한 각도로 주제를 조사하고, 결과를 교차 검증한 뒤, 인용이 포함된 간결한 요약을 생성."
+
+[i18n.de]
+name = "Recherche & Zusammenfassung"
+description = "Recherche-Pipeline: untersucht ein Thema aus mehreren Blickwinkeln, gleicht Ergebnisse ab und liefert eine prägnante Zusammenfassung mit Quellen."
+
+[i18n.es]
+name = "Investigación y resumen"
+description = "Pipeline de investigación: analiza un tema desde múltiples ángulos, contrasta hallazgos y produce un resumen conciso con citas."
+
+[i18n.fr]
+name = "Recherche et synthèse"
+description = "Pipeline de recherche : étudie un sujet sous plusieurs angles, recoupe les informations et produit une synthèse concise avec citations."

@@ -97,3 +97,27 @@ Draft:
 {{draft}}
 """
 depends_on = ["draft"]
+
+[i18n.zh-TW]
+name = "部落格文章撰寫"
+description = "調研主題、建立結構化大綱、撰寫完整部落格文章，並進行 SEO 優化。"
+
+[i18n.ja]
+name = "ブログ記事ライター"
+description = "トピックを調査し、構造化されたアウトラインを作り、記事を執筆、SEO を最適化。"
+
+[i18n.ko]
+name = "블로그 포스트 작성"
+description = "주제를 조사하고 구조화된 개요를 만든 뒤, 전체 블로그 글을 작성하고 SEO를 최적화합니다."
+
+[i18n.de]
+name = "Blogpost-Autor"
+description = "Thema recherchieren, strukturiertes Outline erstellen, vollständigen Blogpost schreiben und für SEO optimieren."
+
+[i18n.es]
+name = "Redactor de blog"
+description = "Investiga un tema, crea un esquema estructurado, redacta un post completo y optimiza para SEO."
+
+[i18n.fr]
+name = "Rédacteur de blog"
+description = "Rechercher un sujet, bâtir un plan structuré, rédiger un article complet puis optimiser pour le SEO."

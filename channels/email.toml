@@ -32,3 +32,7 @@ description = "Adaptador de correo electrónico para enviar y recibir mensajes m
 [metadata]
 url = ""
 docs = ""
+
+[i18n.fr]
+name = "Email"
+description = "Adaptateur e-mail — envoie et reçoit des messages via les protocoles SMTP et IMAP."

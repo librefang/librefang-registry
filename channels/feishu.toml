@@ -33,3 +33,7 @@ description = "Adaptador de bot Feishu (Lark) para mensajería en la plataforma 
 [metadata]
 url = "https://www.feishu.cn"
 docs = "https://open.feishu.cn/document/"
+
+[i18n.fr]
+name = "Feishu"
+description = "Adaptateur bot Feishu (Lark) — messagerie sur la plateforme collaborative Feishu."

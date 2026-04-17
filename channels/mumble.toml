@@ -32,3 +32,7 @@ description = "Adaptador de Mumble para mensajería de texto en servidores de co
 [metadata]
 url = "https://www.mumble.info"
 docs = "https://wiki.mumble.info/wiki/Protocol"
+
+[i18n.fr]
+name = "Mumble"
+description = "Adaptateur Mumble — messagerie texte dans les serveurs de communication vocale Mumble."

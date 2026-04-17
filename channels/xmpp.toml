@@ -32,3 +32,7 @@ description = "Adaptador XMPP para mensajería a través del protocolo extensibl
 [metadata]
 url = "https://xmpp.org"
 docs = "https://xmpp.org/extensions/"
+
+[i18n.fr]
+name = "XMPP"
+description = "Adaptateur XMPP — messagerie via le protocole Extensible Messaging and Presence."

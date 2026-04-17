@@ -67,3 +67,27 @@ Accuracy feedback:
 {{review_accuracy}}
 """
 depends_on = ["review_quality", "review_accuracy"]
+
+[i18n.zh-TW]
+name = "內容審校"
+description = "多智能體內容審校流水線，先起草內容，再分別審查品質與準確性，最後綜合回饋產生終稿。"
+
+[i18n.ja]
+name = "コンテンツレビュー"
+description = "複数 Agent による内容レビュー。下書きを作成し、品質と正確性をレビュー、フィードバックを反映した最終版を生成。"
+
+[i18n.ko]
+name = "콘텐츠 검토"
+description = "다중 에이전트 콘텐츠 검토 파이프라인. 초안을 작성하고 품질과 정확성을 검토한 뒤 피드백을 반영한 최종본을 생성."
+
+[i18n.de]
+name = "Content-Review"
+description = "Multi-Agent-Review-Pipeline: Entwurf erstellen, Qualität und Korrektheit prüfen und eine endgültige Fassung mit eingearbeitetem Feedback liefern."
+
+[i18n.es]
+name = "Revisión de contenido"
+description = "Pipeline multiagente que redacta, revisa calidad y precisión y produce una versión final con la retroalimentación incorporada."
+
+[i18n.fr]
+name = "Revue de contenu"
+description = "Pipeline multi-agent : rédige, contrôle la qualité et la précision, puis produit une version finale intégrant les retours."

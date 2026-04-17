@@ -32,3 +32,7 @@ description = "Adaptador de Pumble para mensajería de equipo y notificaciones e
 [metadata]
 url = "https://pumble.com"
 docs = "https://pumble.com/help"
+
+[i18n.fr]
+name = "Pumble"
+description = "Adaptateur Pumble — messagerie d'équipe et notifications dans les espaces Pumble."

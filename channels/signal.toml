@@ -33,3 +33,7 @@ description = "Adaptador de Signal para mensajería segura con cifrado de extrem
 [metadata]
 url = "https://signal.org"
 docs = "https://github.com/AsamK/signal-cli"
+
+[i18n.fr]
+name = "Signal"
+description = "Adaptateur Signal — messagerie chiffrée de bout en bout via Signal CLI."

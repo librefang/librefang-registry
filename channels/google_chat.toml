@@ -32,3 +32,7 @@ description = "Adaptador de Google Chat para enviar mensajes y tarjetas a conver
 [metadata]
 url = "https://chat.google.com"
 docs = "https://developers.google.com/workspace/chat/api/reference/rest"
+
+[i18n.fr]
+name = "Google Chat"
+description = "Adaptateur Google Chat — envoie messages et cartes dans les conversations Google Workspace."

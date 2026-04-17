@@ -76,3 +76,27 @@ Action items:
 {{action_items}}
 """
 depends_on = ["structured_summary", "action_items"]
+
+[i18n.zh-TW]
+name = "會議摘要與行動項目"
+description = "將原始會議記錄或逐字稿整理為結構化摘要、決策日誌與後續追蹤郵件。"
+
+[i18n.ja]
+name = "会議サマリとアクションアイテム"
+description = "議事録や文字起こしを構造化サマリ、決定事項リスト、フォローアップメールに変換。"
+
+[i18n.ko]
+name = "회의 요약 및 액션 아이템"
+description = "원본 회의 메모나 녹취를 구조화된 요약, 결정 로그, 팔로업 이메일로 변환."
+
+[i18n.de]
+name = "Meeting-Zusammenfassung & Action Items"
+description = "Rohe Meeting-Notizen oder Transkripte in strukturierte Zusammenfassung, Entscheidungsprotokoll und Follow-up-Mail verwandeln."
+
+[i18n.es]
+name = "Resumen de reuniones y acciones"
+description = "Transforma notas o transcripciones en un resumen estructurado, registro de decisiones y correo de seguimiento."
+
+[i18n.fr]
+name = "Compte-rendu et actions"
+description = "Transformer des notes ou transcriptions brutes en compte-rendu structuré, journal de décisions et e-mail de suivi."

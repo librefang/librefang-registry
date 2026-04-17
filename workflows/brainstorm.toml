@@ -41,3 +41,27 @@ Evaluation:
 {{evaluator}}
 """
 depends_on = ["evaluator"]
+
+[i18n.zh-TW]
+name = "腦力激盪與行動計劃"
+description = "產生創意、評估方案，並為最佳方案制定行動計劃。"
+
+[i18n.ja]
+name = "ブレストとアクションプラン"
+description = "アイデアを生成し評価し、最良案に対するアクションプランを作成。"
+
+[i18n.ko]
+name = "브레인스토밍과 실행 계획"
+description = "아이디어를 생성하고 평가한 뒤 최적 안에 대한 실행 계획을 수립."
+
+[i18n.de]
+name = "Brainstorming & Aktionsplan"
+description = "Ideen generieren, bewerten und für die beste Option einen Aktionsplan erstellen."
+
+[i18n.es]
+name = "Brainstorm y plan de acción"
+description = "Genera ideas, evalúalas y crea un plan de acción para la mejor opción."
+
+[i18n.fr]
+name = "Brainstorming & plan d'action"
+description = "Générer des idées, les évaluer et bâtir un plan d'action pour la meilleure d'entre elles."

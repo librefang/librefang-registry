@@ -79,3 +79,27 @@ Back-translation:
 {{back_translate}}
 """
 depends_on = ["translate", "back_translate"]
+
+[i18n.zh-TW]
+name = "翻譯與潤色"
+description = "將文字翻譯為目標語言，再審校準確性、自然度與文化契合度。"
+
+[i18n.ja]
+name = "翻訳と校正"
+description = "テキストを目標言語に翻訳した後、正確性・自然さ・文化的適合性を校正。"
+
+[i18n.ko]
+name = "번역 및 다듬기"
+description = "텍스트를 대상 언어로 번역한 뒤 정확성, 자연스러움, 문화적 적합성을 검토."
+
+[i18n.de]
+name = "Übersetzen & Feinschliff"
+description = "Text in die Zielsprache übersetzen und auf Genauigkeit, Natürlichkeit und kulturelle Passform überprüfen."
+
+[i18n.es]
+name = "Traducir y pulir"
+description = "Traduce texto al idioma destino y revísalo por precisión, naturalidad y adecuación cultural."
+
+[i18n.fr]
+name = "Traduire et peaufiner"
+description = "Traduire un texte dans la langue cible puis en vérifier la précision, la fluidité et l’adéquation culturelle."

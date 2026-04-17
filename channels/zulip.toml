@@ -32,3 +32,7 @@ description = "Adaptador de Zulip para mensajería de equipo basada en temas en 
 [metadata]
 url = "https://zulip.com"
 docs = "https://zulip.com/api/"
+
+[i18n.fr]
+name = "Zulip"
+description = "Adaptateur Zulip — messagerie d'équipe basée sur les sujets dans les organisations Zulip."

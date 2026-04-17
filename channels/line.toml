@@ -32,3 +32,7 @@ description = "Adaptador de LINE Messaging API para enviar y recibir mensajes en
 [metadata]
 url = "https://line.me"
 docs = "https://developers.line.biz/en/docs/messaging-api/"
+
+[i18n.fr]
+name = "LINE"
+description = "Adaptateur LINE Messaging API — envoie et reçoit des messages sur la plateforme LINE."

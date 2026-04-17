@@ -33,3 +33,7 @@ description = "Adaptador de bot Slack para enviar y recibir mensajes en espacios
 [metadata]
 url = "https://slack.com"
 docs = "https://api.slack.com/docs"
+
+[i18n.fr]
+name = "Slack"
+description = "Adaptateur bot Slack — envoie et reçoit des messages dans les espaces Slack."

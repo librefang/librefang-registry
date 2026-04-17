@@ -32,3 +32,7 @@ description = "Adaptador de webhook genérico para enviar y recibir mensajes med
 [metadata]
 url = ""
 docs = ""
+
+[i18n.fr]
+name = "Webhook"
+description = "Adaptateur webhook générique — envoie et reçoit des messages via des callbacks HTTP."

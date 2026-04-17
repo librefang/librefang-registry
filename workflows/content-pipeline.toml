@@ -105,3 +105,27 @@ Draft:
 {{writer}}
 """
 depends_on = ["writer"]
+
+[i18n.zh-TW]
+name = "內容創作流水線"
+description = "調研主題、建立結構化大綱、撰寫完整文章，再潤色以提升清晰度、流暢度與事實一致性。"
+
+[i18n.ja]
+name = "コンテンツ制作パイプライン"
+description = "トピック調査、構造化アウトライン、完全記事の執筆、明快さ・流れ・事実整合性の編集を一気通貫で実施。"
+
+[i18n.ko]
+name = "콘텐츠 제작 파이프라인"
+description = "주제 조사, 구조화된 개요 작성, 전체 기사 집필, 명확성·흐름·사실 일관성을 위한 편집까지 수행."
+
+[i18n.de]
+name = "Content-Pipeline"
+description = "Thema recherchieren, Outline erstellen, vollständigen Artikel schreiben und anschließend auf Klarheit, Fluss und sachliche Konsistenz editieren."
+
+[i18n.es]
+name = "Pipeline de contenido"
+description = "Investiga un tema, crea un esquema, escribe el artículo completo y luego lo edita para claridad, fluidez y consistencia factual."
+
+[i18n.fr]
+name = "Pipeline de contenu"
+description = "Rechercher un sujet, bâtir un plan structuré, rédiger un article complet puis le relire pour la clarté, la fluidité et la cohérence factuelle."

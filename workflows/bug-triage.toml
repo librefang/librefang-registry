@@ -65,3 +65,27 @@ Root cause analysis:
 {{root_cause}}
 """
 depends_on = ["root_cause"]
+
+[i18n.zh-TW]
+name = "Bug 分流與修復計劃"
+description = "分析 Bug 回報、還原失敗路徑、定位根因，輸出優先級排序的修復計劃與測試案例。"
+
+[i18n.ja]
+name = "バグトリアージと修正計画"
+description = "バグレポートを解析し、失敗経路を再現し、根本原因を特定して優先度付きの修正計画とテストケースを出力。"
+
+[i18n.ko]
+name = "버그 분류 및 수정 계획"
+description = "버그 리포트를 분석하고, 실패 경로를 재현하고, 근본 원인을 파악해 우선순위가 매겨진 수정 계획과 테스트 케이스를 생성."
+
+[i18n.de]
+name = "Bug-Triage & Fix-Plan"
+description = "Bug-Report analysieren, Fehlerpfad reproduzieren, Root-Cause identifizieren und priorisierten Fix-Plan mit Testfällen erstellen."
+
+[i18n.es]
+name = "Triage de bugs y plan de corrección"
+description = "Analiza un reporte de bug, reproduce el camino de fallo, identifica la causa raíz y produce un plan de corrección priorizado con casos de prueba."
+
+[i18n.fr]
+name = "Triage de bugs & plan de correction"
+description = "Analyser un rapport de bug, reproduire le chemin d'échec, identifier la cause racine et produire un plan de correction priorisé avec cas de test."

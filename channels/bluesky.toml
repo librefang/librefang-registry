@@ -32,3 +32,7 @@ description = "Adaptador del protocolo AT de Bluesky para publicar y leer en la 
 [metadata]
 url = "https://bsky.app"
 docs = "https://docs.bsky.app"
+
+[i18n.fr]
+name = "Bluesky"
+description = "Adaptateur du protocole Bluesky AT — publier et lire sur le réseau social décentralisé."

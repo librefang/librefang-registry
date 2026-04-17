@@ -84,3 +84,27 @@ Roadmap:
 {{roadmap}}
 """
 depends_on = ["roadmap"]
+
+[i18n.zh-TW]
+name = "個人化學習計劃"
+description = "評估目前知識水準、找出差距，建立帶資源與里程碑的結構化學習路線圖。"
+
+[i18n.ja]
+name = "パーソナライズ学習計画"
+description = "現在の知識を評価し、ギャップを特定、リソースとマイルストーンを含む構造化ロードマップを作成。"
+
+[i18n.ko]
+name = "맞춤 학습 계획"
+description = "현재 지식을 평가하고 격차를 파악해 리소스와 마일스톤이 포함된 구조화된 학습 로드맵을 수립."
+
+[i18n.de]
+name = "Personalisierter Lernplan"
+description = "Aktuelles Wissen einschätzen, Lücken identifizieren und eine strukturierte Lernroadmap mit Ressourcen und Meilensteinen erstellen."
+
+[i18n.es]
+name = "Plan de aprendizaje personalizado"
+description = "Evalúa el conocimiento actual, identifica brechas y construye un itinerario estructurado con recursos e hitos."
+
+[i18n.fr]
+name = "Plan d’apprentissage personnalisé"
+description = "Évaluer les connaissances actuelles, identifier les lacunes et bâtir une feuille de route structurée avec ressources et jalons."

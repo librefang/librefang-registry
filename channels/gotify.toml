@@ -32,3 +32,7 @@ description = "Adaptador de Gotify para enviar notificaciones push a un servidor
 [metadata]
 url = "https://gotify.net"
 docs = "https://gotify.net/docs/"
+
+[i18n.fr]
+name = "Gotify"
+description = "Adaptateur Gotify — notifications push vers un serveur Gotify auto-hébergé."

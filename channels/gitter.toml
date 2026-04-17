@@ -32,3 +32,7 @@ description = "Adaptador de Gitter para salas de chat de desarrolladores vincula
 [metadata]
 url = "https://gitter.im"
 docs = "https://developer.gitter.im/docs/"
+
+[i18n.fr]
+name = "Gitter"
+description = "Adaptateur Gitter — salons de discussion développeurs liés aux dépôts GitHub."

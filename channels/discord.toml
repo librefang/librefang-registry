@@ -33,3 +33,7 @@ description = "Adaptador de bot Discord para enviar y recibir mensajes en servid
 [metadata]
 url = "https://discord.com"
 docs = "https://discord.com/developers/docs/intro"
+
+[i18n.fr]
+name = "Discord"
+description = "Adaptateur bot Discord — envoie et reçoit des messages dans les serveurs et salons Discord."

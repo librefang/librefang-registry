@@ -32,3 +32,7 @@ description = "Adaptador de Nostr para publicar y leer eventos en el protocolo d
 [metadata]
 url = "https://nostr.com"
 docs = "https://github.com/nostr-protocol/nips"
+
+[i18n.fr]
+name = "Nostr"
+description = "Adaptateur Nostr — publication et lecture d'événements sur le protocole décentralisé Nostr."

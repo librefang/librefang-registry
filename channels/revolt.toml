@@ -32,3 +32,7 @@ description = "Adaptador de Revolt para mensajería en la plataforma de chat de 
 [metadata]
 url = "https://revolt.chat"
 docs = "https://developers.revolt.chat/api/"
+
+[i18n.fr]
+name = "Revolt"
+description = "Adaptateur Revolt — messagerie sur la plateforme de chat open source Revolt."

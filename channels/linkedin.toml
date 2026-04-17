@@ -32,3 +32,7 @@ description = "Adaptador de LinkedIn para publicar actualizaciones y mensajes a 
 [metadata]
 url = "https://www.linkedin.com"
 docs = "https://learn.microsoft.com/en-us/linkedin/"
+
+[i18n.fr]
+name = "LinkedIn"
+description = "Adaptateur LinkedIn — publication de posts et messages via l'API LinkedIn."

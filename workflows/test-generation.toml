@@ -70,3 +70,27 @@ Edge cases:
 {{edge_cases}}
 """
 depends_on = ["code_analysis", "edge_cases"]
+
+[i18n.zh-TW]
+name = "測試套件生成"
+description = "分析程式碼，產生完整的單元測試、整合測試與邊界情況覆蓋。"
+
+[i18n.ja]
+name = "テストスイート生成"
+description = "コードを解析し、単体テスト・統合テスト・エッジケースを網羅したテストスイートを生成。"
+
+[i18n.ko]
+name = "테스트 스위트 생성"
+description = "코드를 분석해 단위 테스트, 통합 테스트, 엣지 케이스를 포괄하는 테스트 스위트를 생성."
+
+[i18n.de]
+name = "Test-Suite-Generierung"
+description = "Code analysieren und umfassende Unit-Tests, Integrationstests und Edge-Case-Abdeckung erzeugen."
+
+[i18n.es]
+name = "Generación de pruebas"
+description = "Analiza el código para generar pruebas unitarias, de integración y cobertura de casos límite."
+
+[i18n.fr]
+name = "Génération de tests"
+description = "Analyser le code pour générer tests unitaires, tests d’intégration et couverture des cas limites."

@@ -84,3 +84,27 @@ Customer segments:
 {{customer_segments}}
 """
 depends_on = ["market_landscape", "customer_segments"]
+
+[i18n.zh-TW]
+name = "市場研究報告"
+description = "分析市場機會：市場規模、趨勢、客戶區隔、主要玩家與進入切入點。"
+
+[i18n.ja]
+name = "市場調査レポート"
+description = "市場機会を分析：規模、トレンド、顧客セグメント、主要プレイヤー、GTM の切り口。"
+
+[i18n.ko]
+name = "시장 조사 보고서"
+description = "시장 기회 분석: 규모, 트렌드, 고객 세그먼트, 주요 플레이어, GTM 진입점."
+
+[i18n.de]
+name = "Marktforschungsbericht"
+description = "Eine Marktchance analysieren: Größe, Trends, Kundensegmente, Key-Player und Go-to-Market-Einstiegspunkte."
+
+[i18n.es]
+name = "Informe de investigación de mercado"
+description = "Analiza una oportunidad de mercado: tamaño, tendencias, segmentos de clientes, actores clave y puntos de entrada GTM."
+
+[i18n.fr]
+name = "Étude de marché"
+description = "Analyser une opportunité de marché : taille, tendances, segments clients, acteurs clés et points d’entrée GTM."

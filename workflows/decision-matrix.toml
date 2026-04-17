@@ -74,3 +74,27 @@ Scoring:
 {{scoring}}
 """
 depends_on = ["scoring"]
+
+[i18n.zh-TW]
+name = "決策矩陣"
+description = "依加權標準評估多個方案，輸出清晰且有依據的推薦結論。"
+
+[i18n.ja]
+name = "意思決定マトリクス"
+description = "重み付き基準で複数案を評価し、根拠ある推奨結論を導出。"
+
+[i18n.ko]
+name = "의사결정 매트릭스"
+description = "가중 기준으로 경쟁하는 옵션들을 평가해 명확하고 근거 있는 권고안을 도출."
+
+[i18n.de]
+name = "Entscheidungsmatrix"
+description = "Konkurrierende Optionen anhand gewichteter Kriterien bewerten und eine klare, belastbare Empfehlung ableiten."
+
+[i18n.es]
+name = "Matriz de decisión"
+description = "Evalúa opciones rivales frente a criterios ponderados y produce una recomendación clara y defendible."
+
+[i18n.fr]
+name = "Matrice de décision"
+description = "Évaluer des options concurrentes selon des critères pondérés et produire une recommandation claire et défendable."

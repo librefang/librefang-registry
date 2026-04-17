@@ -68,3 +68,27 @@ Endpoint design:
 {{endpoint_design}}
 """
 depends_on = ["endpoint_design"]
+
+[i18n.zh-TW]
+name = "API 設計與規格"
+description = "從需求出發設計 REST API：端點、請求/回應結構、認證、錯誤處理，輸出 OpenAPI 規格。"
+
+[i18n.ja]
+name = "API 設計と仕様策定"
+description = "要件から REST API を設計：エンドポイント、リクエスト/レスポンススキーマ、認証、エラー処理、OpenAPI 仕様を出力。"
+
+[i18n.ko]
+name = "API 설계 및 명세"
+description = "요구사항에서 REST API 설계: 엔드포인트, 요청/응답 스키마, 인증, 오류 처리, OpenAPI 명세 생성."
+
+[i18n.de]
+name = "API-Design & Spezifikation"
+description = "REST-API aus Anforderungen entwerfen: Endpunkte, Request-/Response-Schemas, Auth, Fehlerbehandlung, OpenAPI-Spezifikation."
+
+[i18n.es]
+name = "Diseño y especificación de API"
+description = "Diseña una API REST a partir de requisitos: endpoints, esquemas de petición/respuesta, autenticación, errores y especificación OpenAPI."
+
+[i18n.fr]
+name = "Conception et spécification d'API"
+description = "Concevoir une API REST à partir des besoins : endpoints, schémas requête/réponse, auth, gestion des erreurs et spécification OpenAPI."

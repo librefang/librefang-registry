@@ -32,3 +32,7 @@ description = "Adaptador de Mastodon para publicar toots y leer líneas de tiemp
 [metadata]
 url = "https://joinmastodon.org"
 docs = "https://docs.joinmastodon.org/api/"
+
+[i18n.fr]
+name = "Mastodon"
+description = "Adaptateur Mastodon — publication de pouets et lecture des flux sur les instances Mastodon."

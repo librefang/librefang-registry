@@ -33,3 +33,7 @@ description = "Adaptador de bot DingTalk para enviar mensajes a grupos y convers
 [metadata]
 url = "https://www.dingtalk.com"
 docs = "https://open.dingtalk.com/document/"
+
+[i18n.fr]
+name = "DingTalk"
+description = "Adaptateur bot DingTalk — envoie des messages dans les groupes et conversations DingTalk."

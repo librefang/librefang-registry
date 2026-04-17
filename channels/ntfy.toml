@@ -32,3 +32,7 @@ description = "Adaptador de ntfy para enviar notificaciones push a través del s
 [metadata]
 url = "https://ntfy.sh"
 docs = "https://docs.ntfy.sh"
+
+[i18n.fr]
+name = "ntfy"
+description = "Adaptateur ntfy — notifications push via le service pub-sub ntfy."

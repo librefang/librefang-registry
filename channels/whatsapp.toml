@@ -33,3 +33,7 @@ description = "Adaptador de WhatsApp Business API para enviar y recibir mensajes
 [metadata]
 url = "https://www.whatsapp.com"
 docs = "https://developers.facebook.com/docs/whatsapp/cloud-api/"
+
+[i18n.fr]
+name = "WhatsApp"
+description = "Adaptateur WhatsApp Business API — envoie et reçoit des messages sur WhatsApp."

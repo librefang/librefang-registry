@@ -32,3 +32,7 @@ description = "Adaptador de WeCom (WeChat Work) para mensajería empresarial en 
 [metadata]
 url = "https://work.weixin.qq.com"
 docs = "https://developer.work.weixin.qq.com/document/"
+
+[i18n.fr]
+name = "WeCom"
+description = "Adaptateur WeCom (WeChat Work) — messagerie d'entreprise au sein des organisations WeCom."

@@ -96,3 +96,27 @@ Style review:
 {{review_style}}
 """
 depends_on = ["review_correctness", "review_security", "review_style"]
+
+[i18n.zh-TW]
+name = "程式碼審查"
+description = "並行程式碼分析流水線，獨立評估正確性、安全性與程式碼風格，再將發現彙整為統一的審查報告。"
+
+[i18n.ja]
+name = "コードレビュー"
+description = "並列コード解析パイプライン。正確性・セキュリティ・スタイルを独立評価し、統合レビューサマリに集約。"
+
+[i18n.ko]
+name = "코드 리뷰"
+description = "병렬 코드 분석 파이프라인. 정확성·보안·스타일을 독립 평가한 뒤, 통합된 리뷰 요약으로 정리합니다."
+
+[i18n.de]
+name = "Code-Review"
+description = "Parallele Code-Analyse-Pipeline: bewertet Korrektheit, Sicherheit und Stil unabhängig und fasst die Ergebnisse in einer einheitlichen Review-Zusammenfassung zusammen."
+
+[i18n.es]
+name = "Revisión de código"
+description = "Pipeline paralelo de análisis que evalúa corrección, seguridad y estilo de forma independiente y sintetiza los hallazgos en un informe unificado."
+
+[i18n.fr]
+name = "Revue de code"
+description = "Pipeline d'analyse parallèle qui évalue indépendamment la justesse, la sécurité et le style, puis synthétise les résultats dans un rapport unifié."

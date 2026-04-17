@@ -32,3 +32,7 @@ description = "Adaptador de Rocket.Chat para mensajería en instancias autoaloja
 [metadata]
 url = "https://www.rocket.chat"
 docs = "https://developer.rocket.chat/reference/api"
+
+[i18n.fr]
+name = "Rocket.Chat"
+description = "Adaptateur Rocket.Chat — messagerie dans les instances Rocket.Chat auto-hébergées."

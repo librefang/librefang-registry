@@ -32,3 +32,7 @@ description = "Adaptador IRC para conectar a redes y canales de Internet Relay C
 [metadata]
 url = ""
 docs = "https://datatracker.ietf.org/doc/html/rfc2812"
+
+[i18n.fr]
+name = "IRC"
+description = "Adaptateur IRC — connexion aux réseaux et salons Internet Relay Chat."

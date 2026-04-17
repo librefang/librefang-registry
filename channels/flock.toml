@@ -32,3 +32,7 @@ description = "Adaptador de bot Flock para mensajería de equipo y notificacione
 [metadata]
 url = "https://www.flock.com"
 docs = "https://docs.flock.com"
+
+[i18n.fr]
+name = "Flock"
+description = "Adaptateur bot Flock — messagerie d'équipe et notifications dans les espaces Flock."

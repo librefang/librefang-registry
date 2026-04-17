@@ -32,3 +32,7 @@ description = "Adaptador de Mattermost para mensajería de equipo y notificacion
 [metadata]
 url = "https://mattermost.com"
 docs = "https://api.mattermost.com"
+
+[i18n.fr]
+name = "Mattermost"
+description = "Adaptateur Mattermost — messagerie d'équipe et notifications dans les espaces Mattermost."

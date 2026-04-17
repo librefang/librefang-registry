@@ -33,3 +33,7 @@ description = "Adaptador de Matrix para mensajería descentralizada a través de
 [metadata]
 url = "https://matrix.org"
 docs = "https://spec.matrix.org/latest/client-server-api/"
+
+[i18n.fr]
+name = "Matrix"
+description = "Adaptateur Matrix — messagerie décentralisée via l'API client-serveur Matrix."

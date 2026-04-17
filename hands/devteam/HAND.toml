@@ -395,3 +395,19 @@ category = "開発"
 name = "개발팀"
 description = "자율 개발팀 — PM이 이슈 분류, 엔지니어가 구현, QA가 검증"
 category = "개발"
+
+[i18n.zh-TW]
+name = "開發團隊 Hand"
+description = "自主軟體開發團隊 Hand —— PM 分流 Issue、工程師實作、QA 測試、Reviewer 審查，最後編排者統整結果。"
+
+[i18n.de]
+name = "Dev-Team-Hand"
+description = "Autonomes Softwareentwicklungs-Team: PM triagiert Issues, Engineer implementiert, QA testet, Reviewer prüft, der Orchestrator führt alles zusammen."
+
+[i18n.es]
+name = "Hand Dev Team"
+description = "Equipo de desarrollo autónomo: el PM clasifica incidencias, el ingeniero implementa, QA prueba, el revisor audita y el orquestador lo integra todo."
+
+[i18n.fr]
+name = "Hand Équipe Dev"
+description = "Équipe de développement autonome : le PM trie les issues, l’ingénieur implémente, le QA teste, le relecteur audite et l’orchestrateur coordonne."

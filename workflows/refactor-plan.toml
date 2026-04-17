@@ -79,3 +79,27 @@ Prioritised opportunities:
 {{prioritised_opportunities}}
 """
 depends_on = ["prioritised_opportunities"]
+
+[i18n.zh-TW]
+name = "重構計劃"
+description = "分析程式碼品質問題、優先排序重構機會，制定安全的漸進式遷移計劃。"
+
+[i18n.ja]
+name = "リファクタリング計画"
+description = "コードの品質問題を解析し、リファクタリングの優先度を決め、安全な漸進的移行計画を作成。"
+
+[i18n.ko]
+name = "리팩터링 계획"
+description = "코드 품질 이슈를 분석하고 리팩터링 기회를 우선순위화하며, 안전한 점진적 마이그레이션 계획을 수립."
+
+[i18n.de]
+name = "Refactoring-Plan"
+description = "Code auf Qualitätsprobleme analysieren, Refactoring-Chancen priorisieren und einen sicheren, inkrementellen Migrationsplan erstellen."
+
+[i18n.es]
+name = "Plan de refactorización"
+description = "Analiza problemas de calidad, prioriza oportunidades de refactorización y elabora un plan incremental y seguro de migración."
+
+[i18n.fr]
+name = "Plan de refactoring"
+description = "Analyser les problèmes de qualité, prioriser les opportunités de refactoring et produire un plan de migration incrémental et sûr."

@@ -83,3 +83,27 @@ User stories:
 {{user_stories}}
 """
 depends_on = ["problem_definition", "user_stories"]
+
+[i18n.zh-TW]
+name = "產品規格撰寫"
+description = "將產品想法或功能需求轉化為完整 PRD：使用者故事、驗收標準、技術備註與待確認事項。"
+
+[i18n.ja]
+name = "プロダクトスペックライター"
+description = "製品アイデアや機能要望を完全な PRD に変換：ユーザーストーリー、受け入れ基準、技術メモ、未解決事項。"
+
+[i18n.ko]
+name = "제품 스펙 작성"
+description = "제품 아이디어나 기능 요청을 완전한 PRD로 변환: 사용자 스토리, 수락 기준, 기술 노트, 미해결 질문."
+
+[i18n.de]
+name = "Product-Spec-Autor"
+description = "Produktidee oder Feature-Anfrage in ein vollständiges PRD verwandeln: User Stories, Akzeptanzkriterien, technische Notizen und offene Fragen."
+
+[i18n.es]
+name = "Redactor de especificaciones de producto"
+description = "Convierte una idea o solicitud en un PRD completo: historias de usuario, criterios de aceptación, notas técnicas y preguntas abiertas."
+
+[i18n.fr]
+name = "Rédacteur de spec produit"
+description = "Transformer une idée ou une demande en PRD complet : user stories, critères d’acceptation, notes techniques et questions ouvertes."

@@ -32,3 +32,7 @@ description = "Adaptador de Twist para comunicación asíncrona de equipo en esp
 [metadata]
 url = "https://twist.com"
 docs = "https://developer.twist.com/v3/"
+
+[i18n.fr]
+name = "Twist"
+description = "Adaptateur Twist — communication asynchrone d'équipe dans les espaces Twist."

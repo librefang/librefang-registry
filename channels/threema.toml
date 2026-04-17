@@ -32,3 +32,7 @@ description = "Adaptador de Threema Gateway para mensajería segura a través de
 [metadata]
 url = "https://threema.ch"
 docs = "https://gateway.threema.ch/en/developer/api"
+
+[i18n.fr]
+name = "Threema"
+description = "Adaptateur Threema Gateway — messagerie sécurisée via la plateforme Threema."

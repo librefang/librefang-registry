@@ -32,3 +32,7 @@ description = "Adaptador MQTT para publicar y suscribirse a mensajes en brokers 
 [metadata]
 url = "https://mqtt.org"
 docs = "https://mqtt.org/mqtt-specification/"
+
+[i18n.fr]
+name = "MQTT"
+description = "Adaptateur MQTT — publication et abonnement aux messages sur les brokers MQTT."

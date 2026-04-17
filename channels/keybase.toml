@@ -32,3 +32,7 @@ description = "Adaptador de Keybase para mensajería cifrada a través de la API
 [metadata]
 url = "https://keybase.io"
 docs = "https://keybase.io/docs/api/"
+
+[i18n.fr]
+name = "Keybase"
+description = "Adaptateur Keybase — messagerie chiffrée via l'API chat Keybase."

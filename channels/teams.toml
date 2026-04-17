@@ -33,3 +33,7 @@ description = "Adaptador de Microsoft Teams para mensajería y notificaciones en
 [metadata]
 url = "https://www.microsoft.com/en-us/microsoft-teams"
 docs = "https://learn.microsoft.com/en-us/microsoftteams/platform/"
+
+[i18n.fr]
+name = "Microsoft Teams"
+description = "Adaptateur Microsoft Teams — messagerie et notifications dans les canaux Teams."

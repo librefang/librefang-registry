@@ -33,3 +33,7 @@ description = "Adaptador de cuenta oficial de WeChat para mensajería en la plat
 [metadata]
 url = "https://www.wechat.com"
 docs = "https://developers.weixin.qq.com/doc/offiaccount/en/Getting_Started/Overview.html"
+
+[i18n.fr]
+name = "WeChat"
+description = "Adaptateur compte officiel WeChat — messagerie sur la plateforme WeChat."

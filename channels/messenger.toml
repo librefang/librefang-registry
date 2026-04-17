@@ -32,3 +32,7 @@ description = "Adaptador de Facebook Messenger para enviar y recibir mensajes a 
 [metadata]
 url = "https://www.messenger.com"
 docs = "https://developers.facebook.com/docs/messenger-platform/"
+
+[i18n.fr]
+name = "Messenger"
+description = "Adaptateur Facebook Messenger — envoie et reçoit des messages via Messenger Platform."

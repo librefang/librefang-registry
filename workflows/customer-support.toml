@@ -76,3 +76,27 @@ Drafted response:
 {{draft_response}}
 """
 depends_on = ["classify", "draft_response"]
+
+[i18n.zh-TW]
+name = "客戶支援分級"
+description = "分級客戶支援流水線，按緊急程度與類別分類請求，草擬適當回覆，並將複雜問題升級給專家處理。"
+
+[i18n.ja]
+name = "カスタマーサポート トリアージ"
+description = "階層型サポートパイプライン。緊急度とカテゴリで分類し、適切な回答を下書きし、複雑な案件は専門家にエスカレーション。"
+
+[i18n.ko]
+name = "고객 지원 분류"
+description = "단계별 고객 지원 파이프라인. 긴급도와 카테고리로 요청을 분류하고 적절한 응답을 작성하며, 복잡한 이슈는 전문가에게 에스컬레이션."
+
+[i18n.de]
+name = "Customer-Support-Triage"
+description = "Gestufte Support-Pipeline: klassifiziert Anfragen nach Dringlichkeit und Kategorie, entwirft passende Antworten und eskaliert komplexe Fälle an Spezialisten."
+
+[i18n.es]
+name = "Triage de soporte"
+description = "Pipeline de soporte por niveles: clasifica solicitudes por urgencia y categoría, redacta una respuesta adecuada y escala los casos complejos a un especialista."
+
+[i18n.fr]
+name = "Triage du support client"
+description = "Pipeline de support par niveaux : classe les demandes par urgence et catégorie, rédige une réponse appropriée et escalade les cas complexes à un spécialiste."

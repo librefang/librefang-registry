@@ -75,3 +75,27 @@ Extracted data:
 {{extract}}
 """
 depends_on = ["extract"]
+
+[i18n.zh-TW]
+name = "週報產生器"
+description = "將零散的工作筆記整理為規範週報，包含亮點、指標、阻塞項與下週計劃。"
+
+[i18n.ja]
+name = "週次レポートジェネレーター"
+description = "雑多な作業メモを整えられた週次レポートに変換：ハイライト、指標、ブロッカー、翌週の優先事項。"
+
+[i18n.ko]
+name = "주간 보고서 생성기"
+description = "단편적인 업무 노트를 다듬어진 주간 보고서로 변환: 하이라이트, 지표, 블로커, 다음 주 우선순위."
+
+[i18n.de]
+name = "Wochenbericht-Generator"
+description = "Rohe Arbeitsnotizen in einen polierten Wochenbericht überführen: Highlights, Metriken, Blocker und Prioritäten der nächsten Woche."
+
+[i18n.es]
+name = "Generador de informe semanal"
+description = "Convierte notas de trabajo en un informe semanal pulido con logros, métricas, bloqueos y prioridades para la próxima semana."
+
+[i18n.fr]
+name = "Générateur de rapport hebdo"
+description = "Transformer des notes de travail brutes en un rapport hebdomadaire soigné : faits marquants, métriques, blocages et priorités de la semaine suivante."

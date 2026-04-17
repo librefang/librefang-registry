@@ -32,3 +32,7 @@ description = "Adaptador de Twitch para leer y enviar mensajes en chats de trans
 [metadata]
 url = "https://www.twitch.tv"
 docs = "https://dev.twitch.tv/docs/irc/"
+
+[i18n.fr]
+name = "Twitch"
+description = "Adaptateur Twitch — lecture et envoi de messages dans les chats de stream Twitch."
