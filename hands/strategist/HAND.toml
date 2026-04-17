@@ -4,7 +4,7 @@ name = "Strategist Hand"
 description = "Autonomous strategy analyst — market research, competitive analysis, business planning, and strategic recommendations"
 
 category = "productivity"
-icon = "🎯"
+icon = "lucide:target"
 
 tools = [
   "shell_exec",

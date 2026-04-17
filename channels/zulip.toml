@@ -2,7 +2,7 @@ id = "zulip"
 name = "Zulip"
 description = "Zulip adapter for topic-based team messaging in Zulip organizations"
 category = "enterprise"
-icon = "💧"
+icon = "lucide:droplet"
 protocol = "rest-api"
 
 [i18n.zh]

@@ -2,7 +2,7 @@ id = "google-drive"
 name = "Google Drive"
 description = "Browse, search, and read files from Google Drive through the Anthropic MCP server"
 category = "productivity"
-icon = "📁"
+icon = "lucide:folder"
 tags = ["files", "storage", "google", "documents", "cloud-storage"]
 
 [transport]

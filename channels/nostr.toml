@@ -2,7 +2,7 @@ id = "nostr"
 name = "Nostr"
 description = "Nostr adapter for publishing and reading events on the Nostr decentralized protocol"
 category = "messaging"
-icon = "🟣"
+icon = "lucide:circle"
 protocol = "websocket"
 
 [i18n.zh]

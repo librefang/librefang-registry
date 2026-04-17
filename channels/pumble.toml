@@ -2,7 +2,7 @@ id = "pumble"
 name = "Pumble"
 description = "Pumble adapter for team messaging and notifications in Pumble workspaces"
 category = "enterprise"
-icon = "🐝"
+icon = "lucide:hexagon"
 protocol = "webhook"
 
 [i18n.zh]

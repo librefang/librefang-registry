@@ -2,7 +2,7 @@ id = "revolt"
 name = "Revolt"
 description = "Revolt adapter for messaging in the open-source Revolt chat platform"
 category = "developer"
-icon = "🔴"
+icon = "lucide:circle"
 protocol = "websocket"
 
 [i18n.zh]

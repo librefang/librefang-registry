@@ -2,7 +2,7 @@ id = "mumble"
 name = "Mumble"
 description = "Mumble adapter for text messaging in Mumble voice communication servers"
 category = "iot"
-icon = "🎙️"
+icon = "lucide:mic"
 protocol = "websocket"
 
 [i18n.zh]

@@ -4,7 +4,7 @@ name = "Analytics Hand"
 description = "Autonomous data analytics agent — data collection, analysis, visualization, dashboards, and automated reporting"
 
 category = "data"
-icon = "📈"
+icon = "lucide:trending-up"
 tools = [
   "shell_exec",
   "file_read",

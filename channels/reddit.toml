@@ -2,7 +2,7 @@ id = "reddit"
 name = "Reddit"
 description = "Reddit adapter for posting and reading content via the Reddit API"
 category = "social"
-icon = "🤖"
+icon = "lucide:bot"
 protocol = "rest-api"
 
 [i18n.zh]

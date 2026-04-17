@@ -2,7 +2,7 @@ id = "twist"
 name = "Twist"
 description = "Twist adapter for async team communication in Twist workspaces"
 category = "enterprise"
-icon = "🔀"
+icon = "lucide:shuffle"
 protocol = "rest-api"
 
 [i18n.zh]

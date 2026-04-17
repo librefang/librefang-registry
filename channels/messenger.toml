@@ -2,7 +2,7 @@ id = "messenger"
 name = "Messenger"
 description = "Facebook Messenger adapter for sending and receiving messages via the Messenger Platform"
 category = "messaging"
-icon = "💬"
+icon = "lucide:message-circle"
 protocol = "webhook"
 
 [i18n.zh]

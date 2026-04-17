@@ -5,7 +5,7 @@ description = "Autonomous Twitter/X manager — content creation, scheduled post
 
 category = "communication"
 tags = ["popular"]
-icon = "\U0001D54F"
+icon = "lucide:twitter"
 tools = [
   "shell_exec",
   "file_read",

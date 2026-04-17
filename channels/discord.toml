@@ -3,7 +3,7 @@ name = "Discord"
 description = "Discord bot adapter for sending and receiving messages in Discord servers and channels"
 category = "messaging"
 tags = ["popular"]
-icon = "🎮"
+icon = "lucide:gamepad-2"
 protocol = "websocket"
 
 [i18n.zh]

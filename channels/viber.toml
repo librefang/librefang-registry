@@ -2,7 +2,7 @@ id = "viber"
 name = "Viber"
 description = "Viber bot adapter for sending and receiving messages via the Viber Bot API"
 category = "messaging"
-icon = "💜"
+icon = "lucide:heart"
 protocol = "webhook"
 
 [i18n.zh]

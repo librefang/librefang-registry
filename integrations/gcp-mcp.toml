@@ -2,7 +2,7 @@ id = "gcp-mcp"
 name = "Google Cloud Platform"
 description = "Manage GCP resources including Compute Engine, Cloud Storage, and BigQuery through the MCP server"
 category = "cloud"
-icon = "🌐"
+icon = "lucide:globe"
 tags = ["cloud", "google", "infrastructure", "gce", "gcs", "bigquery", "devops"]
 
 [transport]

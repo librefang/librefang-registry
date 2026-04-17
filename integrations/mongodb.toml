@@ -2,7 +2,7 @@ id = "mongodb"
 name = "MongoDB"
 description = "Query and manage MongoDB databases and collections through the MCP server"
 category = "data"
-icon = "🍃"
+icon = "lucide:leaf"
 tags = ["database", "nosql", "document", "mongo", "queries"]
 
 [transport]

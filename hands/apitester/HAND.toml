@@ -4,7 +4,7 @@ name = "API Tester Hand"
 description = "Autonomous API testing agent — endpoint discovery, request validation, load testing, and regression detection"
 
 category = "development"
-icon = "🔌"
+icon = "lucide:plug"
 
 tools = [
   "shell_exec",

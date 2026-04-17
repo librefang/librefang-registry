@@ -2,7 +2,7 @@ id = "bluesky"
 name = "Bluesky"
 description = "Bluesky AT Protocol adapter for posting and reading from the decentralized social network"
 category = "social"
-icon = "🦋"
+icon = "lucide:feather"
 protocol = "rest-api"
 
 [i18n.zh]

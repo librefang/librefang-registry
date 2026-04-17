@@ -5,7 +5,7 @@ description = "Autonomous market intelligence and trading engine — multi-signa
 
 category = "data"
 tags = ["popular"]
-icon = "📈"
+icon = "lucide:trending-up"
 
 tools = [
   "shell_exec",

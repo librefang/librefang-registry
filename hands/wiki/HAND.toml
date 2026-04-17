@@ -4,7 +4,7 @@ name = "Wiki Hand"
 description = "LLM-maintained personal knowledge base. Incrementally builds an Obsidian-compatible wiki from raw sources — extracts entities, concepts, and claims with provenance tracking, cross-references everything, and keeps the wiki healthy over time."
 category = "productivity"
 tags = ["knowledge-base", "wiki", "obsidian", "documentation"]
-icon = "📚"
+icon = "lucide:book-open"
 
 # ─── Hand-level resource composition ─────────────────────────────────────────
 

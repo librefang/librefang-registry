@@ -2,7 +2,7 @@ id = "keybase"
 name = "Keybase"
 description = "Keybase adapter for encrypted messaging via the Keybase chat API"
 category = "messaging"
-icon = "🔐"
+icon = "lucide:lock"
 protocol = "rest-api"
 
 [i18n.zh]

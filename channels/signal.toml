@@ -3,7 +3,7 @@ name = "Signal"
 description = "Signal adapter for secure end-to-end encrypted messaging via Signal CLI"
 category = "messaging"
 tags = ["popular"]
-icon = "🔒"
+icon = "lucide:lock"
 protocol = "rest-api"
 
 [i18n.zh]

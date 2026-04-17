@@ -2,7 +2,7 @@ id = "twitch"
 name = "Twitch"
 description = "Twitch adapter for reading and sending messages in Twitch stream chats"
 category = "social"
-icon = "🎮"
+icon = "lucide:gamepad-2"
 protocol = "irc"
 
 [i18n.zh]

@@ -5,7 +5,7 @@ description = "Autonomous intelligence collector — monitors any target continu
 
 category = "data"
 tags = ["popular"]
-icon = "🔍"
+icon = "lucide:search"
 
 tools = [
   "shell_exec",

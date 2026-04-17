@@ -3,7 +3,7 @@ name = "DingTalk"
 description = "DingTalk bot adapter for sending messages to DingTalk groups and conversations"
 category = "enterprise"
 tags = ["popular"]
-icon = "🔔"
+icon = "lucide:bell"
 protocol = "webhook"
 
 [i18n.zh]

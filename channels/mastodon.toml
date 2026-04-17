@@ -2,7 +2,7 @@ id = "mastodon"
 name = "Mastodon"
 description = "Mastodon adapter for posting toots and reading timelines on Mastodon instances"
 category = "social"
-icon = "🐘"
+icon = "lucide:database"
 protocol = "rest-api"
 
 [i18n.zh]

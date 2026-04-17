@@ -2,7 +2,7 @@ id = "xmpp"
 name = "XMPP"
 description = "XMPP adapter for messaging via the Extensible Messaging and Presence Protocol"
 category = "messaging"
-icon = "📨"
+icon = "lucide:mail"
 protocol = "xmpp"
 
 [i18n.zh]

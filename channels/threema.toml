@@ -2,7 +2,7 @@ id = "threema"
 name = "Threema"
 description = "Threema Gateway adapter for secure messaging via the Threema platform"
 category = "messaging"
-icon = "🔏"
+icon = "lucide:lock-keyhole"
 protocol = "rest-api"
 
 [i18n.zh]

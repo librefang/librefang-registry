@@ -2,7 +2,7 @@ id = "gitter"
 name = "Gitter"
 description = "Gitter adapter for developer chat rooms linked to GitHub repositories"
 category = "developer"
-icon = "💻"
+icon = "lucide:monitor"
 protocol = "rest-api"
 
 [i18n.zh]

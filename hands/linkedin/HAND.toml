@@ -4,7 +4,7 @@ name = "LinkedIn Hand"
 description = "Autonomous LinkedIn manager — profile optimization, content creation, networking, and professional engagement"
 
 category = "communication"
-icon = "\U0001F4BC"
+icon = "lucide:briefcase"
 tools = [
   "shell_exec",
   "file_read",

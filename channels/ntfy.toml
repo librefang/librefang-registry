@@ -2,7 +2,7 @@ id = "ntfy"
 name = "ntfy"
 description = "ntfy adapter for sending push notifications via the ntfy pub-sub service"
 category = "iot"
-icon = "🔔"
+icon = "lucide:bell"
 protocol = "rest-api"
 
 [i18n.zh]

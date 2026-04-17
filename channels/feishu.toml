@@ -3,7 +3,7 @@ name = "Feishu"
 description = "Feishu (Lark) bot adapter for messaging within the Feishu collaboration platform"
 category = "enterprise"
 tags = ["popular"]
-icon = "🐦"
+icon = "lucide:twitter"
 protocol = "webhook"
 
 [i18n.zh]

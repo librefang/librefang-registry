@@ -4,7 +4,7 @@ name = "DevOps Hand"
 description = "Autonomous DevOps engineer — CI/CD management, infrastructure monitoring, deployment automation, and incident response"
 
 category = "development"
-icon = "👷"
+icon = "lucide:hard-hat"
 
 tools = [
   "shell_exec",

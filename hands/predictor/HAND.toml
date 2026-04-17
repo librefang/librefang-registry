@@ -4,7 +4,7 @@ name = "Predictor Hand"
 description = "Autonomous future predictor — collects signals, builds reasoning chains, makes calibrated predictions, and tracks accuracy"
 
 category = "data"
-icon = "🔮"
+icon = "lucide:sparkles"
 
 tools = [
   "shell_exec",

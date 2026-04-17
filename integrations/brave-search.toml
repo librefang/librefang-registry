@@ -2,7 +2,7 @@ id = "brave-search"
 name = "Brave Search"
 description = "Perform web searches using the Brave Search API through the MCP server"
 category = "ai"
-icon = "🦁"
+icon = "lucide:shield"
 tags = ["search", "web", "brave", "api", "information-retrieval"]
 
 [transport]

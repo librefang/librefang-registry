@@ -2,7 +2,7 @@ id = "elasticsearch"
 name = "Elasticsearch"
 description = "Search and manage Elasticsearch indices and documents through the MCP server"
 category = "data"
-icon = "🔍"
+icon = "lucide:search"
 tags = ["search", "database", "indexing", "analytics", "full-text"]
 
 [transport]

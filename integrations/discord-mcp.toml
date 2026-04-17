@@ -2,7 +2,7 @@ id = "discord-mcp"
 name = "Discord"
 description = "Access Discord servers, channels, and messages through the MCP server"
 category = "communication"
-icon = "🎮"
+icon = "lucide:gamepad-2"
 tags = ["chat", "messaging", "community", "gaming", "voice"]
 
 [transport]

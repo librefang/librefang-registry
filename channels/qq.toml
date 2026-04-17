@@ -2,7 +2,7 @@ id = "qq"
 name = "QQ"
 description = "QQ bot adapter for messaging within Tencent QQ groups and channels"
 category = "messaging"
-icon = "🐧"
+icon = "lucide:command"
 protocol = "websocket"
 
 [i18n.zh]

@@ -2,7 +2,7 @@ id = "linear"
 name = "Linear"
 description = "Manage Linear issues, projects, cycles, and teams through the MCP server"
 category = "devtools"
-icon = "📐"
+icon = "lucide:ruler"
 tags = ["project-management", "issues", "agile", "tracking", "sprint"]
 
 [transport]

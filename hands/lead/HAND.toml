@@ -5,7 +5,7 @@ description = "Autonomous lead generation — discovers, enriches, and delivers 
 
 category = "data"
 tags = ["popular"]
-icon = "📊"
+icon = "lucide:bar-chart-3"
 
 tools = [
   "shell_exec",

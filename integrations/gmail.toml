@@ -2,7 +2,7 @@ id = "gmail"
 name = "Gmail"
 description = "Read, send, and manage Gmail messages and drafts through the Anthropic MCP server"
 category = "productivity"
-icon = "📧"
+icon = "lucide:mail"
 tags = ["email", "google", "messaging", "inbox", "communication"]
 
 [transport]

@@ -4,7 +4,7 @@ name = "Reddit Hand"
 description = "Autonomous Reddit manager — monitors subreddits, posts content, replies to threads, and tracks karma and engagement"
 
 category = "communication"
-icon = "\U0001F4E2"
+icon = "lucide:megaphone"
 tools = [
   "shell_exec",
   "file_read",

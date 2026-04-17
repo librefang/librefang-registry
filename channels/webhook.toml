@@ -2,7 +2,7 @@ id = "webhook"
 name = "Webhook"
 description = "Generic webhook adapter for sending and receiving messages via HTTP callbacks"
 category = "developer"
-icon = "🔗"
+icon = "lucide:link"
 protocol = "webhook"
 
 [i18n.zh]

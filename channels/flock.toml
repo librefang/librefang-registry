@@ -2,7 +2,7 @@ id = "flock"
 name = "Flock"
 description = "Flock bot adapter for team messaging and notifications in Flock workspaces"
 category = "enterprise"
-icon = "🐥"
+icon = "lucide:bird"
 protocol = "webhook"
 
 [i18n.zh]

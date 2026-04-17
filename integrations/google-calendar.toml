@@ -2,7 +2,7 @@ id = "google-calendar"
 name = "Google Calendar"
 description = "Manage Google Calendar events, schedules, and availability through the Anthropic MCP server"
 category = "productivity"
-icon = "📅"
+icon = "lucide:calendar"
 tags = ["calendar", "scheduling", "google", "events", "meetings"]
 
 [transport]

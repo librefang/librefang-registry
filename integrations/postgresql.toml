@@ -2,7 +2,7 @@ id = "postgresql"
 name = "PostgreSQL"
 description = "Query and manage PostgreSQL databases through the MCP server"
 category = "data"
-icon = "🐘"
+icon = "lucide:database"
 tags = ["database", "sql", "relational", "postgres", "queries"]
 
 [transport]

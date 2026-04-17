@@ -2,7 +2,7 @@ id = "linkedin"
 name = "LinkedIn"
 description = "LinkedIn adapter for posting updates and messages via the LinkedIn API"
 category = "social"
-icon = "💼"
+icon = "lucide:briefcase"
 protocol = "rest-api"
 
 [i18n.zh]

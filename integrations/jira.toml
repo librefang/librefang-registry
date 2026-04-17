@@ -2,7 +2,7 @@ id = "jira"
 name = "Jira"
 description = "Access Jira issues, projects, boards, and sprints through the Atlassian MCP server"
 category = "devtools"
-icon = "📋"
+icon = "lucide:clipboard-list"
 tags = ["project-management", "issues", "agile", "atlassian", "tracking"]
 
 [transport]

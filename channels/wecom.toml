@@ -2,7 +2,7 @@ id = "wecom"
 name = "WeCom"
 description = "WeCom (WeChat Work) adapter for enterprise messaging within WeCom organizations"
 category = "enterprise"
-icon = "🏢"
+icon = "lucide:building"
 protocol = "webhook"
 
 [i18n.zh]

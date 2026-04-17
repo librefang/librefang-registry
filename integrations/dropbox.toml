@@ -2,7 +2,7 @@ id = "dropbox"
 name = "Dropbox"
 description = "Access and manage Dropbox files and folders through the MCP server"
 category = "productivity"
-icon = "📦"
+icon = "lucide:package"
 tags = ["files", "storage", "cloud-storage", "sync", "sharing"]
 
 [transport]

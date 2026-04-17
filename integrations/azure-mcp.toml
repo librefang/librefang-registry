@@ -2,7 +2,7 @@ id = "azure-mcp"
 name = "Microsoft Azure"
 description = "Manage Azure resources including VMs, Storage, and App Services through the MCP server"
 category = "cloud"
-icon = "🔷"
+icon = "lucide:diamond"
 tags = ["cloud", "microsoft", "infrastructure", "azure", "devops", "enterprise"]
 
 [transport]

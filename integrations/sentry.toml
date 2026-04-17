@@ -2,7 +2,7 @@ id = "sentry"
 name = "Sentry"
 description = "Monitor and manage Sentry error tracking, issues, and releases through the MCP server"
 category = "devtools"
-icon = "🐛"
+icon = "lucide:bug"
 tags = ["monitoring", "errors", "debugging", "observability", "apm"]
 
 [transport]

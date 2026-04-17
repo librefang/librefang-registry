@@ -5,7 +5,7 @@ description = "Turns long-form video into viral short clips with captions and th
 
 category = "content"
 tags = ["popular"]
-icon = "\U0001F3AC"
+icon = "lucide:film"
 tools = [
   "shell_exec",
   "file_read",

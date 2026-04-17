@@ -2,7 +2,7 @@ id = "line"
 name = "LINE"
 description = "LINE Messaging API adapter for sending and receiving messages on the LINE platform"
 category = "messaging"
-icon = "🟢"
+icon = "lucide:circle"
 protocol = "webhook"
 
 [i18n.zh]

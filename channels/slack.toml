@@ -3,7 +3,7 @@ name = "Slack"
 description = "Slack bot adapter for sending and receiving messages in Slack workspaces"
 category = "enterprise"
 tags = ["popular"]
-icon = "💜"
+icon = "lucide:heart"
 protocol = "websocket"
 
 [i18n.zh]

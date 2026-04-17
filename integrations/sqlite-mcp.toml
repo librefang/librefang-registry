@@ -2,7 +2,7 @@ id = "sqlite-mcp"
 name = "SQLite"
 description = "Query and manage local SQLite databases through the MCP server"
 category = "data"
-icon = "💾"
+icon = "lucide:save"
 tags = ["database", "sql", "relational", "sqlite", "local", "embedded"]
 
 [transport]

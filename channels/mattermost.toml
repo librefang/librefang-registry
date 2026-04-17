@@ -2,7 +2,7 @@ id = "mattermost"
 name = "Mattermost"
 description = "Mattermost adapter for team messaging and notifications in Mattermost workspaces"
 category = "enterprise"
-icon = "🔵"
+icon = "lucide:circle"
 protocol = "websocket"
 
 [i18n.zh]

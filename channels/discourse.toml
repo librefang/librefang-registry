@@ -2,7 +2,7 @@ id = "discourse"
 name = "Discourse"
 description = "Discourse forum adapter for posting topics and replies via the Discourse API"
 category = "developer"
-icon = "💬"
+icon = "lucide:message-circle"
 protocol = "rest-api"
 
 [i18n.zh]

@@ -5,7 +5,7 @@ description = "Autonomous deep researcher — exhaustive investigation, cross-re
 
 category = "productivity"
 tags = ["popular"]
-icon = "🧪"
+icon = "lucide:flask-conical"
 
 tools = [
   "shell_exec",

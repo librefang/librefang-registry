@@ -2,7 +2,7 @@ id = "slack"
 name = "Slack"
 description = "Access Slack channels, messages, and users through the MCP server"
 category = "communication"
-icon = "💬"
+icon = "lucide:message-circle"
 tags = ["chat", "messaging", "team", "channels", "collaboration"]
 
 [transport]

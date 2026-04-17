@@ -2,7 +2,7 @@ id = "teams-mcp"
 name = "Microsoft Teams"
 description = "Access Microsoft Teams channels, chats, and messages through the MCP server"
 category = "communication"
-icon = "👥"
+icon = "lucide:users"
 tags = ["chat", "messaging", "microsoft", "enterprise", "collaboration"]
 
 [transport]

@@ -2,7 +2,7 @@ id = "email"
 name = "Email"
 description = "Email adapter for sending and receiving messages via SMTP and IMAP protocols"
 category = "email"
-icon = "📧"
+icon = "lucide:mail"
 protocol = "imap"
 
 [i18n.zh]

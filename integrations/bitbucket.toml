@@ -2,7 +2,7 @@ id = "bitbucket"
 name = "Bitbucket"
 description = "Access Bitbucket repositories, pull requests, and pipelines through the MCP server"
 category = "devtools"
-icon = "🪣"
+icon = "lucide:package"
 tags = ["git", "vcs", "code", "pull-requests", "ci", "atlassian"]
 
 [transport]

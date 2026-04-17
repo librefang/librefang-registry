@@ -3,7 +3,7 @@ name = "Microsoft Teams"
 description = "Microsoft Teams adapter for messaging and notifications in Teams channels"
 category = "enterprise"
 tags = ["popular"]
-icon = "🟦"
+icon = "lucide:square"
 protocol = "webhook"
 
 [i18n.zh]

@@ -2,7 +2,7 @@ id = "rocketchat"
 name = "Rocket.Chat"
 description = "Rocket.Chat adapter for messaging in self-hosted Rocket.Chat instances"
 category = "enterprise"
-icon = "🚀"
+icon = "lucide:rocket"
 protocol = "rest-api"
 
 [i18n.zh]

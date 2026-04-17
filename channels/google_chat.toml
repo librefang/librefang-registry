@@ -2,7 +2,7 @@ id = "google_chat"
 name = "Google Chat"
 description = "Google Chat adapter for sending messages and cards to Google Workspace conversations"
 category = "enterprise"
-icon = "💚"
+icon = "lucide:heart"
 protocol = "webhook"
 
 [i18n.zh]

@@ -5,7 +5,7 @@ description = "Autonomous web browser — navigates sites, fills forms, clicks b
 
 category = "productivity"
 tags = ["popular"]
-icon = "🌐"
+icon = "lucide:globe"
 
 tools = [
   "browser_navigate",

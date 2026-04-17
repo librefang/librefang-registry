@@ -2,7 +2,7 @@ id = "nextcloud"
 name = "Nextcloud"
 description = "Nextcloud Talk adapter for messaging within self-hosted Nextcloud instances"
 category = "iot"
-icon = "☁️"
+icon = "lucide:cloud"
 protocol = "rest-api"
 
 [i18n.zh]

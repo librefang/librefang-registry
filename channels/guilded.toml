@@ -2,7 +2,7 @@ id = "guilded"
 name = "Guilded"
 description = "Guilded bot adapter for messaging in Guilded servers and channels"
 category = "enterprise"
-icon = "🏰"
+icon = "lucide:castle"
 protocol = "websocket"
 
 [i18n.zh]

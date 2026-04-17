@@ -2,7 +2,7 @@ id = "todoist"
 name = "Todoist"
 description = "Manage Todoist tasks, projects, and labels through the MCP server"
 category = "productivity"
-icon = "✅"
+icon = "lucide:check-circle"
 tags = ["tasks", "todo", "project-management", "productivity", "gtd"]
 
 [transport]

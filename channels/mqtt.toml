@@ -2,7 +2,7 @@ id = "mqtt"
 name = "MQTT"
 description = "MQTT adapter for publishing and subscribing to messages on MQTT brokers"
 category = "iot"
-icon = "📶"
+icon = "lucide:signal"
 protocol = "mqtt"
 
 [i18n.zh]

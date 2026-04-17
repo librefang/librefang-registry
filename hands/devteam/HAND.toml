@@ -4,7 +4,7 @@ name = "Dev Team"
 description = "Autonomous software development team — PM triages issues, Engineer implements, QA validates"
 
 category = "development"
-icon = "🏗"
+icon = "lucide:construction"
 
 # ─── Hand-level resource composition ─────────────────────────────────────────
 

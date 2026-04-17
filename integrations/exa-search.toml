@@ -2,7 +2,7 @@ id = "exa-search"
 name = "Exa Search"
 description = "Perform AI-powered neural searches and retrieve web content through the Exa MCP server"
 category = "ai"
-icon = "🔎"
+icon = "lucide:search"
 tags = ["search", "web", "ai", "neural", "semantic", "information-retrieval"]
 
 [transport]

@@ -2,7 +2,7 @@ id = "aws"
 name = "AWS"
 description = "Manage Amazon Web Services resources including S3, EC2, Lambda, and more through the MCP server"
 category = "cloud"
-icon = "☁️"
+icon = "lucide:cloud"
 tags = ["cloud", "amazon", "infrastructure", "s3", "ec2", "lambda", "devops"]
 
 [transport]

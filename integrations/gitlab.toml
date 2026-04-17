@@ -2,7 +2,7 @@ id = "gitlab"
 name = "GitLab"
 description = "Access GitLab projects, merge requests, issues, and CI/CD pipelines through the MCP server"
 category = "devtools"
-icon = "🦊"
+icon = "lucide:flame"
 tags = ["git", "vcs", "code", "merge-requests", "ci", "devops"]
 
 [transport]

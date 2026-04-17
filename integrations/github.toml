@@ -2,7 +2,7 @@ id = "github"
 name = "GitHub"
 description = "Access GitHub repositories, issues, pull requests, and organizations through the official MCP server"
 category = "devtools"
-icon = "🐙"
+icon = "lucide:github"
 tags = ["git", "vcs", "code", "issues", "pull-requests", "ci"]
 
 [transport]
