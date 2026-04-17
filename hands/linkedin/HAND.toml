@@ -1054,6 +1054,7 @@ label = "互动回复深度"
 description = "在自己帖子的评论区中参与讨论的深度"
 
 [i18n.zh-TW]
+name = "LinkedIn Hand"
 description = "自主 LinkedIn 管理——個人資料優化、內容創作、社交與職業互動"
 
 # ─── Japanese (日本語) ────────────────────────────────────────────────────

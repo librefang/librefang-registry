@@ -666,6 +666,7 @@ label = "首选分析框架"
 description = "优先使用的战略分析框架（逗号分隔，例如 SWOT,Porter,PESTEL）"
 
 [i18n.zh-TW]
+name = "Strategist Hand"
 description = "自主策略分析——市場調研、競品分析、商業規劃與策略建議"
 
 # ─── Spanish (Español) ────────────────────────────────────────────────────

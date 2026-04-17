@@ -1060,6 +1060,7 @@ label = "真实性模式"
 description = "维持类人互动模式以避免机器人检测的策略"
 
 [i18n.zh-TW]
+name = "Reddit Hand"
 description = "自主 Reddit 管理——監控子版、發布內容、回覆貼文、追蹤 Karma 與互動"
 
 # ─── Spanish (Español) ────────────────────────────────────────────────────

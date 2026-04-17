@@ -6,21 +6,27 @@ icon = "lucide:heart"
 protocol = "webhook"
 
 [i18n.zh]
+name = "Google Chat"
 description = "Google Chat 适配器，向 Google Workspace 会话发送消息和卡片"
 
 [i18n.zh-TW]
+name = "Google Chat"
 description = "Google Chat 適配器，向 Google Workspace 會話發送訊息和卡片"
 
 [i18n.ja]
+name = "Google Chat"
 description = "Google Chatアダプター、Google Workspaceの会話にメッセージとカードを送信"
 
 [i18n.ko]
+name = "Google Chat"
 description = "Google Chat 어댑터, Google Workspace 대화에 메시지 및 카드 전송"
 
 [i18n.de]
+name = "Google Chat"
 description = "Google Chat-Adapter zum Senden von Nachrichten und Karten an Google Workspace-Konversationen"
 
 [i18n.es]
+name = "Google Chat"
 description = "Adaptador de Google Chat para enviar mensajes y tarjetas a conversaciones de Google Workspace"
 
 [metadata]

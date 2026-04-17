@@ -836,6 +836,7 @@ label = "Wiki内容语言"
 description = "生成Wiki内容使用的语言"
 
 [i18n.zh-TW]
+name = "Wiki Hand"
 description = "由LLM維護的個人知識庫。從原始來源逐步構建兼容Obsidian的Wiki——提取實體、概念和主張並追蹤來源，交叉引用所有內容，並長期保持Wiki的健康狀態。"
 
 [i18n.ja]

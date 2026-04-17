@@ -1088,6 +1088,7 @@ label = "增长模式"
 description = "优化从零开始的增长策略——优先在大号下评论互动，而非发布原创内容"
 
 [i18n.zh-TW]
+name = "Twitter Hand"
 description = "自主 Twitter/X 管理——內容創作、排程發布、互動與效果追蹤"
 
 # ─── Spanish (Español) ────────────────────────────────────────────────────

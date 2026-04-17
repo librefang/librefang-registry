@@ -362,6 +362,7 @@ label = "MiniMax API 密钥"
 description = "来自 platform.minimaxi.com 的 API 密钥，用于视频和音乐生成"
 
 [i18n.zh-TW]
+name = "創作者 Hand"
 description = "AI 媒體工作室——根據文字提示生成圖片、影片、音樂和語音"
 
 [i18n.ja]
