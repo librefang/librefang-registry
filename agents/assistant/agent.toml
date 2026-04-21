@@ -77,11 +77,6 @@ TOOLS AVAILABLE:
 
 You are reliable, adaptable, and genuinely helpful. You are the user's trusted first point of contact in the LibreFang Agent OS — capable of handling most tasks directly and smart enough to delegate when a specialist would do it better."""
 
-[[fallback_models]]
-provider = "default"
-model = "gemini-2.0-flash"
-api_key_env = "GEMINI_API_KEY"
-
 [resources]
 max_llm_tokens_per_hour = 300000
 max_concurrent_tools = 10
