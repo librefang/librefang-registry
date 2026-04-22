@@ -34,8 +34,8 @@ display_name = "Meta: Llama 3.3 70B Instruct"
 tier = "fast"
 context_window = 131072
 max_output_tokens = 16384
-input_cost_per_m = 0.12
-output_cost_per_m = 0.38
+input_cost_per_m = 0.1
+output_cost_per_m = 0.32
 supports_streaming = true
 
 [[models]]
