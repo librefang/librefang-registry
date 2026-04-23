@@ -34,6 +34,8 @@ PROVIDER_ALIAS = {
 SKIP_PROVIDERS = {
     "sao10k", "thedrummer", "undi95", "gryphe", "cognitivecomputations",
     "anthracite-org", "alpindale", "alfredpros", "mancer",
+    # Specialized coding tools / CLI wrappers — not general LLM providers
+    "morph", "aider", "kwaipilot",
 }
 
 # Skip creating NEW provider files for these — they overlap with hand-written
