@@ -34,6 +34,8 @@ PROVIDER_ALIAS = {
 SKIP_PROVIDERS = {
     "sao10k", "thedrummer", "undi95", "gryphe", "cognitivecomputations",
     "anthracite-org", "alpindale", "alfredpros", "mancer",
+    # Specialized coding tools / CLI wrappers — not general LLM providers
+    "morph", "aider", "kwaipilot",
 }
 
 # Skip creating NEW provider files for these — they overlap with hand-written
@@ -139,8 +141,102 @@ def update_toml_prices(toml_path, models_by_id, dry_run=False):
     return updated
 
 
+def _build_model_fields(provider_id, m, model_id_prefix=""):
+    """Extract and normalise fields for a single OpenRouter model entry.
+
+    Returns a dict of fields, or None if pricing is missing.
+    The caller supplies *model_id_prefix* (e.g. "openrouter/kwaipilot/") so
+    the same helper works for both standalone files and openrouter.toml merges.
+    """
+    raw_id = m["id"].split("/")[-1] if "/" in m["id"] else m["id"]
+    model_id = f"{model_id_prefix}{raw_id}"
+    display = m.get("name", raw_id)
+    ctx = m.get("context_length", 0)
+    max_out = m.get("top_provider", {}).get("max_completion_tokens", 0)
+    inp, outp = parse_pricing(m)
+    if inp is None:
+        return None
+
+    supports_tools = "tool_use" in str(m.get("supported_parameters", []))
+    supports_vision = "vision" in str(m.get("architecture", {}).get("modality", ""))
+
+    if inp == 0 and outp == 0:
+        tier = "fast"
+    elif inp < 0.5:
+        tier = "fast"
+    elif inp < 3.0:
+        tier = "smart"
+    else:
+        tier = "frontier"
+
+    if not max_out:
+        max_out = min(ctx // 4, 16384) if ctx > 0 else 4096
+
+    return dict(
+        model_id=model_id, display=display, tier=tier,
+        ctx=ctx, max_out=max_out, inp=inp, outp=outp,
+        supports_tools=supports_tools, supports_vision=supports_vision,
+    )
+
+
+def _model_lines(f):
+    """Render a model-fields dict as TOML [[models]] lines."""
+    lines = [
+        "[[models]]",
+        f'id = "{f["model_id"]}"',
+        f'display_name = "{f["display"]}"',
+        f'tier = "{f["tier"]}"',
+        f'context_window = {f["ctx"]}',
+        f'max_output_tokens = {f["max_out"]}',
+        f'input_cost_per_m = {f["inp"]}',
+        f'output_cost_per_m = {f["outp"]}',
+    ]
+    if f["supports_tools"]:
+        lines.append("supports_tools = true")
+    if f["supports_vision"]:
+        lines.append("supports_vision = true")
+    lines.append("supports_streaming = true")
+    lines.append("")
+    return lines
+
+
+def merge_into_openrouter(provider_id, models, dry_run=False):
+    """Append models from an OpenRouter-only provider into openrouter.toml.
+
+    Model IDs get the prefix "openrouter/{provider_id}/" so they stay
+    unambiguous and match the existing openrouter.toml convention.
+    Already-present IDs are skipped to keep the operation idempotent.
+    """
+    openrouter_path = PROVIDERS_DIR / "openrouter.toml"
+    if not openrouter_path.exists():
+        return 0
+
+    existing = openrouter_path.read_text()
+    existing_ids = set(re.findall(r'^id\s*=\s*"([^"]+)"', existing, re.MULTILINE))
+
+    new_lines = []
+    for m in sorted(models, key=lambda x: x.get("id", "")):
+        prefix = f"openrouter/{provider_id}/"
+        f = _build_model_fields(provider_id, m, model_id_prefix=prefix)
+        if f is None or f["model_id"] in existing_ids:
+            continue
+        # Append provider name to display so provenance is clear in the UI
+        f["display"] = f'{f["display"]} (OpenRouter)'
+        new_lines.extend(_model_lines(f))
+
+    if not new_lines:
+        return 0
+
+    count = sum(1 for l in new_lines if l == "[[models]]")
+    print(f"  openrouter.toml: +{count} models from {provider_id}")
+    if not dry_run:
+        with open(openrouter_path, "a") as fh:
+            fh.write("\n" + "\n".join(new_lines))
+    return count
+
+
 def generate_provider_toml(provider_id, models, dry_run=False):
-    """Generate a new provider TOML file from OpenRouter data."""
+    """Generate a new standalone provider TOML file (direct-API providers only)."""
     our_name = PROVIDER_ALIAS.get(provider_id, provider_id)
     toml_path = PROVIDERS_DIR / f"{our_name}.toml"
 
@@ -150,13 +246,11 @@ def generate_provider_toml(provider_id, models, dry_run=False):
     if our_name in SKIP_DUPLICATES:
         return 0
 
-    # Check if provider has a known public API
-    if our_name in PROVIDER_API:
-        base_url, env_key = PROVIDER_API[our_name]
-    else:
-        # No known public API — route through OpenRouter
-        base_url = "https://openrouter.ai/api/v1"
-        env_key = "OPENROUTER_API_KEY"
+    if our_name not in PROVIDER_API:
+        # No direct public API — caller should use merge_into_openrouter instead.
+        return 0
+
+    base_url, env_key = PROVIDER_API[our_name]
     key_required = "true"
 
     lines = [
@@ -173,45 +267,10 @@ def generate_provider_toml(provider_id, models, dry_run=False):
 
     count = 0
     for m in sorted(models, key=lambda x: x.get("id", "")):
-        model_id = m["id"].split("/")[-1] if "/" in m["id"] else m["id"]
-        display = m.get("name", model_id)
-        ctx = m.get("context_length", 0)
-        max_out = m.get("top_provider", {}).get("max_completion_tokens", 0)
-        inp, outp = parse_pricing(m)
-        if inp is None:
+        f = _build_model_fields(provider_id, m)
+        if f is None:
             continue
-
-        supports_tools = "tool_use" in str(m.get("supported_parameters", []))
-        supports_vision = "vision" in str(m.get("architecture", {}).get("modality", ""))
-
-        # Infer tier from pricing
-        if inp == 0 and outp == 0:
-            tier = "fast"
-        elif inp < 0.5:
-            tier = "fast"
-        elif inp < 3.0:
-            tier = "smart"
-        else:
-            tier = "frontier"
-
-        # Default max_output_tokens if not provided
-        if not max_out:
-            max_out = min(ctx // 4, 16384) if ctx > 0 else 4096
-
-        lines.append("[[models]]")
-        lines.append(f'id = "{model_id}"')
-        lines.append(f'display_name = "{display}"')
-        lines.append(f'tier = "{tier}"')
-        lines.append(f"context_window = {ctx}")
-        lines.append(f"max_output_tokens = {max_out}")
-        lines.append(f"input_cost_per_m = {inp}")
-        lines.append(f"output_cost_per_m = {outp}")
-        if supports_tools:
-            lines.append("supports_tools = true")
-        if supports_vision:
-            lines.append("supports_vision = true")
-        lines.append("supports_streaming = true")
-        lines.append("")
+        lines.extend(_model_lines(f))
         count += 1
 
     if count == 0:
@@ -257,10 +316,21 @@ def main():
         for provider_id, models in sorted(by_provider.items()):
             if provider_id in SKIP_PROVIDERS:
                 continue
+            # Skip OpenRouter internal auto-routing aliases (e.g. "~anthropic")
+            # These are not real providers — they map to openrouter.toml.
+            if provider_id.startswith("~"):
+                continue
             our_name = PROVIDER_ALIAS.get(provider_id, provider_id)
-            if not (PROVIDERS_DIR / f"{our_name}.toml").exists():
+            if (PROVIDERS_DIR / f"{our_name}.toml").exists():
+                continue
+            if our_name in PROVIDER_API:
+                # Provider has a known direct API — create a standalone file.
                 count = generate_provider_toml(provider_id, models, dry_run=dry_run)
-                total_created += count
+            else:
+                # No direct API — merge models into openrouter.toml instead of
+                # creating a new file that just wraps the OpenRouter endpoint.
+                count = merge_into_openrouter(provider_id, models, dry_run=dry_run)
+            total_created += count
 
     action = "Would" if dry_run else "Done:"
     print(f"\n{action} updated {total_updated} prices, created {total_created} new model entries")
