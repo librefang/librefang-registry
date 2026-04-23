@@ -257,6 +257,10 @@ def main():
         for provider_id, models in sorted(by_provider.items()):
             if provider_id in SKIP_PROVIDERS:
                 continue
+            # Skip OpenRouter internal auto-routing aliases (e.g. "~anthropic")
+            # These are not real providers — they map to openrouter.toml.
+            if provider_id.startswith("~"):
+                continue
             our_name = PROVIDER_ALIAS.get(provider_id, provider_id)
             if not (PROVIDERS_DIR / f"{our_name}.toml").exists():
                 count = generate_provider_toml(provider_id, models, dry_run=dry_run)
