@@ -11,8 +11,8 @@ This repository is the **single source of truth** for all installable content de
 | [Hands](#hands) | 14 | User-facing "apps" — agent + tools + settings + dashboard |
 | [Agents](#agents) | 32 | Autonomous agent definitions with model config and tools |
 | [MCP Servers](#mcp-servers) | 25 | MCP server connections (GitHub, Slack, DBs, etc.) |
-| [Providers](#providers) | 49 | LLM provider & model metadata with pricing |
-| [Models](#providers) | 339 | Individual model definitions across all providers |
+| [Providers](#providers) | 46 | LLM provider & model metadata with pricing |
+| [Models](#providers) | 232 | Individual model definitions across all providers |
 | [Aliases](#aliases) | 70 | Short names mapped to canonical model IDs |
 | [Plugins](#plugins) | 10 | Memory, guardrails, and conversation plugins |
 | [Skills](#skills) | 2 | Reusable prompt templates and Python scripts |
@@ -44,7 +44,7 @@ librefang-registry/
 ├── providers/             # LLM provider & model metadata
 │   ├── anthropic.toml
 │   ├── openai.toml
-│   └── ...                (49 providers, 339 models)
+│   └── ...                (46 providers, 232 models)
 ├── plugins/               # Memory, guardrails, and utility plugins
 │   ├── episodic-memory/
 │   ├── guardrails/
