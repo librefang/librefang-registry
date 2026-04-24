@@ -1,5 +1,5 @@
 # OpenAI — https://openai.com
-# Models: 17 (including 2 Codex variants)
+# Models: 18 (including 2 Codex variants + 1 image-generation model)
 
 [provider]
 id = "openai"
@@ -237,3 +237,21 @@ supports_vision = true
 supports_streaming = true
 supports_thinking = true
 aliases = ["codex-o4"]
+
+# Image generation — priced per token (text + image), no conventional context
+# window. Snapshot gpt-image-2-2026-04-21 released 2026-04-21.
+# Source: https://developers.openai.com/api/docs/models/gpt-image-2
+# Pricing: https://developers.openai.com/api/docs/pricing
+[[models]]
+id = "gpt-image-2"
+display_name = "GPT Image 2"
+tier = "frontier"
+modality = "image"
+input_cost_per_m = 5.00
+output_cost_per_m = 10.00
+image_input_cost_per_m = 8.00
+image_output_cost_per_m = 30.00
+supports_tools = false
+supports_vision = true
+supports_streaming = false
+aliases = ["gpt-image-2-2026-04-21"]

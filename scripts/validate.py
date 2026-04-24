@@ -34,6 +34,7 @@ except ImportError:
         sys.exit(1)
 
 VALID_TIERS = {"frontier", "smart", "balanced", "fast", "local"}
+VALID_MODALITIES = {"text", "image", "audio"}
 VALID_HAND_CATEGORIES = {
     "communication", "content", "data", "development",
     "devops", "finance", "productivity", "research", "social",
@@ -41,11 +42,14 @@ VALID_HAND_CATEGORIES = {
 VALID_SKILL_RUNTIMES = {"promptonly", "python", "node", "shell"}
 
 REQUIRED_PROVIDER_FIELDS = {"id", "display_name", "api_key_env", "base_url", "key_required"}
-REQUIRED_MODEL_FIELDS = {
+
+# Required for all modalities.
+REQUIRED_MODEL_FIELDS_COMMON = {
     "id", "display_name", "tier",
-    "context_window", "max_output_tokens",
     "input_cost_per_m", "output_cost_per_m",
 }
+# Additionally required when modality='text' (the default).
+REQUIRED_MODEL_FIELDS_TEXT_ONLY = {"context_window", "max_output_tokens"}
 
 VALID_CONTENT_TYPES = {"providers", "agents", "hands", "mcp", "skills", "plugins", "aliases"}
 
@@ -79,7 +83,18 @@ def validate_provider_file(filepath: Path) -> list[str]:
 
     for i, model in enumerate(models):
         label = model.get("id", f"models[{i}]")
-        for field in REQUIRED_MODEL_FIELDS:
+
+        modality = model.get("modality", "text")
+        if modality not in VALID_MODALITIES:
+            errors.append(
+                f"{filepath.name}: Model '{label}' invalid modality '{modality}' "
+                f"(valid: {', '.join(sorted(VALID_MODALITIES))})"
+            )
+
+        required_fields = set(REQUIRED_MODEL_FIELDS_COMMON)
+        if modality == "text":
+            required_fields |= REQUIRED_MODEL_FIELDS_TEXT_ONLY
+        for field in required_fields:
             if field not in model:
                 errors.append(f"{filepath.name}: Model '{label}' missing field '{field}'")
 
@@ -87,7 +102,12 @@ def validate_provider_file(filepath: Path) -> list[str]:
         if tier is not None and tier not in VALID_TIERS:
             errors.append(f"{filepath.name}: Model '{label}' invalid tier '{tier}'")
 
-        for cost_field in ("input_cost_per_m", "output_cost_per_m"):
+        for cost_field in (
+            "input_cost_per_m",
+            "output_cost_per_m",
+            "image_input_cost_per_m",
+            "image_output_cost_per_m",
+        ):
             val = model.get(cost_field)
             if val is not None and (not isinstance(val, (int, float)) or val < 0):
                 errors.append(f"{filepath.name}: Model '{label}' invalid {cost_field}: {val}")
