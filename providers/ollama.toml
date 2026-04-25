@@ -5,7 +5,7 @@
 id = "ollama"
 display_name = "Ollama"
 api_key_env = "OLLAMA_API_KEY"
-base_url = "http://localhost:11434/v1"
+base_url = "http://127.0.0.1:11434/v1"
 key_required = false
 
 [[models]]

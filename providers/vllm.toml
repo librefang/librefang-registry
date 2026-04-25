@@ -5,7 +5,7 @@
 id = "vllm"
 display_name = "vLLM"
 api_key_env = "VLLM_API_KEY"
-base_url = "http://localhost:8000/v1"
+base_url = "http://127.0.0.1:8000/v1"
 key_required = false
 
 [[models]]

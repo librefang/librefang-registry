@@ -5,7 +5,7 @@
 id = "lmstudio"
 display_name = "LM Studio"
 api_key_env = "LMSTUDIO_API_KEY"
-base_url = "http://localhost:1234/v1"
+base_url = "http://127.0.0.1:1234/v1"
 key_required = false
 
 [[models]]
