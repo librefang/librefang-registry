@@ -75,6 +75,7 @@ tools = [
   "memory_recall",
   "file_read",
   "file_write",
+  "web_search",
 ]
 memory_read = ["*"]
 memory_write = ["*"]

@@ -55,6 +55,7 @@ tools = [
   "memory_store",
   "memory_recall",
   "agent_send",
+  "web_search",
 ]
 memory_read = ["*"]
 memory_write = ["self.*", "shared.*"]

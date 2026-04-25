@@ -78,6 +78,7 @@ tools = [
   "memory_recall",
   "shell_exec",
   "web_fetch",
+  "web_search",
 ]
 network = ["*"]
 memory_read = ["*"]
