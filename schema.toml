@@ -72,29 +72,49 @@ description = "Capability tier: frontier (cutting-edge, most capable), smart (co
 options = ["frontier", "smart", "balanced", "fast", "local"]
 example = "smart"
 
+[provider.sections.models.fields.modality]
+type = "string"
+required = false
+description = "Model modality. 'text' (default) is a chat/LLM; 'image' is an image-generation model (context_window/max_output_tokens become optional); 'audio' is a speech model."
+options = ["text", "image", "audio"]
+default = "text"
+example = "text"
+
 [provider.sections.models.fields.context_window]
 type = "number"
 required = true
-description = "Maximum input tokens"
+description = "Maximum input tokens. Required for modality='text'; optional for image/audio models where no published context gate exists."
 example = 128000
 
 [provider.sections.models.fields.max_output_tokens]
 type = "number"
 required = true
-description = "Maximum output tokens"
+description = "Maximum output tokens. Required for modality='text'; optional for image/audio models."
 example = 16384
 
 [provider.sections.models.fields.input_cost_per_m]
 type = "number"
 required = true
-description = "USD per million input tokens (0.0 for free/local)"
+description = "USD per million text input tokens (0.0 for free/local)"
 example = 2.5
 
 [provider.sections.models.fields.output_cost_per_m]
 type = "number"
 required = true
-description = "USD per million output tokens (0.0 for free/local)"
+description = "USD per million text output tokens (0.0 for free/local)"
 example = 10.0
+
+[provider.sections.models.fields.image_input_cost_per_m]
+type = "number"
+required = false
+description = "USD per million image input tokens (for image/multimodal models)"
+example = 8.0
+
+[provider.sections.models.fields.image_output_cost_per_m]
+type = "number"
+required = false
+description = "USD per million image output tokens (for image-generation models)"
+example = 30.0
 
 [provider.sections.models.fields.last_verified]
 type = "string"
