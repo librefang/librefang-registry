@@ -72,6 +72,7 @@ tools = [
   "memory_store",
   "memory_recall",
   "shell_exec",
+  "web_search",
 ]
 memory_read = ["*"]
 memory_write = ["self.*", "shared.*"]

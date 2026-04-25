@@ -83,6 +83,7 @@ tools = [
   "memory_store",
   "memory_recall",
   "web_fetch",
+  "web_search",
 ]
 network = ["*"]
 memory_read = ["*"]
