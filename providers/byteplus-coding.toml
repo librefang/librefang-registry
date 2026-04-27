@@ -2,10 +2,21 @@
 # International edition's Claude Code-compatible endpoint with friendly model aliases.
 # Models: 9 (auto-routed alias + 8 named models)
 #
-# Pricing matches the underlying versioned snapshots in byteplus.toml. The
-# Coding Plan endpoint exposes friendly stable names that route to the
-# current production snapshot, so versions advance silently without config
-# changes (use `ark-code-latest` to always get the best current routing).
+# 💡 BILLING — calls here count against your **Coding Plan
+# subscription quota**, not your per-token ModelArk USD balance. If you
+# don't have a Coding Plan or want per-token billing instead, use the
+# `byteplus` provider in byteplus.toml. The Coding Plan endpoint also
+# does not expose image / video / embedding models — only the text
+# models listed below.
+#
+# Pricing fields below mirror the underlying versioned snapshots in
+# byteplus.toml for catalog accounting purposes; actual subscription
+# consumption is tracked by the BytePlus console, not these numbers.
+#
+# The Coding Plan endpoint exposes friendly stable names that route to
+# the current production snapshot, so versions advance silently without
+# config changes (use `ark-code-latest` to always get the best current
+# routing).
 
 [provider]
 id = "byteplus_coding"

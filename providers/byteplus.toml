@@ -1,11 +1,28 @@
 # BytePlus ModelArk — https://www.byteplus.com/en/product/ModelArk
 # International edition of Volcano Engine (VolcEngine).
 # Models: 21 (10 text + 4 image + 7 video)
-# For Anthropic-compatible coding endpoint, see byteplus-coding.toml.
 #
-# Pricing: standard real-time tier (BytePlus offers a discounted batch tier
-# at roughly half this rate; image/video models are billed per-call or
-# per-token under their own units, see comments above each model).
+# ⚠️  BILLING — READ BEFORE USE
+# This provider points at the **standard** ModelArk inference endpoint
+# (`/api/v3`). Calls here are billed **per-token / per-call against your
+# ModelArk USD balance**. They DO NOT consume your Coding Plan
+# subscription quota.
+#
+# If you have a Coding Plan subscription and want calls to count against
+# it, use `byteplus_coding` (Anthropic protocol, friendly model
+# aliases) — see byteplus-coding.toml. The official BytePlus docs
+# explicitly warn against using `/api/v3` for Coding Plan workloads:
+#   https://docs.byteplus.com/en/docs/ModelArk/1928261
+#
+# Use this `byteplus` provider when you want:
+#   - Image generation (Seedream 3.0/4.0/4.5/5.0-lite)
+#   - Video generation (Seedance 1.0/1.5, Dreamina Seedance 2.0)
+#   - Versioned text-model snapshots (e.g. `seed-2-0-pro-260328`)
+#   …none of which exist on the Coding Plan endpoint.
+#
+# Pricing below is the standard real-time tier (a discounted batch tier
+# exists at ~half the rate; image/video billed per-call or per-token in
+# their own units, see comments above each model).
 
 [provider]
 id = "byteplus"
