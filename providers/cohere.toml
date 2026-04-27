@@ -1,5 +1,5 @@
 # Cohere — https://cohere.com
-# Models: 4
+# Models: 2
 
 [provider]
 id = "cohere"
@@ -22,19 +22,6 @@ supports_streaming = true
 aliases = ["command-r"]
 
 [[models]]
-id = "command-r-08-2024"
-display_name = "Command R (Aug 2024)"
-tier = "balanced"
-context_window = 128000
-max_output_tokens = 4096
-input_cost_per_m = 0.15
-output_cost_per_m = 0.60
-supports_tools = true
-supports_vision = false
-supports_streaming = true
-aliases = []
-
-[[models]]
 id = "command-a"
 display_name = "Command A"
 tier = "smart"
@@ -46,16 +33,3 @@ supports_tools = true
 supports_vision = false
 supports_streaming = true
 aliases = ["command"]
-
-[[models]]
-id = "command-light"
-display_name = "Command Light"
-tier = "fast"
-context_window = 4096
-max_output_tokens = 4096
-input_cost_per_m = 0.30
-output_cost_per_m = 0.60
-supports_tools = true
-supports_vision = false
-supports_streaming = true
-aliases = []

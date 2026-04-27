@@ -1,5 +1,5 @@
 # meta-llama — https://llama.com
-# Models: 5
+# Models: 3
 
 [provider]
 id = "meta-llama"
@@ -26,16 +26,6 @@ context_window = 327680
 max_output_tokens = 16384
 input_cost_per_m = 0.08
 output_cost_per_m = 0.3
-supports_streaming = true
-
-[[models]]
-id = "llama-3.3-70b-instruct"
-display_name = "Meta: Llama 3.3 70B Instruct"
-tier = "fast"
-context_window = 131072
-max_output_tokens = 16384
-input_cost_per_m = 0.1
-output_cost_per_m = 0.32
 supports_streaming = true
 
 [[models]]

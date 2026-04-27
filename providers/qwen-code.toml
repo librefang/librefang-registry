@@ -1,5 +1,5 @@
 # Qwen Code CLI
-# Models: 3
+# Models: 2
 
 [provider]
 id = "qwen-code"
@@ -34,17 +34,3 @@ supports_tools = false
 supports_vision = false
 supports_streaming = true
 aliases = ["qwen-code-coder-plus"]
-
-[[models]]
-id = "qwen-code/qwq-32b"
-display_name = "QwQ 32B (CLI)"
-tier = "balanced"
-context_window = 131072
-max_output_tokens = 8192
-input_cost_per_m = 0.0
-output_cost_per_m = 0.0
-supports_tools = false
-supports_vision = false
-supports_streaming = true
-supports_thinking = true
-aliases = ["qwen-code-qwq"]

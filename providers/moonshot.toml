@@ -1,5 +1,5 @@
 # Moonshot / Kimi — https://moonshot.ai
-# Models: 5
+# Models: 2
 
 [provider]
 id = "moonshot"
@@ -7,45 +7,6 @@ display_name = "Moonshot (Kimi)"
 api_key_env = "MOONSHOT_API_KEY"
 base_url = "https://api.moonshot.ai/v1"
 key_required = true
-
-[[models]]
-id = "moonshot-v1-128k"
-display_name = "Moonshot V1 128K"
-tier = "smart"
-context_window = 131072
-max_output_tokens = 8192
-input_cost_per_m = 2.00
-output_cost_per_m = 5.00
-supports_tools = true
-supports_vision = false
-supports_streaming = true
-aliases = ["moonshot"]
-
-[[models]]
-id = "moonshot-v1-32k"
-display_name = "Moonshot V1 32K"
-tier = "balanced"
-context_window = 32768
-max_output_tokens = 8192
-input_cost_per_m = 1.00
-output_cost_per_m = 3.00
-supports_tools = true
-supports_vision = false
-supports_streaming = true
-aliases = []
-
-[[models]]
-id = "moonshot-v1-8k"
-display_name = "Moonshot V1 8K"
-tier = "fast"
-context_window = 8192
-max_output_tokens = 4096
-input_cost_per_m = 0.20
-output_cost_per_m = 2.00
-supports_tools = true
-supports_vision = false
-supports_streaming = true
-aliases = []
 
 [[models]]
 id = "kimi-k2"

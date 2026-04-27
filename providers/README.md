@@ -2,7 +2,7 @@
 
 LLM provider and model metadata for LibreFang. Each `.toml` file defines one provider's API configuration and all its available models with pricing, context windows, and capability flags.
 
-**Current state: 46 providers, 232+ models**
+**Current state: 46 providers, 220+ models**
 
 ---
 
@@ -13,13 +13,13 @@ LLM provider and model metadata for LibreFang. Each `.toml` file defines one pro
 | ID | Display Name | Base URL | API Key Env | Models | Description |
 |----|-------------|----------|-------------|--------|-------------|
 | `anthropic` | Anthropic | `https://api.anthropic.com` | `ANTHROPIC_API_KEY` | 7 | Claude family (Haiku / Sonnet / Opus); native Anthropic wire protocol, not OpenAI-compatible |
-| `openai` | OpenAI | `https://api.openai.com/v1` | `OPENAI_API_KEY` | 15 | GPT-4.x, o-series reasoning, image generation, TTS; also the fallback for codex-cli |
+| `openai` | OpenAI | `https://api.openai.com/v1` | `OPENAI_API_KEY` | 10 | GPT-5.x family + image generation; codex-cli fallback |
 | `gemini` | Google Gemini | `https://generativelanguage.googleapis.com` | `GEMINI_API_KEY` | 6 | Gemini 2.x family; native Google GenerativeLanguage protocol |
 | `xai` | xAI | `https://api.x.ai/v1` | `XAI_API_KEY` | 7 | Grok-3 family from Elon Musk's xAI |
 | `mistral` | Mistral AI | `https://api.mistral.ai/v1` | `MISTRAL_API_KEY` | 3 | Mistral Large / Small / Codestral; European frontier models |
 | `cohere` | Cohere | `https://api.cohere.com/v2` | `COHERE_API_KEY` | 4 | Command R+ family; strong RAG and tool-use models |
 | `deepseek` | DeepSeek | `https://api.deepseek.com/v1` | `DEEPSEEK_API_KEY` | 2 | DeepSeek-V3 (chat) + R1 (reasoning); extremely cost-effective |
-| `meta-llama` | Meta Llama | `https://api.llama.com/v1` | `LLAMA_API_KEY` | 4 | Official Meta Llama API — direct access to Llama 3.x |
+| `meta-llama` | Meta Llama | `https://api.llama.com/v1` | `LLAMA_API_KEY` | 3 | Official Meta Llama API — Llama 4 Maverick / Scout + Guard 4 |
 | `perplexity` | Perplexity AI | `https://api.perplexity.ai` | `PERPLEXITY_API_KEY` | 4 | Sonar family with live web search built in |
 
 ### Fast Inference / Compute Clouds
@@ -27,11 +27,11 @@ LLM provider and model metadata for LibreFang. Each `.toml` file defines one pro
 | ID | Display Name | Base URL | API Key Env | Models | Description |
 |----|-------------|----------|-------------|--------|-------------|
 | `groq` | Groq | `https://api.groq.com/openai/v1` | `GROQ_API_KEY` | 3 | GroqChip hardware; ~10× faster than GPU inference for supported models |
-| `cerebras` | Cerebras | `https://api.cerebras.ai/v1` | `CEREBRAS_API_KEY` | 4 | Wafer-scale chip inference; best-in-class throughput for Llama |
+| `cerebras` | Cerebras | `https://api.cerebras.ai/v1` | `CEREBRAS_API_KEY` | 3 | Wafer-scale chip inference; best-in-class throughput for Llama |
 | `sambanova` | SambaNova | `https://api.sambanova.ai/v1` | `SAMBANOVA_API_KEY` | 3 | Reconfigurable Dataflow Unit (RDU) inference; fast Llama variants |
-| `fireworks` | Fireworks AI | `https://api.fireworks.ai/inference/v1` | `FIREWORKS_API_KEY` | 5 | Serverless open-model hosting; fast cold-start |
-| `together` | Together AI | `https://api.together.xyz/v1` | `TOGETHER_API_KEY` | 8 | Open-model hosting (Llama, Qwen, Mistral) + fine-tuning API |
-| `nvidia-nim` | NVIDIA NIM | `https://integrate.api.nvidia.com/v1` | `NVIDIA_API_KEY` | 26 | NVIDIA NIM microservices; largest model selection in registry |
+| `fireworks` | Fireworks AI | `https://api.fireworks.ai/inference/v1` | `FIREWORKS_API_KEY` | 3 | Serverless open-model hosting; fast cold-start |
+| `together` | Together AI | `https://api.together.xyz/v1` | `TOGETHER_API_KEY` | 4 | Open-model hosting (Llama 4, DeepSeek) + fine-tuning API |
+| `nvidia-nim` | NVIDIA NIM | `https://integrate.api.nvidia.com/v1` | `NVIDIA_API_KEY` | 14 | NVIDIA NIM microservices; broad open-model selection |
 | `replicate` | Replicate | `https://api.replicate.com/v1` | `REPLICATE_API_TOKEN` | 3 | Run any model as a serverless API; image + video + LLM |
 | `huggingface` | Hugging Face | `https://api-inference.huggingface.co/v1` | `HF_API_KEY` | 3 | HF Serverless Inference API for hosted open models |
 
@@ -39,15 +39,15 @@ LLM provider and model metadata for LibreFang. Each `.toml` file defines one pro
 
 | ID | Display Name | Base URL | API Key Env | Models | Description |
 |----|-------------|----------|-------------|--------|-------------|
-| `bedrock` | AWS Bedrock | `https://bedrock-runtime.us-east-1.amazonaws.com` | `AWS_ACCESS_KEY_ID` | 11 | AWS-managed models (Claude, Llama, Mistral, Nova); IAM auth |
-| `vertex-ai` | Google Cloud Vertex AI | `https://us-central1-aiplatform.googleapis.com` | `GOOGLE_APPLICATION_CREDENTIALS` | 6 | GCP-hosted Gemini + third-party models; service account JSON auth |
+| `bedrock` | AWS Bedrock | `https://bedrock-runtime.us-east-1.amazonaws.com` | `AWS_ACCESS_KEY_ID` | 8 | AWS-managed models (Claude, Llama, Mistral, Nova); IAM auth |
+| `vertex-ai` | Google Cloud Vertex AI | `https://us-central1-aiplatform.googleapis.com` | `GOOGLE_APPLICATION_CREDENTIALS` | 4 | GCP-hosted Gemini + third-party models; service account JSON auth |
 | `github-copilot` | GitHub Copilot | `https://api.githubcopilot.com` | `GITHUB_TOKEN` | 1 | Uses `ApiFormat::Copilot` — proprietary protocol, not OpenAI-compatible; requires GitHub PAT with Copilot access |
 
 ### Aggregators / Routers
 
 | ID | Display Name | Base URL | API Key Env | Models | Description |
 |----|-------------|----------|-------------|--------|-------------|
-| `openrouter` | OpenRouter | `https://openrouter.ai/api/v1` | `OPENROUTER_API_KEY` | 18+ | Meta-provider routing to 300+ models; also receives models from OpenRouter-only providers via sync script |
+| `openrouter` | OpenRouter | `https://openrouter.ai/api/v1` | `OPENROUTER_API_KEY` | 38+ | Meta-provider routing to 300+ models; also receives models from OpenRouter-only providers via sync script |
 | `siliconflow` | SiliconFlow | `https://api.siliconflow.cn/v1` | `SILICONFLOW_API_KEY` | dynamic | 硅基流动 — Chinese open-model hosting; models discovered at runtime, not hardcoded in TOML |
 
 ### Chinese Providers
@@ -55,15 +55,15 @@ LLM provider and model metadata for LibreFang. Each `.toml` file defines one pro
 | ID | Display Name | Base URL | API Key Env | Models | Description |
 |----|-------------|----------|-------------|--------|-------------|
 | `qwen` | Qwen (Alibaba) | `https://dashscope.aliyuncs.com/compatible-mode/v1` | `DASHSCOPE_API_KEY` | 9 | Qwen3 family by Alibaba; multi-region support (`intl` / `us`) via `[provider.regions]` |
-| `moonshot` | Moonshot (Kimi) | `https://api.moonshot.ai/v1` | `MOONSHOT_API_KEY` | 5 | Kimi general chat models (moonshot-v1-8k/32k/128k) |
-| `minimax` | MiniMax | `https://api.minimax.io/v1` | `MINIMAX_API_KEY` | 8 | MiniMax M-series; strong Chinese + multilingual models |
-| `zhipu` | Zhipu AI (GLM) | `https://open.bigmodel.cn/api/paas/v4` | `ZHIPU_API_KEY` | 6 | GLM-4 family by Zhipu AI (智谱); general chat + vision |
+| `moonshot` | Moonshot (Kimi) | `https://api.moonshot.ai/v1` | `MOONSHOT_API_KEY` | 2 | Kimi K2 / K2.5 |
+| `minimax` | MiniMax | `https://api.minimax.io/v1` | `MINIMAX_API_KEY` | 4 | MiniMax M-series; strong Chinese + multilingual models |
+| `zhipu` | Zhipu AI (GLM) | `https://open.bigmodel.cn/api/paas/v4` | `ZHIPU_API_KEY` | 2 | GLM-4.7 / GLM-5 by Zhipu AI (智谱) |
 | `zai` | Z.AI | `https://api.z.ai/api/paas/v4` | `ZHIPU_API_KEY` | 2 | Z.AI general models; shares API key with zhipu |
-| `baichuan` | Baichuan (百川) | `https://api.baichuan-ai.com/v1` | `BAICHUAN_API_KEY` | 2 | Baichuan4 family; strong Chinese-language performance |
-| `volcengine` | Volcano Engine (Doubao) | `https://ark.cn-beijing.volces.com/api/v3` | `VOLCENGINE_API_KEY` | 8 | ByteDance Doubao models; Ark platform |
-| `stepfun` | Stepfun (阶跃星辰) | `https://api.stepfun.com/v1` | `STEPFUN_API_KEY` | 4 | Step-2 family; strong long-context and reasoning |
+| `baichuan` | Baichuan (百川) | `https://api.baichuan-ai.com/v1` | `BAICHUAN_API_KEY` | 1 | Baichuan4; strong Chinese-language performance |
+| `volcengine` | Volcano Engine (Doubao) | `https://ark.cn-beijing.volces.com/api/v3` | `VOLCENGINE_API_KEY` | 5 | ByteDance Doubao 2.0 + UI-TARS; Ark platform |
+| `stepfun` | Stepfun (阶跃星辰) | `https://api.stepfun.com/v1` | `STEPFUN_API_KEY` | 2 | Step-3 / Step-3.5 Flash; long-context reasoning |
 | `tencent` | Tencent | `https://api.hunyuan.cloud.tencent.com/v1` | `HUNYUAN_API_KEY` | 1 | Hunyuan models by Tencent |
-| `qianfan` | Baidu Qianfan | `https://qianfan.baidubce.com/v2` | `QIANFAN_API_KEY` | 3 | ERNIE family by Baidu; Qianfan platform |
+| `qianfan` | Baidu Qianfan | `https://qianfan.baidubce.com/v2` | `QIANFAN_API_KEY` | 1 | ERNIE 4.5 by Baidu; Qianfan platform |
 
 ### Coding-Specific Endpoints
 
@@ -72,7 +72,7 @@ Separate `base_url` for coding workloads — not just model aliases. Same API ke
 | ID | Display Name | Base URL | API Key Env | Models | vs. General |
 |----|-------------|----------|-------------|--------|-------------|
 | `kimi_coding` | Kimi for Code | `https://api.kimi.com/coding` | `KIMI_API_KEY` | 1 | vs `moonshot`: `api.moonshot.ai/v1` |
-| `alibaba-coding-plan` | Alibaba Coding Plan (Intl) | `https://coding-intl.dashscope.aliyuncs.com/v1` | `ALIBABA_CODING_PLAN_API_KEY` | 9 | vs `qwen`: `dashscope.aliyuncs.com`; aggregates models from multiple vendors (MiniMax, GLM, Kimi) |
+| `alibaba-coding-plan` | Alibaba Coding Plan (Intl) | `https://coding-intl.dashscope.aliyuncs.com/v1` | `ALIBABA_CODING_PLAN_API_KEY` | 5 | vs `qwen`: `dashscope.aliyuncs.com`; aggregates Qwen + GLM under one plan |
 | `volcengine_coding` | Volcano Engine Coding Plan | `https://ark.cn-beijing.volces.com/api/coding/v3` | `VOLCENGINE_API_KEY` | dynamic | vs `volcengine`: `/api/v3`; models discovered at runtime |
 | `zhipu_coding` | Zhipu Coding (CodeGeeX) | `https://open.bigmodel.cn/api/coding/paas/v4` | `ZHIPU_API_KEY` | 1 | vs `zhipu`: `/api/paas/v4`; CodeGeeX-4 coding model |
 | `zai_coding` | Z.AI Coding | `https://api.z.ai/api/coding/paas/v4` | `ZHIPU_API_KEY` | 2 | vs `zai`: `/api/paas/v4`; GLM coding variants |
@@ -86,7 +86,7 @@ Route through a locally-installed CLI tool. `key_required = false`, `base_url` i
 | `claude-code` | Claude Code | `claude` | 3 | `ClaudeCode` | Anthropic's official CLI; routes through Claude API with OAuth |
 | `codex-cli` | Codex CLI | `codex` | 6 | `CodexCli` | OpenAI Codex CLI; also serves as fallback for `openai` provider |
 | `gemini-cli` | Gemini CLI | `gemini` | 2 | `GeminiCli` | Google Gemini CLI; also serves as fallback for `gemini` provider |
-| `qwen-code` | Qwen Code | `qwen-code` | 3 | `QwenCode` | Alibaba Qwen coding CLI |
+| `qwen-code` | Qwen Code | `qwen-code` | 2 | `QwenCode` | Alibaba Qwen coding CLI |
 
 ### Local / Self-Hosted
 

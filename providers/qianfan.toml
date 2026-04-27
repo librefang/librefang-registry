@@ -1,5 +1,5 @@
 # Baidu Qianfan / ERNIE — https://qianfan.baidubce.com
-# Models: 3
+# Models: 1
 
 [provider]
 id = "qianfan"
@@ -20,29 +20,3 @@ supports_tools = true
 supports_vision = false
 supports_streaming = true
 aliases = ["ernie"]
-
-[[models]]
-id = "ernie-4.0-turbo-8k"
-display_name = "ERNIE 4.0 Turbo 8K"
-tier = "balanced"
-context_window = 8192
-max_output_tokens = 4096
-input_cost_per_m = 1.00
-output_cost_per_m = 3.00
-supports_tools = true
-supports_vision = false
-supports_streaming = true
-aliases = []
-
-[[models]]
-id = "ernie-speed-128k"
-display_name = "ERNIE Speed 128K"
-tier = "fast"
-context_window = 131072
-max_output_tokens = 4096
-input_cost_per_m = 0.0
-output_cost_per_m = 0.0
-supports_tools = true
-supports_vision = false
-supports_streaming = true
-aliases = []
