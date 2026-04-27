@@ -1,5 +1,5 @@
 # Together AI — https://together.ai
-# Models: 5
+# Models: 4
 
 [provider]
 id = "together"
@@ -7,19 +7,6 @@ display_name = "Together AI"
 api_key_env = "TOGETHER_API_KEY"
 base_url = "https://api.together.xyz/v1"
 key_required = true
-
-[[models]]
-id = "meta-llama/Llama-3.3-70B-Instruct-Turbo"
-display_name = "Llama 3.3 70B (Together)"
-tier = "smart"
-context_window = 128000
-max_output_tokens = 4096
-input_cost_per_m = 0.88
-output_cost_per_m = 0.88
-supports_tools = true
-supports_vision = false
-supports_streaming = true
-aliases = []
 
 [[models]]
 id = "meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8"

@@ -1,5 +1,5 @@
 # OpenRouter — https://openrouter.ai
-# Models: 40
+# Models: 38
 
 [provider]
 id = "openrouter"
@@ -47,19 +47,6 @@ context_window = 128000
 max_output_tokens = 32768
 input_cost_per_m = 0.14
 output_cost_per_m = 0.28
-supports_tools = true
-supports_vision = false
-supports_streaming = true
-aliases = []
-
-[[models]]
-id = "openrouter/meta-llama/llama-3.3-70b-instruct"
-display_name = "Llama 3.3 70B (OpenRouter)"
-tier = "balanced"
-context_window = 128000
-max_output_tokens = 32768
-input_cost_per_m = 0.39
-output_cost_per_m = 0.39
 supports_tools = true
 supports_vision = false
 supports_streaming = true
@@ -389,16 +376,6 @@ context_window = 131072
 max_output_tokens = 131072
 input_cost_per_m = 0.2
 output_cost_per_m = 1.1
-supports_streaming = true
-
-[[models]]
-id = "openrouter/rekaai/reka-edge"
-display_name = "Reka Edge (OpenRouter)"
-tier = "fast"
-context_window = 16384
-max_output_tokens = 16384
-input_cost_per_m = 0.1
-output_cost_per_m = 0.1
 supports_streaming = true
 
 [[models]]
