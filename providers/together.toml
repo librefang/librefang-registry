@@ -1,5 +1,5 @@
 # Together AI — https://together.ai
-# Models: 8
+# Models: 5
 
 [provider]
 id = "together"
@@ -7,19 +7,6 @@ display_name = "Together AI"
 api_key_env = "TOGETHER_API_KEY"
 base_url = "https://api.together.xyz/v1"
 key_required = true
-
-[[models]]
-id = "meta-llama/Meta-Llama-3.1-405B-Instruct-Turbo"
-display_name = "Llama 3.1 405B (Together)"
-tier = "frontier"
-context_window = 130000
-max_output_tokens = 4096
-input_cost_per_m = 3.50
-output_cost_per_m = 3.50
-supports_tools = true
-supports_vision = false
-supports_streaming = true
-aliases = []
 
 [[models]]
 id = "meta-llama/Llama-3.3-70B-Instruct-Turbo"
@@ -82,32 +69,6 @@ context_window = 64000
 max_output_tokens = 8192
 input_cost_per_m = 0.90
 output_cost_per_m = 0.90
-supports_tools = true
-supports_vision = false
-supports_streaming = true
-aliases = []
-
-[[models]]
-id = "Qwen/Qwen2.5-72B-Instruct-Turbo"
-display_name = "Qwen 2.5 72B (Together)"
-tier = "smart"
-context_window = 32768
-max_output_tokens = 4096
-input_cost_per_m = 0.20
-output_cost_per_m = 0.60
-supports_tools = true
-supports_vision = false
-supports_streaming = true
-aliases = []
-
-[[models]]
-id = "mistralai/Mixtral-8x22B-Instruct-v0.1"
-display_name = "Mixtral 8x22B (Together)"
-tier = "balanced"
-context_window = 65536
-max_output_tokens = 4096
-input_cost_per_m = 0.60
-output_cost_per_m = 0.60
 supports_tools = true
 supports_vision = false
 supports_streaming = true

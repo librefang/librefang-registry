@@ -1,5 +1,5 @@
 # Volcano Engine / Doubao — https://volcengine.com
-# Models: 7
+# Models: 5
 
 [provider]
 id = "volcengine"
@@ -59,45 +59,6 @@ supports_tools = true
 supports_vision = false
 supports_streaming = true
 aliases = ["doubao-code", "doubao-seed-code"]
-
-[[models]]
-id = "doubao-seed-1-8"
-display_name = "Doubao Seed 1.8"
-tier = "smart"
-context_window = 262144
-max_output_tokens = 16384
-input_cost_per_m = 0.80
-output_cost_per_m = 2.00
-supports_tools = true
-supports_vision = true
-supports_streaming = true
-aliases = ["doubao-1.8", "doubao-seed-1.8"]
-
-[[models]]
-id = "doubao-seed-1-6-251015"
-display_name = "Doubao Seed 1.6 Pro"
-tier = "smart"
-context_window = 262144
-max_output_tokens = 16384
-input_cost_per_m = 0.80
-output_cost_per_m = 2.00
-supports_tools = true
-supports_vision = false
-supports_streaming = true
-aliases = ["doubao", "doubao-1.6"]
-
-[[models]]
-id = "doubao-seed-1-6-vision-251015"
-display_name = "Doubao Seed 1.6 Vision"
-tier = "smart"
-context_window = 262144
-max_output_tokens = 16384
-input_cost_per_m = 0.80
-output_cost_per_m = 2.00
-supports_tools = true
-supports_vision = true
-supports_streaming = true
-aliases = ["doubao-vision"]
 
 [[models]]
 id = "ui-tars-1.5-7b"

@@ -1,5 +1,5 @@
 # Stepfun (阶跃星辰) — https://platform.stepfun.com
-# Models: 4
+# Models: 2
 
 [provider]
 id = "stepfun"
@@ -33,30 +33,3 @@ supports_tools = true
 supports_vision = true
 supports_streaming = true
 aliases = ["stepfun-3"]
-
-[[models]]
-id = "step-2-mini"
-display_name = "Step 2 Mini"
-tier = "fast"
-context_window = 32768
-max_output_tokens = 8192
-input_cost_per_m = 0.14
-output_cost_per_m = 0.29
-supports_tools = true
-supports_vision = false
-supports_streaming = true
-aliases = ["stepfun-mini"]
-
-[[models]]
-id = "step-1o-turbo-vision"
-display_name = "Step 1o Turbo Vision"
-tier = "smart"
-context_window = 32768
-max_output_tokens = 8192
-input_cost_per_m = 0.36
-output_cost_per_m = 1.14
-supports_tools = false
-supports_vision = true
-supports_streaming = true
-supports_thinking = true
-aliases = ["stepfun-vision"]

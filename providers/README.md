@@ -39,15 +39,15 @@ LLM provider and model metadata for LibreFang. Each `.toml` file defines one pro
 
 | ID | Display Name | Base URL | API Key Env | Models | Description |
 |----|-------------|----------|-------------|--------|-------------|
-| `bedrock` | AWS Bedrock | `https://bedrock-runtime.us-east-1.amazonaws.com` | `AWS_ACCESS_KEY_ID` | 11 | AWS-managed models (Claude, Llama, Mistral, Nova); IAM auth |
-| `vertex-ai` | Google Cloud Vertex AI | `https://us-central1-aiplatform.googleapis.com` | `GOOGLE_APPLICATION_CREDENTIALS` | 6 | GCP-hosted Gemini + third-party models; service account JSON auth |
+| `bedrock` | AWS Bedrock | `https://bedrock-runtime.us-east-1.amazonaws.com` | `AWS_ACCESS_KEY_ID` | 8 | AWS-managed models (Claude, Llama, Mistral, Nova); IAM auth |
+| `vertex-ai` | Google Cloud Vertex AI | `https://us-central1-aiplatform.googleapis.com` | `GOOGLE_APPLICATION_CREDENTIALS` | 4 | GCP-hosted Gemini + third-party models; service account JSON auth |
 | `github-copilot` | GitHub Copilot | `https://api.githubcopilot.com` | `GITHUB_TOKEN` | 1 | Uses `ApiFormat::Copilot` — proprietary protocol, not OpenAI-compatible; requires GitHub PAT with Copilot access |
 
 ### Aggregators / Routers
 
 | ID | Display Name | Base URL | API Key Env | Models | Description |
 |----|-------------|----------|-------------|--------|-------------|
-| `openrouter` | OpenRouter | `https://openrouter.ai/api/v1` | `OPENROUTER_API_KEY` | 18+ | Meta-provider routing to 300+ models; also receives models from OpenRouter-only providers via sync script |
+| `openrouter` | OpenRouter | `https://openrouter.ai/api/v1` | `OPENROUTER_API_KEY` | 40+ | Meta-provider routing to 300+ models; also receives models from OpenRouter-only providers via sync script |
 | `siliconflow` | SiliconFlow | `https://api.siliconflow.cn/v1` | `SILICONFLOW_API_KEY` | dynamic | 硅基流动 — Chinese open-model hosting; models discovered at runtime, not hardcoded in TOML |
 
 ### Chinese Providers
@@ -55,13 +55,13 @@ LLM provider and model metadata for LibreFang. Each `.toml` file defines one pro
 | ID | Display Name | Base URL | API Key Env | Models | Description |
 |----|-------------|----------|-------------|--------|-------------|
 | `qwen` | Qwen (Alibaba) | `https://dashscope.aliyuncs.com/compatible-mode/v1` | `DASHSCOPE_API_KEY` | 9 | Qwen3 family by Alibaba; multi-region support (`intl` / `us`) via `[provider.regions]` |
-| `moonshot` | Moonshot (Kimi) | `https://api.moonshot.ai/v1` | `MOONSHOT_API_KEY` | 5 | Kimi general chat models (moonshot-v1-8k/32k/128k) |
-| `minimax` | MiniMax | `https://api.minimax.io/v1` | `MINIMAX_API_KEY` | 8 | MiniMax M-series; strong Chinese + multilingual models |
-| `zhipu` | Zhipu AI (GLM) | `https://open.bigmodel.cn/api/paas/v4` | `ZHIPU_API_KEY` | 6 | GLM-4 family by Zhipu AI (智谱); general chat + vision |
+| `moonshot` | Moonshot (Kimi) | `https://api.moonshot.ai/v1` | `MOONSHOT_API_KEY` | 2 | Kimi K2 / K2.5 |
+| `minimax` | MiniMax | `https://api.minimax.io/v1` | `MINIMAX_API_KEY` | 4 | MiniMax M-series; strong Chinese + multilingual models |
+| `zhipu` | Zhipu AI (GLM) | `https://open.bigmodel.cn/api/paas/v4` | `ZHIPU_API_KEY` | 3 | GLM-4.7 / GLM-5 by Zhipu AI (智谱); general chat + vision |
 | `zai` | Z.AI | `https://api.z.ai/api/paas/v4` | `ZHIPU_API_KEY` | 2 | Z.AI general models; shares API key with zhipu |
-| `baichuan` | Baichuan (百川) | `https://api.baichuan-ai.com/v1` | `BAICHUAN_API_KEY` | 2 | Baichuan4 family; strong Chinese-language performance |
-| `volcengine` | Volcano Engine (Doubao) | `https://ark.cn-beijing.volces.com/api/v3` | `VOLCENGINE_API_KEY` | 8 | ByteDance Doubao models; Ark platform |
-| `stepfun` | Stepfun (阶跃星辰) | `https://api.stepfun.com/v1` | `STEPFUN_API_KEY` | 4 | Step-2 family; strong long-context and reasoning |
+| `baichuan` | Baichuan (百川) | `https://api.baichuan-ai.com/v1` | `BAICHUAN_API_KEY` | 1 | Baichuan4; strong Chinese-language performance |
+| `volcengine` | Volcano Engine (Doubao) | `https://ark.cn-beijing.volces.com/api/v3` | `VOLCENGINE_API_KEY` | 5 | ByteDance Doubao 2.0 + UI-TARS; Ark platform |
+| `stepfun` | Stepfun (阶跃星辰) | `https://api.stepfun.com/v1` | `STEPFUN_API_KEY` | 2 | Step-3 / Step-3.5 Flash; long-context reasoning |
 | `tencent` | Tencent | `https://api.hunyuan.cloud.tencent.com/v1` | `HUNYUAN_API_KEY` | 1 | Hunyuan models by Tencent |
 | `qianfan` | Baidu Qianfan | `https://qianfan.baidubce.com/v2` | `QIANFAN_API_KEY` | 3 | ERNIE family by Baidu; Qianfan platform |
 

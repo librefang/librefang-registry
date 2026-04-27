@@ -44,8 +44,6 @@
 # xAI
 "grok" = "grok-4-0709"
 "grok-4" = "grok-4-0709"
-"grok-mini" = "grok-2-mini"
-"grok3" = "grok-3"
 "grok-fast" = "grok-4-1-fast-reasoning"
 
 # Perplexity
@@ -70,12 +68,11 @@
 "glm" = "glm-5-20250605"
 "ernie" = "ernie-4.5-8k"
 "kimi" = "kimi-k2"
-"moonshot" = "moonshot-v1-128k"
+"moonshot" = "kimi-k2.5"
 "minimax" = "MiniMax-M2.7"
 "minimax-m2.5" = "MiniMax-M2.5"
 "minimax-m2.5-highspeed" = "MiniMax-M2.5-highspeed"
 "minimax-highspeed" = "MiniMax-M2.7-highspeed"
-"minimax-m2.1" = "MiniMax-M2.1"
 "codegeex" = "codegeex-4"
 "doubao" = "doubao-seed-2-0-pro-260215"
 "doubao-seed" = "doubao-seed-2-0-pro-260215"

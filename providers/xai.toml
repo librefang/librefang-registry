@@ -1,5 +1,5 @@
 # xAI — https://x.ai
-# Models: 7
+# Models: 5
 
 [provider]
 id = "xai"
@@ -69,32 +69,6 @@ tier = "fast"
 context_window = 2000000
 max_output_tokens = 32768
 input_cost_per_m = 0.20
-output_cost_per_m = 0.50
-supports_tools = true
-supports_vision = false
-supports_streaming = true
-aliases = []
-
-[[models]]
-id = "grok-3"
-display_name = "Grok 3"
-tier = "frontier"
-context_window = 131072
-max_output_tokens = 32768
-input_cost_per_m = 3.0
-output_cost_per_m = 15.0
-supports_tools = true
-supports_vision = true
-supports_streaming = true
-aliases = ["grok3"]
-
-[[models]]
-id = "grok-3-mini"
-display_name = "Grok 3 Mini"
-tier = "balanced"
-context_window = 131072
-max_output_tokens = 32768
-input_cost_per_m = 0.30
 output_cost_per_m = 0.50
 supports_tools = true
 supports_vision = false
