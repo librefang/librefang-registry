@@ -20,7 +20,7 @@
 
 [provider]
 id = "byteplus_coding"
-display_name = "BytePlus ModelArk Coding Plan"
+display_name = "BytePlus Coding Plan"
 api_key_env = "BYTEPLUS_CODING_API_KEY"
 base_url = "https://ark.ap-southeast.bytepluses.com/api/coding"
 key_required = true
