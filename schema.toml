@@ -116,6 +116,12 @@ required = false
 description = "USD per million image output tokens (for image-generation models)"
 example = 30.0
 
+[provider.sections.models.fields.per_call_cost]
+type = "number"
+required = false
+description = "Flat USD cost per generation, for models billed per call rather than per token. Strongly recommended for modality='video' and modality='music' (which have no per-token pricing); may also be used for image/audio models that quote a flat per-image or per-request rate. When absent for a per-call modality, the runtime metering layer records the call as $0 and logs a warning."
+example = 0.33
+
 [provider.sections.models.fields.last_verified]
 type = "string"
 required = false
