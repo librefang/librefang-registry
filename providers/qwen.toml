@@ -1,5 +1,5 @@
 # Qwen / Alibaba — https://dashscope.aliyuncs.com
-# Models: 9
+# Models: 10
 # Regions: china (default), intl (Singapore), us (Virginia)
 
 [provider]
@@ -14,6 +14,20 @@ base_url = "https://dashscope-intl.aliyuncs.com/compatible-mode/v1"
 
 [provider.regions.us]
 base_url = "https://dashscope-us.aliyuncs.com/compatible-mode/v1"
+
+[[models]]
+id = "qwen3.6-max-preview"
+display_name = "Qwen3.6 Max Preview"
+tier = "frontier"
+context_window = 262144
+max_output_tokens = 32768
+input_cost_per_m = 1.30
+output_cost_per_m = 7.80
+supports_tools = true
+supports_vision = false
+supports_streaming = true
+supports_thinking = true
+aliases = ["qwen3.6-max", "qwen-3.6-max"]
 
 [[models]]
 id = "qwen-max"
