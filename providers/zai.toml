@@ -1,10 +1,16 @@
-# Z.AI — https://api.z.ai (Zhipu domain alias)
+# Z.AI — https://api.z.ai (international front-end of the same Zhipu backend)
 # Models: 2
+#
+# `zai` and `zhipu` (open.bigmodel.cn) point at the same upstream account
+# system but are surfaced as distinct providers in the dashboard. Each now
+# uses its own env so configuring one key doesn't auto-activate both —
+# export the same Zhipu API key value under whichever name(s) you actually
+# use. See librefang/librefang#3282.
 
 [provider]
 id = "zai"
 display_name = "Z.AI"
-api_key_env = "ZHIPU_API_KEY"
+api_key_env = "ZAI_API_KEY"
 base_url = "https://api.z.ai/api/paas/v4"
 key_required = true
 
