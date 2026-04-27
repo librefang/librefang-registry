@@ -1,6 +1,6 @@
 # BytePlus ModelArk — https://www.byteplus.com/en/product/ModelArk
 # International edition of Volcano Engine (VolcEngine).
-# Models: 21 (10 text + 4 image + 7 video)
+# Models: 11 (6 text + 2 image + 3 video)
 #
 # ⚠️  BILLING — READ BEFORE USE
 # This provider points at the **standard** ModelArk inference endpoint
@@ -15,8 +15,8 @@
 #   https://docs.byteplus.com/en/docs/ModelArk/1928261
 #
 # Use this `byteplus` provider when you want:
-#   - Image generation (Seedream 3.0/4.0/4.5/5.0-lite)
-#   - Video generation (Seedance 1.0/1.5, Dreamina Seedance 2.0)
+#   - Image generation (Seedream 4.5, Seedream 5.0 Lite)
+#   - Video generation (Seedance 1.5 Pro, Dreamina Seedance 2.0 / 2.0 Fast)
 #   - Versioned text-model snapshots (e.g. `seed-2-0-pro-260328`)
 #   …none of which exist on the Coding Plan endpoint.
 #
@@ -62,19 +62,6 @@ supports_streaming = true
 aliases = ["seed-mini", "seed-2-mini"]
 
 [[models]]
-id = "seed-2-0-lite-260228"
-display_name = "Seed 2.0 Lite"
-tier = "smart"
-context_window = 262144
-max_output_tokens = 16384
-input_cost_per_m = 0.50
-output_cost_per_m = 4.00
-supports_tools = true
-supports_vision = true
-supports_streaming = true
-aliases = ["seed-lite", "seed-2-lite"]
-
-[[models]]
 id = "seed-2-0-code-preview-260328"
 display_name = "Seed 2.0 Code (preview)"
 tier = "smart"
@@ -86,32 +73,6 @@ supports_tools = true
 supports_vision = false
 supports_streaming = true
 aliases = ["seed-code", "seed-2-code"]
-
-[[models]]
-id = "seed-1-8-251228"
-display_name = "Seed 1.8"
-tier = "smart"
-context_window = 262144
-max_output_tokens = 16384
-input_cost_per_m = 0.50
-output_cost_per_m = 4.00
-supports_tools = true
-supports_vision = true
-supports_streaming = true
-aliases = []
-
-[[models]]
-id = "seed-translation-250915"
-display_name = "Seed Translation"
-tier = "fast"
-context_window = 4096
-max_output_tokens = 4096
-input_cost_per_m = 0.20
-output_cost_per_m = 0.80
-supports_tools = false
-supports_vision = false
-supports_streaming = true
-aliases = []
 
 [[models]]
 id = "glm-4-7-251222"
@@ -140,19 +101,6 @@ supports_streaming = true
 aliases = ["deepseek-v3.2"]
 
 [[models]]
-id = "deepseek-v3-1-250821"
-display_name = "DeepSeek V3.1"
-tier = "smart"
-context_window = 131072
-max_output_tokens = 8192
-input_cost_per_m = 0.56
-output_cost_per_m = 1.68
-supports_tools = true
-supports_vision = false
-supports_streaming = true
-aliases = ["deepseek-v3.1"]
-
-[[models]]
 id = "gpt-oss-120b-250805"
 display_name = "GPT-OSS 120B"
 tier = "smart"
@@ -167,32 +115,6 @@ aliases = ["gpt-oss-120b"]
 
 # ── Image generation models ────────────────────────────────────────────
 # Billed per-piece (not per-token). Real prices in comment above each entry.
-
-# $0.0300 per image
-[[models]]
-id = "seedream-3-0-t2i-250415"
-display_name = "Seedream 3.0 (text-to-image)"
-tier = "smart"
-modality = "image"
-input_cost_per_m = 0.0
-output_cost_per_m = 0.0
-supports_tools = false
-supports_vision = false
-supports_streaming = false
-aliases = ["seedream-3.0"]
-
-# $0.0300 per image
-[[models]]
-id = "seedream-4-0-250828"
-display_name = "Seedream 4.0"
-tier = "smart"
-modality = "image"
-input_cost_per_m = 0.0
-output_cost_per_m = 0.0
-supports_tools = false
-supports_vision = false
-supports_streaming = false
-aliases = ["seedream-4.0"]
 
 # $0.0400 per image
 [[models]]
@@ -222,58 +144,6 @@ aliases = ["seedream-5.0-lite", "seedream-5.0"]
 
 # ── Video generation models ────────────────────────────────────────────
 # Billed per-K tokens (encoded video duration). Real per-K rates in comment.
-
-# $0.0018/K (text-to-video, with-cache rate $0.0009/K)
-[[models]]
-id = "seedance-1-0-lite-t2v-250428"
-display_name = "Seedance 1.0 Lite (text-to-video)"
-tier = "fast"
-modality = "video"
-input_cost_per_m = 0.0
-output_cost_per_m = 0.0
-supports_tools = false
-supports_vision = false
-supports_streaming = false
-aliases = ["seedance-1.0-lite-t2v"]
-
-# $0.0018/K (image-to-video, with-cache rate $0.0009/K)
-[[models]]
-id = "seedance-1-0-lite-i2v-250428"
-display_name = "Seedance 1.0 Lite (image-to-video)"
-tier = "fast"
-modality = "video"
-input_cost_per_m = 0.0
-output_cost_per_m = 0.0
-supports_tools = false
-supports_vision = true
-supports_streaming = false
-aliases = ["seedance-1.0-lite-i2v"]
-
-# $0.0025/K (image-to-video / text-to-video)
-[[models]]
-id = "seedance-1-0-pro-250528"
-display_name = "Seedance 1.0 Pro"
-tier = "smart"
-modality = "video"
-input_cost_per_m = 0.0
-output_cost_per_m = 0.0
-supports_tools = false
-supports_vision = true
-supports_streaming = false
-aliases = ["seedance-1.0-pro"]
-
-# $0.0010/K (image-to-video / text-to-video, with-cache rate $0.0005/K)
-[[models]]
-id = "seedance-1-0-pro-fast-251015"
-display_name = "Seedance 1.0 Pro Fast"
-tier = "fast"
-modality = "video"
-input_cost_per_m = 0.0
-output_cost_per_m = 0.0
-supports_tools = false
-supports_vision = true
-supports_streaming = false
-aliases = ["seedance-1.0-pro-fast"]
 
 # $0.0024/K (with audio) / $0.0012/K (without audio); with-cache half the rate
 [[models]]
