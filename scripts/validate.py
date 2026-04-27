@@ -34,7 +34,7 @@ except ImportError:
         sys.exit(1)
 
 VALID_TIERS = {"frontier", "smart", "balanced", "fast", "local"}
-VALID_MODALITIES = {"text", "image", "audio"}
+VALID_MODALITIES = {"text", "image", "audio", "video", "music"}
 VALID_HAND_CATEGORIES = {
     "communication", "content", "data", "development",
     "devops", "finance", "productivity", "research", "social",

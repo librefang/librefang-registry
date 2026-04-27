@@ -75,8 +75,8 @@ example = "smart"
 [provider.sections.models.fields.modality]
 type = "string"
 required = false
-description = "Model modality. 'text' (default) is a chat/LLM; 'image' is an image-generation model (context_window/max_output_tokens become optional); 'audio' is a speech model."
-options = ["text", "image", "audio"]
+description = "Model modality. 'text' (default) is a chat/LLM; 'image' is an image-generation model; 'audio' is a speech / TTS model; 'video' is a video-generation model; 'music' is a music / lyrics generation model. For non-text modalities, context_window / max_output_tokens are optional and input_cost_per_m / output_cost_per_m may be 0 when the model is billed per call."
+options = ["text", "image", "audio", "video", "music"]
 default = "text"
 example = "text"
 
