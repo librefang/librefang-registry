@@ -1,9 +1,15 @@
 # microsoft — auto-generated from OpenRouter API
+#
+# This entry is GitHub Models / Azure AI Inference (https://models.inference.ai.azure.com),
+# distinct from the `github-copilot` IDE-subscription product even though both
+# physically accept a GitHub Personal Access Token. Each now has its own env so
+# users with only one product configured don't see the other appear in the model
+# picker. See librefang/librefang#3278.
 
 [provider]
 id = "microsoft"
 display_name = "Microsoft"
-api_key_env = "GITHUB_TOKEN"
+api_key_env = "GITHUB_MODELS_TOKEN"
 base_url = "https://models.inference.ai.azure.com"
 key_required = true
 
