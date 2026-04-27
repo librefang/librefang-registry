@@ -4,7 +4,7 @@
 [provider]
 id = "zai_coding"
 display_name = "Z.AI Coding"
-api_key_env = "ZHIPU_API_KEY"
+api_key_env = "ZAI_CODING_API_KEY"
 base_url = "https://api.z.ai/api/coding/paas/v4"
 key_required = true
 
