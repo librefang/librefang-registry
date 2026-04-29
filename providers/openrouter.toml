@@ -517,3 +517,33 @@ max_output_tokens = 16384
 input_cost_per_m = 0.1
 output_cost_per_m = 0.1
 supports_streaming = true
+
+[[models]]
+id = "openrouter/inclusionai/ling-2.6-flash"
+display_name = "inclusionAI: Ling-2.6-flash (OpenRouter)"
+tier = "fast"
+context_window = 262144
+max_output_tokens = 32768
+input_cost_per_m = 0.08
+output_cost_per_m = 0.24
+supports_streaming = true
+
+[[models]]
+id = "openrouter/poolside/laguna-m.1:free"
+display_name = "Poolside: Laguna M.1 (free) (OpenRouter)"
+tier = "fast"
+context_window = 131072
+max_output_tokens = 8192
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
+supports_streaming = true
+
+[[models]]
+id = "openrouter/poolside/laguna-xs.2:free"
+display_name = "Poolside: Laguna XS.2 (free) (OpenRouter)"
+tier = "fast"
+context_window = 131072
+max_output_tokens = 8192
+input_cost_per_m = 0.0
+output_cost_per_m = 0.0
+supports_streaming = true
