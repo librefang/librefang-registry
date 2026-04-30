@@ -1,6 +1,9 @@
 ---
 name: prompt-engineer
 description: "Prompt engineering expert for chain-of-thought, few-shot learning, evaluation, and LLM optimization"
+version: 0.1.0
+author: librefang
+tags: [ai, prompting]
 ---
 # Prompt Engineering Expertise
 

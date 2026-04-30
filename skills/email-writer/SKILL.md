@@ -1,6 +1,9 @@
 ---
 name: email-writer
 description: "Professional email writing expert for tone, structure, clarity, and business communication"
+version: 0.1.0
+author: librefang
+tags: [productivity, writing]
 ---
 # Professional Email Writer
 

@@ -1,6 +1,9 @@
 ---
 name: web-search
 description: Web search and research specialist for finding and synthesizing information
+version: 0.1.0
+author: librefang
+tags: [productivity, search]
 ---
 # Web Search and Research Specialist
 

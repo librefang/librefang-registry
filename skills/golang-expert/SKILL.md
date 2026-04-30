@@ -1,6 +1,9 @@
 ---
 name: golang-expert
 description: "Go programming expert for goroutines, channels, interfaces, modules, and concurrency patterns"
+version: 0.1.0
+author: librefang
+tags: [coding, language]
 ---
 # Go Programming Expertise
 

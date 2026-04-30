@@ -1,6 +1,9 @@
 ---
 name: sql-analyst
 description: SQL query expert for optimization, schema design, and data analysis
+version: 0.1.0
+author: librefang
+tags: [data, sql]
 ---
 # SQL Query Expert
 

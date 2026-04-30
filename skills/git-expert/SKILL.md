@@ -1,6 +1,9 @@
 ---
 name: git-expert
 description: Git operations expert for branching, rebasing, conflicts, and workflows
+version: 0.1.0
+author: librefang
+tags: [git, devtools]
 ---
 # Git Operations Expert
 

@@ -1,6 +1,9 @@
 ---
 name: confluence
 description: "Confluence wiki expert for page structure, spaces, macros, and content organization"
+version: 0.1.0
+author: librefang
+tags: [productivity, documentation]
 ---
 # Confluence Expert
 

@@ -1,6 +1,9 @@
 ---
 name: pdf-reader
 description: PDF content extraction and analysis specialist
+version: 0.1.0
+author: librefang
+tags: [productivity, documents]
 ---
 # PDF Content Extraction and Analysis
 

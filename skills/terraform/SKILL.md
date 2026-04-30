@@ -1,6 +1,9 @@
 ---
 name: terraform
 description: Terraform IaC expert for providers, modules, state management, and planning
+version: 0.1.0
+author: librefang
+tags: [devops, iac, infra]
 ---
 # Terraform IaC Expert
 

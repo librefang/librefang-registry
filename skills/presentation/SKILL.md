@@ -1,6 +1,9 @@
 ---
 name: presentation
 description: "Presentation expert for slide structure, storytelling, visual design, and audience engagement"
+version: 0.1.0
+author: librefang
+tags: [productivity, presentation]
 ---
 # Presentation Expert
 

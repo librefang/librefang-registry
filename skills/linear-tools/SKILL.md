@@ -1,6 +1,9 @@
 ---
 name: linear-tools
 description: "Linear project management expert for issues, cycles, projects, and workflow automation"
+version: 0.1.0
+author: librefang
+tags: [productivity, project-management]
 ---
 # Linear Project Management Expertise
 

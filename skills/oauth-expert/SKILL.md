@@ -1,6 +1,9 @@
 ---
 name: oauth-expert
 description: "OAuth 2.0 and OpenID Connect expert for authorization flows, PKCE, and token management"
+version: 0.1.0
+author: librefang
+tags: [security, authentication]
 ---
 # OAuth and OpenID Connect Expert
 

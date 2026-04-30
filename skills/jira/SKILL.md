@@ -1,6 +1,9 @@
 ---
 name: jira
 description: Jira project management expert for issues, sprints, workflows, and reporting
+version: 0.1.0
+author: librefang
+tags: [productivity, project-management]
 ---
 # Jira Project Management Expert
 

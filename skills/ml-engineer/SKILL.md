@@ -1,6 +1,9 @@
 ---
 name: ml-engineer
 description: "Machine learning engineer expert for PyTorch, scikit-learn, model evaluation, and MLOps"
+version: 0.1.0
+author: librefang
+tags: [ai, ml]
 ---
 # Machine Learning Engineer
 

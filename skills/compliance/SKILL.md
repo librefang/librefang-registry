@@ -1,6 +1,9 @@
 ---
 name: compliance
 description: "Compliance expert for SOC 2, GDPR, HIPAA, PCI-DSS, and security frameworks"
+version: 0.1.0
+author: librefang
+tags: [security, governance]
 ---
 # Compliance Expert
 

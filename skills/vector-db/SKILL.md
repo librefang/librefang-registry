@@ -1,6 +1,9 @@
 ---
 name: vector-db
 description: "Vector database expert for embeddings, similarity search, RAG patterns, and indexing strategies"
+version: 0.1.0
+author: librefang
+tags: [data, ai, search]
 ---
 # Vector Database Expert
 

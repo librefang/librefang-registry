@@ -1,6 +1,9 @@
 ---
 name: wasm-expert
 description: "WebAssembly expert for WASI, component model, Rust/C compilation, and browser integration"
+version: 0.1.0
+author: librefang
+tags: [coding, wasm]
 ---
 # WebAssembly Expert
 

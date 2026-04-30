@@ -1,6 +1,9 @@
 ---
 name: sysadmin
 description: System administration expert for Linux, macOS, Windows, services, and monitoring
+version: 0.1.0
+author: librefang
+tags: [devops, linux, sysadmin]
 ---
 # System Administration Expert
 

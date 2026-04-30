@@ -1,6 +1,9 @@
 ---
 name: redis-expert
 description: "Redis expert for data structures, caching patterns, Lua scripting, and cluster operations"
+version: 0.1.0
+author: librefang
+tags: [data, cache, database]
 ---
 # Redis Data Store Expertise
 

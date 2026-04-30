@@ -1,6 +1,9 @@
 ---
 name: graphql-expert
 description: "GraphQL expert for schema design, resolvers, subscriptions, and performance optimization"
+version: 0.1.0
+author: librefang
+tags: [api, graphql]
 ---
 # GraphQL Expert
 

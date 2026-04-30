@@ -1,6 +1,9 @@
 ---
 name: helm
 description: "Helm chart expert for Kubernetes package management, templating, and dependency management"
+version: 0.1.0
+author: librefang
+tags: [devops, kubernetes]
 ---
 # Helm Chart Engineering
 
