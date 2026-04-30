@@ -1,6 +1,9 @@
 ---
 name: rust-expert
 description: "Rust programming expert for ownership, lifetimes, async/await, traits, and unsafe code"
+version: 0.1.0
+author: librefang
+tags: [coding, language]
 ---
 # Rust Programming Expertise
 

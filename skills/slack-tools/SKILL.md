@@ -1,6 +1,9 @@
 ---
 name: slack-tools
 description: Slack workspace management and automation specialist
+version: 0.1.0
+author: librefang
+tags: [productivity, communication]
 ---
 # Slack Workspace Management and Automation
 

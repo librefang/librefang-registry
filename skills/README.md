@@ -25,13 +25,28 @@ skills/
 ---
 name: rust-expert
 description: "Rust programming expert for ownership, lifetimes, async/await, traits, and unsafe code"
+version: 0.1.0
+author: librefang
+tags: [coding, language]
 ---
 # Rust Programming Expertise
 
 You are an expert Rust developer with deep understanding of the ownership system...
 ```
 
-The frontmatter must contain `name` and `description`. The Markdown body becomes the injected prompt.
+The frontmatter must contain `name` and `description`. The other keys are
+optional and the registry parser tolerates their absence:
+
+- `version` (default `null`) — semver string. Bump per content update.
+- `author`  (default `null`) — owner of the prompt body. Use `librefang`
+  for first-party skills under this registry.
+- `tags`    (default `[]`)  — inline YAML list. The dashboard's catalog
+  surfaces these as filter chips and as visible tags on each skill
+  card. Standard buckets: `coding`, `git`, `web`, `devops`, `browser`,
+  `ai`, `data`, `productivity`, `security`, `cli`. Add domain-specific
+  follow-ups freely (e.g. `[devops, kubernetes, k8s]`).
+
+The Markdown body after the closing `---` becomes the injected prompt.
 
 ### skill.toml format (optional)
 
@@ -188,7 +203,7 @@ librefang skill test ./skills/meeting-agenda \
 
 ## Adding a New Skill
 
-1. Create `skills/<name>/SKILL.md` with frontmatter (`name`, `description`) and the prompt body.
+1. Create `skills/<name>/SKILL.md` with frontmatter (`name`, `description`, plus optional `version`, `author`, `tags`) and the prompt body.
 2. If you need `[runtime]`, `[input]`, or structured metadata, add `skills/<name>/skill.toml`.
 3. Add implementation files (`main.py`, etc.) when `runtime` is not `promptonly`.
 4. Run `python scripts/validate.py`.

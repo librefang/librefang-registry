@@ -1,6 +1,9 @@
 ---
 name: postgres-expert
 description: "PostgreSQL expert for query optimization, indexing, extensions, and database administration"
+version: 0.1.0
+author: librefang
+tags: [data, database, sql]
 ---
 # PostgreSQL Database Expertise
 

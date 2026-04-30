@@ -1,6 +1,9 @@
 ---
 name: azure
 description: "Microsoft Azure expert for az CLI, AKS, App Service, and cloud infrastructure"
+version: 0.1.0
+author: librefang
+tags: [devops, cloud, infra]
 ---
 # Microsoft Azure Cloud Expertise
 

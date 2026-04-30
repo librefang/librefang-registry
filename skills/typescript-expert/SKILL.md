@@ -1,6 +1,9 @@
 ---
 name: typescript-expert
 description: "TypeScript expert for type system, generics, utility types, and strict mode patterns"
+version: 0.1.0
+author: librefang
+tags: [coding, language]
 ---
 # TypeScript Type System Mastery
 

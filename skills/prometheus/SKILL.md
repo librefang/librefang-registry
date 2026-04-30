@@ -1,6 +1,9 @@
 ---
 name: prometheus
 description: "Prometheus monitoring expert for PromQL, alerting rules, Grafana dashboards, and observability"
+version: 0.1.0
+author: librefang
+tags: [devops, monitoring, observability]
 ---
 # Prometheus Monitoring and Observability
 

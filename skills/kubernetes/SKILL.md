@@ -1,6 +1,9 @@
 ---
 name: kubernetes
 description: Kubernetes operations expert for kubectl, pods, deployments, and debugging
+version: 0.1.0
+author: librefang
+tags: [devops, containers, k8s]
 ---
 # Kubernetes Operations Expert
 

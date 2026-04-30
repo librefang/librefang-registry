@@ -1,6 +1,9 @@
 ---
 name: shell-scripting
 description: "Shell scripting expert for Bash, POSIX compliance, error handling, and automation"
+version: 0.1.0
+author: librefang
+tags: [cli, shell, scripting]
 ---
 # Shell Scripting Expertise
 

@@ -1,6 +1,9 @@
 ---
 name: code-reviewer
 description: Code review specialist focused on patterns, bugs, security, and performance
+version: 0.1.0
+author: librefang
+tags: [coding, quality]
 ---
 # Code Review Specialist
 

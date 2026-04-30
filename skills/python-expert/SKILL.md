@@ -1,6 +1,9 @@
 ---
 name: python-expert
 description: "Python expert for stdlib, packaging, type hints, async/await, and performance optimization"
+version: 0.1.0
+author: librefang
+tags: [coding, language]
 ---
 # Python Programming Expertise
 

@@ -1,6 +1,9 @@
 ---
 name: ansible
 description: "Ansible automation expert for playbooks, roles, inventories, and infrastructure management"
+version: 0.1.0
+author: librefang
+tags: [devops, automation, infra]
 ---
 # Ansible Infrastructure Automation
 

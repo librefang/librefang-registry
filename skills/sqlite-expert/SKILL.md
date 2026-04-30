@@ -1,6 +1,9 @@
 ---
 name: sqlite-expert
 description: "SQLite expert for WAL mode, query optimization, embedded patterns, and advanced features"
+version: 0.1.0
+author: librefang
+tags: [data, database, sql]
 ---
 # SQLite Expert
 

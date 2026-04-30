@@ -1,6 +1,9 @@
 ---
 name: mongodb
 description: MongoDB operations expert for queries, aggregation pipelines, indexes, and schema design
+version: 0.1.0
+author: librefang
+tags: [data, database, nosql]
 ---
 # MongoDB Operations Expert
 

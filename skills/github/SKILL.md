@@ -1,6 +1,9 @@
 ---
 name: github
 description: GitHub operations expert for PRs, issues, code review, Actions, and gh CLI
+version: 0.1.0
+author: librefang
+tags: [git, devtools]
 ---
 # GitHub Operations Expert
 

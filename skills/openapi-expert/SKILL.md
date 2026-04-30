@@ -1,6 +1,9 @@
 ---
 name: openapi-expert
 description: "OpenAPI/Swagger expert for API specification design, validation, and code generation"
+version: 0.1.0
+author: librefang
+tags: [api, documentation]
 ---
 # OpenAPI Expert
 

@@ -1,6 +1,9 @@
 ---
 name: api-tester
 description: API testing expert for curl, REST, GraphQL, authentication, and debugging
+version: 0.1.0
+author: librefang
+tags: [development, testing, api]
 ---
 # API Testing Expert
 

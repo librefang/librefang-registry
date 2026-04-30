@@ -1,6 +1,9 @@
 ---
 name: react-expert
 description: "React expert for hooks, state management, Server Components, and performance optimization"
+version: 0.1.0
+author: librefang
+tags: [web, frontend, react]
 ---
 # React Development Expertise
 

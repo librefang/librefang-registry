@@ -1,6 +1,9 @@
 ---
 name: llm-finetuning
 description: "LLM fine-tuning expert for LoRA, QLoRA, dataset preparation, and training optimization"
+version: 0.1.0
+author: librefang
+tags: [ai, ml, training]
 ---
 # LLM Fine-Tuning Expert
 

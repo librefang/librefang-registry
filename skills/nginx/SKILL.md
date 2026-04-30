@@ -1,6 +1,9 @@
 ---
 name: nginx
 description: "Nginx configuration expert for reverse proxy, load balancing, TLS, and performance tuning"
+version: 0.1.0
+author: librefang
+tags: [devops, web-server]
 ---
 # Nginx Configuration and Performance
 

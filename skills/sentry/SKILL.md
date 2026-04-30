@@ -1,6 +1,9 @@
 ---
 name: sentry
 description: Sentry error tracking and debugging specialist
+version: 0.1.0
+author: librefang
+tags: [devops, monitoring, errors]
 ---
 # Sentry Error Tracking and Debugging
 

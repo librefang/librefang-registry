@@ -1,6 +1,9 @@
 ---
 name: interview-prep
 description: "Technical interview preparation expert for algorithms, system design, and behavioral questions"
+version: 0.1.0
+author: librefang
+tags: [productivity, career]
 ---
 # Technical Interview Preparation Expert
 

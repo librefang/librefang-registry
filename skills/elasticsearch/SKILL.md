@@ -1,6 +1,9 @@
 ---
 name: elasticsearch
 description: "Elasticsearch expert for queries, mappings, aggregations, index management, and cluster operations"
+version: 0.1.0
+author: librefang
+tags: [data, search]
 ---
 # Elasticsearch Expert
 

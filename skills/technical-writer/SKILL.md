@@ -1,6 +1,9 @@
 ---
 name: technical-writer
 description: "Technical writing expert for API docs, READMEs, ADRs, and developer documentation"
+version: 0.1.0
+author: librefang
+tags: [productivity, writing]
 ---
 # Technical Writing Expertise
 

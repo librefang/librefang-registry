@@ -1,6 +1,9 @@
 ---
 name: data-analyst
 description: Data analysis expert for statistics, visualization, pandas, and exploration
+version: 0.1.0
+author: librefang
+tags: [data, analytics]
 ---
 # Data Analysis Expert
 

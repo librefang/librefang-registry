@@ -1,6 +1,9 @@
 ---
 name: linux-networking
 description: "Linux networking expert for iptables, nftables, routing, DNS, and network troubleshooting"
+version: 0.1.0
+author: librefang
+tags: [devops, networking, linux]
 ---
 # Linux Networking Expert
 

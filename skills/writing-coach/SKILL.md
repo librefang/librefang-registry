@@ -1,6 +1,9 @@
 ---
 name: writing-coach
 description: Writing improvement specialist for grammar, style, clarity, and structure
+version: 0.1.0
+author: librefang
+tags: [productivity, writing]
 ---
 # Writing Coach
 

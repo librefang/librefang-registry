@@ -1,6 +1,9 @@
 ---
 name: nextjs-expert
 description: "Next.js expert for App Router, SSR/SSG, API routes, middleware, and deployment"
+version: 0.1.0
+author: librefang
+tags: [web, frontend, react]
 ---
 # Next.js Expert
 

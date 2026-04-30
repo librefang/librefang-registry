@@ -1,6 +1,9 @@
 ---
 name: figma-expert
 description: "Figma design expert for components, auto-layout, design systems, and developer handoff"
+version: 0.1.0
+author: librefang
+tags: [productivity, design]
 ---
 # Figma Expert
 

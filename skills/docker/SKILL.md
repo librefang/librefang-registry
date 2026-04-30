@@ -1,6 +1,9 @@
 ---
 name: docker
 description: Docker expert for containers, Compose, Dockerfiles, and debugging
+version: 0.1.0
+author: librefang
+tags: [devops, containers]
 ---
 # Docker Expert
 

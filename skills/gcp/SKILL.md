@@ -1,6 +1,9 @@
 ---
 name: gcp
 description: "Google Cloud Platform expert for gcloud CLI, GKE, Cloud Run, and managed services"
+version: 0.1.0
+author: librefang
+tags: [devops, cloud, infra]
 ---
 # Google Cloud Platform Expertise
 

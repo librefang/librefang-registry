@@ -1,6 +1,9 @@
 ---
 name: data-pipeline
 description: "Data pipeline expert for ETL, Apache Spark, Airflow, dbt, and data quality"
+version: 0.1.0
+author: librefang
+tags: [data, etl, pipeline]
 ---
 # Data Pipeline Expert
 

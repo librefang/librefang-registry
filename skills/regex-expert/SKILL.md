@@ -1,6 +1,9 @@
 ---
 name: regex-expert
 description: Regular expression expert for crafting, debugging, and explaining patterns
+version: 0.1.0
+author: librefang
+tags: [coding, regex]
 ---
 # Regular Expression Expert
 

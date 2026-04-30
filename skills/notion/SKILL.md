@@ -1,6 +1,9 @@
 ---
 name: notion
 description: Notion workspace management and content creation specialist
+version: 0.1.0
+author: librefang
+tags: [productivity, documentation]
 ---
 # Notion Workspace Management and Content Creation
 

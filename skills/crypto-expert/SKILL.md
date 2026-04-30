@@ -1,6 +1,9 @@
 ---
 name: crypto-expert
 description: "Cryptography expert for TLS, symmetric/asymmetric encryption, hashing, and key management"
+version: 0.1.0
+author: librefang
+tags: [security, cryptography]
 ---
 # Applied Cryptography Expertise
 

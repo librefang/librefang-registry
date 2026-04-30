@@ -1,6 +1,9 @@
 ---
 name: project-manager
 description: "Project management expert for Agile, estimation, risk management, and stakeholder communication"
+version: 0.1.0
+author: librefang
+tags: [productivity, project-management]
 ---
 # Project Management Expert
 
