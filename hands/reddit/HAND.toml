@@ -5,6 +5,9 @@ description = "Autonomous Reddit manager — monitors subreddits, posts content,
 
 category = "communication"
 icon = "lucide:megaphone"
+skills = ["writing-coach", "web-search"]
+skills_disabled = false
+mcp_servers = ["_none"]
 tools = [
   "shell_exec",
   "file_read",

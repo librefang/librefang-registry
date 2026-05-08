@@ -5,6 +5,9 @@ description = "AI media studio — generates images, videos, music, and speech f
 
 category = "content"
 icon = "lucide:palette"
+skills = ["_none"]
+skills_disabled = true
+mcp_servers = ["_none"]
 tools = [
   "image_generate",
   "video_generate",

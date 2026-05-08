@@ -5,6 +5,9 @@ description = "Autonomous future predictor — collects signals, builds reasonin
 
 category = "data"
 icon = "lucide:sparkles"
+skills = ["web-search", "data-analyst"]
+skills_disabled = false
+mcp_servers = ["_none"]
 
 tools = [
   "shell_exec",

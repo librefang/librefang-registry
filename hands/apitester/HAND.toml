@@ -24,6 +24,10 @@ tools = [
   "event_publish",
 ]
 
+skills = ["api-tester", "shell-scripting", "openapi-expert"]
+skills_disabled = false
+mcp_servers = ["_none"]
+
 [[requires]]
 key = "curl"
 label = "curl must be installed"

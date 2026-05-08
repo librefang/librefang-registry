@@ -6,6 +6,9 @@ description = "Autonomous Twitter/X manager — content creation, scheduled post
 category = "communication"
 tags = ["popular"]
 icon = "lucide:twitter"
+skills = ["writing-coach", "web-search"]
+skills_disabled = false
+mcp_servers = ["_none"]
 tools = [
   "shell_exec",
   "file_read",

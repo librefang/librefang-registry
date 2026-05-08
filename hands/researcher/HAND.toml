@@ -6,6 +6,9 @@ description = "Autonomous deep researcher — exhaustive investigation, cross-re
 category = "productivity"
 tags = ["popular"]
 icon = "lucide:flask-conical"
+skills = ["web-search"]
+skills_disabled = false
+mcp_servers = ["puppeteer"]
 
 tools = [
   "shell_exec",

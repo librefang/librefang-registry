@@ -6,6 +6,9 @@ description = "Autonomous lead generation — discovers, enriches, and delivers 
 category = "data"
 tags = ["popular"]
 icon = "lucide:bar-chart-3"
+skills = ["web-search", "email-writer"]
+skills_disabled = false
+mcp_servers = ["_none"]
 
 tools = [
   "shell_exec",

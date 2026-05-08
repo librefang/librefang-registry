@@ -6,6 +6,9 @@ description = "Autonomous market intelligence and trading engine — multi-signa
 category = "data"
 tags = ["popular"]
 icon = "lucide:trending-up"
+skills = ["web-search", "data-analyst", "python-expert"]
+skills_disabled = false
+mcp_servers = ["_none"]
 
 tools = [
   "shell_exec",

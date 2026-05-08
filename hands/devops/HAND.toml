@@ -5,6 +5,9 @@ description = "Autonomous DevOps engineer — CI/CD management, infrastructure m
 
 category = "development"
 icon = "lucide:hard-hat"
+skills = ["docker", "kubernetes", "ci-cd", "shell-scripting", "git-expert", "github", "terraform", "prometheus", "helm"]
+skills_disabled = false
+mcp_servers = ["git", "filesystem"]
 
 tools = [
   "shell_exec",

@@ -6,6 +6,9 @@ description = "Autonomous intelligence collector — monitors any target continu
 category = "data"
 tags = ["popular"]
 icon = "lucide:search"
+skills = ["web-search"]
+skills_disabled = false
+mcp_servers = ["puppeteer"]
 
 tools = [
   "shell_exec",

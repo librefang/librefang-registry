@@ -31,10 +31,11 @@ tools = [
 ]
 
 # MCP servers: all agents can access these (per-agent mcp_servers further restricts)
-mcp_servers = ["github"]
+mcp_servers = ["git", "filesystem", "github"]
 
 # Skills: all available (agents can restrict individually)
-skills = []
+skills = ["git-expert", "github", "code-reviewer", "ci-cd", "shell-scripting", "python-expert"]
+skills_disabled = false
 
 # Plugins: useful for dev workflow
 allowed_plugins = ["todo-tracker", "auto-summarizer", "episodic-memory"]

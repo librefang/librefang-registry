@@ -23,6 +23,10 @@ tools = [
   "event_publish",
 ]
 
+skills = ["data-analyst", "sql-analyst", "python-expert", "data-pipeline"]
+skills_disabled = false
+mcp_servers = ["_none"]
+
 [routing]
 aliases = [
   "data analysis",

@@ -5,6 +5,9 @@ description = "Autonomous strategy analyst — market research, competitive anal
 
 category = "productivity"
 icon = "lucide:target"
+skills = ["web-search", "data-analyst", "project-manager"]
+skills_disabled = false
+mcp_servers = ["_none"]
 
 tools = [
   "shell_exec",

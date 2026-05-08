@@ -17,6 +17,9 @@ tools = [
   "memory_recall",
 ]
 
+skills_disabled = true
+mcp_servers = ["_none"]
+
 [routing]
 aliases = [
   "clip video",

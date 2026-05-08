@@ -5,6 +5,9 @@ description = "Autonomous LinkedIn manager — profile optimization, content cre
 
 category = "communication"
 icon = "lucide:briefcase"
+skills = ["writing-coach", "web-search"]
+skills_disabled = false
+mcp_servers = ["_none"]
 tools = [
   "shell_exec",
   "file_read",

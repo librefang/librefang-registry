@@ -28,6 +28,10 @@ tools = [
   "file_read",
 ]
 
+skills = ["web-search"]
+skills_disabled = false
+mcp_servers = ["puppeteer"]
+
 [routing]
 aliases = [
   "open website",
