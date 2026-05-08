@@ -4,6 +4,11 @@ description = "System architect. Designs software architectures, evaluates trade
 author = "librefang"
 module = "builtin:chat"
 tags = ["architecture", "design", "planning"]
+profile = "Research"
+skills = ["web-search", "openapi-expert", "graphql-expert", "project-manager"]
+skills_disabled = false
+mcp_servers = ["_none"]
+max_history_messages = 20
 
 [metadata.routing]
 aliases = [
@@ -47,6 +52,7 @@ api_key_env = "GROQ_API_KEY"
 
 [resources]
 max_llm_tokens_per_hour = 200000
+max_cost_per_hour_usd = 1.00
 
 [capabilities]
 tools = [

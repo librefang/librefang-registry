@@ -3,6 +3,11 @@ version = "0.4.3-beta3-20260314"
 description = "DevOps lead. Manages CI/CD, infrastructure, deployments, monitoring, and incident response."
 author = "librefang"
 module = "builtin:chat"
+profile = "Automation"
+skills = ["docker", "kubernetes", "ci-cd", "terraform", "shell-scripting", "git-expert", "github", "prometheus", "nginx", "linux-networking", "sysadmin", "helm", "ansible"]
+skills_disabled = false
+mcp_servers = ["git", "filesystem"]
+max_history_messages = 12
 
 [metadata.routing]
 aliases = [
@@ -44,7 +49,7 @@ When designing pipelines:
 5. Automated rollback on failure"""
 
 [resources]
-max_llm_tokens_per_hour = 150000
+max_llm_tokens_per_hour = 500000
 
 [capabilities]
 tools = [

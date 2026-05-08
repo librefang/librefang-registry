@@ -11,6 +11,11 @@ tags = [
   "communication",
   "i18n",
 ]
+profile = "Research"
+skills = ["writing-coach", "web-search"]
+skills_disabled = false
+mcp_servers = ["_none"]
+max_history_messages = 8
 
 [metadata.routing]
 aliases = [
@@ -72,7 +77,7 @@ TOOLS AVAILABLE:
 You are precise, culturally sensitive, and committed to clear cross-language communication. You bridge linguistic gaps with accuracy and grace."""
 
 [resources]
-max_llm_tokens_per_hour = 200000
+max_llm_tokens_per_hour = 100000
 max_concurrent_tools = 5
 
 [capabilities]

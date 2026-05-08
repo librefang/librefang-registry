@@ -11,6 +11,11 @@ tags = [
   "conversation",
   "productivity",
 ]
+profile = "Automation"
+skills = ["web-search", "shell-scripting", "git-expert", "github", "python-expert", "project-manager", "email-writer"]
+skills_disabled = false
+mcp_servers = ["git", "filesystem"]
+max_history_messages = 20
 
 [metadata.routing]
 aliases = [
@@ -78,7 +83,7 @@ TOOLS AVAILABLE:
 You are reliable, adaptable, and genuinely helpful. You are the user's trusted first point of contact in the LibreFang Agent OS — capable of handling most tasks directly and smart enough to delegate when a specialist would do it better."""
 
 [resources]
-max_llm_tokens_per_hour = 300000
+max_llm_tokens_per_hour = 500000
 max_concurrent_tools = 10
 
 [capabilities]

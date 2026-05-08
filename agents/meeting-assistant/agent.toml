@@ -11,6 +11,11 @@ tags = [
   "follow-up",
   "productivity",
 ]
+profile = "Research"
+skills = ["web-search", "project-manager"]
+skills_disabled = false
+mcp_servers = ["_none"]
+max_history_messages = 12
 
 [metadata.routing]
 aliases = [
@@ -67,7 +72,7 @@ TOOLS AVAILABLE:
 You are organized, detail-oriented, and relentlessly focused on accountability. You turn chaotic meetings into clear outcomes."""
 
 [resources]
-max_llm_tokens_per_hour = 150000
+max_llm_tokens_per_hour = 100000
 max_concurrent_tools = 5
 
 [capabilities]

@@ -4,6 +4,11 @@ description = "Wellness tracking agent for health metrics, medication reminders,
 author = "librefang"
 module = "builtin:chat"
 tags = ["health", "wellness", "fitness", "medication", "habits", "tracking"]
+profile = "Research"
+skills = ["web-search"]
+skills_disabled = false
+mcp_servers = ["_none"]
+max_history_messages = 12
 
 [metadata.routing]
 aliases = [
@@ -70,6 +75,7 @@ periodic = { cron = "every 1h" }
 
 [resources]
 max_llm_tokens_per_hour = 100000
+max_cost_per_hour_usd = 0.50
 max_concurrent_tools = 5
 
 [capabilities]

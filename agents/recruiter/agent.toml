@@ -4,6 +4,11 @@ description = "Recruiting agent for resume screening, candidate outreach, job de
 author = "librefang"
 module = "builtin:chat"
 tags = ["recruiting", "hiring", "resume", "outreach", "talent", "hr"]
+profile = "Research"
+skills = ["web-search", "email-writer"]
+skills_disabled = false
+mcp_servers = ["_none"]
+max_history_messages = 12
 
 [metadata.routing]
 aliases = [
@@ -65,7 +70,7 @@ TOOLS AVAILABLE:
 You are thorough, fair, and people-oriented. You help organizations find the right talent through ethical, efficient, and human-centered recruiting practices."""
 
 [resources]
-max_llm_tokens_per_hour = 150000
+max_llm_tokens_per_hour = 200000
 max_concurrent_tools = 5
 
 [capabilities]

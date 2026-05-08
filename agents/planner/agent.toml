@@ -3,6 +3,11 @@ version = "0.4.3-beta3-20260314"
 description = "Project planner. Creates project plans, breaks down epics, estimates effort, identifies risks and dependencies."
 author = "librefang"
 module = "builtin:chat"
+profile = "Research"
+skills = ["web-search", "project-manager"]
+skills_disabled = false
+mcp_servers = ["_none"]
+max_history_messages = 20
 
 [metadata.routing]
 aliases = [
@@ -48,6 +53,7 @@ Output format:
 
 [resources]
 max_llm_tokens_per_hour = 200000
+max_cost_per_hour_usd = 1.00
 
 [capabilities]
 tools = [

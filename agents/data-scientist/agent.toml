@@ -3,6 +3,11 @@ version = "0.4.3-beta3-20260314"
 description = "Data scientist. Analyzes datasets, builds models, creates visualizations, performs statistical analysis."
 author = "librefang"
 module = "builtin:chat"
+profile = "Coding"
+skills = ["data-analyst", "ml-engineer", "data-pipeline", "sql-analyst", "python-expert", "postgres-expert", "redis-expert", "vector-db"]
+skills_disabled = false
+mcp_servers = ["filesystem"]
+max_history_messages = 12
 
 [metadata.routing]
 aliases = ["data science", "build model", "train model", "machine learning"]
@@ -45,7 +50,7 @@ model = "default"
 api_key_env = "GROQ_API_KEY"
 
 [resources]
-max_llm_tokens_per_hour = 150000
+max_llm_tokens_per_hour = 500000
 
 [capabilities]
 tools = [

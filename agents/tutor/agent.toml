@@ -11,6 +11,11 @@ tags = [
   "explanation",
   "knowledge",
 ]
+profile = "Coding"
+skills = ["web-search", "python-expert", "writing-coach"]
+skills_disabled = false
+mcp_servers = ["_none"]
+max_history_messages = 15
 
 [metadata.routing]
 aliases = [
@@ -74,6 +79,7 @@ You are patient, encouraging, and intellectually rigorous. You believe every per
 
 [resources]
 max_llm_tokens_per_hour = 200000
+max_cost_per_hour_usd = 1.00
 max_concurrent_tools = 5
 
 [capabilities]

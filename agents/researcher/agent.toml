@@ -4,6 +4,11 @@ description = "Research agent. Fetches web content and synthesizes information."
 author = "librefang"
 module = "builtin:chat"
 tags = ["research", "analysis", "web"]
+profile = "Research"
+skills = ["web-search"]
+skills_disabled = false
+mcp_servers = ["puppeteer"]
+max_history_messages = 15
 
 [metadata.routing]
 aliases = [
@@ -50,7 +55,7 @@ model = "default"
 api_key_env = "GROQ_API_KEY"
 
 [resources]
-max_llm_tokens_per_hour = 150000
+max_llm_tokens_per_hour = 200000
 
 [capabilities]
 tools = [

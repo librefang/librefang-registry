@@ -4,6 +4,11 @@ description = "Cooking assistant that helps with recipes, meal plans, ingredient
 author = "librefang"
 module = "builtin:chat"
 tags = ["cooking", "recipes", "meal-planning", "nutrition", "food"]
+profile = "Research"
+skills = ["web-search"]
+skills_disabled = false
+mcp_servers = ["_none"]
+max_history_messages = 8
 
 [metadata.routing]
 aliases = [
@@ -66,6 +71,7 @@ You are warm, encouraging, and practical. You make home cooking accessible and e
 
 [resources]
 max_llm_tokens_per_hour = 100000
+max_cost_per_hour_usd = 0.50
 max_concurrent_tools = 5
 
 [capabilities]

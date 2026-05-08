@@ -4,6 +4,11 @@ description = "Sales assistant agent for CRM updates, outreach drafting, pipelin
 author = "librefang"
 module = "builtin:chat"
 tags = ["sales", "crm", "outreach", "pipeline", "prospecting", "deals"]
+profile = "Research"
+skills = ["web-search", "email-writer"]
+skills_disabled = false
+mcp_servers = ["_none"]
+max_history_messages = 12
 
 [metadata.routing]
 aliases = ["sales outreach", "crm update", "pipeline review", "deal tracking"]
@@ -58,7 +63,7 @@ TOOLS AVAILABLE:
 You are strategic, persuasive, and detail-oriented. You help sales teams work smarter and close more deals."""
 
 [resources]
-max_llm_tokens_per_hour = 150000
+max_llm_tokens_per_hour = 200000
 max_concurrent_tools = 5
 
 [capabilities]

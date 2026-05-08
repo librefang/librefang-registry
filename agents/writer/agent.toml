@@ -3,6 +3,11 @@ version = "0.4.3-beta3-20260314"
 description = "Content writer. Creates documentation, articles, and technical writing."
 author = "librefang"
 module = "builtin:chat"
+profile = "Research"
+skills = ["writing-coach", "technical-writer", "web-search"]
+skills_disabled = false
+mcp_servers = ["_none"]
+max_history_messages = 12
 
 [metadata.routing]
 aliases = [
@@ -40,7 +45,7 @@ OUTPUT:
 - Adapt formatting to the target platform when specified."""
 
 [resources]
-max_llm_tokens_per_hour = 100000
+max_llm_tokens_per_hour = 200000
 
 [capabilities]
 tools = [

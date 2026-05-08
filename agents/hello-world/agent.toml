@@ -3,6 +3,11 @@ version = "0.4.3-beta3-20260314"
 description = "A friendly greeting agent that can read files, search the web, and answer everyday questions."
 author = "librefang"
 module = "builtin:chat"
+profile = "Research"
+skills = ["web-search"]
+skills_disabled = false
+mcp_servers = ["_none"]
+max_history_messages = 8
 
 [metadata.routing]
 aliases = [
@@ -32,6 +37,7 @@ Always reply in the same language the user uses. Never literally translate prope
 
 [resources]
 max_llm_tokens_per_hour = 100000
+max_cost_per_hour_usd = 0.50
 
 [capabilities]
 tools = [

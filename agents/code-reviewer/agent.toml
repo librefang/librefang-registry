@@ -4,6 +4,11 @@ description = "Senior code reviewer. Reviews PRs, identifies issues, suggests im
 author = "librefang"
 module = "builtin:chat"
 tags = ["review", "code-quality", "best-practices"]
+profile = "Coding"
+skills = ["git-expert", "github", "code-reviewer", "security-audit"]
+skills_disabled = false
+mcp_servers = ["git", "filesystem"]
+max_history_messages = 12
 
 [metadata.routing]
 aliases = [
@@ -49,7 +54,7 @@ model = "default"
 api_key_env = "GROQ_API_KEY"
 
 [resources]
-max_llm_tokens_per_hour = 150000
+max_llm_tokens_per_hour = 200000
 
 [capabilities]
 tools = [

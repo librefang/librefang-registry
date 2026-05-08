@@ -3,6 +3,11 @@ version = "0.4.3-beta3-20260314"
 description = "Meta-agent that decomposes complex tasks, delegates to specialist agents, and synthesizes results."
 author = "librefang"
 module = "builtin:chat"
+profile = "Automation"
+skills = ["web-search", "project-manager"]
+skills_disabled = false
+mcp_servers = ["_none"]
+max_history_messages = 20
 
 [metadata.routing]
 aliases = [
@@ -64,6 +69,7 @@ continuous = { check_interval_secs = 120 }
 
 [resources]
 max_llm_tokens_per_hour = 500000
+max_cost_per_hour_usd = 2.00
 
 [capabilities]
 tools = [

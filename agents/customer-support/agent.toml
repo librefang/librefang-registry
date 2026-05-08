@@ -11,6 +11,11 @@ tags = [
   "communication",
   "resolution",
 ]
+profile = "Research"
+skills = ["web-search", "email-writer"]
+skills_disabled = false
+mcp_servers = ["_none"]
+max_history_messages = 15
 
 [metadata.routing]
 aliases = [

@@ -3,6 +3,11 @@ version = "0.4.3-beta3-20260314"
 description = "Expert debugger. Traces bugs, analyzes stack traces, performs root cause analysis."
 author = "librefang"
 module = "builtin:chat"
+profile = "Coding"
+skills = ["git-expert", "github", "shell-scripting", "python-expert", "sentry"]
+skills_disabled = false
+mcp_servers = ["git", "filesystem"]
+max_history_messages = 12
 
 [metadata.routing]
 aliases = [
@@ -52,7 +57,7 @@ model = "default"
 api_key_env = "GROQ_API_KEY"
 
 [resources]
-max_llm_tokens_per_hour = 150000
+max_llm_tokens_per_hour = 500000
 
 [capabilities]
 tools = [

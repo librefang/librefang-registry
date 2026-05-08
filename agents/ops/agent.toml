@@ -3,6 +3,11 @@ version = "0.4.3-beta3-20260314"
 description = "DevOps agent. Monitors systems, runs diagnostics, manages deployments."
 author = "librefang"
 module = "builtin:chat"
+profile = "Full"
+skills = []
+skills_disabled = false
+mcp_servers = ["git", "filesystem"]
+max_history_messages = 12
 
 [metadata.routing]
 aliases = [
@@ -42,7 +47,7 @@ REPORTING:
 periodic = { cron = "every 5m" }
 
 [resources]
-max_llm_tokens_per_hour = 50000
+max_llm_tokens_per_hour = 0
 
 [capabilities]
 tools = ["shell_exec", "file_read", "file_list", "web_search"]

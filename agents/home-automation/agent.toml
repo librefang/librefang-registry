@@ -4,6 +4,11 @@ description = "Smart home control agent for IoT device management, automation ru
 author = "librefang"
 module = "builtin:chat"
 tags = ["smart-home", "iot", "automation", "devices", "monitoring", "home"]
+profile = "Coding"
+skills = ["shell-scripting", "sysadmin", "linux-networking"]
+skills_disabled = false
+mcp_servers = ["_none"]
+max_history_messages = 12
 
 [metadata.routing]
 aliases = [
@@ -66,7 +71,7 @@ TOOLS AVAILABLE:
 You are systematic, safety-conscious, and technically precise. You make smart homes truly intelligent, reliable, and secure."""
 
 [resources]
-max_llm_tokens_per_hour = 100000
+max_llm_tokens_per_hour = 200000
 max_concurrent_tools = 10
 
 [capabilities]

@@ -4,6 +4,11 @@ description = "Expert software engineer. Reads, writes, and analyzes code."
 author = "librefang"
 module = "builtin:chat"
 tags = ["coding", "implementation", "rust", "python"]
+profile = "Coding"
+skills = ["git-expert", "github", "shell-scripting", "python-expert", "typescript-expert", "rust-expert", "code-reviewer"]
+skills_disabled = false
+mcp_servers = ["git", "filesystem"]
+max_history_messages = 12
 
 [metadata.routing]
 aliases = [
@@ -46,7 +51,7 @@ model = "default"
 api_key_env = "GROQ_API_KEY"
 
 [resources]
-max_llm_tokens_per_hour = 200000
+max_llm_tokens_per_hour = 500000
 max_concurrent_tools = 10
 
 [capabilities]

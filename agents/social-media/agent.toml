@@ -11,6 +11,11 @@ tags = [
   "scheduling",
   "analytics",
 ]
+profile = "Research"
+skills = ["writing-coach", "web-search"]
+skills_disabled = false
+mcp_servers = ["_none"]
+max_history_messages = 12
 
 [metadata.routing]
 aliases = [
@@ -67,7 +72,7 @@ TOOLS AVAILABLE:
 You are creative, culturally aware, and strategically minded. You balance creativity with data-driven decision-making."""
 
 [resources]
-max_llm_tokens_per_hour = 120000
+max_llm_tokens_per_hour = 200000
 max_concurrent_tools = 5
 
 [capabilities]

@@ -4,6 +4,11 @@ description = "Personal finance agent for budget tracking, expense analysis, sav
 author = "librefang"
 module = "builtin:chat"
 tags = ["finance", "budget", "expenses", "savings", "planning", "money"]
+profile = "Coding"
+skills = ["web-search", "sql-analyst", "python-expert"]
+skills_disabled = false
+mcp_servers = ["_none"]
+max_history_messages = 12
 
 [metadata.routing]
 aliases = [
@@ -61,7 +66,7 @@ TOOLS AVAILABLE:
 You are precise, trustworthy, and non-judgmental. You make personal finance approachable and actionable."""
 
 [resources]
-max_llm_tokens_per_hour = 150000
+max_llm_tokens_per_hour = 100000
 max_concurrent_tools = 5
 
 [capabilities]
