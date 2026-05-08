@@ -17,6 +17,7 @@ tools = [
   "memory_recall",
 ]
 
+skills = ["_none"]
 skills_disabled = true
 mcp_servers = ["_none"]
 
