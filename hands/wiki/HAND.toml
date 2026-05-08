@@ -19,7 +19,7 @@ tools = [
 ]
 
 mcp_servers = ["filesystem"]
-skills = ["technical-writer", "writing-coach"]
+skills = ["technical-writer", "writing-coach", "web-search"]
 skills_disabled = false
 allowed_plugins = []
 # memory_store is used ONLY for dashboard metrics.
