@@ -12,9 +12,9 @@ tags = [
   "productivity",
 ]
 profile = "Research"
-skills = ["email-writer", "web-search"]
+skills = ["email-writer", "web-search", "writing-coach"]
 skills_disabled = false
-mcp_servers = ["_none"]
+mcp_servers = ["gmail"]
 max_history_messages = 12
 
 [metadata.routing]

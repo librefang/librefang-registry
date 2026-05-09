@@ -12,7 +12,7 @@ tags = [
   "i18n",
 ]
 profile = "Research"
-skills = ["writing-coach", "web-search"]
+skills = ["writing-coach", "web-search", "pdf-reader"]
 skills_disabled = false
 mcp_servers = ["_none"]
 max_history_messages = 8

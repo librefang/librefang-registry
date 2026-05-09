@@ -12,9 +12,9 @@ tags = [
   "productivity",
 ]
 profile = "Research"
-skills = ["web-search", "project-manager"]
+skills = ["web-search", "project-manager", "email-writer", "slack-tools"]
 skills_disabled = false
-mcp_servers = ["_none"]
+mcp_servers = ["google-calendar"]
 max_history_messages = 12
 
 [metadata.routing]

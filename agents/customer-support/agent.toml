@@ -12,7 +12,7 @@ tags = [
   "resolution",
 ]
 profile = "Research"
-skills = ["web-search", "email-writer"]
+skills = ["web-search", "email-writer", "writing-coach", "slack-tools", "jira"]
 skills_disabled = false
 mcp_servers = ["_none"]
 max_history_messages = 15

@@ -12,7 +12,7 @@ tags = [
   "knowledge",
 ]
 profile = "Coding"
-skills = ["web-search", "python-expert", "writing-coach"]
+skills = ["web-search", "python-expert", "writing-coach", "technical-writer"]
 skills_disabled = false
 mcp_servers = ["_none"]
 max_history_messages = 15
