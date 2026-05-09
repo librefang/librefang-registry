@@ -11,7 +11,7 @@ tags = [
   "conversation",
   "productivity",
 ]
-profile = "Automation"
+profile = "automation"
 skills = ["web-search", "shell-scripting", "git-expert", "github", "python-expert", "project-manager", "email-writer"]
 skills_disabled = false
 mcp_servers = ["git", "filesystem"]

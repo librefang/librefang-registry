@@ -11,7 +11,7 @@ tags = [
   "scheduling",
   "productivity",
 ]
-profile = "Research"
+profile = "research"
 skills = ["email-writer", "web-search", "writing-coach"]
 skills_disabled = false
 mcp_servers = ["gmail"]

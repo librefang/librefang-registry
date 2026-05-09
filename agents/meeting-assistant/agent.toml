@@ -11,7 +11,7 @@ tags = [
   "follow-up",
   "productivity",
 ]
-profile = "Research"
+profile = "research"
 skills = ["web-search", "project-manager", "email-writer", "slack-tools"]
 skills_disabled = false
 mcp_servers = ["google-calendar"]

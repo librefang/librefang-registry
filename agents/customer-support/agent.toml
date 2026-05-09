@@ -11,7 +11,7 @@ tags = [
   "communication",
   "resolution",
 ]
-profile = "Research"
+profile = "research"
 skills = ["web-search", "email-writer", "writing-coach", "slack-tools", "jira"]
 skills_disabled = false
 mcp_servers = ["_none"]
