@@ -35,6 +35,7 @@ except ImportError:
 
 VALID_TIERS = {"frontier", "smart", "balanced", "fast", "local"}
 VALID_MODALITIES = {"text", "image", "audio", "video", "music"}
+VALID_REASONING_ECHO_POLICIES = {"none", "strip", "echo", "empty_string"}
 VALID_HAND_CATEGORIES = {
     "communication", "content", "data", "development",
     "devops", "finance", "productivity", "research", "social",
@@ -101,6 +102,13 @@ def validate_provider_file(filepath: Path) -> list[str]:
         tier = model.get("tier")
         if tier is not None and tier not in VALID_TIERS:
             errors.append(f"{filepath.name}: Model '{label}' invalid tier '{tier}'")
+
+        policy = model.get("reasoning_echo_policy")
+        if policy is not None and policy not in VALID_REASONING_ECHO_POLICIES:
+            errors.append(
+                f"{filepath.name}: Model '{label}' invalid reasoning_echo_policy "
+                f"'{policy}' (valid: {', '.join(sorted(VALID_REASONING_ECHO_POLICIES))})"
+            )
 
         for cost_field in (
             "input_cost_per_m",

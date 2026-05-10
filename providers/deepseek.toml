@@ -34,6 +34,10 @@ supports_tools = true
 supports_vision = false
 supports_streaming = true
 supports_thinking = true
+# Thinking mode is on by default and the API rejects multi-turn requests
+# where assistant turns containing tool_calls don't echo back the original
+# reasoning_content. See librefang/librefang#4842.
+reasoning_echo_policy = "echo"
 aliases = ["deepseek-flash"]
 
 [[models]]
@@ -61,4 +65,7 @@ supports_tools = false
 supports_vision = false
 supports_streaming = true
 supports_thinking = true
+# R1 returns reasoning_content in responses but the API rejects multi-turn
+# requests that carry it on previous assistant messages — drivers must strip.
+reasoning_echo_policy = "strip"
 aliases = ["deepseek-r1"]

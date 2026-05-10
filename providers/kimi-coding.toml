@@ -21,4 +21,5 @@ output_cost_per_m = 0.0
 supports_tools = true
 supports_vision = true
 supports_streaming = true
+reasoning_echo_policy = "empty_string"
 aliases = []

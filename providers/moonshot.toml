@@ -20,6 +20,10 @@ supports_tools = true
 supports_vision = true
 supports_streaming = true
 supports_thinking = true
+# Kimi requires reasoning_content present (empty string) on assistant
+# turns with tool_calls, with thinking disabled wire-side for multi-turn
+# compatibility. See librefang/librefang openai driver.
+reasoning_echo_policy = "empty_string"
 aliases = ["kimi", "kimi-k2.6-0420"]
 
 [[models]]
@@ -34,6 +38,7 @@ supports_tools = true
 supports_vision = true
 supports_streaming = true
 supports_thinking = true
+reasoning_echo_policy = "empty_string"
 aliases = ["kimi-k2.5-0711"]
 
 [[models]]
@@ -47,4 +52,5 @@ output_cost_per_m = 2.3
 supports_tools = true
 supports_vision = true
 supports_streaming = true
+reasoning_echo_policy = "empty_string"
 aliases = []
