@@ -152,6 +152,13 @@ required = false
 description = "Extended thinking / reasoning support"
 default = false
 
+[provider.sections.models.fields.reasoning_echo_policy]
+type = "string"
+required = false
+description = "How the OpenAI-compatible driver must handle the reasoning_content field on historical assistant turns when this model is used. 'none' (default) omits the field entirely. 'strip' is required by DeepSeek-R1 / deepseek-reasoner — the API rejects multi-turn requests that carry reasoning_content from previous turns. 'echo' is required by DeepSeek V4 Flash and other thinking-mode-on models — the original thinking text MUST be round-tripped on assistant turns that contain tool_calls, otherwise the API returns 400. 'empty_string' is required by Moonshot / Kimi K2 — the field must be present (empty string) on tool_calls turns, with thinking disabled wire-side."
+options = ["none", "strip", "echo", "empty_string"]
+default = "none"
+
 [provider.sections.models.fields.aliases]
 type = "array"
 required = false

@@ -36,6 +36,7 @@ supports_tools = true
 supports_vision = false
 supports_streaming = true
 supports_thinking = true
+reasoning_echo_policy = "empty_string"
 aliases = []
 
 [[models]]

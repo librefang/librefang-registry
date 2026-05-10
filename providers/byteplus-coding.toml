@@ -95,6 +95,7 @@ input_cost_per_m = 0.44
 output_cost_per_m = 2.0
 supports_tools = true
 supports_streaming = true
+reasoning_echo_policy = "empty_string"
 aliases = []
 
 [[models]]
