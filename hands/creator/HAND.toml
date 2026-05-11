@@ -175,6 +175,13 @@ model = "default"
 max_tokens = 8192
 temperature = 0.5
 max_iterations = 30
+# Override the kernel default (40). Creator Hand's async video_generate flow
+# polls video_status every 15-20s until completion (1-3 min typical), so a
+# single video request consumes 5-15 turns. Combined workflows (e.g. video +
+# TTS + music) plus normal back-and-forth easily exceed 40 messages, which
+# triggered an every-turn history trim and 0% prompt-cache hit-ratio in
+# production. 80 covers ~30 polls plus a comfortable pre-context window.
+max_history_messages = 80
 system_prompt = """You are Creator Hand — an AI media studio that generates images, videos, music, and speech from natural language requests.
 
 ## Available Tools
