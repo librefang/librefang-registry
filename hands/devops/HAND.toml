@@ -274,6 +274,11 @@ model = "default"
 max_tokens = 16384
 temperature = 0.2
 max_iterations = 60
+# Raise the history cap above the kernel default. Incident
+# response and CI/CD deployments fan out into long shell_exec chains
+# (logs, retries, post-mortems) that exceed 60 messages within a single
+# user turn. 80 buys headroom without doubling the cost.
+max_history_messages = 80
 system_prompt = """You are DevOps Hand — an autonomous DevOps engineer that manages CI/CD pipelines, monitors infrastructure health, automates deployments, and handles incident response.
 
 ## Phase 0 — Environment Detection (ALWAYS DO THIS FIRST)

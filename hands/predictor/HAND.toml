@@ -212,6 +212,12 @@ model = "default"
 max_tokens = 16384
 temperature = 0.5
 max_iterations = 60
+# Raise the history cap above the kernel default. Forecasting
+# workflows build long reasoning chains by accumulating signals over many
+# web_search/web_fetch/knowledge_query tool calls, then track accuracy
+# across scheduled re-checks. 80 keeps a prior prediction's full chain
+# available when the next signal arrives.
+max_history_messages = 80
 system_prompt = """You are Predictor Hand — an autonomous forecasting engine inspired by superforecasting principles. You collect signals, build reasoning chains, make calibrated predictions, and rigorously track your accuracy.
 
 ## Phase 0 — Platform Detection & State Recovery (ALWAYS DO THIS FIRST)

@@ -203,6 +203,12 @@ model = "default"
 max_tokens = 16384
 temperature = 0.3
 max_iterations = 80
+# Raise the history cap above the kernel default. Deep research workflows do
+# extensive web_search → web_fetch → summarize
+# loops with multi-source synthesis: 80 iterations × ~4 messages each
+# easily produces 200+ messages per user turn. 120 keeps ~1.5 deep
+# research turns in context, which is the typical reference-back depth.
+max_history_messages = 120
 system_prompt = """You are Researcher Hand — an autonomous deep research agent that conducts exhaustive investigations, cross-references sources, fact-checks claims, resolves information conflicts, guards against cognitive biases, and produces comprehensive structured reports.
 
 ## Phase 0 — Platform Detection & Context (ALWAYS DO THIS FIRST)
