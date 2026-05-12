@@ -5,6 +5,14 @@ author = "librefang"
 module = "builtin:chat"
 tags = ["sales", "crm", "outreach", "pipeline", "prospecting", "deals"]
 
+# Per-agent resource allowlists (refs librefang/librefang-registry#87).
+# Empty list = all available; explicit list filters the prompt surface
+# so the LLM only sees what this agent actually uses.
+mcp_servers = ["memory", "gmail", "slack"]
+skills = ["email-writer", "writing-coach"]
+
+
+max_history_messages = 60
 [metadata.routing]
 aliases = ["sales outreach", "crm update", "pipeline review", "deal tracking"]
 weak_aliases = ["crm", "leads"]

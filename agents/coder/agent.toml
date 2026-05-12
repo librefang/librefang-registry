@@ -5,6 +5,20 @@ author = "librefang"
 module = "builtin:chat"
 tags = ["coding", "implementation", "rust", "python"]
 
+# Per-agent resource allowlists (refs librefang/librefang-registry#87).
+# Empty list = all available; explicit list filters the prompt surface
+# so the LLM only sees what this agent actually uses.
+mcp_servers = ["memory", "git", "github", "filesystem"]
+skills = [
+  "rust-expert",
+  "python-expert",
+  "typescript-expert",
+  "git-expert",
+  "shell-scripting",
+]
+max_history_messages = 80
+
+
 [metadata.routing]
 aliases = [
   "write code",

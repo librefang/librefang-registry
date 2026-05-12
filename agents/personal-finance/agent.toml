@@ -5,6 +5,14 @@ author = "librefang"
 module = "builtin:chat"
 tags = ["finance", "budget", "expenses", "savings", "planning", "money"]
 
+# Per-agent resource allowlists (refs librefang/librefang-registry#87).
+# Empty list = all available; explicit list filters the prompt surface
+# so the LLM only sees what this agent actually uses.
+mcp_servers = ["memory"]
+skills = ["data-analyst"]
+
+
+max_history_messages = 60
 [metadata.routing]
 aliases = [
   "budget planning",

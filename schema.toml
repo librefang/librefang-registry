@@ -204,6 +204,26 @@ required = true
 description = "Runtime module (builtin:chat, builtin:tool, etc.)"
 example = "builtin:chat"
 
+[agent.fields.mcp_servers]
+type = "array"
+required = false
+description = "MCP server allowlist. Empty list (default) means every connected MCP server's tools are injected into this agent's prompt — on a typical instance that is ~85 tool definitions and ~50k tokens per call. Set an explicit list to trim the surface to only the servers this agent actually uses (e.g. [\"memory\", \"git\", \"github\"])."
+item_type = "string"
+example = ["memory", "git", "github"]
+
+[agent.fields.skills]
+type = "array"
+required = false
+description = "Skill allowlist. Empty list (default) means every installed skill is available. Set an explicit list to load only what this agent needs."
+item_type = "string"
+example = ["rust-expert", "python-expert"]
+
+[agent.fields.max_history_messages]
+type = "number"
+required = false
+description = "Per-agent override for the message-history trim cap. Omit (default) inherits from KernelConfig.max_history_messages, which itself falls back to the compiled constant librefang_runtime::agent_loop::DEFAULT_MAX_HISTORY_MESSAGES (60 today). Values below 4 are clamped at runtime with a warning. Pinning this *below* the kernel default trashes the prompt cache — every turn that hits the cap invalidates the cached prefix and costs more than the smaller history saves. Set this only to raise the cap for iteration-heavy agents that legitimately need more context, or to lower it for agents whose conversations are demonstrably short and where you've measured the trade-off."
+example = 80
+
 # --- Agent: [model] section ---
 
 [agent.sections.model]

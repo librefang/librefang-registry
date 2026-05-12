@@ -5,6 +5,14 @@ author = "librefang"
 module = "builtin:chat"
 tags = ["travel", "planning", "itinerary", "booking", "logistics", "vacation"]
 
+# Per-agent resource allowlists (refs librefang/librefang-registry#87).
+# Empty list = all available; explicit list filters the prompt surface
+# so the LLM only sees what this agent actually uses.
+mcp_servers = ["memory", "fetch", "google-maps", "google-calendar"]
+skills = []
+
+
+max_history_messages = 60
 [metadata.routing]
 aliases = [
   "trip itinerary",

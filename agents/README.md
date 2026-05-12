@@ -26,6 +26,17 @@ description = "Expert software engineer. Reads, writes, and analyzes code."
 author = "librefang"
 module = "builtin:chat"              # runtime module — builtin:chat for all current agents
 
+# Resource allowlists — keep these small. The kernel injects every entry's
+# tools/skills into the agent's prompt on every LLM call, so an empty list
+# (the default "all available" semantics) on an instance with many MCP
+# servers and skills can burn 30-60k tokens per turn on definitions the
+# agent never uses.
+mcp_servers = ["memory", "git", "github", "filesystem"]   # [] = all available
+skills = ["rust-expert", "python-expert", "git-expert"]   # [] = all available
+# max_history_messages = 60          # OPT-IN override; omit to inherit kernel default
+                                     # (default rises with the kernel; setting too low
+                                     #  thrashes the prompt cache — measure before pinning)
+
 [metadata.routing]
 aliases = ["write code", "fix bug", "implement feature"]    # exact activation phrases
 weak_aliases = ["refactor", "patch", "code change"]         # keyword hints
@@ -171,8 +182,9 @@ Agents can also be used as base templates in a Hand by setting `base = "coder"` 
 2. Set `module = "builtin:chat"` unless you have a custom runtime module.
 3. Write a focused `system_prompt` — clear role definition, methodology, and constraints.
 4. Declare only the tools and capabilities the agent actually needs.
-5. Add `[metadata.routing]` aliases so the router can activate the agent by intent.
-6. Run `python scripts/validate.py`.
-7. Submit a PR.
+5. Set `mcp_servers` and `skills` to the minimum the prompt actually references — leaving them empty falls back to "all available", which on a populated instance bloats every LLM call with tool definitions the agent never uses.
+6. Add `[metadata.routing]` aliases so the router can activate the agent by intent.
+7. Run `python scripts/validate.py`.
+8. Submit a PR.
 
 See [CONTRIBUTING.md](../CONTRIBUTING.md) for the full guide.

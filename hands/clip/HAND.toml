@@ -17,6 +17,15 @@ tools = [
   "memory_recall",
 ]
 
+# Per-hand resource allowlists (refs librefang/librefang-registry#87).
+# Inherited by every [agents.*] in this hand unless overridden.
+mcp_servers = ["memory", "filesystem"]
+skills = []
+# `skills_disabled = true` lives on each [agents.*] below — HandDefinitionRaw
+# in librefang-hands doesn't carry the field, so a hand-level entry would be
+# silently dropped by serde.
+
+
 [routing]
 aliases = [
   "clip video",
@@ -219,6 +228,7 @@ description = "AI video editor — downloads, transcribes, and creates viral sho
 module = "builtin:chat"
 provider = "default"
 model = "default"
+skills_disabled = true
 max_tokens = 8192
 temperature = 0.4
 max_iterations = 40
@@ -622,6 +632,7 @@ description = "Content writer. Creates scripts, captions, titles, and descriptio
 module = "builtin:chat"
 provider = "default"
 model = "default"
+skills_disabled = true
 max_tokens = 4096
 temperature = 0.7
 system_prompt = """You are Writer, a short-form video content specialist within the Clip Hand.
@@ -760,6 +771,7 @@ description = "Social media strategist. Plans distribution, scheduling, and enga
 module = "builtin:chat"
 provider = "default"
 model = "default"
+skills_disabled = true
 max_tokens = 4096
 temperature = 0.7
 system_prompt = """You are Distributor, the publishing and distribution specialist within the Clip Hand.

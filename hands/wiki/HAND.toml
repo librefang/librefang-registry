@@ -18,8 +18,12 @@ tools = [
   "memory_store",
 ]
 
-mcp_servers = []
+# Per-hand resource allowlists (refs librefang/librefang-registry#87).
+# Inherited by every [agents.*] in this hand unless overridden.
+mcp_servers = ["memory", "fetch", "filesystem"]
 skills = []
+
+
 allowed_plugins = []
 # memory_store is used ONLY for dashboard metrics.
 # No wiki content enters LibreFang's general memory — all knowledge lives in the vault.

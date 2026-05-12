@@ -23,6 +23,12 @@ tools = [
   "knowledge_query",
 ]
 
+# Per-hand resource allowlists (refs librefang/librefang-registry#87).
+# Inherited by every [agents.*] in this hand unless overridden.
+mcp_servers = ["memory", "fetch", "exa-search", "brave-search"]
+skills = ["data-analyst", "python-expert"]
+
+
 [routing]
 aliases = [
   "predict",

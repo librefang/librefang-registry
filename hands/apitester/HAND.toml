@@ -24,6 +24,18 @@ tools = [
   "event_publish",
 ]
 
+# Per-hand resource allowlists (refs librefang/librefang-registry#87).
+# Inherited by every [agents.*] in this hand unless overridden.
+mcp_servers = ["memory", "github", "fetch"]
+skills = [
+  "api-tester",
+  "openapi-expert",
+  "graphql-expert",
+  "python-expert",
+  "typescript-expert",
+]
+
+
 [[requires]]
 key = "curl"
 label = "curl must be installed"

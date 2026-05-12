@@ -4,6 +4,23 @@ description = "DevOps lead. Manages CI/CD, infrastructure, deployments, monitori
 author = "librefang"
 module = "builtin:chat"
 
+# Per-agent resource allowlists (refs librefang/librefang-registry#87).
+# Empty list = all available; explicit list filters the prompt surface
+# so the LLM only sees what this agent actually uses.
+mcp_servers = ["memory", "git", "github", "filesystem"]
+skills = [
+  "docker",
+  "kubernetes",
+  "terraform",
+  "ansible",
+  "ci-cd",
+  "helm",
+  "prometheus",
+  "sysadmin",
+]
+max_history_messages = 60
+
+
 [metadata.routing]
 aliases = [
   "ci cd",

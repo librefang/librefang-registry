@@ -4,6 +4,20 @@ description = "DevOps agent. Monitors systems, runs diagnostics, manages deploym
 author = "librefang"
 module = "builtin:chat"
 
+# Per-agent resource allowlists (refs librefang/librefang-registry#87).
+# Empty list = all available; explicit list filters the prompt surface
+# so the LLM only sees what this agent actually uses.
+mcp_servers = ["memory", "git"]
+skills = [
+  "docker",
+  "sysadmin",
+  "shell-scripting",
+  "linux-networking",
+  "prometheus",
+]
+max_history_messages = 60
+
+
 [metadata.routing]
 aliases = [
   "service status",

@@ -4,6 +4,14 @@ description = "Expert debugger. Traces bugs, analyzes stack traces, performs roo
 author = "librefang"
 module = "builtin:chat"
 
+# Per-agent resource allowlists (refs librefang/librefang-registry#87).
+# Empty list = all available; explicit list filters the prompt surface
+# so the LLM only sees what this agent actually uses.
+mcp_servers = ["memory", "git", "github", "sentry"]
+skills = ["rust-expert", "python-expert", "shell-scripting"]
+
+
+max_history_messages = 80
 [metadata.routing]
 aliases = [
   "debug this",

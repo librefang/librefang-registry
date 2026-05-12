@@ -12,6 +12,14 @@ tags = [
   "resolution",
 ]
 
+# Per-agent resource allowlists (refs librefang/librefang-registry#87).
+# Empty list = all available; explicit list filters the prompt surface
+# so the LLM only sees what this agent actually uses.
+mcp_servers = ["memory", "fetch"]
+skills = ["email-writer", "writing-coach"]
+
+
+max_history_messages = 60
 [metadata.routing]
 aliases = [
   "customer support",

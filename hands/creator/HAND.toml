@@ -20,6 +20,15 @@ tools = [
   "memory_recall",
 ]
 
+# Per-hand resource allowlists (refs librefang/librefang-registry#87).
+# Inherited by every [agents.*] in this hand unless overridden.
+mcp_servers = ["memory", "filesystem"]
+skills = []
+# `skills_disabled = true` lives on each [agents.*] below — HandDefinitionRaw
+# in librefang-hands doesn't carry the field, so a hand-level entry would be
+# silently dropped by serde.
+
+
 [routing]
 aliases = [
   "generate image",
@@ -172,6 +181,7 @@ description = "AI media studio — generates images, videos, music, and speech f
 module = "builtin:chat"
 provider = "default"
 model = "default"
+skills_disabled = true
 max_tokens = 8192
 temperature = 0.5
 max_iterations = 30
@@ -279,6 +289,7 @@ description = "Prompt engineer that crafts detailed, effective prompts for media
 module = "builtin:chat"
 provider = "default"
 model = "default"
+skills_disabled = true
 max_tokens = 4096
 temperature = 0.8
 system_prompt = """You are Prompt Writer, a creative prompt engineer within the Creator Hand.

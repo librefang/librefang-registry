@@ -30,11 +30,20 @@ tools = [
   "workflow_run",
 ]
 
-# MCP servers: all agents can access these (per-agent mcp_servers further restricts)
-mcp_servers = ["github"]
+# Per-hand resource allowlists (refs librefang/librefang-registry#87).
+# Inherited by every [agents.*] in this hand unless overridden.
+mcp_servers = ["memory", "github", "git", "filesystem"]
+skills = [
+  "github",
+  "git-expert",
+  "rust-expert",
+  "python-expert",
+  "typescript-expert",
+  "code-reviewer",
+  "api-tester",
+  "ci-cd",
+]
 
-# Skills: all available (agents can restrict individually)
-skills = []
 
 # Plugins: useful for dev workflow
 allowed_plugins = ["todo-tracker", "auto-summarizer", "episodic-memory"]

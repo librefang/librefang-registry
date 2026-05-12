@@ -4,6 +4,14 @@ description = "Data analyst. Processes data, generates insights, creates reports
 author = "librefang"
 module = "builtin:chat"
 
+# Per-agent resource allowlists (refs librefang/librefang-registry#87).
+# Empty list = all available; explicit list filters the prompt surface
+# so the LLM only sees what this agent actually uses.
+mcp_servers = ["memory", "sqlite-mcp", "postgresql"]
+skills = ["data-analyst", "sql-analyst", "python-expert"]
+
+
+max_history_messages = 80
 [metadata.routing]
 aliases = ["analytics", "metrics analysis", "report analysis"]
 weak_aliases = ["kpi", "insights", "reporting"]
