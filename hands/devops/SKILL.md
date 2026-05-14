@@ -973,32 +973,27 @@ curl -s -H "Authorization: Bearer $GITHUB_TOKEN" "$PR_URL/files?per_page=300" -o
 
 **Short-circuit on bot / merge / huge diff**
 
+Extract the cheap signals from already-fetched PR metadata:
+
 ```bash
 HEAD_SHA=$(jq -r .head.sha pr.json)
 USER_TYPE=$(jq -r .user.type pr.json)
 CHANGED=$(jq '. | length' pr_files.json)
-
-# Bot-authored PRs (dependabot, renovate, etc.) get a token-cheap pass:
-# record but skip deep reviewer dispatch.
-if [ "$USER_TYPE" = "Bot" ]; then
-    echo "bot PR -- recording without deep review"
-    # memory_store devops_pr_review_<owner>_<repo>_<num> = {head_sha, verdict: "skipped_bot", ts}
-    # event_publish devops_evolution_skipped {pr_or_issue_url, reason: "bot author"}
-    exit 0
-fi
-
-# Huge diffs: defer to human review rather than spending tokens on a
-# review the reviewer agent can't usefully ground.
-if [ "$CHANGED" -gt 200 ]; then
-    echo "diff too large ($CHANGED files) -- surfacing for human review"
-    # event_publish devops_evolution_skipped {pr_or_issue_url, reason: "diff>200 files"}
-    exit 0
-fi
 ```
+
+Decision rules (the **agent** applies these in its loop, not the shell — `exit 0` would only end one `shell_exec`, not abort the Phase 7 pass):
+
+- **`USER_TYPE == "Bot"`** (dependabot, renovate, etc.): skip deep review for this PR. The agent then:
+  1. calls `memory_store devops_pr_review_<owner>_<repo>_<num>` with `{head_sha, verdict: "skipped_bot", timestamp}`
+  2. calls `event_publish devops_evolution_skipped` with `{pr_or_issue_url, reason: "bot author"}`
+  3. moves on to the next PR — does NOT dispatch the reviewer sub-agent.
+- **`CHANGED > 200`**: diff too large for the reviewer to ground usefully. The agent then:
+  1. calls `event_publish devops_evolution_skipped` with `{pr_or_issue_url, reason: "diff>200 files"}`
+  2. moves on to the next PR.
 
 **Dispatch to reviewer sub-agent**
 
-Hand the reviewer the diff, file list, PR description, and (if present) the target branch's `AGENTS.md` / `CONTRIBUTING.md`. Reviewer returns structured JSON:
+Hand the reviewer the diff, file list, PR description, and (if present) the target branch's `AGENTS.md` / `CONTRIBUTING.md`. Capture the reviewer's structured JSON into `reviewer_output.json` (whatever your routing primitive is — `subagent_invoke`, A2A call, or local fork — write the result to that file so the next shell snippet can read it):
 
 ```json
 {
@@ -1014,6 +1009,10 @@ Hand the reviewer the diff, file list, PR description, and (if present) the targ
 **Post a single review (not N inline comments)**
 
 ```bash
+# Pull verdict + summary out of the reviewer's structured output.
+VERDICT=$(jq -r .verdict reviewer_output.json)
+SUMMARY_BODY=$(jq -r .summary reviewer_output.json)
+
 # Map verdict -> GitHub review event. Never auto-APPROVE.
 BODY_PREFIX=""
 case "$VERDICT" in
@@ -1186,7 +1185,13 @@ Between each phase, write to `devops_queue.json`:
 }
 ```
 
-Stop. Wait for status to flip to `approved` (set by the user out-of-band) before continuing to the next phase.
+Then **end the current turn**. The Hand is `frequency = "continuous"`, so the next tick will re-read `devops_queue.json`:
+
+- If the user (out-of-band) has flipped `status` to `approved`, resume from the next phase.
+- If still `pending`, skip this issue for this tick and re-check on the following one.
+- If flipped to `rejected`, abandon the issue, comment on it with the rejection rationale (if provided), and stop.
+
+Within a single turn, never poll or `sleep` waiting for approval — the agent loop has no in-turn pause primitive, and busy-waiting would block other Hand work and burn tokens. End the turn and let the kernel re-invoke you.
 
 ---
 

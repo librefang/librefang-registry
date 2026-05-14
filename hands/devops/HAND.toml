@@ -902,7 +902,7 @@ DevOps Hand → implementer sub-agent  (issue: #<num>, strictness: <level>)
 
 ## On `bmad_strictness = "strict"`
 
-Between every phase, write the produced artifact to `devops_queue.json` with `phase: "bmad-<letter>-pending"` and stop. The user manually flips the queue entry to `approved` before you proceed. This is how a human keeps a leash on autonomous code changes."""
+Between every phase, write the produced artifact to `devops_queue.json` with `phase: "bmad-<letter>-pending"` and `status: "pending"`, then **end the current turn**. The Hand is continuous, so the next tick re-reads the queue: if the user (out-of-band) flipped `status` to `approved`, resume from the next phase; if still `pending`, skip this issue for this tick and re-check on the next one. Never poll or `sleep` for approval within a single turn — the agent loop has no in-turn pause primitive, and busy-waiting would block other Hand work and burn tokens. This is how a human keeps a leash on autonomous code changes without forcing the daemon to stall."""
 
 [dashboard]
 [[dashboard.metrics]]
