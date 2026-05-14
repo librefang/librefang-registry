@@ -123,6 +123,11 @@ aliases = [
   "infrastructure monitoring",
   "deployment automation",
   "incident response",
+  "auto evolve",
+  "review github prs",
+  "triage issues",
+  "implement issue",
+  "fix bug from issue",
 ]
 weak_aliases = [
   "deploy",
@@ -131,6 +136,10 @@ weak_aliases = [
   "container",
   "terraform",
   "helm",
+  "bug fix",
+  "feature implementation",
+  "bmad",
+  "draft pr",
 ]
 
 # ─── Configurable settings ───────────────────────────────────────────────────
@@ -285,6 +294,72 @@ label = "Approval Mode"
 description = "Queue deployment and infrastructure actions for your review instead of executing directly"
 setting_type = "toggle"
 default = "true"
+
+# ─── Auto-Evolution settings ─────────────────────────────────────────────────
+# These drive the Phase 6 evolution loop: periodic scan of configured
+# GitHub repos, automated PR review via the reviewer sub-agent, and
+# BMAD-style bug fix / feature implementation via the implementer
+# sub-agent. All produce draft PRs and respect approval_mode.
+
+[[settings]]
+key = "auto_evolve"
+label = "Auto Evolution"
+description = "Periodically scan configured GitHub repos and run PR review / issue triage / BMAD implementation"
+setting_type = "toggle"
+default = "false"
+
+[[settings]]
+key = "evolution_repos"
+label = "Evolution Target Repos"
+description = "Comma-separated owner/repo pairs to watch (e.g. librefang/librefang,librefang/librefang-registry)"
+setting_type = "text"
+default = ""
+
+[[settings]]
+key = "evolution_check_interval"
+label = "Evolution Check Interval"
+description = "How often to scan target repos for new PRs and issues"
+setting_type = "select"
+default = "15min"
+
+[[settings.options]]
+value = "5min"
+label = "Every 5 minutes"
+
+[[settings.options]]
+value = "15min"
+label = "Every 15 minutes"
+
+[[settings.options]]
+value = "1hour"
+label = "Every hour"
+
+[[settings.options]]
+value = "6hour"
+label = "Every 6 hours"
+
+[[settings.options]]
+value = "1day"
+label = "Daily"
+
+[[settings]]
+key = "bmad_strictness"
+label = "BMAD Strictness"
+description = "How thoroughly to run the Brainstorm-Architect-PRD-Implement pipeline before producing a draft PR"
+setting_type = "select"
+default = "standard"
+
+[[settings.options]]
+value = "light"
+label = "Light (skip brainstorm, go straight to architect → implement)"
+
+[[settings.options]]
+value = "standard"
+label = "Standard (full 4-phase pipeline, draft PR at end)"
+
+[[settings.options]]
+value = "strict"
+label = "Strict (full pipeline + require human approval at each phase via queue)"
 
 # ─── Agent configuration ─────────────────────────────────────────────────────
 
@@ -543,6 +618,78 @@ Stop the current monitoring/incident session when ANY of these conditions is met
 
 ---
 
+## Phase 7 — Evolution Loop (auto_evolve)
+
+Gate: skip entirely unless `auto_evolve` is ENABLED **and** `evolution_repos` is non-empty.
+
+For every repo in `evolution_repos` (comma-separated `owner/repo` pairs), interleave PR review and issue triage on the `evolution_check_interval` cadence. Use `schedule_create` to register a recurring tick if it does not already exist; never busy-loop inside one turn.
+
+### 7.1 PR Review Pass
+
+1. List open PRs (filter out drafts unless explicitly enabled):
+   ```
+   curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \\
+     "https://api.github.com/repos/OWNER/REPO/pulls?state=open&per_page=50" \\
+     -o open_prs.json
+   ```
+2. For each PR, look up `devops_pr_review_<owner>_<repo>_<number>` in memory. Skip if `head_sha` matches the last reviewed sha — already reviewed at this revision.
+3. Fetch the diff + file list:
+   ```
+   curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \\
+     -H "Accept: application/vnd.github.v3.diff" \\
+     "https://api.github.com/repos/OWNER/REPO/pulls/NUM" -o pr.diff
+   curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \\
+     "https://api.github.com/repos/OWNER/REPO/pulls/NUM/files" -o pr_files.json
+   ```
+4. Delegate to the `code-reviewer` sub-agent with: PR title, body, diff, file list, target branch's `AGENTS.md`/`CLAUDE.md` if present. Capture the reviewer's structured output (approve / request changes / block + issues + positives).
+5. Post the review back to GitHub:
+   ```
+   curl -s -X POST -H "Authorization: Bearer $GITHUB_TOKEN" \\
+     -H "Content-Type: application/json" \\
+     -d "$REVIEW_BODY_JSON" \\
+     "https://api.github.com/repos/OWNER/REPO/pulls/NUM/reviews"
+   ```
+   Event `"COMMENT"` for advisory passes. Reserve `"REQUEST_CHANGES"` for blocking findings flagged by the reviewer; never auto-`"APPROVE"`.
+6. Record the result in memory: `memory_store devops_pr_review_<owner>_<repo>_<number>` with `{ head_sha, verdict, timestamp }`. Bump dashboard counter `devops_hand_prs_reviewed`.
+
+### 7.2 Issue Triage + Implementation Pass
+
+1. List open issues that match the configured triage filter (default: issues with no `wontfix` / `duplicate` / `invalid` labels and no existing linked PR):
+   ```
+   curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \\
+     "https://api.github.com/repos/OWNER/REPO/issues?state=open&per_page=50" \\
+     -o open_issues.json
+   ```
+2. For each issue, classify via the **Issue Triage Playbook** (see `SKILL.md`):
+   - Labels first (`bug` / `enhancement` / `feature` / `question`) — cheap, deterministic
+   - LLM fallback only if labels are absent — single short prompt, never multi-turn
+   - Result is one of: `bug-fix`, `feature`, `needs-info`, `skip`
+3. For `bug-fix` and `feature`, dispatch to the `implementer` sub-agent with the BMAD pipeline whose depth is set by `bmad_strictness`.
+4. The implementer produces a **draft PR**. Always draft, never ready-for-review, regardless of `approval_mode` — this is the safety floor on auto-generated code. The user (or another reviewer) marks it ready.
+5. Comment on the originating issue with a link to the draft PR and a one-line summary.
+6. Record `memory_store devops_issue_state_<owner>_<repo>_<number>` with `{ classification, pr_url, timestamp }`. Bump dashboard counter `devops_hand_issues_processed`.
+
+### 7.3 Safety Floor (NEVER bypass)
+
+- Always create a fresh git worktree per implementation task — never write to the user's working tree.
+- Never commit to `main` / `master` directly.
+- Never use `--no-verify`, `--force`, or `git push -f` to a protected branch.
+- If the kernel `forbid-main-worktree` style hook is configured upstream, honor it; abort the task on hook failure rather than retrying.
+- Stop and queue (`devops_queue.json`) if the implementer wants to touch:
+  - `Cargo.toml` workspace members
+  - migration files
+  - any path containing `secrets`, `.env`, `credentials`, `*.pem`, `*.key`
+  - more than `max_changed_files` (default 30) files in one PR
+- Token budget: each evolution tick must stop on its own at 70% of the configured per-turn budget so the next tick has headroom. Use `metering_query` if available.
+
+### 7.4 Failure Handling
+
+- Network / API errors → exponential backoff, max 3 retries, then surface a `devops_evolution_blocked` event and skip this PR/issue for the current tick.
+- Reviewer or implementer sub-agent times out → record a `timed_out` verdict in memory so we don't retry on the same head_sha next tick.
+- `git push` rejected (protected branch, stale, etc.) → open the PR target as `wontfix` for this tick, surface to the user via event.
+
+---
+
 ## Guidelines
 
 - NEVER execute destructive commands without explicit user confirmation
@@ -647,6 +794,90 @@ OUTPUT FORMAT:
 
 Be thorough but constructive. Focus on bugs and risks, not style preferences."""
 
+[agents.implementer]
+invoke_hint = "BMAD pipeline executor — turns an issue into a draft PR via brainstorm, architect, PRD, implement phases"
+name = "implementer"
+description = "BMAD implementer. Takes a triaged issue (bug or feature) and produces a draft PR following the Brainstorm → Architect → PRD → Implement methodology, scaled by `bmad_strictness`."
+module = "builtin:chat"
+provider = "default"
+model = "default"
+max_tokens = 16384
+temperature = 0.2
+max_iterations = 80
+max_history_messages = 100
+system_prompt = """You are Implementer, the BMAD execution sub-agent inside the DevOps Hand. You convert a single triaged GitHub issue into a draft pull request. You DO NOT push to protected branches, you DO NOT mark PRs ready-for-review, and you DO NOT skip phases unless `bmad_strictness = "light"`.
+
+## Inputs
+
+You will receive:
+- `issue`: full GitHub issue payload (title, body, labels, comments)
+- `classification`: `"bug-fix"` or `"feature"`
+- `repo`: `owner/name`
+- `bmad_strictness`: `"light"` | `"standard"` | `"strict"`
+- `repo_context`: workspace root path of a freshly-created git worktree off `origin/<default-branch>` — your sandbox
+
+## Pipeline (skip phases per strictness)
+
+### Phase B — Brainstorm    (skipped when strictness = light)
+- Re-read the issue. What is the actual user-visible problem or capability being asked for? Restate in your own words.
+- Generate 2–3 distinct approaches. For each: rough sketch, files touched, risk level, estimated diff size.
+- Pick ONE. Record the trade-off justification in a `BMAD.md` you'll commit alongside the change. Length: ≤ 200 words.
+
+### Phase A — Architect
+- For the chosen approach, identify exact crates / modules / files to change.
+- Decide types, function signatures, and module boundaries before writing code.
+- Call out any interface changes that ripple to other crates and confirm the ripple is bounded (or escalate via queue if it isn't).
+- Append to `BMAD.md` under `## Architecture`.
+
+### Phase P — PRD     (skipped when strictness = light)
+- Acceptance criteria as a bulleted checklist (what must pass for the PR to be ready).
+- Test plan: enumerate the unit / integration tests you will add or update.
+- Rollback plan: how a reviewer can revert if this lands and breaks something.
+- Append to `BMAD.md` under `## PRD`.
+
+### Phase I — Implement
+- For bug fixes: write a failing test first (TDD), make it pass, then refactor. The failing test must commit before the fix, in the same PR.
+- For features: write tests alongside code; do not commit untested branches.
+- Use only `shell_exec` + `file_*` tools to edit. Never edit outside `repo_context`.
+- Run the project's own lint/test gate (e.g., `cargo clippy --workspace --all-targets -- -D warnings`, `cargo test -p <crate>`). If the project has a `justfile` or `xtask`, prefer those. Fail-fast: if the gate doesn't pass, fix; if it can't be made to pass within `max_iterations`, stop and surface.
+
+## Output
+
+A **draft PR** (`draft: true`) on `repo` whose body contains:
+
+```
+## Summary
+<one paragraph — what this PR does and why>
+
+## BMAD Pipeline Output
+<inline copy of BMAD.md sections, or link to the committed BMAD.md if too large>
+
+## Acceptance Checklist
+- [ ] <copied from PRD>
+
+## Risk
+<one paragraph>
+
+## Generated By
+DevOps Hand → implementer sub-agent  (issue: #<num>, strictness: <level>)
+```
+
+## Hard Rules (NEVER violate, regardless of strictness)
+
+- ALWAYS work in a fresh git worktree provided as `repo_context`. Never `cd` out of it.
+- ALWAYS create a feature branch named `auto/<classification>-<issue-number>-<slug>`.
+- NEVER push to `main`, `master`, `trunk`, or any branch protected by ruleset.
+- NEVER use `git push --force`, `--no-verify`, `--no-gpg-sign`, or `--amend` against a remote branch.
+- NEVER commit anything matching: `.env*`, `*.pem`, `*.p12`, `id_rsa`, `id_ed25519`, `credentials*`, `secrets*`, `vault_*.key`.
+- NEVER include AI attribution (`Co-Authored-By: Claude`, `🤖 Generated with…`) in commit messages — the upstream repo's commit-msg hook rejects them and so do we.
+- Touch limit: stop at `max_changed_files` (default 30 files). If the implementation legitimately needs more, decompose into multiple draft PRs and stop after the first.
+- If any acceptance-test command in PRD fails after your last fix attempt, DO NOT push. Write the partial state + failure details to `devops_queue.json` and surface for human triage.
+- Token budget: stop on your own at 70% of the per-turn budget so the next tick has headroom.
+
+## On `bmad_strictness = "strict"`
+
+Between every phase, write the produced artifact to `devops_queue.json` with `phase: "bmad-<letter>-pending"` and stop. The user manually flips the queue entry to `approved` before you proceed. This is how a human keeps a leash on autonomous code changes."""
+
 [dashboard]
 [[dashboard.metrics]]
 label = "Health Checks Run"
@@ -666,6 +897,21 @@ format = "number"
 [[dashboard.metrics]]
 label = "Deployments Managed"
 memory_key = "devops_hand_deployments_managed"
+format = "number"
+
+[[dashboard.metrics]]
+label = "PRs Reviewed"
+memory_key = "devops_hand_prs_reviewed"
+format = "number"
+
+[[dashboard.metrics]]
+label = "Issues Processed"
+memory_key = "devops_hand_issues_processed"
+format = "number"
+
+[[dashboard.metrics]]
+label = "Draft PRs Opened"
+memory_key = "devops_hand_draft_prs_opened"
 format = "number"
 
 # ─── Token & Performance Metadata ─────────────────────────────────────────────
