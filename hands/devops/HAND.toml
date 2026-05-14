@@ -296,7 +296,7 @@ setting_type = "toggle"
 default = "true"
 
 # ─── Auto-Evolution settings ─────────────────────────────────────────────────
-# These drive the Phase 6 evolution loop: periodic scan of configured
+# These drive the Phase 7 evolution loop: periodic scan of configured
 # GitHub repos, automated PR review via the reviewer sub-agent, and
 # BMAD-style bug fix / feature implementation via the implementer
 # sub-agent. All produce draft PRs and respect approval_mode.
@@ -360,6 +360,25 @@ label = "Standard (full 4-phase pipeline, draft PR at end)"
 [[settings.options]]
 value = "strict"
 label = "Strict (full pipeline + require human approval at each phase via queue)"
+
+[[settings]]
+key = "max_changed_files"
+label = "Max Changed Files Per Draft PR"
+description = "Implementer stops and queues for human triage if a single draft PR would touch more than this many files. Decompose larger work into multiple PRs."
+setting_type = "select"
+default = "30"
+
+[[settings.options]]
+value = "10"
+label = "10 files (very conservative)"
+
+[[settings.options]]
+value = "30"
+label = "30 files (default)"
+
+[[settings.options]]
+value = "100"
+label = "100 files (large refactors)"
 
 # ─── Agent configuration ─────────────────────────────────────────────────────
 
@@ -622,7 +641,9 @@ Stop the current monitoring/incident session when ANY of these conditions is met
 
 Gate: skip entirely unless `auto_evolve` is ENABLED **and** `evolution_repos` is non-empty.
 
-For every repo in `evolution_repos` (comma-separated `owner/repo` pairs), interleave PR review and issue triage on the `evolution_check_interval` cadence. Use `schedule_create` to register a recurring tick if it does not already exist; never busy-loop inside one turn.
+The Hand is already `frequency = "continuous"`, so this Phase fires once per turn while gates pass. On entry, read `memory_recall devops_evolution_cursor_<owner>_<repo>`. If less than `evolution_check_interval` has elapsed since the last tick for THAT repo, skip the repo for this turn — the next turn will check again. Never busy-loop or self-schedule inside a turn.
+
+For every repo in `evolution_repos` (comma-separated `owner/repo` pairs) that passes the cadence gate, interleave PR review and issue triage.
 
 ### 7.1 PR Review Pass
 
@@ -672,15 +693,15 @@ For every repo in `evolution_repos` (comma-separated `owner/repo` pairs), interl
 ### 7.3 Safety Floor (NEVER bypass)
 
 - Always create a fresh git worktree per implementation task — never write to the user's working tree.
-- Never commit to `main` / `master` directly.
-- Never use `--no-verify`, `--force`, or `git push -f` to a protected branch.
-- If the kernel `forbid-main-worktree` style hook is configured upstream, honor it; abort the task on hook failure rather than retrying.
+- Never commit to `main` / `master` / `trunk` directly.
+- Never use `--no-verify`, `--force`, or `git push -f` against any remote branch.
+- Honor whatever pre-commit / pre-push / commit-msg hooks the upstream repo configures (run via `git config core.hooksPath` discovery + executing each non-skipped hook). Abort the task on hook failure rather than retrying.
 - Stop and queue (`devops_queue.json`) if the implementer wants to touch:
-  - `Cargo.toml` workspace members
-  - migration files
-  - any path containing `secrets`, `.env`, `credentials`, `*.pem`, `*.key`
-  - more than `max_changed_files` (default 30) files in one PR
-- Token budget: each evolution tick must stop on its own at 70% of the configured per-turn budget so the next tick has headroom. Use `metering_query` if available.
+  - `Cargo.toml` workspace members (any `members = [...]` change)
+  - migration files (paths under `*/migrations/*`, `*/migrate/*`, or matching `*.sql`)
+  - any path containing `secrets`, `.env`, `credentials`, `*.pem`, `*.key`, `id_rsa`, `id_ed25519`
+  - more than the configured `max_changed_files` setting (default 30) files in one PR
+- Token budget: each evolution tick must stop on its own when the agent senses it is nearing the per-turn budget (target ~70% so the next tick has headroom). Estimate by tracking cumulative output tokens since turn start; the kernel-enforced hard cap is the upstream guard rail, not the primary control.
 
 ### 7.4 Failure Handling
 
@@ -804,6 +825,11 @@ model = "default"
 max_tokens = 16384
 temperature = 0.2
 max_iterations = 80
+# Raise the history cap above the kernel default. BMAD work fans out
+# across 4 phases (Brainstorm / Architect / PRD / Implement), each of
+# which spawns shell_exec chains (cargo build/test cycles, git ops,
+# file edits). 100 buys enough headroom that a single PR doesn't get
+# truncated mid-implementation while still bounding worst-case cost.
 max_history_messages = 100
 system_prompt = """You are Implementer, the BMAD execution sub-agent inside the DevOps Hand. You convert a single triaged GitHub issue into a draft pull request. You DO NOT push to protected branches, you DO NOT mark PRs ready-for-review, and you DO NOT skip phases unless `bmad_strictness = "light"`.
 
@@ -869,7 +895,7 @@ DevOps Hand → implementer sub-agent  (issue: #<num>, strictness: <level>)
 - NEVER push to `main`, `master`, `trunk`, or any branch protected by ruleset.
 - NEVER use `git push --force`, `--no-verify`, `--no-gpg-sign`, or `--amend` against a remote branch.
 - NEVER commit anything matching: `.env*`, `*.pem`, `*.p12`, `id_rsa`, `id_ed25519`, `credentials*`, `secrets*`, `vault_*.key`.
-- NEVER include AI attribution (`Co-Authored-By: Claude`, `🤖 Generated with…`) in commit messages — the upstream repo's commit-msg hook rejects them and so do we.
+- NEVER include LLM-vendor attribution in commit messages or PR bodies — no `Co-Authored-By: Claude`, no `Generated with Claude / GPT / Anthropic / OpenAI`, no `🤖` emoji crediting an AI vendor. "Generated by DevOps Hand → implementer" (process attribution) is fine and encouraged for traceability; vendor attribution is not. Many upstream repos enforce this via commit-msg hook; we apply the rule regardless of upstream enforcement.
 - Touch limit: stop at `max_changed_files` (default 30 files). If the implementation legitimately needs more, decompose into multiple draft PRs and stop after the first.
 - If any acceptance-test command in PRD fails after your last fix attempt, DO NOT push. Write the partial state + failure details to `devops_queue.json` and surface for human triage.
 - Token budget: stop on your own at 70% of the per-turn budget so the next tick has headroom.
