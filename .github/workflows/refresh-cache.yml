@@ -95,7 +95,7 @@ jobs:
       # adversarial edits, not this step.
       - name: Verify signature against committed pubkey
         env:
-          REGISTRY_PUBLIC_KEY: ClGa0Ucap8NdrKAy1rw9Tt6A9I8eg4zJ53+xIuKMuq0=
+          REGISTRY_PUBLIC_KEY: joY8IYrUbbACfKRyp2CTcEbcEty8wcBwP1MTxU+vjaM=
         run: |
           node -e '
             const c = require("crypto"), fs = require("fs");
