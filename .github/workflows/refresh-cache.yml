@@ -174,7 +174,7 @@ jobs:
           response=$(curl -fsS -X POST \
             -H "Authorization: Bearer $REGISTRY_REFRESH_TOKEN" \
             -w "\nHTTP_CODE:%{http_code}" \
-            https://stats.librefang.ai/api/registry/refresh)
+            https://librefang.ai/api/registry/refresh)
           echo "$response"
           code=$(echo "$response" | grep -oE 'HTTP_CODE:[0-9]+' | cut -d: -f2)
           if [ "$code" != "200" ]; then
