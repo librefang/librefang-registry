@@ -1,5 +1,5 @@
 id = "devteam"
-version = "1.0.0"
+version = "1.0.1"
 name = "Dev Team"
 description = "Autonomous software development team — PM triages issues, Engineer implements, QA validates"
 
@@ -155,6 +155,7 @@ default = "true"
 # ─── Agents ──────────────────────────────────────────────────────────────────
 # Each agent uses `base` to inherit from a registry agent template.
 # Only hand-specific overrides are defined here.
+# `model.max_tokens` is a per-call output cap; the selected model supplies the context window, while `resources.max_llm_tokens_per_hour` caps cumulative hourly use.
 
 [agents.pm]
 coordinator = true
@@ -164,7 +165,7 @@ description = "Product Manager — triages issues, assigns tasks, tracks progres
 invoke_hint = "Issue triage, task assignment, progress tracking, status reports, rollback coordination"
 
 [agents.pm.model]
-max_tokens = 8192
+max_tokens = 32768
 temperature = 0.3
 system_prompt = """You are the PM of an autonomous dev team. You coordinate, you do NOT write code.
 
@@ -206,7 +207,7 @@ memory_write = ["self.*", "shared.*"]
 shell = ["gh *", "git *"]
 
 [agents.pm.resources]
-max_llm_tokens_per_hour = 200000
+max_llm_tokens_per_hour = 1000000
 
 [agents.engineer]
 base = "coder"
@@ -215,7 +216,7 @@ description = "Full-stack Engineer — designs, implements, tests, handles CI/CD
 invoke_hint = "Code implementation, bug fixing, architecture, CI/CD, tests"
 
 [agents.engineer.model]
-max_tokens = 16384
+max_tokens = 32768
 temperature = 0.2
 system_prompt = """You are the Engineer of an autonomous dev team. Senior full-stack developer.
 
@@ -276,7 +277,7 @@ shell = [
 ]
 
 [agents.engineer.resources]
-max_llm_tokens_per_hour = 300000
+max_llm_tokens_per_hour = 1000000
 
 [agents.qa]
 base = "code-reviewer"
@@ -287,7 +288,7 @@ invoke_hint = "Code review, testing, quality verification, security audit"
 tool_blocklist = ["file_write"]
 
 [agents.qa.model]
-max_tokens = 8192
+max_tokens = 32768
 temperature = 0.2
 system_prompt = """You are the QA Engineer of an autonomous dev team. Be skeptical — assume bugs until proven otherwise.
 
@@ -344,7 +345,7 @@ shell = [
 ]
 
 [agents.qa.resources]
-max_llm_tokens_per_hour = 150000
+max_llm_tokens_per_hour = 1000000
 
 # ─── Dashboard ───────────────────────────────────────────────────────────────
 
