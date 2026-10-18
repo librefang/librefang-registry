@@ -8,13 +8,17 @@ tags = ["web", "fetch", "scraping", "markdown", "http"]
 setup_instructions = """
 No API key required. Fetches any publicly accessible URL and returns the content as Markdown.
 
+Requires `uv` (Python package manager):
+- macOS/Linux: `curl -LsSf https://astral.sh/uv/install.sh | sh`
+- Or: `pip install uv`
+
 For JavaScript-rendered pages (SPAs), use the Puppeteer integration instead.
 """
 
 [transport]
 type = "stdio"
-command = "npx"
-args = ["-y", "@modelcontextprotocol/server-fetch@latest"]
+command = "uvx"
+args = ["mcp-server-fetch"]
 
 [health_check]
 interval_secs = 60

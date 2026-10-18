@@ -6,20 +6,21 @@ icon = "lucide:save"
 tags = ["database", "sql", "relational", "sqlite", "local", "embedded"]
 
 setup_instructions = """
-1. Locate the SQLite database file you want to connect to on your local filesystem.
-2. Enter the absolute path to the database file in the SQLITE_DB_PATH field above.
-3. Ensure the file has appropriate read/write permissions for the LibreFang process.
+1. Choose an absolute path for the SQLite database file (e.g. ~/.agent-arka/data/sqlite-mcp.db).
+2. Enter it in the SQLITE_DB_PATH field above.
+3. The database file is created automatically if it does not yet exist.
+4. Ensure the LibreFang process has read/write access to that path.
 """
 
 [transport]
 type = "stdio"
 command = "npx"
-args = ["-y", "@modelcontextprotocol/server-sqlite"]
+args = ["-y", "mcp-sqlite", "$SQLITE_DB_PATH"]
 
 [[required_env]]
 name = "SQLITE_DB_PATH"
 label = "SQLite Database Path"
-help = "Absolute path to the SQLite database file (e.g., /home/user/data/mydb.sqlite)"
+help = "Absolute path to the SQLite database file (e.g., ~/.agent-arka/data/sqlite-mcp.db)"
 is_secret = false
 get_url = ""
 

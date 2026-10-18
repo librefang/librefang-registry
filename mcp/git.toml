@@ -10,23 +10,21 @@ Requires `uv` (Python package manager):
 - macOS/Linux: `curl -LsSf https://astral.sh/uv/install.sh | sh`
 - Or: `pip install uv`
 
-The `--repository .` argument uses the current working directory. To point at a specific repo:
-
-```toml
-[[mcp_servers]]
-name = "git"
-
-[mcp_servers.transport]
-type = "stdio"
-command = "uvx"
-args = ["mcp-server-git", "--repository", "/path/to/your/repo"]
-```
+Enter the absolute path to the Git repository you want to inspect in the
+GIT_REPOSITORY_PATH field above.
 """
 
 [transport]
 type = "stdio"
 command = "uvx"
-args = ["mcp-server-git", "--repository", "."]
+args = ["mcp-server-git", "--repository", "$GIT_REPOSITORY_PATH"]
+
+[[required_env]]
+name = "GIT_REPOSITORY_PATH"
+label = "Git Repository Path"
+help = "Absolute path to the Git repository to inspect (e.g., /home/user/projects/my-repo)"
+is_secret = false
+get_url = ""
 
 [health_check]
 interval_secs = 60
